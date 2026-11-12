@@ -30,8 +30,21 @@ export class Audio {
   private osc2: OscillatorNode | null = null;
   private engineFilter: BiquadFilterNode | null = null;
   private engineGain: GainNode | null = null;
+  private osc3: OscillatorNode | null = null;
+  private mix2: GainNode | null = null;
+  private mix3: GainNode | null = null;
+  private lfo: OscillatorNode | null = null;
+  private lfoPitch: GainNode | null = null;
+  private lfoAmp: GainNode | null = null;
+  private carSound = '';
   // bruits continus
   private skidGain: GainNode | null = null;
+  private brakeGain: GainNode | null = null;
+  private squealOsc: OscillatorNode | null = null;
+  private squealGain: GainNode | null = null;
+  private brakeSqOsc: OscillatorNode | null = null;
+  private brakeSqGain: GainNode | null = null;
+  private wasBraking = false;
   private rumbleGain: GainNode | null = null;
   private hissGain: GainNode | null = null;
   // musique
@@ -162,25 +175,65 @@ export class Audio {
     return { gain: g };
   }
 
+  /** Oscillateur filtré, volume 0 au départ (sons continus pilotés par `update`). */
+  private tone(type: OscillatorType, freq: number, ft: BiquadFilterType, ff: number, q: number): { osc: OscillatorNode; gain: GainNode } {
+    const c = this.ctx!;
+    const osc = c.createOscillator();
+    osc.type = type;
+    osc.frequency.value = freq;
+    const f = c.createBiquadFilter();
+    f.type = ft;
+    f.frequency.value = ff;
+    f.Q.value = q;
+    const gain = c.createGain();
+    gain.gain.value = 0;
+    osc.connect(f).connect(gain).connect(this.sfxGain);
+    osc.start();
+    return { osc, gain };
+  }
+
   private startEngine(): void {
     const c = this.ctx!;
     this.osc1 = c.createOscillator();
-    this.osc1.type = 'sawtooth';
     this.osc2 = c.createOscillator();
-    this.osc2.type = 'square';
+    this.osc3 = c.createOscillator();
+    this.lfo = c.createOscillator();
     this.engineFilter = c.createBiquadFilter();
     this.engineFilter.type = 'lowpass';
     this.engineFilter.frequency.value = 500;
     this.engineGain = c.createGain();
     this.engineGain.gain.value = 0;
-    const mix2 = c.createGain();
-    mix2.gain.value = 0.5;
+    this.mix2 = c.createGain();
+    this.mix3 = c.createGain();
+    this.mix3.gain.value = 0;
+    this.lfoPitch = c.createGain();
+    this.lfoAmp = c.createGain();
+    // valeurs neutres avant le premier `update` (sinon le LFO à 440 Hz module le volume : bip strident dans les menus)
+    this.lfoPitch.gain.value = 0;
+    this.lfoAmp.gain.value = 0;
+    this.lfo.frequency.value = 8;
+    this.osc1.frequency.value = this.osc2.frequency.value = this.osc3.frequency.value = 40;
     this.osc1.connect(this.engineFilter);
-    this.osc2.connect(mix2).connect(this.engineFilter);
+    this.osc2.connect(this.mix2).connect(this.engineFilter);
+    this.osc3.connect(this.mix3).connect(this.engineFilter);
     this.engineFilter.connect(this.engineGain).connect(this.sfxGain);
+    // LFO : vibrato (hauteur) et trémolo (volume), utilisés par le grondement du V8 et le son d'OVNI
+    this.lfo.connect(this.lfoPitch);
+    this.lfoPitch.connect(this.osc1.frequency);
+    this.lfoPitch.connect(this.osc3.frequency);
+    this.lfo.connect(this.lfoAmp).connect(this.engineGain.gain);
     this.osc1.start();
     this.osc2.start();
+    this.osc3.start();
+    this.lfo.start();
     this.skidGain = this.noiseSource('bandpass', 1800, 2).gain;
+    this.brakeGain = this.noiseSource('bandpass', 2600, 0.8).gain;
+    // crissement de pneus (glissade) : timbre dur, un peu instable
+    const sq = this.tone('sawtooth', 780, 'bandpass', 1400, 7);
+    this.squealOsc = sq.osc; this.squealGain = sq.gain;
+    // grincement des disques de frein : fin et aigu
+    const bs = this.tone('square', 2100, 'bandpass', 2300, 12);
+    this.brakeSqOsc = bs.osc; this.brakeSqGain = bs.gain;
     this.rumbleGain = this.noiseSource('lowpass', 220).gain;
     this.hissGain = this.noiseSource('highpass', 3500).gain;
   }
@@ -191,11 +244,42 @@ export class Audio {
     if (!c || !this.engineGain) return;
     const t = c.currentTime;
     const r = Math.max(0, Math.min(1, (s.rpm - 1200) / 7000));
-    this.osc1!.frequency.setTargetAtTime(38 + r * 190, t, 0.03);
-    this.osc2!.frequency.setTargetAtTime((38 + r * 190) * 1.5, t, 0.03);
-    this.engineFilter!.frequency.setTargetAtTime(380 + 1900 * (0.25 + 0.75 * s.throttle) * (0.4 + 0.6 * r), t, 0.05);
-    this.engineGain.gain.setTargetAtTime(s.running ? 0.09 + 0.17 * s.throttle + 0.05 * r : 0, t, 0.08);
-    this.skidGain!.gain.setTargetAtTime(s.sliding ? 0.18 : s.braking && s.speedRatio > 0.4 ? 0.05 * s.speedRatio : 0, t, 0.05);
+    const e = engineProfile(s.car);
+    if (this.carSound !== s.car) {
+      // changement de voiture : on reconfigure les oscillateurs
+      this.carSound = s.car;
+      this.osc1!.type = e.w1;
+      this.osc2!.type = e.w2;
+      this.osc3!.type = e.w3;
+      this.engineFilter!.Q.value = e.q;
+      this.lfo!.type = 'sine';
+    }
+    const f0 = e.base + r * e.span;
+    // grondement : le LFO s'accélère avec le régime (ratés du V8, vibration du moteur, ondulation de l'OVNI)
+    this.lfo!.frequency.setTargetAtTime(e.lfoHz + e.lfoHzRpm * r, t, 0.05);
+    this.lfoPitch!.gain.setTargetAtTime(e.vib * f0 * (0.4 + r), t, 0.05);
+    this.osc1!.frequency.setTargetAtTime(f0, t, 0.03);
+    this.osc2!.frequency.setTargetAtTime(f0 * e.ratio, t, 0.03);
+    this.osc3!.frequency.setTargetAtTime(f0 * e.sub, t, 0.03);
+    this.mix2!.gain.setTargetAtTime(e.mix2, t, 0.1);
+    this.mix3!.gain.setTargetAtTime(e.mix3, t, 0.1);
+    this.engineFilter!.frequency.setTargetAtTime(e.fLo + (e.fHi - e.fLo) * (0.25 + 0.75 * s.throttle) * (0.4 + 0.6 * r), t, 0.05);
+    // plus le régime monte, plus le moteur est puissant
+    const vol = (0.07 + 0.15 * s.throttle + 0.12 * r + 0.06 * r * s.throttle) * e.gain;
+    this.engineGain.gain.setTargetAtTime(s.running ? vol : 0, t, 0.08);
+    this.lfoAmp!.gain.setTargetAtTime(s.running ? e.trem * vol : 0, t, 0.08);
+    const sl = s.sliding;
+    const br = s.braking && s.speedRatio > 0.15 && !sl;
+    // glissade : souffle de gomme + crissement dont la hauteur suit la vitesse et tremble un peu
+    this.skidGain!.gain.setTargetAtTime(sl ? 0.16 : 0, t, 0.05);
+    this.squealGain!.gain.setTargetAtTime(sl ? 0.13 : 0, t, 0.06);
+    this.squealOsc!.frequency.setTargetAtTime(620 + 700 * s.speedRatio + Math.sin(t * 23) * 40, t, 0.04);
+    // freinage : souffle des disques proportionnel à la vitesse, grincement léger à haute vitesse, claquement à l'attaque
+    this.brakeGain!.gain.setTargetAtTime(br ? 0.05 + 0.1 * s.speedRatio : 0, t, 0.04);
+    this.brakeSqGain!.gain.setTargetAtTime(br && s.speedRatio > 0.45 ? 0.025 * s.speedRatio : 0, t, 0.08);
+    this.brakeSqOsc!.frequency.setTargetAtTime(1900 + 500 * (1 - s.speedRatio), t, 0.1);
+    if (br && !this.wasBraking && s.speedRatio > 0.4) this.burst(0.12, 0.18, 'bandpass', 1200);
+    this.wasBraking = br;
     this.rumbleGain!.gain.setTargetAtTime(s.offroad ? 0.25 * Math.min(1, s.speedRatio * 3) : 0, t, 0.08);
     this.hissGain!.gain.setTargetAtTime(s.refueling ? 0.12 : s.punctured && s.speedRatio > 0.1 ? 0.05 : 0, t, 0.08);
     // pistolets à écrous pendant le changement de roues
@@ -257,7 +341,7 @@ export class Audio {
   }
   /** Silence des sons continus (menus). */
   silence(): void {
-    this.update({ rpm: 1200, throttle: 0, speedRatio: 0, sliding: false, braking: false, offroad: false, punctured: false, refueling: false, wrenching: false, running: false, musicDuck: false });
+    this.update({ rpm: 1200, throttle: 0, speedRatio: 0, sliding: false, braking: false, offroad: false, punctured: false, refueling: false, wrenching: false, running: false, car: this.carSound, musicDuck: false });
   }
 }
 
@@ -273,5 +357,37 @@ export interface AudioState {
   refueling: boolean;
   wrenching: boolean;
   running: boolean;
+  /** Modèle de voiture (choisit le profil sonore du moteur). */
+  car: string;
   musicDuck: boolean;
+}
+
+/** Profil sonore d'un moteur : formes d'onde, hauteur (ralenti + plage selon le régime), filtre, grondement. */
+interface EngineProfile {
+  w1: OscillatorType; w2: OscillatorType; w3: OscillatorType;
+  base: number; span: number; ratio: number; sub: number; mix2: number; mix3: number;
+  fLo: number; fHi: number; q: number; gain: number;
+  lfoHz: number; lfoHzRpm: number; vib: number; trem: number;
+}
+const P = (o: Partial<EngineProfile>): EngineProfile => ({
+  w1: 'sawtooth', w2: 'square', w3: 'sine', base: 38, span: 190, ratio: 1.5, sub: 0.5, mix2: 0.5, mix3: 0,
+  fLo: 380, fHi: 2300, q: 1, gain: 1, lfoHz: 8, lfoHzRpm: 0, vib: 0, trem: 0, ...o,
+});
+/** Un profil par modèle du pack ; `futur` = son d'OVNI (sinus qui ondule, battement désaccordé, glissando aigu). */
+const ENGINES: Record<string, EngineProfile> = {
+  hothatch: P({ base: 55, span: 210, ratio: 2, fHi: 2400, gain: 0.9 }),
+  gt3: P({ base: 46, span: 270, ratio: 1.5, fHi: 3000, mix2: 0.6 }),
+  f1: P({ w2: 'sawtooth', base: 95, span: 430, ratio: 2, fLo: 700, fHi: 5200, q: 2, gain: 0.8 }),
+  hypercar: P({ base: 40, span: 250, ratio: 1.5, sub: 0.5, mix3: 0.35, w3: 'triangle', fHi: 3400, trem: 0.1, lfoHz: 20, gain: 1.05 }),
+  muscle: P({ w2: 'sawtooth', base: 30, span: 125, ratio: 1.5, fLo: 260, fHi: 1500, lfoHz: 9, lfoHzRpm: 18, trem: 0.35, vib: 0.01, gain: 1.15 }),
+  retro: P({ w1: 'square', base: 62, span: 150, ratio: 2, mix2: 0.35, fLo: 450, fHi: 1700, gain: 0.8 }),
+  wedge: P({ base: 50, span: 290, ratio: 1.5, mix3: 0.3, w3: 'sawtooth', sub: 2, fHi: 3200, q: 2 }),
+  supercar: P({ base: 48, span: 310, ratio: 2, mix3: 0.3, w3: 'triangle', sub: 0.5, fHi: 3600, gain: 1.05 }),
+  pickup: P({ w2: 'square', base: 27, span: 105, ratio: 1.5, fLo: 220, fHi: 1000, lfoHz: 11, lfoHzRpm: 14, trem: 0.3, gain: 1.15 }),
+  towtruck: P({ w2: 'square', base: 23, span: 85, ratio: 1.5, fLo: 200, fHi: 800, lfoHz: 8, lfoHzRpm: 10, trem: 0.4, gain: 1.2 }),
+  futur: P({ w1: 'sine', w2: 'triangle', w3: 'sine', base: 110, span: 560, ratio: 2.013, sub: 0.502, mix2: 0.45, mix3: 0.5,
+    fLo: 900, fHi: 5500, q: 4, lfoHz: 5, lfoHzRpm: 4, vib: 0.06, trem: 0.28, gain: 0.95 }),
+};
+function engineProfile(car: string): EngineProfile {
+  return ENGINES[car] ?? ENGINES.gt3;
 }

@@ -289,7 +289,9 @@ export class Player {
   /** Boîte automatique : rapport et régime déduits de la vitesse. */
   private updateGear(): void {
     const P = PHYSICS;
-    const vr = this.speed / P.maxSpeed;
+    // hors accélération (pied levé, freinage) : le rapport est choisi comme si on roulait moins vite, donc on rétrograde plus tôt
+    // et le régime remonte (frein moteur) ; la boîte retombe vite quand la vitesse chute
+    const vr = (this.speed / P.maxSpeed) * (this.throttle ? 1 : 1 - P.downshift);
     let g = 0;
     while (g < P.gearTops.length - 1 && vr > P.gearTops[g]) g++;
     const lo = g === 0 ? 0 : P.gearTops[g - 1];

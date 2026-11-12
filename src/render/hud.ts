@@ -10,13 +10,13 @@ import type { Minimap } from '../track/minimap';
 /** Texte bitmap (polices du pack : hud/fonts.json). */
 function text(
   ctx: CanvasRenderingContext2D, img: HTMLImageElement, str: string, x: number, y: number,
-  cell: { w: number; h: number }, columns: number, indexOf: (ch: string) => number,
+  cell: { w: number; h: number }, columns: number, indexOf: (ch: string) => number, scale = 1,
 ): void {
-  const adv = cell.w - 1;
+  const adv = (cell.w - 1) * scale;
   for (let i = 0; i < str.length; i++) {
     const idx = indexOf(str[i]);
     if (idx < 0) continue;
-    ctx.drawImage(img, (idx % columns) * cell.w, Math.floor(idx / columns) * cell.h, cell.w, cell.h, x + i * adv, y, cell.w, cell.h);
+    ctx.drawImage(img, (idx % columns) * cell.w, Math.floor(idx / columns) * cell.h, cell.w, cell.h, x + i * adv, y, cell.w * scale, cell.h * scale);
   }
 }
 
@@ -28,6 +28,13 @@ export function drawSmall(ctx: CanvasRenderingContext2D, a: Assets, s: string, x
     const c = ch.charCodeAt(0) - 32;
     return c >= 0 && c < 64 ? c : -1;
   });
+}
+/** Petite police réduite (70 %) : classement, écarts. Avance de 6 px par caractère. */
+export function drawTiny(ctx: CanvasRenderingContext2D, a: Assets, s: string, x: number, y: number): void {
+  text(ctx, a.fontSmall, s.toUpperCase(), x, y, { w: 10, h: 14 }, 16, (ch) => {
+    const c = ch.charCodeAt(0) - 32;
+    return c >= 0 && c < 64 ? c : -1;
+  }, 0.7);
 }
 export function drawBig(ctx: CanvasRenderingContext2D, a: Assets, s: string, x: number, y: number): void {
   text(ctx, a.fontBig, s, x, y, { w: 20, h: 30 }, 15, (ch) => BIG_CHARS.indexOf(ch));
@@ -79,20 +86,25 @@ export function drawHud(
     drawSmall(ctx, a, s, Math.round(W / 2 - (s.length * 9) / 2), 100);
   }
 
-  // chrono du tour (haut centre) + meilleur / dernier
+  // chrono du tour (haut centre) ; meilleur / dernier tour : quelques secondes après le passage de la ligne
   const lt = formatTime(race.lapTime);
   drawBig(ctx, a, lt, Math.round(W / 2 - (lt.length * 19) / 2), 6);
-  if (race.bestLap !== null) {
-    const s = t('hud.best', { t: formatTime(race.bestLap) });
-    drawSmall(ctx, a, s, Math.round(W / 2 - (s.length * 9) / 2), 40);
-  }
-  if (race.lastLap !== null) {
-    const s = t('hud.last', { t: formatTime(race.lastLap) });
-    drawSmall(ctx, a, s, Math.round(W / 2 - (s.length * 9) / 2), 54);
+  let cy = 40;
+  if (race.lapInfoT > 0) {
+    if (race.bestLap !== null) {
+      const s = t('hud.best', { t: formatTime(race.bestLap) });
+      drawSmall(ctx, a, s, Math.round(W / 2 - (s.length * 9) / 2), cy);
+      cy += 14;
+    }
+    if (race.lastLap !== null) {
+      const s = t('hud.last', { t: formatTime(race.lastLap) });
+      drawSmall(ctx, a, s, Math.round(W / 2 - (s.length * 9) / 2), cy);
+      cy += 14;
+    }
   }
   {
     const s = t('hud.total', { t: formatTime(race.time) });
-    drawSmall(ctx, a, s, Math.round(W / 2 - (s.length * 9) / 2), 68);
+    drawTiny(ctx, a, s, Math.round(W / 2 - (s.length * 6) / 2), cy);
   }
 
   // mini-carte (haut droite)
@@ -118,25 +130,36 @@ export function drawHud(
   }
   dot('map_dot_player', p.z);
 
-  // classement en direct (sous la mini-carte)
+  // classement en direct (sous la mini-carte) : écart au leader
+  const lead = field.ranking[0];
+  const L = field.track.length;
   field.ranking.forEach((e, i) => {
-    const s = `${i + 1}${e.isPlayer ? '>' : ' '}${e.name}`;
-    drawSmall(ctx, a, s, mx, my + MINIMAP.size + 4 + i * 13);
+    let gap = '';
+    if (i > 0 && lead) {
+      if (e.finishTime !== null && lead.finishTime !== null) gap = '+' + (e.finishTime - lead.finishTime).toFixed(1);
+      else if (lead.progress - e.progress >= L) gap = '+' + Math.floor((lead.progress - e.progress) / L) + 'T';
+      else gap = '+' + ((lead.progress - e.progress) / Math.max(25, e.car.speed)).toFixed(1);
+    }
+    const nm = e.name.toUpperCase().slice(0, 7);
+    const y = my + MINIMAP.size + 3 + i * 12;
+    const rx = W - 132; // le tableau déborde à gauche de la mini-carte : nom à gauche, écart aligné à droite
+    drawSmall(ctx, a, `${i + 1}${e.isPlayer ? '>' : ' '}${nm}`, rx, y);
+    drawSmall(ctx, a, gap, W - 6 - gap.length * 9, y);
   });
 
   drawFuelAndTyres(ctx, a, p, H, field.track.length);
   drawPit(ctx, a, p, pit, W, H);
 
-  // alertes clignotantes (la plus grave d'abord)
-  const alert = p.tyres.anyPunctured ? 'alert.puncture' : p.dry ? 'alert.dry' : p.fuel.low ? 'alert.fuelLow' : null;
-  if (alert && Math.floor(performance.now() / 350) % 2 === 0) {
-    const s = t(alert);
+  // alertes clignotantes : crevaison au centre ; essence et pneus usés sur la gauche, empilés
+  const blinkOn = Math.floor(performance.now() / 350) % 2 === 0;
+  if (p.tyres.anyPunctured && blinkOn) {
+    const s = t('alert.puncture');
     drawSmall(ctx, a, s, Math.round(W / 2 - (s.length * 9) / 2), 150);
   }
-  // pneus usés : alerte sur la gauche
-  if (!p.tyres.anyPunctured && p.tyres.avgWear >= TYRES.warnWear && Math.floor(performance.now() / 350) % 2 === 0) {
-    drawSmall(ctx, a, t('alert.tyres'), 8, 94);
-  }
+  const left: string[] = [];
+  if (p.dry) left.push('alert.dry'); else if (p.fuel.low) left.push('alert.fuelLow');
+  if (!p.tyres.anyPunctured && p.tyres.avgWear >= TYRES.warnWear) left.push('alert.tyres');
+  if (blinkOn) left.forEach((k, i) => drawSmall(ctx, a, t(k as never), 8, 94 + i * 14));
 
   if (WEATHER.wetness > 0.3) drawSmall(ctx, a, t('hud.wet'), 8, 80);
   if (p.draft > 0.15 && race.state === 'racing') drawSmall(ctx, a, t('hud.draft'), 8, 66);

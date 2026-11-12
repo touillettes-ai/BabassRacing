@@ -18,6 +18,8 @@ export interface DynSprite {
 /** Projection d'un segment (bord proche = 1, bord loin = 2). */
 interface Proj {
   visible: boolean;
+  /** Projection calculée (même si la route est masquée par une crête) : sert aux sprites, dont le haut dépasse de la crête */
+  valid: boolean;
   sx: number; sy: number; scale: number; // bord proche : centre de la route, y écran, px par mètre
   sx2: number; sy2: number;
   dz1: number; dz2: number; // profondeurs des deux bords (après recoupe sur le plan proche)
@@ -59,7 +61,7 @@ export class RoadRenderer {
     this.img = this.cctx.createImageData(W, H);
     this.px = new Uint32Array(this.img.data.buffer);
     this.proj = Array.from({ length: RENDER.drawDistance }, () => ({
-      visible: false, sx: 0, sy: 0, scale: 0, sx2: 0, sy2: 0, dz1: 1, dz2: 2, clip: 0,
+      visible: false, valid: false, sx: 0, sy: 0, scale: 0, sx2: 0, sy2: 0, dz1: 1, dz2: 2, clip: 0,
     }));
     this.fog = sampleBottomColor(assets.sky);
   }
@@ -107,6 +109,7 @@ export class RoadRenderer {
       const seg = segs[idx % n];
       const p = this.proj[i];
       p.visible = false;
+      p.valid = false;
 
       let dz1 = idx * segLen - camZ;
       const dz2 = dz1 + segLen;
@@ -134,6 +137,7 @@ export class RoadRenderer {
 
       p.sx = sx1; p.sy = sy1; p.scale = s1; p.clip = top;
       p.sx2 = sx2; p.sy2 = sy2; p.dz1 = dz1; p.dz2 = dz2;
+      p.valid = true;
       if (sy2 >= top || sy1 <= sy2) continue; // masqué par une crête, ou face arrière
       p.visible = true;
 
@@ -223,7 +227,8 @@ export class RoadRenderer {
 
     for (let i = R.drawDistance - 1; i >= 0; i--) {
       const p = this.proj[i];
-      if (!p.visible) continue;
+      // un segment masqué par une crête garde ses sprites : ils sont rognés par la ligne de crête (p.clip) au lieu de disparaître d'un coup
+      if (!p.valid) continue;
       if (i >= 1 && i < R.spriteDrawDistance) {
         const seg = track.segments[(base + i) % n];
         for (const sp of seg.sprites) {
@@ -302,7 +307,7 @@ export class RoadRenderer {
     const zRel = (((d.z - this.camZ) % L) + L) % L;
     if (zRel < RENDER.nearPlane) return -1;
     const i = Math.floor((zRel + this.basePct * RENDER.segmentLength) / RENDER.segmentLength);
-    if (i >= RENDER.drawDistance || !this.proj[i].visible) return -1;
+    if (i >= RENDER.drawDistance || !this.proj[i].valid) return -1;
     return i;
   }
 

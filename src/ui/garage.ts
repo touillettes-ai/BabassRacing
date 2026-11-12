@@ -1,5 +1,5 @@
 import type { Career, UpgradeKey } from '../career/career';
-import { RENDER, SEASON, UPGRADES } from '../config/balance';
+import { PHYSICS, RENDER, SEASON, UPGRADES } from '../config/balance';
 import { ALL_RACES, CATEGORIES } from '../config/categories';
 import { pickColor } from '../config/teams';
 import { listCarColors, loadImage, loadJSON } from '../core/assets';
@@ -158,9 +158,10 @@ export class GarageScreen {
       else if (e.type === 'down' && rows.length) this.row = (this.row + 1) % rows.length;
       else if (e.type === 'confirm' && rows.length) this.buy(rows[this.row]);
       else if (e.type === 'tap') {
-        if (e.x < 70 || e.x > 410 || e.y < 36 || e.y > 236) this.view = 'hub';
+        const car = this.view === 'car';
+        if (e.x < 70 || e.x > 410 || e.y < (car ? 26 : 36) || e.y > (car ? 264 : 236)) this.view = 'hub';
         else if (rows.length) {
-          const r = Math.floor((e.y - 62) / 46);
+          const r = car ? Math.floor((e.y - 134) / 16) : Math.floor((e.y - 62) / 46);
           if (r >= 0 && r < rows.length) {
             if (r === this.row) this.buy(rows[r]);
             else this.row = r;
@@ -234,8 +235,12 @@ export class GarageScreen {
 
   private drawPanel(ctx: CanvasRenderingContext2D, ui: UiAssets): void {
     const v = this.view;
+    if (v === 'car') {
+      this.drawCarPanel(ctx, ui);
+      return;
+    }
     panel(ctx, 70, 36, 340, 200);
-    if (v === 'car' || v === 'mech' || v === 'office') {
+    if (v === 'mech' || v === 'office') {
       drawTextCentered(ctx, ui, tk(`garage.panel.${v}`), W / 2, 42);
       PANEL_ROWS[v].forEach((k, i) => {
         const y = 62 + i * 46;
@@ -250,7 +255,6 @@ export class GarageScreen {
         ctx.globalAlpha = 1;
         wrap(tk(`up.${k}.d`), 34).slice(0, 2).forEach((l, j) => drawText(ctx, ui, l, 94, y + 16 + j * 13));
       });
-      if (v === 'car') drawTextCentered(ctx, ui, tk('garage.carReset'), W / 2, 206);
       drawTextCentered(ctx, ui, this.msgT > 0 ? this.msg : tk('garage.hint.panel'), W / 2, 220);
       return;
     }
@@ -287,5 +291,63 @@ export class GarageScreen {
     drawTextCentered(ctx, ui, tk(v === 'tv' ? 'garage.hs.tv' : 'garage.hs.sponsors'), W / 2, 42);
     wrap(tk(v === 'tv' ? 'garage.tv.text' : 'garage.sponsors.text'), 38).forEach((l, i) => drawTextCentered(ctx, ui, l, W / 2, 80 + i * 18));
     drawTextCentered(ctx, ui, tk('garage.hint.back'), W / 2, 216);
+  }
+
+  /**
+   * Fiche de la voiture : 4 jauges (vitesse max, accélération, freinage, tenue). Chaque jauge montre la valeur de base (bleu)
+   * et le gain des améliorations achetées (vert) ; la jauge pleine = tous les niveaux achetés.
+   */
+  private drawCarPanel(ctx: CanvasRenderingContext2D, ui: UiAssets): void {
+    const c = this.career, E = UPGRADES.effects, M = UPGRADES.maxLevel;
+    const cat = CATEGORIES[Math.min(c.catUnlocked, CATEGORIES.length - 1)];
+    const lv = { engine: c.level('engine'), clutch: c.level('clutch'), brakes: c.level('brakes') };
+    panel(ctx, 70, 26, 340, 238);
+    drawTextCentered(ctx, ui, tk('garage.panel.car'), W / 2, 30);
+
+    // [libellé, base, bonus acheté, bonus maximal, texte de la valeur]
+    const spinBase = PHYSICS.spinRatioBase + 0.35 * cat.stability;
+    const stats: [string, number, number, number, string][] = [
+      ['garage.stat.speed', cat.maxSpeed * 3.6, cat.maxSpeed * 3.6 * E.engineSpeed * lv.engine, cat.maxSpeed * 3.6 * E.engineSpeed * M,
+        `${Math.round(cat.maxSpeed * 3.6 * (1 + E.engineSpeed * lv.engine))} KM/H`],
+      ['garage.stat.accel', cat.accel, cat.accel * E.clutchAccel * lv.clutch, cat.accel * E.clutchAccel * M,
+        `${(cat.accel * (1 + E.clutchAccel * lv.clutch)).toFixed(1)} M/S2`],
+      ['garage.stat.brake', PHYSICS.brakeDecelBase, PHYSICS.brakeDecelBase * E.brakeDecel * lv.brakes, PHYSICS.brakeDecelBase * E.brakeDecel * M,
+        `${(PHYSICS.brakeDecelBase * (1 + E.brakeDecel * lv.brakes)).toFixed(1)} M/S2`],
+      ['garage.stat.grip', spinBase, E.brakeSpin * lv.brakes, E.brakeSpin * M, (spinBase + E.brakeSpin * lv.brakes).toFixed(2)],
+    ];
+    const gx = 184, gw = 140;
+    stats.forEach(([key, base, bonus, bonusMax, val], i) => {
+      const y = 46 + i * 16;
+      drawText(ctx, ui, tk(key), 78, y);
+      const full = base + bonusMax;
+      ctx.fillStyle = '#0c0e22';
+      ctx.fillRect(gx - 1, y + 2, gw + 2, 12);
+      ctx.fillStyle = '#4f8cff';
+      const wb = Math.round((base / full) * gw);
+      ctx.fillRect(gx, y + 3, wb, 10);
+      if (bonus > 0) {
+        ctx.fillStyle = '#58e07a';
+        ctx.fillRect(gx + wb, y + 3, Math.max(1, Math.round((bonus / full) * gw)), 10);
+      }
+      drawText(ctx, ui, val, 404 - val.length * 8, y);
+    });
+    drawTextCentered(ctx, ui, tk('garage.stat.legend'), W / 2, 112);
+
+    // améliorations de la voiture
+    PANEL_ROWS.car.forEach((k, i) => {
+      const y = 134 + i * 16;
+      const sel = i === this.row;
+      const lvl = c.level(k), max = c.maxLevel(k);
+      const lab = this.upLabel(k);
+      drawText(ctx, ui, (sel ? '> ' : '  ') + tk(`up.${k}`), 78, y);
+      drawText(ctx, ui, '#'.repeat(lvl) + '.'.repeat(max - lvl), 78 + 13 * 8, y);
+      ctx.globalAlpha = lab.ok || lab.right === tk('garage.owned') ? 1 : 0.6;
+      drawText(ctx, ui, lab.right, 404 - lab.right.length * 8, y);
+      ctx.globalAlpha = 1;
+    });
+    const sel = PANEL_ROWS.car[this.row];
+    wrap(tk(`up.${sel}.d`), 38).slice(0, 2).forEach((l, j) => drawText(ctx, ui, l, 82, 190 + j * 14));
+    drawTextCentered(ctx, ui, tk('garage.carReset'), W / 2, 226);
+    drawTextCentered(ctx, ui, this.msgT > 0 ? this.msg : tk('garage.hint.panel'), W / 2, 244);
   }
 }

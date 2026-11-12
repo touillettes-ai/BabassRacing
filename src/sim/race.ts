@@ -16,6 +16,8 @@ export class Race {
   lapTime = 0;
   bestLap: number | null = null;
   lastLap: number | null = null;
+  /** Temps restant (s) d'affichage du meilleur / dernier tour après le passage de la ligne */
+  lapInfoT = 0;
   /** Temps d'horloge (décompte puis affichage de GO) */
   private clock = 0;
   private crossings = 0;
@@ -57,6 +59,7 @@ export class Race {
   }
 
   update(dt: number, player: Player): void {
+    if (this.lapInfoT > 0) this.lapInfoT -= dt;
     if (this.state === 'countdown') {
       this.clock += dt;
       if (this.clock >= this.startDelay) {
@@ -89,6 +92,7 @@ export class Race {
     this.lastLap = this.lapTime;
     if (this.bestLap === null || this.lapTime < this.bestLap) this.bestLap = this.lapTime;
     this.lapTime = 0;
+    this.lapInfoT = 6;
     if (this.lap >= this.laps) this.state = 'finished';
     else this.lap++;
   }

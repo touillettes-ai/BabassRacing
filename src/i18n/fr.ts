@@ -2,6 +2,12 @@
  * Tous les textes du jeu (français par défaut). Variables : {nom}.
  * Pour une autre langue : copier ce fichier (en.ts…) et changer l'import dans i18n/index.ts.
  */
+import { UPGRADES } from '../config/balance';
+
+/** Pourcentage affiché d'un effet d'amélioration (toujours lu dans la config : les textes ne peuvent plus se désynchroniser) */
+const pct = (v: number) => String(Math.round(v * 1000) / 10).replace('.', ',');
+const E = UPGRADES.effects;
+
 export const fr = {
   'hud.kmh': 'KM/H',
   'hud.gear': 'RAPPORT {n}',
@@ -100,6 +106,11 @@ export const fr = {
   'garage.board.progress': 'COURSE {a}/{b}   TOP {n} POUR MONTER',
   'garage.board.empty': 'AUCUNE COURSE COURUE',
   'garage.board.next': 'PROCHAINE : {name}',
+  'garage.stat.speed': 'VITESSE MAX',
+  'garage.stat.accel': 'ACCELERATION',
+  'garage.stat.brake': 'FREINAGE',
+  'garage.stat.grip': 'TENUE',
+  'garage.stat.legend': 'BLEU : DE BASE   VERT : AMELIORATIONS',
   'garage.carReset': 'REMIS A ZERO A CHAQUE CATEGORIE',
   'garage.owned': 'ACQUIS',
   'garage.locked': 'DISPONIBLE A PARTIR DE LA CATEGORIE {n}',
@@ -110,15 +121,15 @@ export const fr = {
   'garage.tv.text': 'LES REPLAYS DE LA SAISON PASSENT ICI. EN ATTENDANT, LA TELE DIFFUSE UNE PUB POUR DES CROISSANTS.',
   'garage.sponsors.text': 'LES SPONSORS ADORENT LES PILOTES QUI GAGNENT. FINIS SUR LE PODIUM POUR ENCAISSER LES PRIMES !',
   'up.engine': 'MOTEUR',
-  'up.engine.d': 'AUGMENTE LA VITESSE MAXIMALE (+2.5 % PAR NIVEAU)',
+  'up.engine.d': `AUGMENTE LA VITESSE MAXIMALE (+${pct(E.engineSpeed)} % PAR NIVEAU)`,
   'up.clutch': 'EMBRAYAGE',
-  'up.clutch.d': 'AMELIORE L ACCELERATION (+6 % PAR NIVEAU)',
+  'up.clutch.d': `AMELIORE L ACCELERATION (+${pct(E.clutchAccel)} % PAR NIVEAU)`,
   'up.brakes': 'FREINS',
-  'up.brakes.d': 'FREINAGE PLUS PUISSANT ET MOINS DE TETE-A-QUEUE',
+  'up.brakes.d': `FREINAGE +${pct(E.brakeDecel)} % PAR NIVEAU ET MOINS DE TETE-A-QUEUE`,
   'up.refuel': 'RAVITAILLEMENT',
-  'up.refuel.d': 'ESSENCE VERSEE PLUS VITE AU STAND (+15 % PAR NIVEAU)',
+  'up.refuel.d': `ESSENCE VERSEE PLUS VITE AU STAND (+${pct(E.refuelRate)} % PAR NIVEAU)`,
   'up.tyre': 'CHANGEMENT PNEUS',
-  'up.tyre.d': 'LES MECANOS CHANGENT LES PNEUS PLUS VITE (-8 % PAR NIVEAU)',
+  'up.tyre.d': `LES MECANOS CHANGENT LES PNEUS PLUS VITE (-${pct(E.tyreService)} % PAR NIVEAU)`,
   'up.stratTyre': 'STRATEGE PNEUS',
   'up.stratTyre.d': 'LA BONNE GOMME EST DEJA CHOISIE QUAND ON ENTRE AU STAND',
   'up.stratFuel': 'STRATEGE ESSENCE',

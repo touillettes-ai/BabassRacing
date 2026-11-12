@@ -139,6 +139,7 @@ async function main(): Promise<void> {
       upgrades: { ...career.upgrades }, pilotName: career.pilot,
     };
     session = await RaceSession.create(setup, input);
+    for (const e of session.field.entries) if (e.id === 'kevin') e.name = names.kevin; // nom du rival choisi dans la partie (classement en course)
     hookDebug(session);
     openStrategy(session, false, t(race.nameKey as TextKey, { elle: t('name.elle') }), goSelect);
   };

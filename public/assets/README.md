@@ -173,7 +173,7 @@ Structure commune : intro 4 mesures (montée), A 8, A renforcé 8, B 8, A renfor
 
 ## Ambiances de niveaux (`levels.json`)
 
-Quatre préréglages prêts à charger : `circuit_jour`, `cote_coucher_soleil`, `ville_nuit`, `montagne_pluie`. Chacun donne le ciel (avec et sans nuages), l'horizon, les deux couches de nuages, la route, les atlas de décor à utiliser (jour ou `_night`), la liste des objets de bord de piste, la musique et une voiture suggérée. `montagne_pluie` ajoute un bloc `weather`.
+Préréglages prêts à charger (4 d'origine : `circuit_jour`, `cote_coucher_soleil`, `ville_nuit`, `montagne_pluie`, puis tous les autres : **voir la section « Compositions de niveaux » en bas de ce fichier**, qui liste les 48 niveaux et les règles pour en composer d'autres). Chacun donne le ciel (avec et sans nuages), l'horizon, les deux couches de nuages, la route, les atlas de décor à utiliser (jour ou `_night`), la liste des objets de bord de piste, la musique et une voiture suggérée. `montagne_pluie` ajoute un bloc `weather`.
 
 **Pluie** : `fx/fx_rain.png` (4 frames de 128×128, boucle à 16 fps) se juxtapose dans les deux directions pour couvrir l'écran, dessiné par-dessus tout sauf l'interface. `fx/fx_rain_splash.png` (4 frames de 24×12) : impacts à semer au hasard sur le sol. Ajouter `fx_spray` derrière les roues et multiplier les couleurs de la scène par `weather.tint` pour l'ambiance grise.
 
@@ -204,14 +204,163 @@ Ordre des calques, du fond vers l'avant :
 
 **Horizons** (`backgrounds/`, 1024×128, transparents, répétables) : en plus de `mountains`, `forest`, `desert`, `city` → `horizon_sea` (mer, phare, voiliers), `horizon_hills` (collines, champs, éoliennes), `horizon_canyon` (mesas), `horizon_alps` (alpes enneigées), `horizon_industrial` (usines, grues, fumées), `horizon_volcano` (volcan en éruption), `horizon_city_day` (ville de jour), `horizon_jungle`, `horizon_dunes`. Ciel, horizon et couches de nuages se combinent librement : `levels.json` donne des combinaisons éprouvées.
 
-**Routes** (`roads/`, 512×64, même format que les autres, décrites dans `roads.json`) : `road_concrete` (dalles de béton, circuit urbain), `road_cobble` (pavés), `road_dirt` (terre, ornières), `road_modern` (asphalte neuf, vibreurs bleu/blanc), `road_autumn` (feuilles mortes), `road_ice` (plaques de verglas), `road_highway` (4 voies, bandes d'arrêt d'urgence, pas de vibreur), `road_lava` (basalte, fissures incandescentes), `road_jungle` (humide, boue), `road_worn` (rustines, fissures), `road_sand`.
+**Routes** (`roads/`, 512×64, même format que les autres, décrites dans `roads.json`) : `road_modern` (asphalte neuf, vibreurs bleu/blanc), `road_urban` (asphalte urbain, trottoirs gris), `road_autumn` (feuilles mortes sur les bords), `road_highway` (4 voies, bandes d'arrêt d'urgence, pas de vibreur), `road_lava` (asphalte sombre, bas-côtés de lave), `road_jungle` (asphalte humide), `road_worn` (rustines, fissures). **Toutes les pistes du pack sont en asphalte** (pas de terre, pavés ni glace) : seules les teintes, les vibreurs et les bas-côtés changent.
 
 **Foudre** : `fx/fx_lightning.png` (3 frames 96×160, ancre en haut) + flash blanc plein écran à faire soi-même (alpha 160 puis 60). Utilisée par l'ambiance `orage`.
 
-**Ambiances** : `levels.json` passe de 4 à 16 entrées (désert à midi, campagne le matin, autoroute à l'heure dorée, glacier, volcan, docks dans la brume, jungle, nuit d'aurore, vieille ville en automne, ville au crépuscule, orage, dunes). Chaque entrée garde le même format (ciel, horizon, nuages, route, atlas, décor de bord de route, musique, voiture suggérée) et liste maintenant les `tracks` qui l'utilisent. `weather.fog_strength` (docks) : renforcer le fondu vers la couleur du ciel avec la distance. `previews/preview_levels.png` montre les 16.
+**Ambiances** : `levels.json` passe de 4 à 16 entrées (puis 48 en v21) (désert à midi, campagne le matin, autoroute à l'heure dorée, glacier, volcan, docks dans la brume, jungle, nuit d'aurore, vieille ville en automne, ville au crépuscule, orage, dunes). Chaque entrée garde le même format (ciel, horizon, nuages, route, atlas, décor de bord de route, musique, voiture suggérée) et liste maintenant les `tracks` qui l'utilisent. `weather.fog_strength` (docks) : renforcer le fondu vers la couleur du ciel avec la distance. `previews/preview_levels.png` montre les 16.
 
 **Types de circuits et tracés** (`circuits/circuits.json`) :
-- `types` : 10 types (`permanent`, `urbain`, `montagne`, `rallye`, `ovale`, `autoroute`, `kart`, `glace`, `plage`, `industriel`) avec `grip` (0.45 glace → 1.0 permanent, à appliquer à l'adhérence), `width_m`, `road` par défaut, `curbs`, `walls` (murs/rails près de la piste) et une description à afficher dans le hub.
+- `types` : 10 types (`permanent`, `urbain`, `montagne`, `rallye` asphalte, `ovale`, `autoroute`, `kart`, `glace` (asphalte glacé), `plage` (route côtière), `industriel`) avec `grip` (0.45 glace → 1.0 permanent, à appliquer à l'adhérence), `width_m`, `road` par défaut, `curbs`, `walls` (murs/rails près de la piste) et une description à afficher dans le hub.
 - `tracks` : 14 tracés, chacun avec un fichier `track_<nom>.json` : liste de **segments de 50 m** (`curve` entre −1 et 1, `turn_deg`, `elev_m`, position `x,y` en mètres, `event` = `corner`/`hairpin` pour les zones de freinage et les panneaux), longueur, type, ambiance, tours suggérés. Le tracé est une boucle fermée : enchaîner les segments en boucle, le départ est au segment 0.
 - Minimaps : `map_<nom>_64.png` et `_128.png` (tracé blanc, point de départ jaune) + planches `maps_64.png` / `maps_128.png` dans l'ordre `maps_sheet.order`. Pour positionner le joueur sur la minimap, utiliser le `x,y` du segment courant avec la même mise à l'échelle que la planche (bornes min/max des `x,y`, marge de 5 px).
 - Pour un tracé OutRun classique (sans boucle), prendre les segments dans l'ordre et s'arrêter à la longueur voulue.
+
+
+## Pistes v19/v20 : asphalte teinté et marquages au sol (`roads/`)
+
+Textures (512×64, même format, `roads.json`) : `road_classic` (vibreurs jaune/noir), `road_runoff` (vibreurs vert/blanc, dégagement asphalté), `road_night_wet` (nuit, reflets néon), `road_red_asphalt`, et des **asphaltes légèrement teintés** pour varier d'un circuit à l'autre : `road_asphalt_blue`, `_warm`, `_green`, `_purple`, `_black` (neuf, très sombre), `_light` (clair, lignes jaunes), `_teal`, `_orange` (chaleur), `_pink`, `_olive`. Marquages différents : `road_double_yellow` (double ligne centrale), `road_no_lines` (piste large sans voies), `road_rumble_edges` (bandes rugueuses en bord). Trois **routes étroites à 2 voies** : `road_circuit_narrow`, `road_mountain_narrow`, `road_night_narrow` (la route fait 264 px au lieu de 324 : lire `px.road` dans `roads.json`).
+
+Surcouches transparentes (512×64, calées sur la route 3 voies x 94..418, `overlay: true` dans `roads.json`) : `overlay_skid_marks`, `overlay_arrows`, `overlay_chevrons` (zone de freinage), `overlay_crosswalk`, `overlay_finish`, `overlay_pit_entry` (miroir si stands à gauche), `overlay_logo_asphalt`, `overlay_oil` (perte d'adhérence), `overlay_runoff_stripes`. `previews/preview_roads_v19.png`.
+
+## Ciels et fonds v20 (`backgrounds/`)
+
+Ciels (1024×256, avec version `_clear`) : `sky_morning` (bleu pur), `sky_cumulus` (gros nuages d'été), `sky_sunrise` (rose), `sky_sandstorm` (ocre), `sky_milkyway` (nuit sans lune, voie lactée), `sky_fullmoon` (grosse lune), `sky_rainbow` (après la pluie), `sky_violet` (coucher de soleil violet), `sky_rain` (gris bas), `sky_greenstorm` (ciel vert d'orage).
+Horizons (1024×128, transparents) : `horizon_vineyards` (coteaux et villages), `horizon_lake` (montagnes et reflet), `horizon_castle` (ruines), `horizon_stadium` (tribunes pleines, pour l'ovale), `horizon_cliffs` (falaises blanches), `horizon_pyramids`, `horizon_metropolis` (ville futuriste), `horizon_farm` (granges et silos), `horizon_mesa` (désert rouge). `previews/preview_backgrounds_v20.png` et `preview_skies_v20.png`. Au total : 24 ciels, 22 horizons.
+
+<!-- COMPOSITIONS:START -->
+## Compositions de niveaux (`compositions.json` + `levels.json`)
+
+`levels.json` contient **48 niveaux prêts à l'emploi** (même format, tous testés : fichiers existants, voiture suggérée disponible). `compositions.json` donne les **règles** pour en composer d'autres, par exemple au hasard à chaque course ou selon la progression de la carrière.
+
+### Recette (ordre des calques)
+1. **Ambiance** (`moods`) : choisit le ciel, la palette de nuages, les atlas jour ou nuit, la musique et la teinte.
+2. **Ciel** de cette ambiance : `sky_*.png` avec ses nuages intégrés, ou `sky_*_clear.png` + `clouds_<palette>_far/near.png` si tu fais défiler les nuages en parallaxe.
+3. **Horizon** compatible (`horizons.<nom>.best` liste les ambiances où il est cohérent).
+4. **Route** selon le **type de circuit** (`track_types.<type>.roads`) + **surcouches** de marquage (`track_types.<type>.overlays`).
+5. **Décor** de bord de route : `roadside` conseillé par horizon (arbres/rochers du `trees.json`), puis panneaux, bâtiments, passerelles à volonté. Atlas `_night` si l'ambiance est `crepuscule` ou `nuit`.
+6. **Météo** (`weather_presets`) : `rain`, `storm` (pluie + éclairs), `after_rain` (flaques seules), `fog`. Elle impose la route mouillée (`road_wet`) et la teinte.
+7. Voiture du joueur et adversaires : n'importe laquelle, `suggested_car` n'est qu'un exemple.
+
+### Ambiances (`moods`)
+| Clé | Nom | Ciels (`sky_…`) | Nuages | Atlas | Musiques | Teinte RGB |
+|---|---|---|---|---|---|---|
+| `jour` | Plein jour | `day`, `morning`, `cumulus`, `noon`, `tropical`, `dawn`, `rainbow` | `clouds_day` | jour | `level_circuit`, `babass_racing_theme` | — |
+| `dore` | Lever / coucher de soleil | `sunrise`, `golden`, `sunset` | `clouds_sunset` | jour | `level_sunset`, `babass_racing_theme` | — |
+| `crepuscule` | Crépuscule | `violet`, `dusk` | `clouds_sunset` | nuit | `level_night`, `level_sunset` | — |
+| `nuit` | Nuit | `night`, `aurora`, `milkyway`, `fullmoon`, `ember` | `clouds_night` | nuit | `level_night` | — |
+| `couvert` | Couvert / brume | `overcast`, `fog`, `winter`, `sandstorm` | `clouds_storm` | jour | `level_rain`, `babass_racing_theme` | [0.9, 0.92, 0.96] |
+| `pluie` | Pluie / orage | `storm`, `rain`, `greenstorm` | `clouds_storm` | jour | `level_rain` | [0.82, 0.86, 0.96] |
+
+### Horizons et ambiances où ils fonctionnent
+| Horizon | Contenu | Ambiances adaptées | Décor conseillé |
+|---|---|---|---|
+| `horizon_forest` | Forêt | `jour`, `dore`, `couvert`, `pluie` | `tree_oak`, `tree_pine`, `tree_birch`, `bush_flowers` |
+| `horizon_mountains` | Montagnes | `jour`, `dore`, `couvert`, `pluie`, `nuit` | `tree_pine`, `rock`, `tree_dead` |
+| `horizon_desert` | Désert / mesas rouges | `jour`, `dore`, `crepuscule` | `cactus`, `rock`, `tree_palm` |
+| `horizon_city` | Ville de nuit (fenêtres allumées) | `crepuscule`, `nuit`, `dore` | `tree_cypress`, `tree_cherry`, `tree_oak` |
+| `horizon_sea` | Mer, phare, voiliers | `jour`, `dore`, `crepuscule` | `tree_palm`, `bush`, `rock` |
+| `horizon_hills` | Collines, champs, éoliennes | `jour`, `dore`, `couvert`, `pluie` | `tree_oak`, `bush_flowers`, `tree_birch` |
+| `horizon_canyon` | Canyon / mesas | `jour`, `dore`, `couvert` | `cactus`, `rock`, `tree_dead` |
+| `horizon_alps` | Alpes enneigées | `jour`, `couvert`, `nuit`, `pluie` | `tree_pine_snow`, `tree_pine`, `rock` |
+| `horizon_industrial` | Zone industrielle | `couvert`, `pluie`, `nuit`, `dore` | `tree_dead`, `bush`, `rock` |
+| `horizon_volcano` | Volcan | `nuit`, `dore`, `couvert`, `crepuscule` | `rock`, `tree_dead` |
+| `horizon_city_day` | Ville de jour | `jour`, `couvert`, `pluie`, `dore` | `tree_oak`, `tree_cypress`, `bush` |
+| `horizon_jungle` | Jungle | `jour`, `pluie`, `dore`, `couvert` | `tree_palm`, `bush`, `bush_flowers` |
+| `horizon_dunes` | Dunes | `jour`, `dore`, `couvert` | `tree_palm`, `rock`, `cactus` |
+| `horizon_vineyards` | Vignobles et villages | `jour`, `dore`, `couvert` | `tree_cypress`, `tree_oak`, `bush_flowers` |
+| `horizon_lake` | Lac et montagnes | `jour`, `dore`, `nuit`, `couvert` | `tree_pine`, `tree_birch`, `rock` |
+| `horizon_castle` | Château en ruine | `couvert`, `crepuscule`, `nuit`, `jour` | `tree_oak`, `tree_dead`, `bush` |
+| `horizon_stadium` | Tribunes de stade | `jour`, `nuit`, `dore` | `bush` |
+| `horizon_cliffs` | Falaises blanches et mer | `jour`, `dore`, `couvert` | `tree_palm`, `bush`, `rock` |
+| `horizon_pyramids` | Pyramides et sphinx | `jour`, `dore`, `nuit` | `tree_palm`, `rock`, `cactus` |
+| `horizon_metropolis` | Métropole futuriste (néons) | `crepuscule`, `nuit` | `tree_cypress`, `tree_cherry` |
+| `horizon_farm` | Ferme, granges, silos | `jour`, `dore`, `couvert`, `pluie` | `tree_oak`, `bush_flowers`, `tree_birch` |
+| `horizon_mesa` | Désert rouge (monument valley) | `jour`, `dore`, `crepuscule`, `couvert` | `cactus`, `rock`, `tree_dead` |
+
+Les horizons à fenêtres allumées (`horizon_city`, `horizon_metropolis`) perdent leur sens en plein jour : les réserver à `crepuscule`, `nuit` et `dore`. `horizon_city_day` fait l'inverse.
+
+### Routes par type de circuit
+| Type de circuit | Routes possibles (`road_…`) | Surcouches (`overlay_…`) |
+|---|---|---|
+| `permanent` | `modern`, `circuit`, `classic`, `runoff`, `rumble_edges`, `no_lines`, `asphalt_blue`, `asphalt_warm`, `asphalt_green`, `asphalt_purple`, `asphalt_black`, `asphalt_light`, `asphalt_teal`, `asphalt_orange`, `asphalt_pink`, `asphalt_olive` | `start_line`, `finish`, `pit_entry`, `skid_marks`, `chevrons`, `runoff_stripes`, `logo_asphalt`, `grid_slots` |
+| `urbain` | `urban`, `red_asphalt`, `double_yellow`, `night_wet`, `asphalt_black`, `asphalt_light`, `asphalt_blue` | `start_line`, `finish`, `crosswalk`, `arrows`, `oil`, `skid_marks`, `pit_entry` |
+| `montagne` | `worn`, `mountain_narrow`, `wet`, `snow`, `asphalt_olive`, `asphalt_teal`, `double_yellow` | `arrows`, `oil`, `skid_marks`, `chevrons`, `finish` |
+| `rallye` | `worn`, `mountain_narrow`, `asphalt_warm`, `asphalt_orange`, `jungle`, `autumn` | `arrows`, `skid_marks`, `finish` |
+| `ovale` | `modern`, `asphalt_black`, `asphalt_light`, `runoff`, `classic` | `start_line`, `finish`, `grid_slots`, `pit_entry`, `skid_marks`, `logo_asphalt` |
+| `autoroute` | `highway`, `asphalt_black`, `asphalt_light`, `asphalt_blue`, `night_wet` | `arrows`, `finish`, `skid_marks` |
+| `kart` | `kart`, `circuit_narrow`, `asphalt_green`, `asphalt_blue`, `asphalt_light` | `start_line`, `finish`, `grid_slots`, `skid_marks`, `chevrons` |
+| `glace` | `snow`, `asphalt_blue`, `asphalt_light`, `mountain_narrow` | `arrows`, `skid_marks`, `finish` |
+| `plage` | `coast`, `asphalt_warm`, `asphalt_light`, `asphalt_orange`, `asphalt_pink` | `arrows`, `finish`, `skid_marks` |
+| `industriel` | `worn`, `urban`, `asphalt_black`, `asphalt_olive`, `double_yellow` | `start_line`, `finish`, `oil`, `crosswalk`, `skid_marks` |
+
+Règles utiles : les routes **étroites** (`road_*_narrow`, `road_kart`) ont une chaussée plus petite, donc ne pas y mettre plus de 2 à 3 voitures de front ; les routes **`_night`/`_night_wet`** sont conçues pour les ambiances `crepuscule` et `nuit` ; `road_wet` doit toujours accompagner la météo `rain`, `storm` ou `after_rain`.
+
+### Niveaux prêts à l'emploi (`levels.json`)
+| Niveau | Nom | Ciel | Horizon | Route | Ambiance | Musique | Voiture | Circuits liés |
+|---|---|---|---|---|---|---|---|---|
+| `circuit_jour` | Circuit — plein jour | `day` | `forest` | `circuit` | jour | `level_circuit` | `gt3_green` | `grand_prix_vert` |
+| `cote_coucher_soleil` | Côte — coucher de soleil | `sunset` | `desert` | `coast` | dore | `level_sunset` | `wedge_red` | `boucle_cotiere` |
+| `ville_nuit` | Ville — nuit | `night` | `city` | `night` | nuit | `level_night` | `futur_white` | `neon_city` |
+| `montagne_pluie` | Montagne — pluie | `storm` | `mountains` | `wet` | pluie | `level_rain` | `pickup_steel` | `col_de_la_tempete` |
+| `midi_desert` | Désert — plein midi | `noon` | `canyon` | `desert` | jour | `level_circuit` | `muscle_orange` | `speedway`, `rallye_des_dunes` |
+| `matin_campagne` | Campagne — matin | `dawn` | `hills` | `circuit` | jour | `babass_racing_theme` | `hothatch_yellow` | `kartodrome` |
+| `heure_doree` | Autoroute — heure dorée | `golden` | `sea` | `highway` | dore | `level_sunset` | `retro_white` | `autoroute_66` |
+| `hiver` | Glacier — neige | `winter` | `alps` | `snow` | couvert | `level_rain` | `pickup_white` | `glacier` |
+| `volcan` | Volcan — soir de cendres | `ember` | `volcano` | `lava` | nuit | `level_night` | `futur_black` | `volcan_rouge` |
+| `brume_industrielle` | Docks — brume | `fog` | `industrial` | `worn` | couvert | `level_rain` | `towtruck_orange` | `docks` |
+| `jungle` | Jungle — tropicale | `tropical` | `jungle` | `jungle` | jour | `level_circuit` | `supercar_lime` | `jungle_run` |
+| `nuit_aurore` | Nuit — aurore boréale | `aurora` | `alps` | `night` | nuit | `level_night` | `hypercar_blue` | `aurore` |
+| `automne` | Vieille ville — automne | `overcast` | `city_day` | `urban` | couvert | `babass_racing_theme` | `retro_red` | `vieille_ville` |
+| `crepuscule_ville` | Ville — crépuscule | `dusk` | `city` | `urban` | crepuscule | `level_night` | `gt3_black` | — |
+| `orage` | Orage — éclairs | `storm` | `hills` | `wet` | pluie | `level_rain` | `safetycar_silver` | — |
+| `dunes` | Dunes — sable | `noon` | `dunes` | `coast` | jour | `level_sunset` | `pickup_sand` | — |
+| `vignes_matin` | Vignobles — matin clair | `morning` | `vineyards` | `asphalt_warm` | jour | `level_circuit` | `hothatch_blue` | — |
+| `lac_ete` | Lac — été | `cumulus` | `lake` | `asphalt_blue` | jour | `level_circuit` | `gt3_blue` | — |
+| `falaises_aube` | Falaises — lever de soleil | `sunrise` | `cliffs` | `asphalt_light` | dore | `level_sunset` | `supercar_orange` | — |
+| `tempete_sable` | Désert — tempête de sable | `sandstorm` | `mesa` | `asphalt_orange` | couvert | `level_rain` | `muscle_black` | — |
+| `pyramides` | Pyramides — plein midi | `noon` | `pyramids` | `desert` | jour | `level_circuit` | `wedge_yellow` | — |
+| `voie_lactee` | Nuit — voie lactée | `milkyway` | `lake` | `asphalt_black` | nuit | `level_night` | `hypercar_black` | — |
+| `pleine_lune` | Château — pleine lune | `fullmoon` | `castle` | `asphalt_purple` | nuit | `level_night` | `gt3_silver` | — |
+| `apres_pluie` | Après la pluie — arc-en-ciel | `rainbow` | `hills` | `wet` | jour | `level_circuit` | `hothatch_red` | — |
+| `metropole_violette` | Métropole — crépuscule violet | `violet` | `metropolis` | `night_wet` | crepuscule | `level_night` | `futur_purple` | — |
+| `pluie_ferme` | Ferme — pluie battante | `rain` | `farm` | `wet` | pluie | `level_rain` | `pickup_olive` | — |
+| `tornade` | Plaines — ciel d'orage vert | `greenstorm` | `farm` | `worn` | pluie | `level_rain` | `pickup_steel` | — |
+| `stade_jour` | Ovale — jour de course | `cumulus` | `stadium` | `modern` | jour | `level_circuit` | `f1_red` | — |
+| `stade_nuit` | Ovale — sous les projecteurs | `night` | `stadium` | `modern` | nuit | `level_night` | `f1_navy` | — |
+| `ville_matin` | Ville — matin | `morning` | `city_day` | `urban` | jour | `level_circuit` | `hothatch_white` | — |
+| `neon_futur` | Futur — néons | `dusk` | `metropolis` | `night_wet` | crepuscule | `level_night` | `futur_white` | — |
+| `autoroute_aube` | Autoroute — aube rose | `sunrise` | `sea` | `highway` | dore | `level_sunset` | `supercar_white` | — |
+| `vignes_dorees` | Vignobles — heure dorée | `golden` | `vineyards` | `asphalt_warm` | dore | `level_sunset` | `retro_beige` | — |
+| `lac_hiver` | Lac — hiver | `winter` | `lake` | `snow` | couvert | `level_rain` | `hypercar_white` | — |
+| `mesa_coucher` | Désert rouge — coucher de soleil | `sunset` | `mesa` | `asphalt_orange` | dore | `level_sunset` | `muscle_orange` | — |
+| `pyramides_nuit` | Pyramides — nuit de pleine lune | `fullmoon` | `pyramids` | `night` | nuit | `level_night` | `supercar_white` | — |
+| `chateau_brume` | Château — brume | `fog` | `castle` | `worn` | couvert | `level_rain` | `retro_grey` | — |
+| `jungle_pluie` | Jungle — averse tropicale | `rain` | `jungle` | `jungle` | pluie | `level_rain` | `pickup_olive` | — |
+| `plage_aube` | Plage — aube | `dawn` | `sea` | `coast` | jour | `level_circuit` | `hothatch_orange` | — |
+| `kart_ete` | Kartodrome — été | `cumulus` | `hills` | `kart` | jour | `level_circuit` | `hothatch_green` | — |
+| `industriel_nuit` | Zone industrielle — nuit | `night` | `industrial` | `asphalt_black` | nuit | `level_night` | `towtruck_blue` | — |
+| `ville_pluie` | Ville — pluie | `rain` | `city_day` | `wet` | pluie | `level_rain` | `gt3_silver` | — |
+| `autoroute_nuit` | Autoroute — nuit | `night` | `city` | `asphalt_black` | nuit | `level_night` | `hypercar_red` | — |
+| `montagne_pourpre` | Alpes — coucher violet | `violet` | `alps` | `mountain_narrow` | crepuscule | `level_night` | `gt3_red` | — |
+| `desert_nuit` | Désert — nuit étoilée | `milkyway` | `canyon` | `desert` | nuit | `level_night` | `muscle_blue` | — |
+| `rallye_automne` | Col d'automne | `overcast` | `forest` | `autumn` | couvert | `level_rain` | `hothatch_green` | — |
+| `falaises_orage` | Falaises — orage | `storm` | `cliffs` | `wet` | pluie | `level_rain` | `gt3_blue` | — |
+| `metropole_jour` | Métropole — plein jour | `noon` | `metropolis` | `asphalt_teal` | jour | `level_circuit` | `futur_teal` | — |
+
+`previews/preview_levels.png` montre tous ces niveaux (une vignette par entrée, avec son nom).
+
+### Générer une composition aléatoire (pseudo-code)
+```
+mood   = choisir(moods)                       # pondéré par la saison / la progression
+sky    = choisir(moods[mood].skies)
+horizon= choisir([h for h in horizons if mood in horizons[h].best])
+road   = choisir(track_types[type_du_circuit].roads)  # type du circuit choisi dans circuits.json
+overlays = track_types[type].overlays
+scenery= horizons[horizon].roadside                    # + signs/buildings au choix
+suffix = moods[mood].atlas_suffix                      # '' ou '_night'
+music  = choisir(moods[mood].music)
+weather= weather_presets[x] si mood == 'pluie' (road = road_wet), sinon aucune
+```
+Pour une combinaison **ambiance × circuit** (ex. le tracé `docks` de nuit), garder la géométrie du circuit (`circuits/track_*.json`) et ne changer que les éléments visuels ci-dessus : l'ambiance d'un circuit n'est qu'un défaut.
+<!-- COMPOSITIONS:END -->

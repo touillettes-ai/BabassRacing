@@ -4,22 +4,27 @@
       "horizon": "backgrounds/horizon_city.png"
     },
     "retro-2": {
-      "sky_clear": "backgrounds/sky_sunset_clear.png",
-      "horizon": "backgrounds/horizon_dunes.png",
-      "clouds_far": "backgrounds/clouds_sunset_far.png",
-      "road": "roads/road_desert.png",
-      "music": "music/level_night.ogg",
-      "clouds_near": "backgrounds/clouds_sunset_near.png",
+      "level": "heure_doree",
       "roadside": [
-        "tree_cypress",
-        "tree_dead",
-        "cactus",
-        "bush",
-        "rock"
+        "tree_oak",
+        "tree_palm",
+        "bush"
       ]
     },
-    "retro-1": {
-      "horizon": "backgrounds/horizon_mountains.png"
+    "retro-3": {
+      "sky_clear": "backgrounds/sky_rain_clear.png",
+      "roadside": [
+        "tree_oak",
+        "tree_birch",
+        "tree_dead",
+        "bush",
+        "rock"
+      ],
+      "horizon": "backgrounds/horizon_stadium.png",
+      "road": "roads/road_no_lines.png"
+    },
+    "retro-4": {
+      "level": "metropole_violette"
     }
   }
 }

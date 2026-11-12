@@ -1,5 +1,5 @@
 import { buildRoster } from '../ai/roster';
-import { AI, CAREER, FUEL, PHYSICS, PIT, TYRES, UPGRADES, WEATHER } from '../config/balance';
+import { AI, CAREER, FUEL, DOWNSHIFT, GEAR_COUNT, gearTopsFor, PHYSICS, PIT, TYRES, UPGRADES, WEATHER } from '../config/balance';
 import { loadAssets, loadMarshal, loadSafetyCar, type Assets, type LevelDef } from '../core/assets';
 import type { AudioState } from '../audio/audio';
 import type { Input, InputState } from '../core/input';
@@ -82,6 +82,9 @@ export class RaceSession {
   private calledStops = -1;
   stratCall = 0;
 
+  /** Modèle de la voiture du joueur (profil sonore du moteur). */
+  carModel = '';
+
   private constructor(
     readonly setup: RaceSetup, readonly assets: Assets, readonly track: Track, private readonly minimap: Minimap,
     field: (s: RaceSession) => Field, private readonly input: Input,
@@ -119,6 +122,8 @@ export class RaceSession {
     PIT.refuelRate = PIT.refuelRateBase * (1 + UPGRADES.effects.refuelRate * (up?.refuel ?? 0));
     PIT.tyreServiceS = PIT.tyreServiceSBase * (1 - UPGRADES.effects.tyreService * (up?.tyre ?? 0));
 
+    PHYSICS.downshift = DOWNSHIFT[setup.carId.split('_')[0]] ?? 0;
+    PHYSICS.gearTops = gearTopsFor(GEAR_COUNT[setup.carId.split('_')[0]] ?? 6);
     const assets = await loadAssets(setup.level, setup.carId, setup.levelOverride);
     // météo : l'ambiance « pluie » détrempe la piste (les gommes sèches glissent)
     // seules les ambiances avec pluie (weather.overlay) détrempent la piste ; la brume (docks) ne change pas l'adhérence
@@ -131,6 +136,7 @@ export class RaceSession {
     const [roster, scAssets, marshal] = await Promise.all([setup.solo ? Promise.resolve([]) : buildRoster(setup.carId), loadSafetyCar(), loadMarshal()]);
     input.read(); // vide les touches pressées pendant le chargement
     const estimate = estimateLap(track);
+    const carModel = setup.carId.split('_')[0];
     const session = new RaceSession(
       setup, assets, track, minimap,
       (s) => {
@@ -141,6 +147,7 @@ export class RaceSession {
       input,
     );
     session.estimate = estimate;
+    session.carModel = carModel;
     return session;
   }
 
@@ -285,6 +292,10 @@ export class RaceSession {
     const crew = this.pit.crew;
     const service = this.pit.phase === 'service' && crew !== null;
     const t = crew?.t ?? 0;
+    // menu du stand : le jeu est en pause, on coupe moteur et bruits continus (sinon le dernier état reste figé)
+    if (this.pit.menuOpen) {
+      return { rpm: 1200, throttle: 0, speedRatio: 0, sliding: false, braking: false, offroad: false, punctured: false, refueling: false, wrenching: false, running: false, car: this.carModel, musicDuck: true };
+    }
     return {
       rpm: p.rpm,
       throttle: p.throttle ? 1 : 0,
@@ -296,6 +307,7 @@ export class RaceSession {
       refueling: service && !!crew && crew.plan.fuelSeconds > 0 && crew.fuelProgress > 0 && crew.fuelProgress < 1,
       wrenching: service && !!crew?.plan.tyres && ((t >= 10 && t < 16) || (t >= 20 && t < 26)),
       running: true,
+      car: this.carModel,
       musicDuck: this.pit.menuOpen,
     };
   }

@@ -17,7 +17,7 @@ export const RENDER = {
   /** Nombre de segments projetés devant la caméra (1200 m). */
   drawDistance: 240,
   /** Au-delà de ce nombre de segments, le décor de bord de route n'est plus dessiné. */
-  spriteDrawDistance: 140,
+  spriteDrawDistance: 220,
   nearPlane: 1,
   /** La voiture du joueur est dessinée à l'échelle 1 = 36 px/m. */
   carPixelsPerMeter: 36,
@@ -73,7 +73,9 @@ export const PHYSICS = {
   /** Écart latéral absolu max (m) — assez large pour atteindre la voie des stands */
   maxLateral: 32,
   /** Boîte auto : bornes hautes de chaque rapport (fraction de vmax) */
-  gearTops: [0.2, 0.36, 0.52, 0.68, 0.84, 1.0],
+  gearTops: [0.2, 0.36, 0.52, 0.68, 0.84, 1.0] as number[],
+  /** Rétrogradage hors accélération : fraction de vitesse « retirée » pour choisir le rapport (0 = boîte normale). Réglé par modèle (DOWNSHIFT). */
+  downshift: 0,
   idleRpm: 1200,
   redlineRpm: 8200,
   /** Voiture : choix de la planche selon la pente */
@@ -154,8 +156,8 @@ export const TYRES = {
   accelWearLoss: 0.25,
   steerWearLoss: 0.3,
   /** Perte d'adhérence : 1 - A×usure - B×usure^6 (falaise en fin de vie) */
-  gripLossLinear: 0.22,
-  gripLossCliff: 0.38,
+  gripLossLinear: 0.14,
+  gripLossCliff: 0.25,
   /** Part de la vitesse max perdue avec des pneus complètement usés */
   maxSpeedWearLoss: 0.12,
   /** Usure (part de 1 par seconde, avant multiplicateur de gomme) */
@@ -413,9 +415,9 @@ export const SC = {
   /** Vitesse de la safety car (m/s) = 108 km/h */
   speed: 30,
   /** Elle apparaît à cette distance devant le leader (m) */
-  aheadM: 160,
+  aheadM: 60,
   /** Délai entre l'incident et son déploiement (s) ; durée minimale en piste (s) ; temps pour disparaître (s) */
-  deployDelayS: 2.5,
+  deployDelayS: 1,
   minDurationS: 20,
   endingS: 9,
   /** Probabilité de neutralisation après un incident d'un adversaire / du joueur, et temps de course minimal (s) */
@@ -535,11 +537,23 @@ export const UPGRADES = {
   stratUnlockCat: 4,
   /** Effet par niveau (fraction) */
   effects: {
-    refuelRate: 0.15, // débit d'essence +15 % par niveau
+    refuelRate: 0.12, // débit d'essence +12 % par niveau
     tyreService: 0.08, // durée de changement des pneus −8 % par niveau
-    engineSpeed: 0.025, // vitesse max +2,5 %
-    clutchAccel: 0.06, // accélération +6 %
-    brakeDecel: 0.05, // freinage +5 %
-    brakeSpin: 0.06, // seuil de tête-à-queue +0,06 de ratio
+    engineSpeed: 0.035, // vitesse max +3,5 % par niveau (≈ +5 km/h sur la 1re voiture)
+    clutchAccel: 0.08, // accélération +8 %
+    brakeDecel: 0.06, // freinage +6 %
+    brakeSpin: 0.08, // seuil de tête-à-queue +0,08 de ratio
   },
 };
+
+/** Nombre de rapports de la boîte par modèle de voiture (6 par défaut). */
+export const GEAR_COUNT: Record<string, number> = { f1: 8, hypercar: 8 };
+
+/** Bornes hautes des rapports (fraction de vmax) pour `n` rapports : 6 rapports = 0.2, 0.36, … 1.0 ; 8 rapports commencent plus bas. */
+export function gearTopsFor(n: number): number[] {
+  const t0 = n >= 8 ? 0.15 : 0.2;
+  return Array.from({ length: n }, (_, i) => t0 + (1 - t0) * (i / (n - 1)));
+}
+
+/** Rapports qui retombent plus vite quand on lève le pied ou freine (voitures sportives à boîte courte). */
+export const DOWNSHIFT: Record<string, number> = { f1: 0.22, hypercar: 0.2, gt3: 0.18 };

@@ -79,7 +79,7 @@ Tout est réglé dans `config/balance.ts` (`FUEL`, `TYRES`, `PHYSICS`).
   à ~32 km/h. Réservoir vide = voiture plus légère (léger bonus d'accélération) ; plein = usure des pneus un peu plus forte.
 - **Pneus** : usure par roue selon la vitesse, les virages (pneus extérieurs et avant surtout), les freinages
   (avant), les accélérations (arrière), l'herbe et les dérapages. Adhérence = gomme × (1 − usure linéaire − « falaise » en
-  fin de vie). Tendre : plus d'adhérence, usure ×1,6 ; dur : usure ×0,75.
+  fin de vie) ; réglée douce (`TYRES.gripLossLinear` 0,14, `gripLossCliff` 0,25 : environ −27 % d'adhérence à 90 % d'usure). Tendre : plus d'adhérence, usure ×1,6 ; dur : usure ×0,75.
 - **Effets** : moins d'adhérence → direction moins efficace (sous-virage), poussée vers l'extérieur plus forte, perte de
   vitesse en virage ; au-delà de la limite d'adhérence, dérapage (fumée) puis tête-à-queue si on insiste. Un pneu usé à
   plus de 97 % peut éclater : vitesse plafonnée à ~86 km/h jusqu'au stand.
@@ -112,7 +112,7 @@ Config : `AI`, `SC`, `COLLISION` dans `config/balance.ts`.
 - **Rubber-banding léger** : ± 3,5 % de vitesse visée selon l'écart avec le joueur (Kevin : 40 % de cet effet).
 - **Contacts** : les voitures s'écartent, celle de derrière perd de la vitesse ; le joueur subit des dégâts (carrosserie abîmée,
   vitesse max réduite, réparée à tout arrêt au stand) ; un gros choc entre adversaires peut provoquer un tête-à-queue.
-- **Safety car** : un tête-à-queue (d'un adversaire ou du joueur) peut la déclencher. Elle apparaît devant le leader (~108 km/h),
+- **Safety car** : un tête-à-queue (d'un adversaire ou du joueur) peut la déclencher. Elle apparaît très vite (`SC.deployDelayS` = 1 s) et juste devant le leader (`SC.aheadM` = 60 m, ~108 km/h),
   le peloton se regroupe derrière (chacun peut combler l'écart avec la voiture de devant mais pas la dépasser), la voiture accidentée
   se gare sur le bas-côté avec un commissaire au drapeau jaune, puis repart. Dépasser sous safety car coûte 5 s de pénalité
   (sauf voiture garée / au stand). Elle rentre au premier passage du leader sur la ligne après `SC.minDurationS`.
@@ -145,7 +145,7 @@ Scène du pack `garage/garage.json` : zones sélectionnables aux flèches ou au 
 - **Mécaniciens** (conservés d'une catégorie à l'autre) : vitesse de ravitaillement, vitesse de changement de pneus (5 niveaux).
 - **Mur des stands** (conservé, cher, débloqué à partir de la catégorie 5) : stratège pneus (gomme préréglée à l'entrée au stand), stratège essence
   (plein préréglé et appel « rentre au stand » au moment idéal).
-- **Voiture** (remise à zéro à chaque changement de catégorie) : moteur (vitesse max), embrayage (accélération), freins (freinage, moins de tête-à-queue).
+- **Voiture** (remise à zéro à chaque changement de catégorie) : moteur (vitesse max +3,5 %/niveau), embrayage (accélération +8 %), freins (freinage +6 %, seuil de tête-à-queue +0,08). La fiche affiche 4 jauges (vitesse max, accélération, freinage, tenue) : bleu = valeur de base, vert = gain des améliorations (valeurs lues dans `UPGRADES.effects`, les textes du jeu aussi).
   Ces bonus sont propres à la voiture du joueur (`Player.perf`), les adversaires gardent la physique de la catégorie.
 - **Tableau** : classement de la saison ; prix = base × (1 + croissance × niveau) × (1 + croissance catégorie).
 
