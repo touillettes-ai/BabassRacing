@@ -380,6 +380,12 @@ export const AI = {
   roadLimit: 5.4,
   /** Rubber-banding : au-delà de rangeM d'écart avec le joueur, la vitesse visée varie de ± max (fraction) */
   rubber: { rangeM: 300, max: 0.035 },
+  /**
+   * Réglages propres au rival (Kevin) : sensibilité à la difficulté de la catégorie (1 = comme les autres pilotes ; avant : 0,3),
+   * rubber-banding quand il est DEVANT le joueur (il ne lève plus le pied : 0) et DERRIÈRE (il pousse plus pour revenir),
+   * marge de vitesse en virage supplémentaire (plafonnée à 1 = limite d'adhérence).
+   */
+  rival: { difficultyScale: 0.6, rubberAhead: 0.2, rubberBehind: 1, marginBonus: 0.01 },
   /** Après une sortie de piste : durée à l'arrêt avant de repartir (s) et position d'arrêt (m) */
   recoverS: 14,
   /** Panne définitive d'un adversaire (hors rival) : probabilité par seconde de course ; la voiture reste garée et une safety car sort */

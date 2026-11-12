@@ -246,3 +246,8 @@ Toutes les valeurs sont dans `config/balance.ts` (`PHYSICS`, `FUEL`, `TYRES`, `P
 ## Ajouter un circuit / une catégorie / une ligne de dialogue
 
 Ces points seront documentés avec les jalons 2 (circuits), 6 (catégories, dialogues, i18n).
+
+## Météo et marquages au sol
+
+- **Météo** (`weather` dans `levels.json`) : teinte multipliée sur la scène, pluie animée (`fx_rain`) et, pour l'ambiance `orage`, éclairs (`fx_lightning` : coup, retombée, flash blanc) suivis d'un tonnerre. Code : `src/render/weather.ts`.
+- **Marquages au sol** (`overlays` d'une course dans `src/config/circuits.json`, choix multiple dans la page des circuits) : chevrons avant les virages, traces de pneus et bandes dans les virages, huile en sortie de virage, flèches et logo sur les lignes droites, passage piéton après la ligne. Purement visuel. Test direct : `/?level=orage&overlays=chevrons,skid_marks,oil`.

@@ -94,6 +94,7 @@ function circuitEditor(): Plugin {
             clouds_far: ls('backgrounds', /^clouds_.*_far\.png$/),
             clouds_near: ls('backgrounds', /^clouds_.*_near\.png$/),
             road: ls('roads', /^road_.*\.png$/),
+            overlays: ls('roads', /^overlay_(arrows|chevrons|crosswalk|oil|logo_asphalt|runoff_stripes|skid_marks)\.png$/),
             music: ls('music', /\.ogg$/),
             roadside: Object.keys(trees),
           };
@@ -128,9 +129,43 @@ function circuitEditor(): Plugin {
   };
 }
 
+/**
+ * Page de réglage des moteurs LOCALE (dev uniquement) : `tools/engine-editor.html` lit et écrit `src/config/engines.json`.
+ * Ouvrir http://localhost:5173/tools/engine-editor.html pendant `npm run dev`.
+ */
+function engineEditor(): Plugin {
+  const file = path.join(root, 'src/config/engines.json');
+  return {
+    name: 'engine-editor',
+    apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use('/__engines/load', (_req, res) => {
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.end(fs.readFileSync(file, 'utf-8'));
+      });
+      server.middlewares.use('/__engines/save', (req, res) => {
+        if (req.method !== 'POST') { res.statusCode = 405; res.end('POST attendu'); return; }
+        let body = '';
+        req.on('data', (c) => (body += c));
+        req.on('end', () => {
+          try {
+            const json = JSON.parse(body);
+            if (typeof json !== 'object' || !json.gt3) throw new Error('profil « gt3 » manquant');
+            fs.writeFileSync(file, JSON.stringify(json, null, 2) + '\n', 'utf-8');
+            res.end('ok');
+          } catch (e) {
+            res.statusCode = 400;
+            res.end('JSON invalide : ' + String(e));
+          }
+        });
+      });
+    },
+  };
+}
+
 // base './' : le build peut être hébergé dans n'importe quel sous-dossier.
 export default defineConfig({
   base: './',
   server: { port: 5173 },
-  plugins: [dialogueEditor(), circuitEditor()],
+  plugins: [dialogueEditor(), circuitEditor(), engineEditor()],
 });

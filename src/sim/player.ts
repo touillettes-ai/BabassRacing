@@ -267,7 +267,8 @@ export class Player {
     });
     // moyennes glissantes sur ~2 km : consommation et usure par mètre (usure ramenée à la gomme de référence)
     const dist = this.speed * dt;
-    if (dist > 0.01) {
+    // en dessous de 20 m/s (départ arrêté, sortie des stands) la conso par mètre est énorme : on ne s'en sert pas pour les estimations
+    if (dist > 0.01 && this.speed > 20) {
       const k = Math.min(1, dist / 2000);
       this.fuelPerM += ((fuelBefore - this.fuel.level) / dist - this.fuelPerM) * k;
       const dw = Math.max(0, this.tyres.avgWear - wearBefore) / dist / TYRES.compounds[this.tyres.compound].wear;

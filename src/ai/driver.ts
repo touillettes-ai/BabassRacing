@@ -48,9 +48,10 @@ export class Driver {
   /** `assist` : ce pilote conduit la voiture du JOUEUR (safety car, dépanneuse) : pas de stratégie, pas d'incident, pas de stand (géré par main). */
   constructor(private readonly entry: Entry, readonly profile: DriverProfile, seed: number, private readonly isRival: boolean, private readonly assist = false) {
     this.rng = new Rng(seed);
-    const dMargin = (AI.difficulty - 0.5) * 2 * AI.difficultyMargin * (isRival ? 0.3 : 1);
-    const dPower = (AI.difficulty - 0.5) * 2 * AI.difficultyPower * (isRival ? 0.3 : 1);
-    this.margin = profile.margin + dMargin;
+    const scale = isRival ? AI.rival.difficultyScale : 1;
+    const dMargin = (AI.difficulty - 0.5) * 2 * AI.difficultyMargin * scale;
+    const dPower = (AI.difficulty - 0.5) * 2 * AI.difficultyPower * scale;
+    this.margin = isRival ? Math.min(1, profile.margin + dMargin + AI.rival.marginBonus) : profile.margin + dMargin;
     this.power = Math.min(1, profile.power + dPower);
     this.preferredX = this.rng.range(-1.6, 1.6);
     this.laneTarget = this.preferredX;
@@ -134,7 +135,9 @@ export class Driver {
     {
       // rubber-banding léger : devant le joueur on lève un peu le pied, derrière on pousse un peu (Kevin : moins)
       const gap = e.progress - f.player.progress; // > 0 : devant le joueur
-      const rb = this.assist ? 0 : -clamp(gap / AI.rubber.rangeM, -1, 1) * AI.rubber.max * (this.isRival ? 0.4 : 1);
+      // rival : jamais freiné quand il est devant, et plus agressif pour revenir quand il est derrière
+      const rbScale = this.isRival ? (gap > 0 ? AI.rival.rubberAhead : AI.rival.rubberBehind) : 1;
+      const rb = this.assist ? 0 : -clamp(gap / AI.rubber.rangeM, -1, 1) * AI.rubber.max * rbScale;
       vTop *= 1 + rb;
     }
     const seg = T.segmentAt(car.z);

@@ -1,4 +1,5 @@
 import { AUDIO } from '../config/balance';
+import engines from '../config/engines.json';
 
 const BASE = import.meta.env.BASE_URL + 'assets/';
 const MUTE_KEY = 'babass-racing-muted';
@@ -325,6 +326,10 @@ export class Audio {
   crash(hard: boolean): void {
     this.burst(hard ? 0.4 : 0.2, hard ? 0.7 : 0.4, 'lowpass', hard ? 700 : 1200);
   }
+  /** Tonnerre après un éclair : grondement grave et long, décalé comme le son après la lumière. */
+  thunder(): void {
+    setTimeout(() => { this.burst(1.8, 0.6, 'lowpass', 220); this.burst(0.5, 0.5, 'lowpass', 600); }, 250 + Math.random() * 600);
+  }
   /** Tête-à-queue : long crissement. */
   spin(): void {
     this.burst(1.2, 0.35, 'bandpass', 1500);
@@ -369,25 +374,8 @@ interface EngineProfile {
   fLo: number; fHi: number; q: number; gain: number;
   lfoHz: number; lfoHzRpm: number; vib: number; trem: number;
 }
-const P = (o: Partial<EngineProfile>): EngineProfile => ({
-  w1: 'sawtooth', w2: 'square', w3: 'sine', base: 38, span: 190, ratio: 1.5, sub: 0.5, mix2: 0.5, mix3: 0,
-  fLo: 380, fHi: 2300, q: 1, gain: 1, lfoHz: 8, lfoHzRpm: 0, vib: 0, trem: 0, ...o,
-});
-/** Un profil par modèle du pack ; `futur` = son d'OVNI (sinus qui ondule, battement désaccordé, glissando aigu). */
-const ENGINES: Record<string, EngineProfile> = {
-  hothatch: P({ base: 55, span: 210, ratio: 2, fHi: 2400, gain: 0.9 }),
-  gt3: P({ base: 46, span: 270, ratio: 1.5, fHi: 3000, mix2: 0.6 }),
-  f1: P({ w2: 'sawtooth', base: 95, span: 430, ratio: 2, fLo: 700, fHi: 5200, q: 2, gain: 0.8 }),
-  hypercar: P({ base: 40, span: 250, ratio: 1.5, sub: 0.5, mix3: 0.35, w3: 'triangle', fHi: 3400, trem: 0.1, lfoHz: 20, gain: 1.05 }),
-  muscle: P({ w2: 'sawtooth', base: 30, span: 125, ratio: 1.5, fLo: 260, fHi: 1500, lfoHz: 9, lfoHzRpm: 18, trem: 0.35, vib: 0.01, gain: 1.15 }),
-  retro: P({ w1: 'square', base: 62, span: 150, ratio: 2, mix2: 0.35, fLo: 450, fHi: 1700, gain: 0.8 }),
-  wedge: P({ base: 50, span: 290, ratio: 1.5, mix3: 0.3, w3: 'sawtooth', sub: 2, fHi: 3200, q: 2 }),
-  supercar: P({ base: 48, span: 310, ratio: 2, mix3: 0.3, w3: 'triangle', sub: 0.5, fHi: 3600, gain: 1.05 }),
-  pickup: P({ w2: 'square', base: 27, span: 105, ratio: 1.5, fLo: 220, fHi: 1000, lfoHz: 11, lfoHzRpm: 14, trem: 0.3, gain: 1.15 }),
-  towtruck: P({ w2: 'square', base: 23, span: 85, ratio: 1.5, fLo: 200, fHi: 800, lfoHz: 8, lfoHzRpm: 10, trem: 0.4, gain: 1.2 }),
-  futur: P({ w1: 'sine', w2: 'triangle', w3: 'sine', base: 110, span: 560, ratio: 2.013, sub: 0.502, mix2: 0.45, mix3: 0.5,
-    fLo: 900, fHi: 5500, q: 4, lfoHz: 5, lfoHzRpm: 4, vib: 0.06, trem: 0.28, gain: 0.95 }),
-};
+/** Profils réglés avec la page `tools/engine-editor.html` (sauvegardés dans `src/config/engines.json`) ; `futur` = son d'OVNI. */
+const ENGINES = engines as Record<string, EngineProfile>;
 function engineProfile(car: string): EngineProfile {
   return ENGINES[car] ?? ENGINES.gt3;
 }

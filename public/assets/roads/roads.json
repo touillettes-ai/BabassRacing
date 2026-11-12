@@ -421,6 +421,1599 @@
    "w": 512,
    "h": 64,
    "note": "version plus dense"
+  },
+  "road_modern": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     96
+    ],
+    "road": [
+     96,
+     416
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     60,
+     60,
+     70
+    ],
+    "shoulder": [
+     90,
+     160,
+     80
+    ],
+    "curb_a": [
+     36,
+     110,
+     230
+    ],
+    "curb_b": [
+     240,
+     240,
+     240
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     240,
+     240,
+     240
+    ]
+   }
+  },
+  "road_autumn": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     110,
+     106,
+     112
+    ],
+    "shoulder": [
+     120,
+     110,
+     60
+    ],
+    "curb_a": [
+     220,
+     44,
+     52
+    ],
+    "curb_b": [
+     240,
+     240,
+     240
+    ],
+    "line": [
+     230,
+     230,
+     230
+    ],
+    "lane": [
+     230,
+     230,
+     230
+    ]
+   }
+  },
+  "road_highway": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     40
+    ],
+    "curb": [
+     40,
+     60
+    ],
+    "edge_line": [
+     60,
+     65
+    ],
+    "road": [
+     65,
+     447
+    ]
+   },
+   "lanes": 4,
+   "palette": {
+    "asphalt": [
+     98,
+     98,
+     110
+    ],
+    "shoulder": [
+     120,
+     120,
+     130
+    ],
+    "curb_a": [
+     104,
+     104,
+     116
+    ],
+    "curb_b": [
+     104,
+     104,
+     116
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     240,
+     240,
+     240
+    ]
+   }
+  },
+  "road_lava": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     54,
+     48,
+     56
+    ],
+    "shoulder": [
+     40,
+     30,
+     36
+    ],
+    "curb_a": [
+     255,
+     120,
+     30
+    ],
+    "curb_b": [
+     60,
+     50,
+     56
+    ],
+    "line": [
+     200,
+     90,
+     30
+    ],
+    "lane": [
+     200,
+     90,
+     30
+    ]
+   }
+  },
+  "road_jungle": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     84,
+     92,
+     86
+    ],
+    "shoulder": [
+     40,
+     110,
+     60
+    ],
+    "curb_a": [
+     230,
+     200,
+     40
+    ],
+    "curb_b": [
+     40,
+     40,
+     56
+    ],
+    "line": [
+     220,
+     220,
+     210
+    ],
+    "lane": [
+     220,
+     220,
+     210
+    ]
+   }
+  },
+  "road_worn": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     118,
+     114,
+     120
+    ],
+    "shoulder": [
+     130,
+     130,
+     110
+    ],
+    "curb_a": [
+     200,
+     60,
+     60
+    ],
+    "curb_b": [
+     210,
+     210,
+     210
+    ],
+    "line": [
+     200,
+     200,
+     200
+    ],
+    "lane": [
+     200,
+     200,
+     200
+    ]
+   }
+  },
+  "road_classic": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     108,
+     106,
+     118
+    ],
+    "shoulder": [
+     76,
+     150,
+     70
+    ],
+    "curb_a": [
+     250,
+     210,
+     40
+    ],
+    "curb_b": [
+     40,
+     40,
+     48
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     240,
+     240,
+     240
+    ]
+   }
+  },
+  "road_runoff": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     70,
+     70,
+     82
+    ],
+    "shoulder": [
+     100,
+     100,
+     112
+    ],
+    "curb_a": [
+     40,
+     170,
+     90
+    ],
+    "curb_b": [
+     240,
+     240,
+     240
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     240,
+     240,
+     240
+    ]
+   }
+  },
+  "road_night_wet": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     40,
+     40,
+     60
+    ],
+    "shoulder": [
+     26,
+     24,
+     44
+    ],
+    "curb_a": [
+     236,
+     40,
+     150
+    ],
+    "curb_b": [
+     40,
+     220,
+     230
+    ],
+    "line": [
+     250,
+     210,
+     60
+    ],
+    "lane": [
+     250,
+     210,
+     60
+    ]
+   }
+  },
+  "road_red_asphalt": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     150,
+     70,
+     66
+    ],
+    "shoulder": [
+     110,
+     150,
+     80
+    ],
+    "curb_a": [
+     240,
+     240,
+     240
+    ],
+    "curb_b": [
+     40,
+     40,
+     48
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     240,
+     240,
+     240
+    ]
+   }
+  },
+  "road_circuit_narrow": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     124
+    ],
+    "curb": [
+     124,
+     144
+    ],
+    "edge_line": [
+     144,
+     150
+    ],
+    "road": [
+     150,
+     362
+    ]
+   },
+   "lanes": 2,
+   "palette": {
+    "asphalt": [
+     104,
+     104,
+     118
+    ],
+    "shoulder": [
+     72,
+     160,
+     72
+    ],
+    "curb_a": [
+     220,
+     44,
+     52
+    ],
+    "curb_b": [
+     240,
+     240,
+     240
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     240,
+     240,
+     240
+    ]
+   }
+  },
+  "road_mountain_narrow": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     130
+    ],
+    "curb": [
+     130,
+     142
+    ],
+    "edge_line": [
+     142,
+     148
+    ],
+    "road": [
+     148,
+     364
+    ]
+   },
+   "lanes": 2,
+   "palette": {
+    "asphalt": [
+     118,
+     114,
+     120
+    ],
+    "shoulder": [
+     90,
+     120,
+     70
+    ],
+    "curb_a": [
+     120,
+     118,
+     124
+    ],
+    "curb_b": [
+     110,
+     108,
+     114
+    ],
+    "line": [
+     200,
+     200,
+     200
+    ],
+    "lane": [
+     200,
+     200,
+     200
+    ]
+   }
+  },
+  "road_night_narrow": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     124
+    ],
+    "curb": [
+     124,
+     144
+    ],
+    "edge_line": [
+     144,
+     150
+    ],
+    "road": [
+     150,
+     362
+    ]
+   },
+   "lanes": 2,
+   "palette": {
+    "asphalt": [
+     54,
+     52,
+     78
+    ],
+    "shoulder": [
+     30,
+     28,
+     52
+    ],
+    "curb_a": [
+     236,
+     40,
+     150
+    ],
+    "curb_b": [
+     40,
+     220,
+     230
+    ],
+    "line": [
+     250,
+     210,
+     60
+    ],
+    "lane": [
+     250,
+     210,
+     60
+    ]
+   }
+  },
+  "overlay_skid_marks": {
+   "w": 512,
+   "h": 64,
+   "overlay": true,
+   "note": "traces de freinage sur deux voies, a repeter avant un virage"
+  },
+  "overlay_arrows": {
+   "w": 512,
+   "h": 64,
+   "overlay": true,
+   "note": "fleches blanches au sol (sens de la course)"
+  },
+  "overlay_chevrons": {
+   "w": 512,
+   "h": 64,
+   "overlay": true,
+   "note": "chevrons jaunes : zone de freinage / fin de ligne droite"
+  },
+  "overlay_crosswalk": {
+   "w": 512,
+   "h": 64,
+   "overlay": true,
+   "note": "passage pieton pour les circuits urbains"
+  },
+  "overlay_finish": {
+   "w": 512,
+   "h": 64,
+   "overlay": true,
+   "note": "ligne d'arrivee avec inscription"
+  },
+  "overlay_pit_entry": {
+   "w": 512,
+   "h": 64,
+   "overlay": true,
+   "note": "ligne d'entree des stands, a poser quelques segments avant la pit lane (miroir si les stands sont a gauche)"
+  },
+  "overlay_logo_asphalt": {
+   "w": 512,
+   "h": 64,
+   "overlay": true,
+   "note": "logo peint au sol, a poser sur la ligne droite des stands"
+  },
+  "overlay_oil": {
+   "w": 512,
+   "h": 64,
+   "overlay": true,
+   "note": "flaques d'huile (perte d'adherence)"
+  },
+  "overlay_runoff_stripes": {
+   "w": 512,
+   "h": 64,
+   "overlay": true,
+   "note": "bandes rouge/blanc sur les degagements, en sortie de virage"
+  },
+  "road_urban": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     120,
+     120,
+     128
+    ],
+    "shoulder": [
+     150,
+     150,
+     158
+    ],
+    "curb_a": [
+     120,
+     120,
+     130
+    ],
+    "curb_b": [
+     176,
+     176,
+     186
+    ],
+    "line": [
+     236,
+     236,
+     236
+    ],
+    "lane": [
+     250,
+     220,
+     60
+    ]
+   }
+  },
+  "road_asphalt_blue": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     92,
+     98,
+     124
+    ],
+    "shoulder": [
+     80,
+     150,
+     76
+    ],
+    "curb_a": [
+     36,
+     110,
+     230
+    ],
+    "curb_b": [
+     240,
+     240,
+     240
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     240,
+     240,
+     240
+    ]
+   }
+  },
+  "road_asphalt_warm": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     122,
+     108,
+     98
+    ],
+    "shoulder": [
+     150,
+     140,
+     80
+    ],
+    "curb_a": [
+     220,
+     60,
+     40
+    ],
+    "curb_b": [
+     250,
+     220,
+     90
+    ],
+    "line": [
+     250,
+     210,
+     40
+    ],
+    "lane": [
+     250,
+     210,
+     40
+    ]
+   }
+  },
+  "road_asphalt_green": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     94,
+     108,
+     100
+    ],
+    "shoulder": [
+     60,
+     140,
+     70
+    ],
+    "curb_a": [
+     40,
+     170,
+     90
+    ],
+    "curb_b": [
+     240,
+     240,
+     240
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     240,
+     240,
+     240
+    ]
+   }
+  },
+  "road_asphalt_purple": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     76,
+     62,
+     96
+    ],
+    "shoulder": [
+     40,
+     30,
+     60
+    ],
+    "curb_a": [
+     236,
+     60,
+     170
+    ],
+    "curb_b": [
+     90,
+     70,
+     130
+    ],
+    "line": [
+     250,
+     170,
+     220
+    ],
+    "lane": [
+     250,
+     170,
+     220
+    ]
+   }
+  },
+  "road_asphalt_black": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     96
+    ],
+    "road": [
+     96,
+     416
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     44,
+     44,
+     52
+    ],
+    "shoulder": [
+     80,
+     150,
+     76
+    ],
+    "curb_a": [
+     220,
+     44,
+     52
+    ],
+    "curb_b": [
+     240,
+     240,
+     240
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     240,
+     240,
+     240
+    ]
+   }
+  },
+  "road_asphalt_light": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     150,
+     150,
+     158
+    ],
+    "shoulder": [
+     110,
+     160,
+     90
+    ],
+    "curb_a": [
+     220,
+     44,
+     52
+    ],
+    "curb_b": [
+     240,
+     240,
+     240
+    ],
+    "line": [
+     250,
+     210,
+     40
+    ],
+    "lane": [
+     250,
+     210,
+     40
+    ]
+   }
+  },
+  "road_asphalt_teal": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     84,
+     110,
+     116
+    ],
+    "shoulder": [
+     60,
+     150,
+     140
+    ],
+    "curb_a": [
+     250,
+     200,
+     40
+    ],
+    "curb_b": [
+     240,
+     240,
+     240
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     240,
+     240,
+     240
+    ]
+   }
+  },
+  "road_asphalt_orange": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     140,
+     112,
+     92
+    ],
+    "shoulder": [
+     226,
+     186,
+     120
+    ],
+    "curb_a": [
+     250,
+     120,
+     30
+    ],
+    "curb_b": [
+     240,
+     240,
+     240
+    ],
+    "line": [
+     250,
+     240,
+     220
+    ],
+    "lane": [
+     250,
+     240,
+     220
+    ]
+   }
+  },
+  "road_asphalt_pink": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     126,
+     96,
+     118
+    ],
+    "shoulder": [
+     170,
+     110,
+     130
+    ],
+    "curb_a": [
+     255,
+     140,
+     180
+    ],
+    "curb_b": [
+     60,
+     40,
+     70
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     240,
+     240,
+     240
+    ]
+   }
+  },
+  "road_asphalt_olive": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     108,
+     110,
+     90
+    ],
+    "shoulder": [
+     120,
+     130,
+     70
+    ],
+    "curb_a": [
+     230,
+     200,
+     40
+    ],
+    "curb_b": [
+     40,
+     40,
+     48
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     240,
+     240,
+     240
+    ]
+   }
+  },
+  "road_double_yellow": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 1,
+   "palette": {
+    "asphalt": [
+     104,
+     104,
+     118
+    ],
+    "shoulder": [
+     72,
+     160,
+     72
+    ],
+    "curb_a": [
+     220,
+     44,
+     52
+    ],
+    "curb_b": [
+     240,
+     240,
+     240
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     104,
+     104,
+     118
+    ]
+   }
+  },
+  "road_no_lines": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 1,
+   "palette": {
+    "asphalt": [
+     100,
+     100,
+     114
+    ],
+    "shoulder": [
+     76,
+     150,
+     70
+    ],
+    "curb_a": [
+     220,
+     44,
+     52
+    ],
+    "curb_b": [
+     240,
+     240,
+     240
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     100,
+     100,
+     114
+    ]
+   }
+  },
+  "road_rumble_edges": {
+   "w": 512,
+   "h": 64,
+   "bands": 2,
+   "band_h": 32,
+   "px": {
+    "shoulder": [
+     0,
+     64
+    ],
+    "curb": [
+     64,
+     88
+    ],
+    "edge_line": [
+     88,
+     94
+    ],
+    "road": [
+     94,
+     418
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     98,
+     98,
+     112
+    ],
+    "shoulder": [
+     76,
+     150,
+     70
+    ],
+    "curb_a": [
+     220,
+     44,
+     52
+    ],
+    "curb_b": [
+     240,
+     240,
+     240
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     240,
+     240,
+     240
+    ]
+   }
   }
  }
 }

@@ -1,4 +1,4 @@
-import { FUEL, PHYSICS } from '../config/balance';
+import { FUEL, PHYSICS, TYRES, WEATHER } from '../config/balance';
 import { Player } from '../sim/player';
 import type { Track } from '../track/segments';
 
@@ -17,7 +17,9 @@ export interface Estimate {
 export function estimateLap(track: Track): Estimate {
   const dt = 1 / 60;
   const p = new Player();
-  p.reset(0, 'medium', 1);
+  // gomme de référence : intermédiaires sous la pluie (des gommes sèches y glisseraient et fausseraient tout), médiane sinon
+  const ref = WEATHER.wetness > 0.3 ? 'rain' : 'medium';
+  p.reset(0, ref, 1);
   const L = track.length;
   const vm = PHYSICS.maxSpeed;
   let steps = 0;
@@ -35,5 +37,5 @@ export function estimateLap(track: Track): Estimate {
     }, track);
     steps++;
   }
-  return { fuelPerLap: FUEL.capacity - p.fuel.level, wearPerLap: p.tyres.avgWear, lapS: steps / 60 };
+  return { fuelPerLap: FUEL.capacity - p.fuel.level, wearPerLap: p.tyres.avgWear / TYRES.compounds[ref].wear, lapS: steps / 60 };
 }

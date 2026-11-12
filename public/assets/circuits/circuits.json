@@ -18,10 +18,10 @@
   },
   "urbain": {
    "label": "Circuit urbain",
-   "desc": "Rues fermées : angles droits, murs et rails près de la piste, béton ou pavés. Pas de dégagement.",
+   "desc": "Rues fermées : angles droits, murs et rails près de la piste, trottoirs. Pas de dégagement.",
    "grip": 0.9,
    "width_m": 10,
-   "road": "road_concrete",
+   "road": "road_urban",
    "roadside": [
     "tree_cypress",
     "tree_cherry",
@@ -48,11 +48,11 @@
    "walls": false
   },
   "rallye": {
-   "label": "Rallye terre",
-   "desc": "Piste de terre : glisse permanente, ornières, pierres. Grip faible, dérapages longs.",
+   "label": "Rallye asphalte",
+   "desc": "Spéciale sur asphalte usé et étroit : bosses, rustines, bas-côtés en gravier. Grip moyen, glisse en sortie.",
    "grip": 0.6,
    "width_m": 7,
-   "road": "road_dirt",
+   "road": "road_worn",
    "roadside": [
     "rock",
     "bush",
@@ -107,10 +107,10 @@
   },
   "glace": {
    "label": "Piste de glace",
-   "desc": "Neige tassée et plaques de verglas : grip minimal, freinages anticipés.",
+   "desc": "Asphalte glacé bordé de neige : grip minimal, freinages anticipés.",
    "grip": 0.45,
    "width_m": 9,
-   "road": "road_ice",
+   "road": "road_snow",
    "roadside": [
     "tree_pine_snow",
     "rock",
@@ -122,10 +122,10 @@
   },
   "plage": {
    "label": "Piste de plage",
-   "desc": "Sable tassé le long de la mer : grip moyen, grandes courbes.",
+   "desc": "Route côtière : asphalte clair le long de la mer, grandes courbes.",
    "grip": 0.7,
    "width_m": 9,
-   "road": "road_sand",
+   "road": "road_coast",
    "roadside": [
     "tree_palm",
     "rock",

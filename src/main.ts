@@ -45,7 +45,7 @@ async function main(): Promise<void> {
   });
   // suivi des évènements sonores (fronts montants)
   let lastMusic: string | null | undefined;
-  let lastLight = 0, lastHits = 0, lastSpin = false, lastPunct = false, lastSc = 'none', lastMode: string = '';
+  let lastLight = 0, lastHits = 0, lastStrikes = 0, lastSpin = false, lastPunct = false, lastSc = 'none', lastMode: string = '';
   const ui: UiAssets = await loadUiAssets();
   const qs = new URLSearchParams(location.search);
   const num = (k: string, d: number) => (qs.has(k) ? Number(qs.get(k)) : d);
@@ -252,13 +252,15 @@ async function main(): Promise<void> {
       laps: num('laps', RACE.laps),
       startTyre: (['soft', 'medium', 'hard', 'rain'] as const).find((c) => c === qs.get('tyre')) ?? TYRES.startCompound,
       startFuel: num('fuel', FUEL.startFraction),
+      // ?overlays=chevrons,oil : marquages au sol de test
+      levelOverride: qs.get('overlays') ? { overlays: qs.get('overlays')!.split(',').map((n) => `roads/overlay_${n}.png`) } : undefined,
     };
     session = await RaceSession.create(setup, input);
     hookDebug(session);
     mode = 'race';
   }
 
-  if (import.meta.env.DEV) (window as unknown as Record<string, unknown>).__dbg = { get career() { return career; }, goGarage, endOfSeason, get mode() { return mode; } };
+  if (import.meta.env.DEV) (window as unknown as Record<string, unknown>).__dbg = { get career() { return career; }, goGarage, endOfSeason, get mode() { return mode; }, launch: (i: number) => launchRace(i) };
 
   // ---------------------------------------------------------------- boucle
   startLoop(
@@ -392,6 +394,7 @@ async function main(): Promise<void> {
             if (s.field.hardHits > lastHits) audio.crash(s.field.hitFlash > 0);
             lastHits = s.field.hardHits;
           }
+          if (s.weather.strikes !== lastStrikes) { if (s.weather.strikes > lastStrikes) audio.thunder(); lastStrikes = s.weather.strikes; }
           if (s.player.spinning && !lastSpin) audio.spin();
           lastSpin = s.player.spinning;
           const pu = s.player.tyres.anyPunctured;

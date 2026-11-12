@@ -9,6 +9,7 @@ import { CarRenderer } from '../render/car';
 import { Effects, SpeedFx } from '../render/fx';
 import { GantryLights } from '../render/gantry';
 import { drawHud } from '../render/hud';
+import { Weather } from '../render/weather';
 import { RoadRenderer } from '../render/road';
 import { Field } from '../sim/field';
 import { PitController } from '../sim/pit';
@@ -84,6 +85,7 @@ export class RaceSession {
 
   /** Modèle de la voiture du joueur (profil sonore du moteur). */
   carModel = '';
+  readonly weather = new Weather();
 
   private constructor(
     readonly setup: RaceSetup, readonly assets: Assets, readonly track: Track, private readonly minimap: Minimap,
@@ -101,6 +103,7 @@ export class RaceSession {
     };
     this.field = field(this);
     this.road = new RoadRenderer(assets);
+    this.road.setOverlays(track, assets.level.overlays ?? []);
     this.gantry = new GantryLights(assets);
     this.st = input.read();
     this.restart();
@@ -147,6 +150,7 @@ export class RaceSession {
       input,
     );
     session.estimate = estimate;
+    session.applyEstimate();
     session.carModel = carModel;
     return session;
   }
@@ -158,6 +162,17 @@ export class RaceSession {
     this.restart();
   }
 
+  /**
+   * Initialise les « tours restants » du tableau de bord (essence, gomme) avec l'estimation du circuit (celle de l'écran de stratégie),
+   * au lieu d'une valeur par défaut trop optimiste : sans cela, l'affichage annonçait ~2× trop de tours au départ puis chutait.
+   */
+  private applyEstimate(): void {
+    const e = this.estimate;
+    if (!e) return;
+    this.player.fuelPerM = e.fuelPerLap / this.track.length;
+    this.player.wearPerM = e.wearPerLap / this.track.length;
+  }
+
   restart(): void {
     const s = this.setup;
     this.race = new Race(this.track, s.laps);
@@ -166,6 +181,7 @@ export class RaceSession {
     this.player.reset(this.race.startZ(), tyre, fuel);
     this.pit.reset();
     this.field.reset(s.laps, tyre, fuel);
+    this.applyEstimate(); // après field.reset (qui remet aussi la voiture du joueur à zéro)
     this.finishedFor = -1;
     this.record = s.recordLap ?? null;
     this.recordFlash = 0;
@@ -281,6 +297,8 @@ export class RaceSession {
     this.effects.draw(ctx, assets, true);
     this.speedFx.streaks(ctx, player);
     ctx.restore();
+    this.weather.update(frameMs, assets);
+    this.weather.draw(ctx, assets);
     drawHud(ctx, assets, player, this.race, this.minimap, pit, field, this.st.debugToggled ? `FPS ${Math.round(this.fps)}` : null, {
       record: this.record, flash: this.recordFlash > 0, call: this.stratCall > 0,
     });

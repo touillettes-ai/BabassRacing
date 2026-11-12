@@ -51,8 +51,10 @@ export interface LevelDef {
   atlases: Record<string, string>;
   roadside: string[];
   music: string;
-  /** Présent sur les ambiances pluvieuses (levels.json) */
-  weather?: unknown;
+  /** Météo (levels.json) : pluie, éclairs, teinte, flaques… */
+  weather?: { overlay?: string; lightning?: string; tint?: number[] };
+  /** Marquages au sol posés par le jeu (surcouches `roads/overlay_*.png`), choisis dans circuits.json */
+  overlays?: string[];
 }
 
 export interface Assets {
@@ -78,6 +80,10 @@ export interface Assets {
   /** Mécaniciens : 17 frames de 96×84 (planche rouge) */
   mechanic: HTMLImageElement;
   groundColor: string;
+  /** Surcouches de marquage choisies (512×64, 64 lignes = 10 m), dans l'ordre de `level.overlays` */
+  overlayPix: Uint32Array[];
+  /** Effets météo : pluie (4 frames 128×128), éclair (3 frames 96×160), teinte à multiplier */
+  weatherFx: { rain: HTMLImageElement | null; lightning: HTMLImageElement | null; tint: number[] | null };
   atlases: Record<string, Atlas>;
   car: CarSheets;
   fx: Record<string, Strip>;
@@ -222,6 +228,15 @@ export async function loadAssets(levelId: string, carId: string, override?: Part
   const pitRoadTex = pixels(pitRoadImg);
   const pitBoxOverlay = pixels(pitBoxImg);
 
+  const ovImgs = await Promise.all((level.overlays ?? []).map((o) => loadImage(o).catch(() => null)));
+  const overlayPix = ovImgs.filter((i): i is HTMLImageElement => !!i).map(pixels);
+  const wx = level.weather ?? {};
+  const [rain, lightning] = await Promise.all([
+    wx.overlay ? loadImage(wx.overlay).catch(() => null) : Promise.resolve(null),
+    wx.lightning ? loadImage(wx.lightning).catch(() => null) : Promise.resolve(null),
+  ]);
+  const weatherFx = { rain, lightning, tint: wx.tint ?? null };
+
   const roadKey = level.road.split('/').pop()!.replace('.png', '');
   const shoulder = roadsJson.textures[roadKey]?.palette.shoulder ?? [72, 160, 72];
 
@@ -243,6 +258,7 @@ export async function loadAssets(levelId: string, carId: string, override?: Part
     roadMips: buildMips(roadTex), pitMips: buildMips(pitRoadTex),
     startLights, gantryStart: gantryImg, lightsSlot: g.lights_slot ?? { x: 156, y: 62, w: 108, h: 31 },
     groundColor: rgbToCss(shoulder),
+    overlayPix, weatherFx,
     atlases,
     car,
     fx, hud, needle, fontSmall, fontBig,

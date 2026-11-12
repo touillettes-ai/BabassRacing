@@ -6,9 +6,16 @@
  "frames": [
   "neutral",
   "happy",
+  "laugh",
+  "talk",
+  "talk_happy",
   "angry",
+  "determined",
   "surprised",
-  "talk"
+  "sad",
+  "worried",
+  "smug",
+  "wink"
  ],
  "characters": {
   "babass": "Babass",
@@ -17,7 +24,30 @@
   "marcel": "Marcel",
   "viktor": "Viktor"
  },
- "note": "bustes detoures sur fond transparent ; alterner neutral/talk (8 fps) pendant qu'un personnage parle",
+ "sheets": {
+  "babass": {
+   "normal": "char_babass.png",
+   "helmet": "char_babass_helmet.png"
+  },
+  "leo": {
+   "normal": "char_leo.png",
+   "helmet": "char_leo_helmet.png"
+  },
+  "clara": {
+   "normal": "char_clara.png",
+   "helmet": "char_clara_helmet.png"
+  },
+  "marcel": {
+   "normal": "char_marcel.png",
+   "helmet": "char_marcel_helmet.png"
+  },
+  "viktor": {
+   "normal": "char_viktor.png",
+   "helmet": "char_viktor_helmet.png"
+  }
+ },
+ "talk": "alterner neutral/talk (ou happy/talk_happy) a 8 fps pendant qu'un personnage parle",
+ "note": "bustes detoures sur fond transparent, 12 expressions par planche, meme ordre pour la version casque",
  "dialog_box": {
   "w": 464,
   "h": 76,

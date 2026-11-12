@@ -66,6 +66,53 @@ export class RoadRenderer {
     this.fog = sampleBottomColor(assets.sky);
   }
 
+  /** Case de 10 m → numéro de surcouche (1 = première de `assets.overlayPix`), 0 = aucune. */
+  private ovCells: Uint8Array | null = null;
+
+  /**
+   * Pose les marquages au sol choisis (flèches, chevrons de freinage, traces de pneus, huile…) selon la géométrie du tracé :
+   * chevrons avant les virages, traces et bandes dans les virages, huile en sortie, flèches/logo sur les lignes droites,
+   * passage piéton après la ligne. Déterministe : un même circuit a toujours les mêmes marquages.
+   */
+  setOverlays(track: Track, names: string[]): void {
+    this.ovCells = null;
+    if (!names.length) return;
+    const cells = Math.floor(track.length / 10);
+    const segs = track.segments;
+    const cur = new Float32Array(cells);
+    let maxC = 0;
+    for (let k = 0; k < cells; k++) {
+      cur[k] = (Math.abs(segs[(2 * k) % segs.length].curve) + Math.abs(segs[(2 * k + 1) % segs.length].curve)) / 2;
+      maxC = Math.max(maxC, cur[k]);
+    }
+    const thr = Math.max(0.004, maxC * 0.3);
+    const corner = (k: number) => cur[((k % cells) + cells) % cells] > thr;
+    const hash = (k: number) => { let h = Math.imul(k + 1, 2654435761) >>> 0; h ^= h >>> 15; return Math.imul(h, 2246822519) >>> 0; };
+    const map = new Uint8Array(cells);
+    const startCell = Math.floor(track.finishZ / 10);
+    const wrap = (k: number) => ((k % cells) + cells) % cells;
+    const put = (k: number, id: number) => {
+      k = wrap(k);
+      const d = Math.min(wrap(k - startCell), wrap(startCell - k));
+      if (map[k] === 0 && d > 1) map[k] = id;
+    };
+    names.forEach((path, i) => {
+      const id = i + 1;
+      const name = path.split('/').pop()!.replace(/^overlay_|\.png$/g, '');
+      for (let k = 0; k < cells; k++) {
+        const c = corner(k), prev = corner(k - 1), next = corner(k + 1);
+        if (name === 'chevrons' && c && !prev) { put(k - 3, id); put(k - 4, id); }
+        else if (name === 'skid_marks' && c && prev && hash(k) % 3 === 0) put(k, id);
+        else if (name === 'runoff_stripes' && c && prev && next && k % 3 === 0) put(k, id);
+        else if (name === 'oil' && c && !next && hash(k) % 3 === 0) put(k + 1, id);
+        else if (name === 'arrows' && !c && !corner(k + 2) && k % 20 === 5) put(k, id);
+        else if (name === 'logo_asphalt' && !c && k % 40 === 17) put(k, id);
+        else if (name === 'crosswalk' && k === startCell + 5) put(k, id);
+      }
+    });
+    this.ovCells = map;
+  }
+
   draw(ctx: CanvasRenderingContext2D, a: Assets, track: Track, player: Player, dyn: DynSprite[]): void {
     const R = RENDER;
     const W = R.width, H = R.height;
@@ -90,6 +137,8 @@ export class RoadRenderer {
     const pitMips = a.pitMips;
     const ov = a.overlayStart;
     const pitOv = a.pitBoxOverlay;
+    const ovCells = this.ovCells;
+    const mkSets = a.overlayPix;
     const px = this.px;
     // Ligne de départ : surcouche de 10 m centrée sur la ligne d'arrivée
     const startZ0 = track.finishZ - 5;
@@ -166,6 +215,12 @@ export class RoadRenderer {
           // surcouche de départ : r = floor((z - z0) / 10 m × 64) ; -1 si hors de la ligne
           const dOv = (((zAbs - startZ0) % L) + L) % L;
           const ovRow = dOv < 10 ? Math.floor((dOv / 10) * 64) * T.width : -1;
+          // marquages au sol (case de 10 m -> surcouche choisie)
+          let mkRow = -1, mkPix = ov;
+          if (ovCells) {
+            const id = ovCells[Math.floor(zw / 10) % ovCells.length];
+            if (id > 0 && mkSets[id - 1]) { mkPix = mkSets[id - 1]; mkRow = Math.floor(((zw % 10) / 10) * 64) * T.width; }
+          }
           // voie des stands : axe latéral à cette distance (NaN = aucune) et ligne de marquage de boîte
           const hasPit = track.pitRoadAt(zw, pitGeo);
           // texture des stands, étirée de vibreur à vibreur (64 → 448 px) sur la largeur courante de la voie :
@@ -179,6 +234,7 @@ export class RoadRenderer {
             let u = uf | 0;
             if (u < 0) u = 0; else if (u >= T.width) u = T.width - 1;
             let col = tex[rowTex + u];
+            if (mkRow >= 0) col = blend(col, mkPix[mkRow + u]);
             if (ovRow >= 0) col = blend(col, ov[ovRow + u]);
             if (hasPit) {
               // à partir du vibreur gauche de la voie (u = 64 dans sa texture)
