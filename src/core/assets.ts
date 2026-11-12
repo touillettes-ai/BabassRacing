@@ -138,6 +138,8 @@ export interface SafetyCarAssets {
   spec: CarSpec;
   /** Dépanneuse (planche de virage 7 frames 160×96, vue de dos, même ancre que la safety car) */
   tow: HTMLImageElement;
+  /** Échelle de la dépanneuse (27 ppm : camion plus grand que les voitures) */
+  towPpm: number;
 }
 export async function loadSafetyCar(): Promise<SafetyCarAssets> {
   const [cars, sheet, tow] = await Promise.all([
@@ -145,7 +147,7 @@ export async function loadSafetyCar(): Promise<SafetyCarAssets> {
     loadImage('cars/safetycar_silver.png'),
     loadImage('cars/towtruck_yellow.png'),
   ]);
-  return { sheet, spec: cars.safetycar, tow };
+  return { sheet, spec: cars.safetycar, tow, towPpm: (cars.towtruck as unknown as { pixels_per_meter?: number })?.pixels_per_meter ?? 27 };
 }
 
 export interface MarshalAssets {
@@ -164,10 +166,11 @@ export async function loadMarshal(): Promise<MarshalAssets> {
   return { img, frame: spec.frame, count: spec.count, anchor: spec.anchor, fps: spec.fps };
 }
 
-export async function loadAssets(levelId: string, carId: string): Promise<Assets> {
+export async function loadAssets(levelId: string, carId: string, override?: Partial<LevelDef>): Promise<Assets> {
   const levels = await loadJSON<Record<string, LevelDef>>('levels.json');
-  const level = levels[levelId];
-  if (!level) throw new Error('Niveau inconnu : ' + levelId);
+  if (!levels[levelId]) throw new Error('Niveau inconnu : ' + levelId);
+  // assets choisis pour le circuit (circuits.json) par-dessus l'ambiance
+  const level: LevelDef = { ...levels[levelId], ...override };
 
   const [roadsJson, fxJson] = await Promise.all([
     loadJSON<{ textures: Record<string, { palette: { shoulder: number[] } }> }>('roads/roads.json'),

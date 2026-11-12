@@ -1,0 +1,350 @@
+{
+ "types": {
+  "permanent": {
+   "label": "Circuit permanent",
+   "desc": "Piste d'autodrome : vibreurs, grandes courbes rapides, dégagements. Grip élevé.",
+   "grip": 1.0,
+   "width_m": 12,
+   "road": "road_modern",
+   "roadside": [
+    "tree_oak",
+    "tree_pine",
+    "bush",
+    "tree_birch"
+   ],
+   "scenery_density": 0.8,
+   "curbs": true,
+   "walls": false
+  },
+  "urbain": {
+   "label": "Circuit urbain",
+   "desc": "Rues fermées : angles droits, murs et rails près de la piste, béton ou pavés. Pas de dégagement.",
+   "grip": 0.9,
+   "width_m": 10,
+   "road": "road_concrete",
+   "roadside": [
+    "tree_cypress",
+    "tree_cherry",
+    "bush"
+   ],
+   "scenery_density": 1.0,
+   "curbs": true,
+   "walls": true
+  },
+  "montagne": {
+   "label": "Col de montagne",
+   "desc": "Route de col : enchaînement d'épingles, forts dénivelés, bas-côtés étroits.",
+   "grip": 0.85,
+   "width_m": 8,
+   "road": "road_worn",
+   "roadside": [
+    "tree_pine",
+    "rock",
+    "tree_dead",
+    "tree_pine_snow"
+   ],
+   "scenery_density": 0.9,
+   "curbs": false,
+   "walls": false
+  },
+  "rallye": {
+   "label": "Rallye terre",
+   "desc": "Piste de terre : glisse permanente, ornières, pierres. Grip faible, dérapages longs.",
+   "grip": 0.6,
+   "width_m": 7,
+   "road": "road_dirt",
+   "roadside": [
+    "rock",
+    "bush",
+    "tree_dead",
+    "cactus"
+   ],
+   "scenery_density": 0.7,
+   "curbs": false,
+   "walls": false
+  },
+  "ovale": {
+   "label": "Ovale",
+   "desc": "Deux longues lignes droites et deux virages relevés. Vitesse maximale, aspiration.",
+   "grip": 1.0,
+   "width_m": 15,
+   "road": "road_modern",
+   "roadside": [
+    "grandstand"
+   ],
+   "scenery_density": 0.3,
+   "curbs": true,
+   "walls": true
+  },
+  "autoroute": {
+   "label": "Autoroute",
+   "desc": "Quatre voies, courbes très ouvertes, trafic : style OutRun. Grip normal.",
+   "grip": 0.95,
+   "width_m": 16,
+   "road": "road_highway",
+   "roadside": [
+    "tree_palm",
+    "tree_oak",
+    "billboard"
+   ],
+   "scenery_density": 0.6,
+   "curbs": false,
+   "walls": true
+  },
+  "kart": {
+   "label": "Kartodrome",
+   "desc": "Tracé court et très sinueux, vibreurs serrés. Idéal pour la citadine.",
+   "grip": 0.95,
+   "width_m": 6,
+   "road": "road_kart",
+   "roadside": [
+    "bush_flowers",
+    "tree_birch"
+   ],
+   "scenery_density": 0.5,
+   "curbs": true,
+   "walls": false
+  },
+  "glace": {
+   "label": "Piste de glace",
+   "desc": "Neige tassée et plaques de verglas : grip minimal, freinages anticipés.",
+   "grip": 0.45,
+   "width_m": 9,
+   "road": "road_ice",
+   "roadside": [
+    "tree_pine_snow",
+    "rock",
+    "tree_pine_snow"
+   ],
+   "scenery_density": 0.8,
+   "curbs": false,
+   "walls": false
+  },
+  "plage": {
+   "label": "Piste de plage",
+   "desc": "Sable tassé le long de la mer : grip moyen, grandes courbes.",
+   "grip": 0.7,
+   "width_m": 9,
+   "road": "road_sand",
+   "roadside": [
+    "tree_palm",
+    "rock",
+    "bush"
+   ],
+   "scenery_density": 0.6,
+   "curbs": false,
+   "walls": false
+  },
+  "industriel": {
+   "label": "Zone industrielle",
+   "desc": "Béton usé entre entrepôts et grues, virages à angle droit.",
+   "grip": 0.9,
+   "width_m": 10,
+   "road": "road_worn",
+   "roadside": [
+    "tree_dead",
+    "bush"
+   ],
+   "scenery_density": 0.4,
+   "curbs": true,
+   "walls": true
+  }
+ },
+ "tracks": {
+  "grand_prix_vert": {
+   "label": "Grand Prix Vert",
+   "type": "permanent",
+   "ambiance": "circuit_jour",
+   "length_m": 5200,
+   "file": "track_grand_prix_vert.json",
+   "map_64": "map_grand_prix_vert_64.png",
+   "map_128": "map_grand_prix_vert_128.png",
+   "corners": 9,
+   "elevation_m": 19.8,
+   "index": 0
+  },
+  "boucle_cotiere": {
+   "label": "Boucle Côtière",
+   "type": "plage",
+   "ambiance": "cote_coucher_soleil",
+   "length_m": 6400,
+   "file": "track_boucle_cotiere.json",
+   "map_64": "map_boucle_cotiere_64.png",
+   "map_128": "map_boucle_cotiere_128.png",
+   "corners": 2,
+   "elevation_m": 13.5,
+   "index": 1
+  },
+  "neon_city": {
+   "label": "Neon City",
+   "type": "urbain",
+   "ambiance": "ville_nuit",
+   "length_m": 4100,
+   "file": "track_neon_city.json",
+   "map_64": "map_neon_city_64.png",
+   "map_128": "map_neon_city_128.png",
+   "corners": 14,
+   "elevation_m": 2.7,
+   "index": 2
+  },
+  "col_de_la_tempete": {
+   "label": "Col de la Tempête",
+   "type": "montagne",
+   "ambiance": "montagne_pluie",
+   "length_m": 7800,
+   "file": "track_col_de_la_tempete.json",
+   "map_64": "map_col_de_la_tempete_64.png",
+   "map_128": "map_col_de_la_tempete_128.png",
+   "corners": 14,
+   "elevation_m": 85.9,
+   "index": 3
+  },
+  "speedway": {
+   "label": "Speedway Babass",
+   "type": "ovale",
+   "ambiance": "midi_desert",
+   "length_m": 4000,
+   "file": "track_speedway.json",
+   "map_64": "map_speedway_64.png",
+   "map_128": "map_speedway_128.png",
+   "corners": 8,
+   "elevation_m": 0.0,
+   "index": 4
+  },
+  "rallye_des_dunes": {
+   "label": "Rallye des Dunes",
+   "type": "rallye",
+   "ambiance": "midi_desert",
+   "length_m": 9000,
+   "file": "track_rallye_des_dunes.json",
+   "map_64": "map_rallye_des_dunes_64.png",
+   "map_128": "map_rallye_des_dunes_128.png",
+   "corners": 5,
+   "elevation_m": 34.3,
+   "index": 5
+  },
+  "kartodrome": {
+   "label": "Kartodrome de Babass",
+   "type": "kart",
+   "ambiance": "matin_campagne",
+   "length_m": 1600,
+   "file": "track_kartodrome.json",
+   "map_64": "map_kartodrome_64.png",
+   "map_128": "map_kartodrome_128.png",
+   "corners": 4,
+   "elevation_m": 4.2,
+   "index": 6
+  },
+  "autoroute_66": {
+   "label": "Autoroute 66",
+   "type": "autoroute",
+   "ambiance": "heure_doree",
+   "length_m": 12000,
+   "file": "track_autoroute_66.json",
+   "map_64": "map_autoroute_66_64.png",
+   "map_128": "map_autoroute_66_128.png",
+   "corners": 2,
+   "elevation_m": 12.6,
+   "index": 7
+  },
+  "glacier": {
+   "label": "Glacier Blanc",
+   "type": "glace",
+   "ambiance": "hiver",
+   "length_m": 5600,
+   "file": "track_glacier.json",
+   "map_64": "map_glacier_64.png",
+   "map_128": "map_glacier_128.png",
+   "corners": 10,
+   "elevation_m": 37.6,
+   "index": 8
+  },
+  "volcan_rouge": {
+   "label": "Volcan Rouge",
+   "type": "montagne",
+   "ambiance": "volcan",
+   "length_m": 6800,
+   "file": "track_volcan_rouge.json",
+   "map_64": "map_volcan_rouge_64.png",
+   "map_128": "map_volcan_rouge_128.png",
+   "corners": 9,
+   "elevation_m": 57.5,
+   "index": 9
+  },
+  "docks": {
+   "label": "Les Docks",
+   "type": "industriel",
+   "ambiance": "brume_industrielle",
+   "length_m": 4600,
+   "file": "track_docks.json",
+   "map_64": "map_docks_64.png",
+   "map_128": "map_docks_128.png",
+   "corners": 12,
+   "elevation_m": 5.4,
+   "index": 10
+  },
+  "jungle_run": {
+   "label": "Jungle Run",
+   "type": "rallye",
+   "ambiance": "jungle",
+   "length_m": 7200,
+   "file": "track_jungle_run.json",
+   "map_64": "map_jungle_run_64.png",
+   "map_128": "map_jungle_run_128.png",
+   "corners": 10,
+   "elevation_m": 27.0,
+   "index": 11
+  },
+  "aurore": {
+   "label": "Route de l'Aurore",
+   "type": "permanent",
+   "ambiance": "nuit_aurore",
+   "length_m": 5800,
+   "file": "track_aurore.json",
+   "map_64": "map_aurore_64.png",
+   "map_128": "map_aurore_128.png",
+   "corners": 8,
+   "elevation_m": 17.1,
+   "index": 12
+  },
+  "vieille_ville": {
+   "label": "Vieille Ville",
+   "type": "urbain",
+   "ambiance": "automne",
+   "length_m": 3800,
+   "file": "track_vieille_ville.json",
+   "map_64": "map_vieille_ville_64.png",
+   "map_128": "map_vieille_ville_128.png",
+   "corners": 15,
+   "elevation_m": 9.9,
+   "index": 13
+  }
+ },
+ "maps_sheet": {
+  "64": "maps_64.png",
+  "128": "maps_128.png",
+  "order": [
+   "grand_prix_vert",
+   "boucle_cotiere",
+   "neon_city",
+   "col_de_la_tempete",
+   "speedway",
+   "rallye_des_dunes",
+   "kartodrome",
+   "autoroute_66",
+   "glacier",
+   "volcan_rouge",
+   "docks",
+   "jungle_run",
+   "aurore",
+   "vieille_ville"
+  ]
+ },
+ "segment_format": {
+  "curve": "-1..1 (negatif = gauche), = turn_deg/6 borne ; a multiplier par la courbure max du moteur",
+  "turn_deg": "variation de cap sur le segment de 50 m",
+  "elev_m": "altitude relative du debut de segment (interpoler entre segments)",
+  "x,y": "position en metres pour tracer la minimap / la position du joueur",
+  "event": "corner | hairpin (zone de freinage)"
+ }
+}

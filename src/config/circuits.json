@@ -1,0 +1,25 @@
+{
+  "races": {
+    "muscle-2": {
+      "horizon": "backgrounds/horizon_city.png"
+    },
+    "retro-2": {
+      "sky_clear": "backgrounds/sky_sunset_clear.png",
+      "horizon": "backgrounds/horizon_dunes.png",
+      "clouds_far": "backgrounds/clouds_sunset_far.png",
+      "road": "roads/road_desert.png",
+      "music": "music/level_night.ogg",
+      "clouds_near": "backgrounds/clouds_sunset_near.png",
+      "roadside": [
+        "tree_cypress",
+        "tree_dead",
+        "cactus",
+        "bush",
+        "rock"
+      ]
+    },
+    "retro-1": {
+      "horizon": "backgrounds/horizon_mountains.png"
+    }
+  }
+}

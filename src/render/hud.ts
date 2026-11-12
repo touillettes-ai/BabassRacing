@@ -45,7 +45,7 @@ function needle(ctx: CanvasRenderingContext2D, a: Assets, value: number, max: nu
 /** HUD : compteurs, tours, chronos, mini-carte. (Carburant, pneus, position : jalons suivants.) */
 export function drawHud(
   ctx: CanvasRenderingContext2D, a: Assets, p: Player, race: Race, map: Minimap, pit: PitController, field: Field,
-  debug: string | null, ta: { record: number | null; flash: boolean } = { record: null, flash: false },
+  debug: string | null, ta: { record: number | null; flash: boolean; call?: boolean } = { record: null, flash: false },
 ): void {
   const W = RENDER.width, H = RENDER.height;
   const kmh = p.speed * 3.6;
@@ -64,12 +64,15 @@ export function drawHud(
     drawSmall(ctx, a, t('hud.lapSolo', { n: race.lap }), 8, 24);
   } else {
     drawSmall(ctx, a, t('hud.lap', { n: race.lap, total: race.laps }), 8, 24);
-    drawSmall(ctx, a, t('hud.lapsLeft', { n: race.lapsLeft }), 8, 38);
-    drawSmall(ctx, a, t('hud.pos', { n: field.playerPosition, total: field.entries.length }), 8, 52);
+    drawSmall(ctx, a, t('hud.pos', { n: field.playerPosition, total: field.entries.length }), 8, 38);
   }
   if (ta.record !== null) {
     const s = t('hud.record', { t: formatTime(ta.record) });
     drawSmall(ctx, a, s, Math.round(W / 2 - (s.length * 9) / 2), 82);
+  }
+  if (ta.call && Math.floor(performance.now() / 350) % 2 === 0) {
+    const s = t('pit.stratCall');
+    drawSmall(ctx, a, s, Math.round(W / 2 - (s.length * 9) / 2), 96);
   }
   if (ta.flash && Math.floor(performance.now() / 300) % 2 === 0) {
     const s = t('ta.newRecord');
@@ -122,14 +125,17 @@ export function drawHud(
   });
 
   drawFuelAndTyres(ctx, a, p, H, field.track.length);
-  drawPit(ctx, a, p, pit, W);
+  drawPit(ctx, a, p, pit, W, H);
 
   // alertes clignotantes (la plus grave d'abord)
-  const alert = p.tyres.anyPunctured ? 'alert.puncture' : p.dry ? 'alert.dry'
-    : p.fuel.low ? 'alert.fuelLow' : p.tyres.avgWear >= TYRES.warnWear ? 'alert.tyres' : null;
+  const alert = p.tyres.anyPunctured ? 'alert.puncture' : p.dry ? 'alert.dry' : p.fuel.low ? 'alert.fuelLow' : null;
   if (alert && Math.floor(performance.now() / 350) % 2 === 0) {
     const s = t(alert);
     drawSmall(ctx, a, s, Math.round(W / 2 - (s.length * 9) / 2), 150);
+  }
+  // pneus usés : alerte sur la gauche
+  if (!p.tyres.anyPunctured && p.tyres.avgWear >= TYRES.warnWear && Math.floor(performance.now() / 350) % 2 === 0) {
+    drawSmall(ctx, a, t('alert.tyres'), 8, 94);
   }
 
   if (WEATHER.wetness > 0.3) drawSmall(ctx, a, t('hud.wet'), 8, 80);
@@ -150,7 +156,7 @@ function gaugeColor(frac: number): string {
 /** Jauge de carburant (barre du pack, réduite) + tours d'essence restants ; 4 petites jauges de pneus. */
 function drawFuelAndTyres(ctx: CanvasRenderingContext2D, a: Assets, p: Player, H: number, L: number): void {
   const k = HUD.gaugeScale;
-  const fy = H - 52;
+  const fy = H - 66;
   sprite(ctx, a, 'icon_fuel', 8, fy - 2);
   const bf = a.hud.sprites.bar_frame;
   ctx.drawImage(a.hud.img, bf.x, bf.y, bf.w, bf.h, 24, fy, Math.round(bf.w * k), Math.round(bf.h * k));
@@ -162,7 +168,7 @@ function drawFuelAndTyres(ctx: CanvasRenderingContext2D, a: Assets, p: Player, H
   // tours d'essence restants (au lieu des litres)
   drawSmall(ctx, a, t('hud.fuelLaps', { n: p.fuelLaps(L).toFixed(1) }), 24 + Math.round(bf.w * k) + 4, fy - 1);
 
-  const ty = H - 36;
+  const ty = H - 50;
   sprite(ctx, a, 'icon_tyre', 8, ty);
   const gx = [24, 33], gy = [ty, ty + 15];
   for (let i = 0; i < 4; i++) {
@@ -182,13 +188,14 @@ function drawFuelAndTyres(ctx: CanvasRenderingContext2D, a: Assets, p: Player, H
 }
 
 /** Panneau de stratégie (choix pneus / carburant), indicateurs de la voie des stands et du service. */
-function drawPit(ctx: CanvasRenderingContext2D, a: Assets, p: Player, pit: PitController, W: number): void {
+function drawPit(ctx: CanvasRenderingContext2D, a: Assets, p: Player, pit: PitController, W: number, H: number): void {
   const cx = (s: string) => Math.round(W / 2 - (s.length * 9) / 2);
   const blink = Math.floor(performance.now() / 350) % 2 === 0;
 
   // En course : seul l'état de l'arrêt (armé ou non) est rappelé ; pneus et essence se règlent à l'entrée dans la voie des stands
   if (pit.phase === 'none') {
-    drawSmall(ctx, a, t(pit.intent ? 'pit.requested' : 'pit.request'), 8, 108);
+    // sous l'état des pneus (bas gauche)
+    drawSmall(ctx, a, t(pit.intent ? 'pit.requested' : 'pit.request'), 8, H - 18);
     if (pit.intent) sprite(ctx, a, 'banner_pit', Math.round(W / 2 - 75), 140);
   } else if (pit.phase !== 'service') {
     sprite(ctx, a, 'banner_pit', Math.round(W / 2 - 75), 140);

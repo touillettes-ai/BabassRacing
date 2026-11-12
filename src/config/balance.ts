@@ -55,6 +55,7 @@ export const PHYSICS = {
   accel: 24, // m/s² à l'arrêt
   accelCurvePower: 1.4, // plus grand = accélère plus longtemps à fond
   brakeDecel: 46,
+  brakeDecelBase: 46,
   coastDecel: 7,
   /** Direction */
   steerResponse: 10, // lissage de la valeur `steer` (README : 10)
@@ -98,7 +99,7 @@ export const PHYSICS = {
   /** Tête-à-queue : ratio mini, durée de dérapage soutenu (s) avant de partir, vitesse mini */
   spinRatio: 1.45,
   spinRatioBase: 1.45,
-  spinTime: 0.45,
+  spinTime: 0.7, // laisse ~0,7 s pour lever le pied / corriger après la fumée de dérapage (était 0,45)
   spinMinSpeed: 15,
   spinDuration: 1.5,
   spinDecel: 28,
@@ -326,8 +327,11 @@ export const PIT = {
   stepS: 0.11,
   /** Changement des 4 pneus : du vérin levé au vérin baissé = 20 pas de la séquence (s) */
   tyreServiceS: 2.2,
+  tyreServiceSBase: 2.2,
   /** Ravitaillement : débit (L/s) et temps de branchement du pistolet (s) */
   refuelRate: 7,
+  /** Valeurs de base (sans amélioration des mécaniciens) : `refuelRate` et `tyreServiceS` sont modifiés par le garage */
+  refuelRateBase: 7,
   refuelSetupS: 0.4,
   /** Choix du joueur : gommes et niveaux de réservoir visés (fraction ; 0 = pas de ravitaillement) */
   tyreOptions: ['none', 'soft', 'medium', 'hard', 'rain'] as const,
@@ -376,6 +380,8 @@ export const AI = {
   rubber: { rangeM: 300, max: 0.035 },
   /** Après une sortie de piste : durée à l'arrêt avant de repartir (s) et position d'arrêt (m) */
   recoverS: 14,
+  /** Panne définitive d'un adversaire (hors rival) : probabilité par seconde de course ; la voiture reste garée et une safety car sort */
+  breakdownPerS: 0.0002,
   shoulderX: 9.2,
   /** Vitesse après l'arrivée (m/s) */
   finishCoastSpeed: 30,
@@ -500,4 +506,40 @@ export const AUDIO = {
   /** Durée du fondu enchaîné entre deux musiques (s) */
   fadeS: 1.2,
   music: { theme: 'music/babass_racing_theme.ogg' as string | null },
+};
+
+/** Saison : points par place (6 voitures), places qualificatives pour monter, gains d'argent. */
+export const SEASON = {
+  points: [25, 18, 15, 12, 10, 8],
+  /** Rang final au championnat (inclus) pour passer en catégorie supérieure ; sinon on rejoue toute la catégorie */
+  promotionRank: 3,
+  /** Prime par place (€) pour la catégorie 1 ; croît de `prizeCatGrowth` par catégorie ; bonus si Kevin est battu */
+  prize: [12000, 8000, 5500, 3500, 2000, 1000],
+  prizeCatGrowth: 0.3,
+  beatKevinBonus: 0.15,
+};
+
+/**
+ * Améliorations achetées au garage avec l'argent des courses.
+ *  - mécaniciens (conservés de catégorie en catégorie) : remplissage d'essence, changement de pneus ;
+ *  - pit wall (conservé) : stratège pneus (stratégie de pit préréglée à l'entrée au stand), stratège essence (appel au stand idéal) ;
+ *  - voiture (remise à zéro à chaque changement de catégorie) : moteur (vitesse max), embrayage (accélération), freins (freinage, moins de tête-à-queue).
+ */
+export const UPGRADES = {
+  maxLevel: 5,
+  /** Prix de base (€) du niveau 1 ; chaque niveau coûte (1 + growth × niveau) fois plus ; × (1 + catGrowth × catégorie) */
+  costBase: { refuel: 4000, tyre: 4000, engine: 5000, clutch: 4000, brakes: 4000, stratTyre: 70000, stratFuel: 70000 },
+  costGrowth: 0.9,
+  costCatGrowth: 0.2,
+  /** Les stratèges se débloquent au milieu du jeu : à partir de cette catégorie (indice, 4 = la 5ᵉ) */
+  stratUnlockCat: 4,
+  /** Effet par niveau (fraction) */
+  effects: {
+    refuelRate: 0.15, // débit d'essence +15 % par niveau
+    tyreService: 0.08, // durée de changement des pneus −8 % par niveau
+    engineSpeed: 0.025, // vitesse max +2,5 %
+    clutchAccel: 0.06, // accélération +6 %
+    brakeDecel: 0.05, // freinage +5 %
+    brakeSpin: 0.06, // seuil de tête-à-queue +0,06 de ratio
+  },
 };

@@ -1,126 +1,1011 @@
 {
-  "_help": "Dialogues du mode carrière, édités avec tools/dialogue-editor.html (npm run dev, puis /tools/dialogue-editor.html). who : babass | marcel | kevin | elle | leo ; expr : neutral | happy | angry | surprised ; when : always | rivalBehind (Babass a battu Kevin) | rivalAhead (Kevin devant) | passed (qualifié pour la suite) | failed (non qualifié). Variables du texte : {kevin} {elle} {cat} {pos} {rival} {n}.",
+  "_help": "Dialogues du mode carrière, édités avec tools/dialogue-editor.html. who : babass | marcel | kevin | elle | leo. expr : neutral | happy | angry | surprised. Condition « if » (facultative, toutes les clés doivent correspondre) : result = won | podium | noPodium (course) ; rival = ahead (le rival est devant) | behind (le rival est derrière) ; season = promoted | notPromoted. Variables : {pilote} {ecurie} {kevin} {elle} {marcel} {leo} {cat} {pos} {rival} {n}. « names » : noms affichés des personnages.",
+  "names": {
+    "babass": "Bastien",
+    "marcel": "Marcel",
+    "kevin": "Alex",
+    "elle": "Hélène",
+    "leo": "Léo"
+  },
   "intro": [
     {
       "who": "marcel",
       "expr": "happy",
-      "text": "Babass ! Réveille-toi, la saison commence aujourd’hui !",
-      "when": "always"
+      "text": "Alors c'est toi, {pilote}, le nouveau ? Bienvenue ! Là, c'est le garage. Là, c'est le bureau. Là, c'est la cuisine. C'est le même hangar, mais on fait comme si."
     },
     {
       "who": "babass",
-      "expr": "surprised",
-      "text": "Déjà ? J’ai à peine fini mon croissant, patron.",
-      "when": "always"
+      "expr": "neutral",
+      "text": "Je suis là pour gagner."
+    },
+    {
+      "who": "leo",
+      "expr": "happy",
+      "text": "Un ambitieux ! Parfait ! J'ai passé la nuit sur la voiture. Enfin, dessous. J'ai dormi dessous."
     },
     {
       "who": "marcel",
       "expr": "neutral",
-      "text": "Ton rival de toujours s’est inscrit lui aussi : {kevin}.",
-      "when": "always"
+      "text": "Voici Léo, notre ingénieur en chef. C'est aussi notre seul ingénieur. Et notre seul mécano. Et notre livreur de pizzas."
     },
     {
-      "who": "kevin",
-      "expr": "angry",
-      "text": "Salut Babass. Prépare-toi à manger de la poussière, comme d’habitude.",
-      "when": "always"
-    },
-    {
-      "who": "babass",
-      "expr": "angry",
-      "text": "Un jour, {kevin}, un jour... Et ce jour-là, {elle} me dira oui !",
-      "when": "always"
+      "who": "leo",
+      "expr": "neutral",
+      "text": "Je suis polyvalent. Surtout pour les pizzas."
     },
     {
       "who": "elle",
-      "expr": "happy",
-      "text": "Je ne dis rien, mais j’aime les pilotes qui gagnent. Bonne chance, Babass !",
-      "when": "always"
+      "expr": "neutral",
+      "text": "Ne t'inquiète pas, {pilote}, ils sont toujours comme ça. Moi, je m'occupe du chrono, de la com, du café, et de rappeler à Marcel qu'on a des factures."
+    },
+    {
+      "who": "marcel",
+      "expr": "neutral",
+      "text": "Des factures ? Quelles factures ?"
+    },
+    {
+      "who": "elle",
+      "expr": "neutral",
+      "text": "Celles que tu ranges dans le tiroir « Plus tard »."
     },
     {
       "who": "babass",
+      "expr": "neutral",
+      "text": "Et toi, tu es… ?"
+    },
+    {
+      "who": "elle",
+      "expr": "neutral",
+      "text": "Celle qui fait tourner la boutique. D'ailleurs, tu as vu l'actu ? {kevin} vient de signer chez Vortex Racing."
+    },
+    {
+      "who": "babass",
+      "expr": "neutral",
+      "text": "{kevin} ? Le {kevin} du karting ?"
+    },
+    {
+      "who": "elle",
+      "expr": "neutral",
+      "text": "Lui-même. Un top team : budget, soufflerie, motorhome avec fontaine à chocolat."
+    },
+    {
+      "who": "babass",
+      "expr": "neutral",
+      "text": "Encore lui… Il a eu le meilleur matériel toute ma carrière en karting. Et moi, j'ai eu les meilleures excuses."
+    },
+    {
+      "who": "marcel",
+      "expr": "neutral",
+      "text": "Nous, on n'a pas de fontaine à chocolat. On a une voiture qui démarre une fois sur deux."
+    },
+    {
+      "who": "leo",
       "expr": "happy",
-      "text": "Tu as entendu ça ?! Contact, patron !",
-      "when": "always"
+      "text": "Une fois sur deux, c'est 50 %. C'est un taux de réussite honorable !"
+    },
+    {
+      "who": "babass",
+      "expr": "neutral",
+      "text": "Alors il va falloir être plus malin que lui."
+    },
+    {
+      "who": "marcel",
+      "expr": "neutral",
+      "text": "Ça, mon garçon, c'est le seul budget qu'on ait. Bienvenue en Coupe des Rétro."
     }
   ],
   "endings": {
     "good": [
       {
-        "who": "marcel",
-        "expr": "happy",
-        "text": "Champion ! Tu as dominé {kevin} toute la saison !",
-        "when": "always"
-      },
-      {
-        "who": "elle",
-        "expr": "happy",
-        "text": "Babass... je crois que j’ai trouvé mon pilote préféré.",
-        "when": "always"
-      },
-      {
         "who": "babass",
         "expr": "surprised",
-        "text": "Tu veux dire que... oui ?!",
-        "when": "always"
+        "text": "P{pos} ! {kevin} est P{rival} ! Je suis… CHAMPION ?!"
       },
       {
         "who": "elle",
-        "expr": "happy",
-        "text": "Oui, pour un dîner. Pas dans ta voiture : elle sent la gomme.",
-        "when": "always"
+        "expr": "neutral",
+        "text": "Tu es champion, {pilote}. Champion du monde. Je crois que je vais m'évanouir. Léo, rattrape-moi."
+      },
+      {
+        "who": "leo",
+        "expr": "neutral",
+        "text": "Je te rattrape. Je tiens le sandwich. Je ne peux pas tout faire."
+      },
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "Je pleure. Je pleure comme un bébé. Je prends ma retraite avec le plus beau titre du monde. Dans un hangar. Avec un tiroir."
       },
       {
         "who": "kevin",
-        "expr": "angry",
-        "text": "Je démissionne. Enfin, je prends une pause.",
-        "when": "always"
+        "expr": "neutral",
+        "text": "Félicitations, champion. Je dois l'avouer : je suis fier de m'être battu contre toi. Pendant toutes ces années. Moi, j'ai toujours eu le meilleur matos. Toi, tu avais la meilleure équipe. Et ça, ça s'achète pas."
+      },
+      {
+        "who": "babass",
+        "expr": "neutral",
+        "text": "{elle}, je voulais te dire…"
+      },
+      {
+        "who": "elle",
+        "expr": "neutral",
+        "text": "Je sais. Moi aussi. Embrasse-moi, champion."
+      },
+      {
+        "who": "marcel",
+        "expr": "happy",
+        "text": "Allez, on rentre. Léo, le champagne. Pas sur la voiture ! SUR LA VOITURE NON !"
       }
     ],
     "mid": [
       {
-        "who": "marcel",
-        "expr": "neutral",
-        "text": "Une saison honorable. Ni champion, ni ridicule.",
-        "when": "always"
+        "who": "babass",
+        "expr": "surprised",
+        "text": "P{pos} ! {kevin} est P{rival} ! Je suis… CHAMPION ?!"
       },
       {
         "who": "elle",
-        "expr": "happy",
-        "text": "Tu as de la ressource, Babass. On verra l’an prochain.",
-        "when": "always"
+        "expr": "neutral",
+        "text": "Tu es champion, {pilote}. Champion du monde. Je crois que je vais m'évanouir. Léo, rattrape-moi."
+      },
+      {
+        "who": "leo",
+        "expr": "neutral",
+        "text": "Je te rattrape. Je tiens le sandwich. Je ne peux pas tout faire."
+      },
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "Je pleure. Je pleure comme un bébé. Je prends ma retraite avec le plus beau titre du monde. Dans un hangar. Avec un tiroir."
+      },
+      {
+        "who": "kevin",
+        "expr": "neutral",
+        "text": "Félicitations, champion. Je dois l'avouer : je suis fier de m'être battu contre toi. Pendant toutes ces années. Moi, j'ai toujours eu le meilleur matos. Toi, tu avais la meilleure équipe. Et ça, ça s'achète pas."
       },
       {
         "who": "babass",
         "expr": "neutral",
-        "text": "L’an prochain, c’est dans combien de tours ?",
-        "when": "always"
+        "text": "{elle}, je voulais te dire…"
+      },
+      {
+        "who": "elle",
+        "expr": "neutral",
+        "text": "Je sais. Moi aussi. Embrasse-moi, champion."
+      },
+      {
+        "who": "marcel",
+        "expr": "happy",
+        "text": "Allez, on rentre. Léo, le champagne. Pas sur la voiture ! SUR LA VOITURE NON !"
       }
     ],
     "bad": [
       {
-        "who": "marcel",
-        "expr": "neutral",
-        "text": "Bon... la saison est finie. Tu as roulé, c’est déjà ça.",
-        "when": "always"
-      },
-      {
-        "who": "kevin",
-        "expr": "happy",
-        "text": "{elle}, un café ? Babass peut venir, il y a de la place pour les spectateurs.",
-        "when": "always"
+        "who": "babass",
+        "expr": "surprised",
+        "text": "P{pos} ! {kevin} est P{rival} ! Je suis… CHAMPION ?!"
       },
       {
         "who": "elle",
         "expr": "neutral",
-        "text": "Babass, je préfère les pilotes qui finissent devant. Mais je garde ton numéro, pour les pneus.",
-        "when": "always"
+        "text": "Tu es champion, {pilote}. Champion du monde. Je crois que je vais m'évanouir. Léo, rattrape-moi."
+      },
+      {
+        "who": "leo",
+        "expr": "neutral",
+        "text": "Je te rattrape. Je tiens le sandwich. Je ne peux pas tout faire."
+      },
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "Je pleure. Je pleure comme un bébé. Je prends ma retraite avec le plus beau titre du monde. Dans un hangar. Avec un tiroir."
+      },
+      {
+        "who": "kevin",
+        "expr": "neutral",
+        "text": "Félicitations, champion. Je dois l'avouer : je suis fier de m'être battu contre toi. Pendant toutes ces années. Moi, j'ai toujours eu le meilleur matos. Toi, tu avais la meilleure équipe. Et ça, ça s'achète pas."
+      },
+      {
+        "who": "babass",
+        "expr": "neutral",
+        "text": "{elle}, je voulais te dire…"
+      },
+      {
+        "who": "elle",
+        "expr": "neutral",
+        "text": "Je sais. Moi aussi. Embrasse-moi, champion."
+      },
+      {
+        "who": "marcel",
+        "expr": "happy",
+        "text": "Allez, on rentre. Léo, le champagne. Pas sur la voiture ! SUR LA VOITURE NON !"
+      }
+    ]
+  },
+  "seasonEnd": {
+    "retro": [
+      {
+        "who": "marcel",
+        "expr": "happy",
+        "text": "Saison terminée ! {pilote} finit {pos}ᵉ au championnat et monte en catégorie supérieure !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as devancé {kevin} sur toute la saison, {pilote}. Je suis fière de toi !",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "angry",
+        "text": "Une saison... juste une saison de chance, {pilote}. On se retrouve plus haut.",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Je te devance encore au classement, mais bon, félicitations pour la montée.",
+        "if": {
+          "season": "promoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "happy",
+        "text": "Direction la catégorie suivante, avec une voiture neuve à améliorer !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "Seulement {pos}ᵉ au championnat : il fallait finir dans les 3 premiers. On rejoue toute la catégorie.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as quand même battu {kevin} au classement. Garde la tête haute.",
+        "if": {
+          "season": "notPromoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Devant toi, et pas de montée pour toi. Quelle belle saison !",
+        "if": {
+          "season": "notPromoted",
+          "rival": "ahead"
+        }
       },
       {
         "who": "babass",
         "expr": "angry",
-        "text": "Je reviendrai plus fort. Avec une dépanneuse en option.",
-        "when": "always"
+        "text": "On remet ça. Cette fois, j’améliore la voiture d’abord.",
+        "if": {
+          "season": "notPromoted"
+        }
+      }
+    ],
+    "hothatch": [
+      {
+        "who": "marcel",
+        "expr": "happy",
+        "text": "Saison terminée ! {pilote} finit {pos}ᵉ au championnat et monte en catégorie supérieure !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as devancé {kevin} sur toute la saison, {pilote}. Je suis fière de toi !",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "angry",
+        "text": "Une saison... juste une saison de chance, {pilote}. On se retrouve plus haut.",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Je te devance encore au classement, mais bon, félicitations pour la montée.",
+        "if": {
+          "season": "promoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "happy",
+        "text": "Direction la catégorie suivante, avec une voiture neuve à améliorer !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "Seulement {pos}ᵉ au championnat : il fallait finir dans les 3 premiers. On rejoue toute la catégorie.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as quand même battu {kevin} au classement. Garde la tête haute.",
+        "if": {
+          "season": "notPromoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Devant toi, et pas de montée pour toi. Quelle belle saison !",
+        "if": {
+          "season": "notPromoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "angry",
+        "text": "On remet ça. Cette fois, j’améliore la voiture d’abord.",
+        "if": {
+          "season": "notPromoted"
+        }
+      }
+    ],
+    "pickup": [
+      {
+        "who": "marcel",
+        "expr": "happy",
+        "text": "Saison terminée ! {pilote} finit {pos}ᵉ au championnat et monte en catégorie supérieure !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as devancé {kevin} sur toute la saison, {pilote}. Je suis fière de toi !",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "angry",
+        "text": "Une saison... juste une saison de chance, {pilote}. On se retrouve plus haut.",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Je te devance encore au classement, mais bon, félicitations pour la montée.",
+        "if": {
+          "season": "promoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "happy",
+        "text": "Direction la catégorie suivante, avec une voiture neuve à améliorer !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "Seulement {pos}ᵉ au championnat : il fallait finir dans les 3 premiers. On rejoue toute la catégorie.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as quand même battu {kevin} au classement. Garde la tête haute.",
+        "if": {
+          "season": "notPromoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Devant toi, et pas de montée pour toi. Quelle belle saison !",
+        "if": {
+          "season": "notPromoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "angry",
+        "text": "On remet ça. Cette fois, j’améliore la voiture d’abord.",
+        "if": {
+          "season": "notPromoted"
+        }
+      }
+    ],
+    "muscle": [
+      {
+        "who": "marcel",
+        "expr": "happy",
+        "text": "Saison terminée ! {pilote} finit {pos}ᵉ au championnat et monte en catégorie supérieure !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as devancé {kevin} sur toute la saison, {pilote}. Je suis fière de toi !",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "angry",
+        "text": "Une saison... juste une saison de chance, {pilote}. On se retrouve plus haut.",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Je te devance encore au classement, mais bon, félicitations pour la montée.",
+        "if": {
+          "season": "promoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "happy",
+        "text": "Direction la catégorie suivante, avec une voiture neuve à améliorer !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "Seulement {pos}ᵉ au championnat : il fallait finir dans les 3 premiers. On rejoue toute la catégorie.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as quand même battu {kevin} au classement. Garde la tête haute.",
+        "if": {
+          "season": "notPromoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Devant toi, et pas de montée pour toi. Quelle belle saison !",
+        "if": {
+          "season": "notPromoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "angry",
+        "text": "On remet ça. Cette fois, j’améliore la voiture d’abord.",
+        "if": {
+          "season": "notPromoted"
+        }
+      }
+    ],
+    "wedge": [
+      {
+        "who": "marcel",
+        "expr": "happy",
+        "text": "Saison terminée ! {pilote} finit {pos}ᵉ au championnat et monte en catégorie supérieure !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as devancé {kevin} sur toute la saison, {pilote}. Je suis fière de toi !",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "angry",
+        "text": "Une saison... juste une saison de chance, {pilote}. On se retrouve plus haut.",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Je te devance encore au classement, mais bon, félicitations pour la montée.",
+        "if": {
+          "season": "promoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "happy",
+        "text": "Direction la catégorie suivante, avec une voiture neuve à améliorer !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "Seulement {pos}ᵉ au championnat : il fallait finir dans les 3 premiers. On rejoue toute la catégorie.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as quand même battu {kevin} au classement. Garde la tête haute.",
+        "if": {
+          "season": "notPromoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Devant toi, et pas de montée pour toi. Quelle belle saison !",
+        "if": {
+          "season": "notPromoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "angry",
+        "text": "On remet ça. Cette fois, j’améliore la voiture d’abord.",
+        "if": {
+          "season": "notPromoted"
+        }
+      }
+    ],
+    "supercar": [
+      {
+        "who": "marcel",
+        "expr": "happy",
+        "text": "Saison terminée ! {pilote} finit {pos}ᵉ au championnat et monte en catégorie supérieure !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as devancé {kevin} sur toute la saison, {pilote}. Je suis fière de toi !",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "angry",
+        "text": "Une saison... juste une saison de chance, {pilote}. On se retrouve plus haut.",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Je te devance encore au classement, mais bon, félicitations pour la montée.",
+        "if": {
+          "season": "promoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "happy",
+        "text": "Direction la catégorie suivante, avec une voiture neuve à améliorer !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "Seulement {pos}ᵉ au championnat : il fallait finir dans les 3 premiers. On rejoue toute la catégorie.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as quand même battu {kevin} au classement. Garde la tête haute.",
+        "if": {
+          "season": "notPromoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Devant toi, et pas de montée pour toi. Quelle belle saison !",
+        "if": {
+          "season": "notPromoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "angry",
+        "text": "On remet ça. Cette fois, j’améliore la voiture d’abord.",
+        "if": {
+          "season": "notPromoted"
+        }
+      }
+    ],
+    "futur": [
+      {
+        "who": "marcel",
+        "expr": "happy",
+        "text": "Saison terminée ! {pilote} finit {pos}ᵉ au championnat et monte en catégorie supérieure !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as devancé {kevin} sur toute la saison, {pilote}. Je suis fière de toi !",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "angry",
+        "text": "Une saison... juste une saison de chance, {pilote}. On se retrouve plus haut.",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Je te devance encore au classement, mais bon, félicitations pour la montée.",
+        "if": {
+          "season": "promoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "happy",
+        "text": "Direction la catégorie suivante, avec une voiture neuve à améliorer !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "Seulement {pos}ᵉ au championnat : il fallait finir dans les 3 premiers. On rejoue toute la catégorie.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as quand même battu {kevin} au classement. Garde la tête haute.",
+        "if": {
+          "season": "notPromoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Devant toi, et pas de montée pour toi. Quelle belle saison !",
+        "if": {
+          "season": "notPromoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "angry",
+        "text": "On remet ça. Cette fois, j’améliore la voiture d’abord.",
+        "if": {
+          "season": "notPromoted"
+        }
+      }
+    ],
+    "gt3": [
+      {
+        "who": "marcel",
+        "expr": "happy",
+        "text": "Saison terminée ! {pilote} finit {pos}ᵉ au championnat et monte en catégorie supérieure !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as devancé {kevin} sur toute la saison, {pilote}. Je suis fière de toi !",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "angry",
+        "text": "Une saison... juste une saison de chance, {pilote}. On se retrouve plus haut.",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Je te devance encore au classement, mais bon, félicitations pour la montée.",
+        "if": {
+          "season": "promoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "happy",
+        "text": "Direction la catégorie suivante, avec une voiture neuve à améliorer !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "Seulement {pos}ᵉ au championnat : il fallait finir dans les 3 premiers. On rejoue toute la catégorie.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as quand même battu {kevin} au classement. Garde la tête haute.",
+        "if": {
+          "season": "notPromoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Devant toi, et pas de montée pour toi. Quelle belle saison !",
+        "if": {
+          "season": "notPromoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "angry",
+        "text": "On remet ça. Cette fois, j’améliore la voiture d’abord.",
+        "if": {
+          "season": "notPromoted"
+        }
+      }
+    ],
+    "hypercar": [
+      {
+        "who": "marcel",
+        "expr": "happy",
+        "text": "Saison terminée ! {pilote} finit {pos}ᵉ au championnat et monte en catégorie supérieure !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as devancé {kevin} sur toute la saison, {pilote}. Je suis fière de toi !",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "angry",
+        "text": "Une saison... juste une saison de chance, {pilote}. On se retrouve plus haut.",
+        "if": {
+          "season": "promoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Je te devance encore au classement, mais bon, félicitations pour la montée.",
+        "if": {
+          "season": "promoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "happy",
+        "text": "Direction la catégorie suivante, avec une voiture neuve à améliorer !",
+        "if": {
+          "season": "promoted"
+        }
+      },
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "Seulement {pos}ᵉ au championnat : il fallait finir dans les 3 premiers. On rejoue toute la catégorie.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as quand même battu {kevin} au classement. Garde la tête haute.",
+        "if": {
+          "season": "notPromoted",
+          "rival": "behind"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "Devant toi, et pas de montée pour toi. Quelle belle saison !",
+        "if": {
+          "season": "notPromoted",
+          "rival": "ahead"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "angry",
+        "text": "On remet ça. Cette fois, j’améliore la voiture d’abord.",
+        "if": {
+          "season": "notPromoted"
+        }
+      }
+    ],
+    "f1": [
+      {
+        "who": "babass",
+        "expr": "neutral",
+        "text": "P{pos}… {kevin} P{rival}. Je n'ai pas gagné le championnat. Je suis désolé.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "neutral",
+        "text": "Tu n'as pas à l'être. Tu es arrivé jusqu'ici. Avec une voiture en carton, un hangar et un canard.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "On a commencé avec une voiture qui démarrait une fois sur deux. On finit avec une F1. Je n'en demandais pas tant.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "leo",
+        "expr": "neutral",
+        "text": "Et moi, j'ai appris à ne pas laisser de boulon en trop. Presque. J'en ai un dans la poche.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "kevin",
+        "expr": "neutral",
+        "text": "Félicitations pour ta saison, {pilote}. Je suis le premier surpris de te le dire. Tu es la meilleure bagarre de ma carrière.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "neutral",
+        "text": "Merci, {kevin}. Toi aussi. Même si tu as pris ma place sur le podium.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "neutral",
+        "text": "Vous êtes agaçants tous les deux. Mais je vous adore. Allez, rentrons. Il y a du fromage de Gaston pour tout le monde.",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "babass",
+        "expr": "neutral",
+        "text": "{elle}, je voulais te dire…",
+        "if": {
+          "season": "notPromoted"
+        }
+      },
+      {
+        "who": "elle",
+        "expr": "neutral",
+        "text": "Je sais. Moi aussi. L'an prochain, on gagne. Ensemble. Embrasse-moi, perdant magnifique.",
+        "if": {
+          "season": "notPromoted"
+        }
       }
     ]
   },
@@ -130,111 +1015,302 @@
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
-          "when": "always"
+          "text": "Première course, {pilote}. L'Autriche : des montagnes, des vaches, et un circuit qui monte tout le temps. Rassure-toi, ça redescend aussi."
         },
         {
-          "who": "babass",
+          "who": "leo",
           "expr": "neutral",
-          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
-          "when": "always"
+          "text": "J'ai gonflé les pneus à l'œil. Ils sont à la bonne pression. Ou presque. Ou pas."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "J'ai calé le chrono sur la sonnerie de la cafetière. Si tu fais un bon temps, ça sentira le café."
         },
         {
           "who": "kevin",
-          "expr": "angry",
-          "text": "Je t’enroule au premier virage, Babass.",
-          "when": "always"
+          "expr": "happy",
+          "text": "Salut {pilote} ! Vortex est venu en hélicoptère. Et toi, en camionnette ? C'est mignon, c'est vintage."
         }
       ],
       "after": [
         {
           "who": "elle",
           "expr": "happy",
-          "text": "Bravo Babass ! Tu as battu {kevin} !",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "babass",
-          "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
-        },
-        {
-          "who": "elle",
-          "expr": "neutral",
-          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
-          "when": "rivalAhead"
-        },
-        {
-          "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "text": "P{pos} pour toi, P{rival} pour {kevin} ! Tu viens de battre un pilote Vortex. Marcel, souris, c'est un ordre.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Je souris. Ça fait bizarre au visage.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Chance du débutant. Au karting aussi, tu avais de la chance. Une fois. En 2014.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival} pour moi, P{pos} pour toi. Remarque, c'est déjà beau de finir. Je suis fier de toi.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "leo",
+          "expr": "happy",
+          "text": "Mais on a fini ! La voiture est entière ! Le moteur a fait un bruit de bouilloire, mais il est entier !",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Première course, première leçon : ça ne va pas se faire tout seul. Allez, je te sers un café, {pilote}.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
     "retro-2": {
-      "before": [],
-      "after": [
-        {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "babass",
-          "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
-        },
+      "before": [
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
-          "when": "rivalAhead"
+          "text": "Zandvoort : des dunes, du vent, et un virage relevé. La météo dit : « Beaucoup de vent ». Merci, la météo."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "J'ai collé les rétros avec du scotch spécial. Du scotch « Mistral ». Il ne se décolle presque jamais."
         },
         {
           "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "expr": "neutral",
+          "text": "Presque ?"
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Concentre-toi sur la piste. Et si ta voiture s'envole, c'est que {kevin} a trop forcé sur l'aileron."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "P{pos}, devant {kevin} qui finit P{rival}. Le vent était avec moi.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Le vent, et un pilote qui regarde enfin les virages. Bravo.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Léo, ton scotch a tenu ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Le scotch, oui. Le rétro, non. Mais il a fait un joli vol.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival} pour moi, P{pos} pour toi. Dans le vent, il faut savoir être léger. Moi je suis aérodynamique.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Moi, j'ai une camionnette comme sponsor.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ne l'écoute pas, {pilote}. J'ai vu ta trajectoire : tu as fait un super premier secteur. Il te manque juste… la fin.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "retro-3": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "La Hongrie. Trente-cinq degrés, un circuit étroit, et une clim qui est… la fenêtre ouverte."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "J'ai ajouté un ventilateur dans l'habitacle. Il marche avec la pile de la télécommande."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Bois de l'eau, {pilote}. Beaucoup. Je ne veux pas devoir t'évacuer comme un steak cuit."
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Chez Vortex, on a la clim. Même dans le casque. Mais bon, la chaleur, ça forge le caractère. Courage !"
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! Et {kevin} P{rival}, tout rouge comme une écrevisse. J'adore la Hongrie.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je te l'avais dit, l'eau ça aide. Et la tête froide aussi.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "C'est le soleil qui m'a trahi. Je demanderai un casque réfrigéré. Voire deux.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival} pour moi, P{pos} pour toi. Je crois que ta voiture a fondu à la fin. Ça sentait le plastique.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Ce n'était pas le plastique. C'était mon sandwich, il était dans le moteur.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "surprised",
+          "text": "Dans le MOTEUR ?! Léo, on a une voiture et un four. Il faut choisir.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "retro-4": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Fuji. Le Japon, la dernière course de la saison, et surtout une immense ligne droite : tout est dans le sprint final."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Je n'ai rien changé à la voiture. Enfin, j'ai changé un boulon. Mais c'était le même."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Brouillard sur la montagne. On ne voit pas le Mont Fuji, mais le Mont Fuji, lui, nous voit."
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Dernière course, {pilote}. Tu verras, en haut des classements, on respire mieux. Ça pique un peu."
+        }
+      ],
+      "after": [
+        {
+          "who": "marcel",
+          "expr": "happy",
+          "text": "P{pos} ! Je n'ai pas de mots. J'ai une larme. Léo, passe-moi un chiffon.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Prends-en un propre. Ah non, c'est le mien.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Bravo, {pilote}. Tu as fait mieux que ce que Vortex pensait. {kevin} a commencé à te regarder.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival} pour moi. Toi, P{pos}. On se retrouve à l'étage supérieur, {pilote}. Si tu y arrives.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "J'y serai.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il y sera. Je l'ai noté. Dans le tiroir « Plus tôt que prévu ».",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
@@ -242,112 +1318,327 @@
       "before": [
         {
           "who": "marcel",
-          "expr": "neutral",
-          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
-          "when": "always"
+          "expr": "happy",
+          "text": "Bonne nouvelle : on a un sponsor ! La Fromagerie Gaston. Mauvaise nouvelle : on a un sponsor. Il a mis un logo de camembert sur le capot."
         },
         {
           "who": "babass",
           "expr": "neutral",
-          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
-          "when": "always"
+          "text": "Un camembert ? Sur une voiture de course ?"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il paraît que ça apporte de la chance. Ça apporte surtout de l'odeur par trente-cinq degrés."
+        },
+        {
+          "who": "leo",
+          "expr": "happy",
+          "text": "La voiture est une Hot Hatch ! Petite, nerveuse, qui sent le fromage. Un vrai monstre !"
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! Avec un camembert sur le capot, en plus.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Gaston a appelé : il veut t'offrir des fromages. Il paraît que c'est mérité.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Je prends le brie. Pour la peine, il ne sentira pas pareil.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "kevin",
-          "expr": "angry",
-          "text": "{elle} regarde la course, tu sais. Pas de pression.",
-          "when": "always"
+          "expr": "neutral",
+          "text": "P{rival} pour moi. Toi, P{pos}. Ça sent le fromage d'ici, {pilote}. Même mon casque en a été touché.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Le fromage, ça tient chaud. Ça fait un bon isolant.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "C'était un isolant, pas une stratégie, Léo.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "hothatch-2": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Fuji, encore. Cette fois, en {cat}. La voiture est plus rapide, plus nerveuse, et plus chère. On ne l'a pas payée, mais on y pense."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "J'ai repris les données de la saison dernière. Tu perdais du temps dans le dernier virage. Là. Je te l'entoure en rouge."
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tu as entouré en rouge le dernier virage de l'an dernier ?"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il y en a beaucoup. J'ai eu besoin d'un stylo neuf."
         }
       ],
       "after": [
         {
           "who": "elle",
           "expr": "happy",
-          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
-          "when": "rivalBehind"
+          "text": "P{pos}, et ton dernier virage était propre ! Tu me dois un stylo.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "babass",
-          "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
+          "expr": "neutral",
+          "text": "Je t'en offre un. En or.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
-          "when": "rivalAhead"
+          "text": "Un stylo bille suffira. Les gestes valent plus que les cadeaux. Et {kevin} fait la tête, regarde.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Facile. Tu as toujours cette façon de freiner trop tôt, {pilote}, comme au karting.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il a raison sur un point, j'ai les chiffres. Mais je ne le dirai pas devant lui.",
+          "if": {
+            "rival": "ahead"
+          }
         },
         {
           "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "expr": "neutral",
+          "text": "Tu viens de le dire devant lui.",
+          "if": {
+            "rival": "ahead"
+          }
         },
         {
-          "who": "marcel",
+          "who": "elle",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Zut.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
-    "hothatch-2": {
-      "before": [],
-      "after": [
+    "hothatch-3": {
+      "before": [
         {
-          "who": "elle",
+          "who": "leo",
           "expr": "happy",
-          "text": "Bravo Babass ! Tu as battu {kevin} !",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "babass",
-          "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
-        },
-        {
-          "who": "elle",
-          "expr": "neutral",
-          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
-          "when": "rivalAhead"
-        },
-        {
-          "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "text": "Barcelone ! Le soleil, la mer, les tapas… et un virage en épingle qui fait mal aux roues."
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Voilà. Tu gagnes, on mange des tapas. Tu perds, on mange les restes de la cantine."
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "{elle}, ce soir, Vortex t'invite pour des tapas. Pas besoin de répondre, c'est de la politesse."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Non merci, {kevin}. Ce soir, je répare le moteur de Léo."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} est derrière, à P{rival}.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Bravo ! J'ai une surprise : j'ai réservé une table. Pour toute l'équipe. Léo, le gilet est obligatoire.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Je n'ai pas de gilet.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Tu auras le mien. Il est un peu fromage, mais il est chic.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Et toi P{pos}. On ira se consoler ensemble, {elle} ?",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Non, merci. J'ai une équipe à réconforter.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "…",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ce n'était pas une invitation, {pilote}. Mais ça aurait pu l'être. Allez, des tapas pour tout le monde.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "hothatch-4": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Sebring, en Floride. Le circuit est un vieil aérodrome tout cabossé. C'est comme notre voiture, mais en plus grand."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "J'ai renforcé les amortisseurs. Avec du vrai caoutchouc. Que j'ai trouvé dans le coffre de Marcel."
+        },
+        {
+          "who": "marcel",
+          "expr": "happy",
+          "text": "C'est ma chambre à air de rechange !"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ça va secouer. Si ton casque tombe, ce n'est pas grave. Ce sera plus aéré."
+        }
+      ],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "P{pos}, {kevin} P{rival}. Tu as survécu à Sebring et à Léo. Double exploit.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Je n'ai plus de dos.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu n'as jamais eu de dos, tu as juste de la chance.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "La chance, ça se travaille. Allez, on rentre.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}, juste devant toi. Un chouette combat, {pilote}. On remet ça quand tu veux.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Quand tu veux, {kevin}.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il y a quelque chose qui s'installe, entre ces deux-là. Je ne sais pas si c'est de la rivalité ou de l'amitié. En tout cas, c'est bruyant.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
@@ -355,112 +1646,335 @@
       "before": [
         {
           "who": "marcel",
-          "expr": "neutral",
-          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
-          "when": "always"
+          "expr": "happy",
+          "text": "Changement de plan : Gaston ne veut plus de nous. Il dit qu'on lui a fait fondre le camembert. Heureusement, la Coopérative Dubois nous rejoint !"
+        },
+        {
+          "who": "leo",
+          "expr": "happy",
+          "text": "Ils nous prêtent un pick-up ! Il y a de la paille dedans, c'est un très bon amortisseur."
         },
         {
           "who": "babass",
           "expr": "neutral",
-          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
-          "when": "always"
+          "text": "Je dois courir avec de la paille à l'arrière ?"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Et une poule. Ne la dérange pas, elle a signé un contrat."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} est P{rival}, battu par un pick-up et une poule.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "La poule a pondu pendant la course. C'est un signe.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Un signe de quoi ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Qu'on a de la chance, ça va avec la Coopérative.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "kevin",
-          "expr": "angry",
-          "text": "Mes pneus sont neufs. Ta confiance, un peu moins.",
-          "when": "always"
+          "expr": "neutral",
+          "text": "P{rival} pour moi. Tu t'es fait doubler par un pick-up avec de la paille. C'est triste, et un peu comique.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "C'est MON pick-up.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il est surtout à Dubois, {pilote}. Mais je te le prête volontiers.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "pickup-2": {
+      "before": [
+        {
+          "who": "leo",
+          "expr": "happy",
+          "text": "Sebring, le retour ! Cette fois, j'ai fait des réglages sérieux. J'ai même lu un livre."
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Un livre sur les voitures ?"
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Un livre de cuisine. Mais il y avait un chapitre sur les cylindres."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Bon courage, {pilote}. Si la voiture fait un bruit bizarre, dis-le sans paniquer. Ou panique, mais en parlant à voix basse."
         }
       ],
       "after": [
         {
           "who": "elle",
           "expr": "happy",
-          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
-          "when": "rivalBehind"
+          "text": "P{pos}, et le pick-up a tenu ! Léo, ton livre de cuisine marche.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
-          "who": "babass",
+          "who": "leo",
           "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
-        },
-        {
-          "who": "elle",
-          "expr": "neutral",
-          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
-          "when": "rivalAhead"
-        },
-        {
-          "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "text": "Je le savais ! Je vais lire le chapitre « Soufflé ».",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Pas sur ma voiture, Léo.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}… un pick-up m'a battu. Ne le dites à personne.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Et toi P{pos}. La poule avait de meilleurs réflexes que toi.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Pas faux.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il a raison, elle a bien mieux géré la dernière chicane. On devrait l'engager.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
-    "pickup-2": {
-      "before": [],
-      "after": [
+    "pickup-3": {
+      "before": [
         {
-          "who": "elle",
+          "who": "marcel",
           "expr": "happy",
-          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "babass",
-          "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
+          "text": "Le désert ! Du sable, du soleil, des lumières la nuit. Et surtout, des chameaux. Vérifie bien la piste."
         },
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
-          "when": "rivalAhead"
+          "text": "J'ai quelque chose pour toi, {pilote}. Un porte-bonheur. C'est un petit canard en plastique."
         },
         {
           "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "expr": "neutral",
+          "text": "Un canard ?"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il m'a porté chance pour mon examen. Il est un peu abîmé. Tout comme moi. Garde-le près de toi."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! Le canard marche !",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je savais que tu en aurais besoin. Et que tu me le rendrais. Au fait, tu me le rends quand ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Jamais. Il est à moi, maintenant.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Un canard… tu m'as battu avec un canard à P{rival}. Je suis devenu la risée du paddock.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Toi, P{pos}. Même avec un canard, tu ne peux pas voler, {pilote}.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ne l'écoute pas. Le canard ne vole pas, il nage. Il a l'air de savoir que le sable, c'est pas pour lui.",
+          "if": {
+            "rival": "ahead"
+          }
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "C'est la phrase la plus étrange que j'ai entendue depuis longtemps.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "pickup-4": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Le Paul Ricard : des bandes rouges et bleues, un horizon sans fin, des cigales, et le vent du Midi. Tout est calme."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Sauf le mistral. Le mistral, lui, n'est jamais calme."
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "{elle} ! Quelle bonne surprise, tu es resplendissante ce matin. Mon team principal te cherche. Il a une offre."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je te dirai ce que j'en pense. Dans un mois."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! Et {kevin} à P{rival}. Je crois que ça va l'énerver.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il m'a déjà proposé de rejoindre Vortex. Je n'ai pas dit non, mais j'ai dit « Pas maintenant ».",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "…",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je plaisante. Ou pas. Hmm. Je plaisante.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival} pour moi. P{pos} pour toi. {elle}, mon offre tient toujours. Un vrai salaire, un vrai bureau, un vrai café.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je vais y réfléchir.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Réfléchir ?!",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je plaisante. Ou pas. Hmm. Je plaisante. Allez, la saison est finie, on rentre.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
@@ -468,159 +1982,421 @@
       "before": [
         {
           "who": "marcel",
+          "expr": "happy",
+          "text": "Nouvelle catégorie, nouveau sponsor : Big Burger ! Ils nous donnent un V8 américain, trois cents chevaux, et des frites à volonté."
+        },
+        {
+          "who": "leo",
           "expr": "neutral",
-          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
-          "when": "always"
+          "text": "Le moteur est énorme. Il tient à peine dans le capot. J'ai donc coupé un bout du capot."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il y a aussi un cheval sur le logo. C'est cohérent avec la puissance."
         },
         {
           "who": "babass",
           "expr": "neutral",
-          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
-          "when": "always"
+          "text": "Et {kevin} ?"
         },
         {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Je t’enroule au premier virage, Babass.",
-          "when": "always"
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il a un moteur italien. Il paraît qu'il chante en passant les vitesses."
         }
       ],
       "after": [
         {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Bravo Babass ! Tu as battu {kevin} !",
-          "when": "rivalBehind"
-        },
-        {
           "who": "babass",
           "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
+          "text": "P{pos} ! Le V8 est une bête !",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
-          "when": "rivalAhead"
+          "text": "Et toi, un vrai dompteur. Marcel, tu as vu ses temps ? Même {kevin} les a regardés deux fois.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}, je me suis arrêté pour admirer le paysage. C'était prévu.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival} pour moi, P{pos} pour toi. Les muscles, ça ne suffit pas, il faut aussi un cerveau.",
+          "if": {
+            "rival": "ahead"
+          }
         },
         {
           "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "expr": "neutral",
+          "text": "J'ai un cerveau. Il est juste à l'arrière du V8.",
+          "if": {
+            "rival": "ahead"
+          }
         },
         {
-          "who": "marcel",
+          "who": "leo",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Ah oui, c'est possible, j'ai dû le déplacer pour le radiateur.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
     "muscle-2": {
-      "before": [],
-      "after": [
-        {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "babass",
-          "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
-        },
+      "before": [
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
-          "when": "rivalAhead"
-        },
-        {
-          "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "text": "Alors, {pilote}, ce deuxième passage au Paul Ricard : je te rappelle que tu as droit à une chicane. Une seule. Ne la rate pas."
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Elle a raison. Et n'oublie pas : le V8 consomme comme un tracteur."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Il consomme moins qu'un tracteur. Mais il est plus bruyant. Beaucoup plus bruyant."
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Alors, {pilote} ? Prêt à te faire dépasser par un bolide Vortex ? Je te dépasse, mais gentiment."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "P{pos}, et {kevin} P{rival}. La chicane, je l'ai prise avec amour.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je sais. J'ai le chrono. Tu as gagné deux dixièmes. Tu me dois un baiser.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "…",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Un café ! Je voulais dire un café !",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Et toi, P{pos}. Je crois que la chicane t'a pris dans ses bras.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Elle m'a même fait un câlin. Dans le rail.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je te prépare une glace. Pour ton ego. Et pour la voiture, aussi.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
     "muscle-3": {
-      "before": [],
-      "after": [
+      "before": [
         {
-          "who": "elle",
+          "who": "marcel",
           "expr": "happy",
-          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
-          "when": "rivalBehind"
+          "text": "Imola, en Italie ! Tout le monde est fou de voitures ici. Même le gars de la pizzeria m'a donné des conseils."
         },
         {
-          "who": "babass",
+          "who": "leo",
           "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
+          "text": "Et ils sont bons ! Je lui ai demandé comment régler un carburateur : il m'a répondu « Avec de la mozzarella »."
         },
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
-          "when": "rivalAhead"
+          "text": "Imola, c'est un circuit chargé d'histoire. Tu entends les fantômes des légendes ? Moi je les entends. Ils disent « Freine plus tard »."
         },
         {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Ah, l'Italie… Ma deuxième maison. Mon père y a un restaurant. Et mon casque aussi."
+        }
+      ],
+      "after": [
+        {
           "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "expr": "happy",
+          "text": "P{pos} ! Et {kevin} P{rival} ! La mozzarella est efficace.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je crois que les fantômes t'ont aidé. Un grand silence, puis un grand « Bravo ».",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Je n'ai rien entendu. Mais j'ai la larme à l'œil.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}, à domicile. Désolé, {pilote}, mais ici, c'est mon terrain de jeu.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tu n'as pas de terrain de jeu. Tu as un papa qui paye tes places.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "…",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Aïe. Un point pour {pilote}, mais pas sur la piste.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "muscle-4": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "happy",
+          "text": "L'Australie ! Un circuit autour d'un lac. Tourne à droite, tourne à gauche, et surtout pas dans le lac."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Un kangourou a mangé mon casque. Pas grave, j'ai un autre casque. Un casque de moto. Un casque de moto ancien."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Albert Park, c'est un circuit de ville. Des murs partout. Des murs, ça ne pardonne pas."
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Et les kangourous ?"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Eux non plus."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "P{pos}, {kevin} est P{rival}. On a même évité le lac.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "J'ai failli appeler les sauveteurs, au troisième virage. Tu as frôlé le mur de si près que je l'ai senti.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Je suis d'une humeur de dogue. Heureusement, j'ai un kangourou dans le paddock.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}, devant toi, comme d'habitude. Je suis un grand sportif, et toi un grand rêveur.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Un grand rêveur qui finit P{pos}. Ce n'est pas rien.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "leo",
+          "expr": "happy",
+          "text": "Et sans lac ! Ça mérite un applaudissement.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "muscle-5": {
+      "before": [
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Montréal. Dernière course de la saison. Il y a le Mur des Champions au dernier virage. Tu vois le mur ?"
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Oui."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ne le touche pas. Et pense au sirop d'érable. Ça aide à rester calme."
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Au fait, c'est son anniversaire à {elle}, aujourd'hui. Ne lui dis pas que je te l'ai dit."
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Je vais gagner pour elle."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ne me fais pas rougir à la télévision, {pilote}."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! Et {kevin} P{rival} ! Joyeux anniversaire, {elle}.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Merci. C'est le plus beau cadeau. Et le moins cher, Marcel va être content.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Ce n'est pas faux. Mais je tiens à préciser que j'avais acheté un gâteau.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Je l'ai mangé.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival} pour moi. Joyeux anniversaire, {elle}. Je t'ai pris un vrai cadeau : un bracelet. Il est en or.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Merci, {kevin}. C'est gentil. Je ne peux pas l'accepter.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Moi, je t'ai pris un chocolat chaud. Il est en plastique, mais il est de bon cœur.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "…Je prends le chocolat chaud.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
@@ -628,112 +2404,416 @@
       "before": [
         {
           "who": "marcel",
+          "expr": "happy",
+          "text": "Les années 80 ! Les voitures en forme de coin de fromage, des couleurs fluo, et une veste en cuir pour moi. Je suis ravi."
+        },
+        {
+          "who": "elle",
           "expr": "neutral",
-          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
-          "when": "always"
+          "text": "Tu ressembles à un héros de série policière. Dans un épisode raté."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "La voiture est plate comme une crêpe. Elle est tellement basse que j'ai dû creuser dans le sol du garage pour passer dessous."
         },
         {
           "who": "babass",
           "expr": "neutral",
-          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
-          "when": "always"
+          "text": "Tu as creusé ?"
         },
         {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Je t’enroule au premier virage, Babass.",
-          "when": "always"
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Un petit trou. Je l'ai rebouché avec du béton. Il n'est pas tout à fait sec."
         }
       ],
       "after": [
         {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Bravo Babass ! Tu as battu {kevin} !",
-          "when": "rivalBehind"
-        },
-        {
           "who": "babass",
           "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
+          "text": "P{pos}, devant {kevin} qui finit P{rival}. Le coin de fromage rock'n'roll !",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
-          "when": "rivalAhead"
+          "text": "Tu vois ? Quand tu es en confiance, tu roules comme un dieu. Un dieu fluo, mais un dieu.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Mon coin de fromage est en panne de style. Je vais me plaindre à mon ingénieur.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival} pour moi. La voiture est incroyable, non ? Elle est taillée pour la vitesse.",
+          "if": {
+            "rival": "ahead"
+          }
         },
         {
           "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "expr": "neutral",
+          "text": "P{pos} pour moi. La mienne est taillée pour le rangement. Elle tient dans une boîte à chaussures.",
+          "if": {
+            "rival": "ahead"
+          }
         },
         {
-          "who": "marcel",
+          "who": "elle",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Ne te sous-estime pas. Et ne sous-estime pas mon plan. J'ai passé la nuit sur les données.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
     "wedge-2": {
-      "before": [],
-      "after": [
+      "before": [
         {
           "who": "elle",
-          "expr": "happy",
-          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
-          "when": "rivalBehind"
+          "expr": "neutral",
+          "text": "Je dois vous avouer quelque chose. Léo, Marcel, {pilote}. Avant l'écurie, j'ai étudié l'ingénierie. J'ai même un diplôme."
         },
         {
-          "who": "babass",
+          "who": "marcel",
           "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
+          "text": "Un diplôme ? Tu ne me l'avais pas dit !"
         },
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
-          "when": "rivalAhead"
+          "text": "Tu ne m'as jamais posé la question. Et Léo le sait depuis un mois. On a travaillé ensemble sur le nouvel aileron."
+        },
+        {
+          "who": "leo",
+          "expr": "happy",
+          "text": "Elle est géniale ! Elle a même corrigé mes calculs. Il y avait trois erreurs. Enfin, quatre. Disons cinq."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! Et l'aileron marche, {elle} ! Tu es un génie.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je sais. Mais ça fait plaisir de l'entendre de ta part.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Une fille sait faire ça ? Tu me la prêtes ? Je plaisante, {elle}. Ne me regarde pas comme ça.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}, devant toi. {elle} a fait des merveilles, pourtant. Elle devrait travailler pour Vortex. Ce n'est pas un mauvais plan.",
+          "if": {
+            "rival": "ahead"
+          }
         },
         {
           "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "expr": "neutral",
+          "text": "Elle travaille pour nous.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je travaille pour moi, et pour qui m'écoute. Vous deux, c'est un bon début.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "wedge-3": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Montréal, encore. Cette fois, on a une voiture plus rapide. Mais le Mur des Champions n'a pas changé."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Et ses marmottes non plus. Il y en a une dans le garage. Elle a mangé mon sandwich."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Tu n'es pas obligé de leur donner à manger."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Elle n'a pas demandé la permission."
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Pas de marmottes sur la piste, je vous prie."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! Et pas de marmotte sur la piste.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "La marmotte a regardé la course en mangeant le sandwich de Léo. Elle semblait comblée.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Il y avait une marmotte dans mon virage. Je vous jure. Elle m'a regardé méchamment.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival} pour moi. Toi, P{pos}. Eh bien… tu as fait de ton mieux. Ça compte.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ne te moque pas de lui. Il a progressé de trois places en deux courses.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Je ne me moquais pas. Je m'inquiétais pour lui. C'est nouveau, pour moi.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "wedge-4": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "happy",
+          "text": "Le Nürburgring ! Brouillard, pluie, saucisses. Une journée parfaite."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je dois te prévenir, {pilote}. Je n'ai pas bien dormi. Je me suis réveillée à cause d'un cauchemar : tu quittais l'écurie pour Vortex."
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Jamais. Même s'ils me donnent une fontaine à chocolat."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Même deux ?"
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "… On en reparle."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! Sous la pluie ! Et {kevin} est derrière, P{rival}.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Tu as été formidable. Je n'ai pas respiré pendant trois tours.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Respire. Respire. Tu es toute pâle.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ça va. C'est juste que… non, rien. Tout va bien.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. La pluie, c'est mon élément. Toi, tu es plutôt du genre sec.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Un jour, je te mettrai dans le décor.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Pas sous mes yeux, merci. Allez, tout le monde au chaud. Léo, ne touche pas au chauffage.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "wedge-5": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "happy",
+          "text": "Le Texas ! Tout est plus grand ici : les camions, les chapeaux, les steaks. Et la piste, bien sûr."
+        },
+        {
+          "who": "leo",
+          "expr": "happy",
+          "text": "J'ai un chapeau de cow-boy ! Il est trop petit. Je l'ai pris à un enfant."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Rends-lui son chapeau, Léo."
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Salut les copains. Mon père est venu me voir. Il est dans la tribune VIP. Il a dit : « Fais gagner Vortex ». Moi j'ai dit : « Oui, papa »."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} est P{rival}.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Mon père m'a regardé comme si j'étais un sac de pommes de terre. Je n'ai pas aimé ça.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il n'est pas tendre, son père. Pauvre {kevin}.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tu le plains ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Un peu. Mais ne le répète pas. Ça lui ferait plaisir.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Papa est content. Moi, je suis… content aussi.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tu as l'air content comme un lundi.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Je suis toujours comme ça. Bon. À la prochaine, {pilote}. Et… bon courage.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il vient de te souhaiter bon courage ? Le monde est en train de changer.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
@@ -741,159 +2821,433 @@
       "before": [
         {
           "who": "marcel",
-          "expr": "neutral",
-          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
-          "when": "always"
+          "expr": "happy",
+          "text": "Cette fois, on joue dans la cour des grands. Des supercars ! Et un nouveau sponsor : Banque Duchemin. Ils nous prêtent de l'argent."
         },
         {
-          "who": "babass",
+          "who": "leo",
           "expr": "neutral",
-          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
-          "when": "always"
+          "text": "On ne dit pas « prêtent », on dit « investissent »."
         },
         {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "{elle} regarde la course, tu sais. Pas de pression.",
-          "when": "always"
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "On dit « prêtent ». Parce que je dois le rendre."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Mon rôle : veiller à ce que Marcel ne dépense pas tout en bonbons. Et à ce que tu gagnes, {pilote}."
         }
       ],
       "after": [
         {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
-          "when": "rivalBehind"
-        },
-        {
           "who": "babass",
           "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
+          "text": "P{pos} ! Et {kevin} P{rival} !",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
-          "when": "rivalAhead"
-        },
-        {
-          "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "text": "Je vais pouvoir rembourser la moitié du prêt, en dix ans. C'est une très bonne nouvelle.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Dix ans ? Je serai à la retraite. Je serai riche. Je serai surtout à la retraite.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Dis donc, ça roule vite, les supercars. Un peu trop pour toi, non ?",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Je m'habitue. Tu verras.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je lui ai fait avaler un jus d'orange avant la course. C'est un excellent carburant.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
     "supercar-2": {
-      "before": [],
-      "after": [
-        {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Bravo Babass ! Tu as battu {kevin} !",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "babass",
-          "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
-        },
+      "before": [
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
-          "when": "rivalAhead"
+          "text": "Le Nürburgring. Là où tout est parti de travers l'an dernier. Aujourd'hui, c'est le moment de rattraper la partie."
         },
         {
-          "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "who": "leo",
+          "expr": "neutral",
+          "text": "J'ai peint un trèfle porte-bonheur sur le capot. Il est un peu jaune, mais c'est un trèfle."
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "C'est un citron, Léo."
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Au fait, {pilote}, Vortex vient de proposer un poste à {elle}. Directrice sportive adjointe. Un vrai salaire. Un vrai bureau."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! Et {kevin}, P{rival}. Tu parlais de salaire ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "J'ai refusé. Je reste. Mais ne le dis à personne, ça montera les enchères.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Pourquoi tu restes ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Pour la voiture. Et le canard. Mais surtout la voiture.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Alors, {elle}, tu réfléchis ? Chez nous, on a un petit-déjeuner buffet.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Moi, j'ai un sandwich. Avec amour, il est meilleur.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "…",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Dans le sens « préparé avec attention ». Ne te fais pas d'idées.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
     "supercar-3": {
-      "before": [],
-      "after": [
+      "before": [
         {
-          "who": "elle",
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Retour au Texas. Plus de bruit, plus de gaz. Aujourd'hui, c'est le jour où {pilote} devient une star. Ou une affiche."
+        },
+        {
+          "who": "leo",
           "expr": "happy",
-          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
-          "when": "rivalBehind"
+          "text": "Vortex a essayé de m'embaucher ! Ils m'ont proposé le double."
         },
         {
           "who": "babass",
-          "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
+          "expr": "neutral",
+          "text": "Le double de quoi ?"
         },
         {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Le double de rien. Mais c'est toujours plus que ce que je gagne ici. J'ai dit non. Je reste. Pour les pizzas."
+        }
+      ],
+      "after": [
         {
-          "who": "kevin",
+          "who": "babass",
           "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
+          "text": "P{pos} ! Et {kevin} P{rival} !",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
-          "when": "rivalAhead"
+          "text": "Léo, tu as refusé Vortex ? C'est beau. Je suis émue.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
-          "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Je ne l'ai pas dit à Marcel. Il me doit déjà trois mois de salaire. Il me doit surtout une pizza.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Je t'en offre une demain. Mais pas aux anchois.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Mon père est content. C'est suffisant pour aujourd'hui.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ça va, {kevin} ? Tu as l'air fatigué.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Ça va. C'est juste que… non, rien. On se voit à la prochaine.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Il est bizarre ces temps-ci. Je préférais quand il m'insultait.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "supercar-4": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Silverstone, l'Angleterre. Il pleut. Il pleut tout le temps. Même quand il ne pleut pas, il bruine."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "J'ai préparé du thé. Avec du lait, comme ils disent. Léo, ne mets pas de sucre dans le réservoir."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Je n'avais pas… OK, c'était juste pour tester."
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Chez Vortex, on a un parapluie intégré à la voiture. Ce n'est pas vrai, mais ça fait classe."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} sous la pluie ! Et {kevin} P{rival} !",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Tu es trempé. Tiens, une serviette. Et un thé.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Merci… tu es adorable.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je suis efficace. Ce n'est pas pareil. Mais bon, un peu pareil.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Je te l'avais dit : la pluie, c'est mon domaine.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tu n'as pas de domaine. Tu as une piscine.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il a une piscine ? Dans le motorhome ? Pourquoi on n'a pas de piscine ?",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Parce qu'on a un seau. Ça fait le même effet.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "supercar-5": {
+      "before": [
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Portimão, au Portugal. Des montagnes russes, des sardines grillées, et un coucher de soleil sur la mer. Je serais restée bien longtemps."
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Pas moyen. Je n'ai payé l'hôtel que pour une nuit."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "On pourrait dormir dans le camion. Il est confortable. Ça sent le fromage, mais c'est confortable."
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Je dormirais bien là où il y a des sardines. Dans l'assiette."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} P{rival} ! La saison finit en beauté.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Viens, on va voir le coucher de soleil. Juste nous deux, un peu. Marcel et Léo sont déjà devant les sardines.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "…Je te suis.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je ne dis pas que ça signifie quelque chose. Mais si tu veux, ça signifie quelque chose.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Une belle saison, {pilote}. Sans rancune.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Sans rancune.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Viens, {pilote}. On va regarder le coucher de soleil. Même les perdants ont droit à un beau paysage.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Merci. Je crois.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
@@ -901,112 +3255,430 @@
       "before": [
         {
           "who": "marcel",
-          "expr": "neutral",
-          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
-          "when": "always"
+          "expr": "happy",
+          "text": "Voitures du futur ! Électrique, hybride, volante. Enfin, pas encore volante. Mais Léo y travaille."
+        },
+        {
+          "who": "leo",
+          "expr": "happy",
+          "text": "J'ai installé un ordinateur de bord. Il parle ! Il s'appelle Gérard."
         },
         {
           "who": "babass",
           "expr": "neutral",
-          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
-          "when": "always"
+          "text": "Gérard ?"
         },
         {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "{elle} regarde la course, tu sais. Pas de pression.",
-          "when": "always"
+          "who": "leo",
+          "expr": "neutral",
+          "text": "C'était le nom le moins futuriste que j'ai trouvé. Dis bonjour, Gérard."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je l'ai testé. Il dit : « Bonjour. Votre vitesse est élevée. Votre sandwich est tiède. » Voilà, il est opérationnel."
         }
       ],
       "after": [
         {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
-          "when": "rivalBehind"
-        },
-        {
           "who": "babass",
           "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
+          "text": "P{pos} ! Et Gérard m'a dit « Virage dans trois secondes » pendant toute la course.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il t'a aussi dit « Bravo, vous êtes meilleur que le pilote Vortex ». Je crois qu'il est programmé pour te flatter.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "kevin",
           "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
+          "text": "P{rival}. Gérard est un traître. Même mon ordinateur me parle mal.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
-        },
-        {
-          "who": "elle",
           "expr": "neutral",
-          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
-          "when": "rivalAhead"
+          "text": "P{rival}, devant toi. Mon ordinateur à moi s'appelle « Vortex Pilot 3000 ». C'est plus classe que Gérard.",
+          "if": {
+            "rival": "ahead"
+          }
         },
         {
           "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "expr": "neutral",
+          "text": "Gérard est plus sympa. Il m'a dit : « Courage ». Il me prend pour un ami.",
+          "if": {
+            "rival": "ahead"
+          }
         },
         {
-          "who": "marcel",
+          "who": "leo",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Gérard est un ami de la famille.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
     "futur-2": {
-      "before": [],
-      "after": [
+      "before": [
         {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Bravo Babass ! Tu as battu {kevin} !",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "babass",
-          "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Silverstone en voiture du futur. Il ne pleut plus, il y a du soleil. Je ne sais pas si je suis déçu."
         },
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
-          "when": "rivalAhead"
+          "text": "Les ingénieurs de Vortex ont lancé une rumeur : leurs voitures atteignent 400 km/h en ligne droite."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Pas la nôtre. La nôtre atteint 400 en descente. Avec le vent dans le dos."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "(voix de Gérard) « Prudence. Une vache est sur la piste. »"
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} P{rival} !",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ça fait deux fois que je te vois devant lui. Je crois que je m'habitue.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "expr": "neutral",
+          "text": "Moi, je ne m'y habitue pas. Chaque fois, c'est un petit miracle.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Les miracles, ça ne dure pas.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Une course honnête, {pilote}. Respect.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Respect.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Vous avez failli vous serrer la main. J'ai tout noté dans mon carnet. « Journée historique ».",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "futur-3": {
+      "before": [
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Gérard a une nouvelle mise à jour. Il fait aussi radio. Il passe de la musique pendant la course."
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "De la musique ? En pleine course ? Mais pourquoi ?"
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Pour l'ambiance. Les voitures du futur, c'est aussi une expérience."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il passe du disco. {pilote}, je te souhaite bon courage."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} P{rival} ! Gérard avait mis « Staying Alive ». J'ai roulé dans le rythme.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "J'ai vu. Tu as les hanches d'un danseur.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "…Merci ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "C'était un compliment. Je crois.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Vortex a coupé la musique. Je n'ai pas eu de disco. Je suis triste.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Moi non plus je n'ai pas gagné. Mais j'ai de la musique.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Alors profite. Et mets-la fort.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "futur-4": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "happy",
+          "text": "Interlagos, au Brésil ! La foule, le soleil, la samba. Le circuit tourne à l'envers, comme mon estomac."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il y a beaucoup de bosses. Léo, as-tu bien serré les roues ?"
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Je les ai serrées. Je les ai même resserrées. Il me reste un boulon en trop. Mais ça va."
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "J'ai appris que Vortex veut changer de pilote si je finis après toi. Ça me met la pression."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! Et {kevin} P{rival}.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Mon père m'a appelé. Il n'a rien dit. Pendant une minute. Une minute entière de silence.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ça va aller. Prends l'avion pour rentrer. On t'offre un café ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "…Oui. Avec un sucre. Ou deux.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "P{rival}. Papa est rassuré. Je crois. Il a dit : « C'est bien ». Il n'a jamais dit « C'est bien » avant.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Moi, ça me ferait plaisir, même si c'est à contrecœur.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Vous êtes en train de devenir amis. Je le sens. C'est dangereux.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "futur-5": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "happy",
+          "text": "Monza ! Le temple de la vitesse ! Dernière course de la saison. Tout se joue dans les lignes droites."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "La Parabolica est un virage mythique. Si tu la rates, on en parle dans les livres."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Et si tu la réussis ?"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Dans les livres aussi. Mais en plus gentil."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} P{rival} !",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Tu as fait un chrono magnifique. Tiens, pour fêter ça, j'ai quelque chose.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Un cadeau ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ma main. Dans la tienne. Juste un instant.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "(voix de Gérard) « Attention : baiser imminent. »",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "angry",
+          "text": "Léo, nom d'un chien ! Éteins Gérard !",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Bravo, {pilote}. La saison est finie. Je te dois peut-être des excuses pour ce que j'ai dit.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Je te pardonne. Mais pas pour le karting. Là, c'est personnel.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ça reste personnel. Mais je prends ta main, {pilote}. Si tu veux. Juste pour aujourd'hui.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Pourquoi tout le monde se tient la main ? Je suis le seul à ne pas comprendre ?",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
@@ -1014,159 +3686,499 @@
       "before": [
         {
           "who": "marcel",
+          "expr": "happy",
+          "text": "GT3 ! Des vraies voitures de course, avec des vrais sponsors, des vrais pneus. Et même un vrai camion. Il est neuf, on ne l'a pas encore abîmé."
+        },
+        {
+          "who": "leo",
           "expr": "neutral",
-          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
-          "when": "always"
+          "text": "J'ai déjà fait une rayure. Mais elle est très petite."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Du coup, Vortex m'a fait une dernière proposition. Je l'ai déchirée. J'ai pris le poste de directrice sportive chez nous. Marcel a signé. Avec un stylo qui ne marchait pas."
         },
         {
           "who": "babass",
-          "expr": "neutral",
-          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
-          "when": "always"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Mes pneus sont neufs. Ta confiance, un peu moins.",
-          "when": "always"
+          "expr": "happy",
+          "text": "Directrice sportive ? Félicitations, {elle} !"
         }
       ],
       "after": [
         {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
-          "when": "rivalBehind"
-        },
-        {
           "who": "babass",
           "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
+          "text": "P{pos} ! {kevin} P{rival} ! Ma première course sous les ordres de la directrice.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
-          "when": "rivalAhead"
+          "text": "Je ne t'ai donné qu'un ordre : « Freine plus tard ». Tu as très bien obéi.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Pff. Directrice sportive. Je l'ai vue changer. Elle est devenue sérieuse. Ça lui va bien. Ça ne m'a pas échappé.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Ma belle {elle}, tu t'es bien débrouillée. Tu as fait de ton pilote un vrai pilote.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je n'ai pas fait de lui un pilote. Il l'était déjà. Je lui ai juste appris à regarder le chrono.",
+          "if": {
+            "rival": "ahead"
+          }
         },
         {
           "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "expr": "neutral",
+          "text": "Et à manger des fruits.",
+          "if": {
+            "rival": "ahead"
+          }
         },
         {
-          "who": "marcel",
+          "who": "elle",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Tu avais raté ton petit-déjeuner. C'était un risque pour la sécurité.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
     "gt3-2": {
-      "before": [],
-      "after": [
+      "before": [
         {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
-          "when": "rivalBehind"
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Retour à Interlagos. La foule est encore plus bruyante. Elle chante ton prénom, {pilote}."
         },
         {
           "who": "babass",
-          "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
+          "expr": "neutral",
+          "text": "Elle chante mon prénom ?"
         },
         {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Non. Elle chante « Allez Brésil ». Mais ça sonne un peu pareil."
         },
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
-          "when": "rivalAhead"
-        },
+          "text": "Fais comme si c'était pour toi. Ça aide."
+        }
+      ],
+      "after": [
         {
           "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "expr": "happy",
+          "text": "P{pos} ! Et {kevin} P{rival} !",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Marcel, tu pleures ?",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Non. C'est la poussière. De la poussière en forme de larmes.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Je pleure aussi. Mais moi c'est le sandwich.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Mon père m'a demandé si je pouvais te battre en entier. Je lui ai dit que je n'étais pas sûr d'en avoir envie.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Pardon ?",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Rien. Un coup de soleil. Je dis n'importe quoi.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il y a un début de lucidité chez lui. Je l'ai vue.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
     "gt3-3": {
-      "before": [],
-      "after": [
-        {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Bravo Babass ! Tu as battu {kevin} !",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "babass",
-          "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
-        },
+      "before": [
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
-          "when": "rivalAhead"
-        },
-        {
-          "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "text": "Monza, encore. Le public est là, les drapeaux rouges aussi. Tout le monde chante."
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Je ne comprends pas ce qu'ils disent, mais ça sonne bien."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Ils disent « Forza Ferrari ». Mais ce n'est pas notre voiture. Notre voiture, c'est « Forza Gaston »."
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Non. « Forza Gaston », ça ne marche pas. Même en italien."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} P{rival}.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Tu as dominé la Parabolica. J'ai vu ta trajectoire. C'est… poétique.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tu me trouves poétique ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je trouve ta trajectoire poétique. Toi, je ne sais pas encore.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Mon père veut me changer d'équipe. Je ne veux pas. Je ne sais plus ce que je veux.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tu veux quoi, au fond ?",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Rouler. Juste rouler. Sans me demander si je dois gagner. Mais ça… ça ne se dit pas à {pilote}.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ça se dit à un ami. Tu viens de faire un grand pas.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "gt3-4": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "happy",
+          "text": "Bakou ! Une vieille ville, des murs de pierre, et un passage si étroit qu'on le prend pour une porte de garage."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "J'ai mesuré la voiture. Elle passe. À un centimètre. Vingt, peut-être."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Concentre-toi, {pilote}. Un mur, ça ne pardonne pas. Et ça ne rend pas la monnaie."
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Chez Vortex, on a installé des capteurs de murs. Ils parlent. « Mur à gauche. Mur à droite. Mur devant. »"
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! Et pas un mur touché !",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Si ! Au virage 8. J'ai entendu le bruit. Mais c'était un petit mur. Il ne s'en souviendra pas.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Mes capteurs ont tout dit. « Pilote médiocre. Pilote médiocre. » Je les ai débranchés.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Mes capteurs ont dit : « Bravo ». Je ne les ai pas crus.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Et moi, P{pos}. Mon capteur à moi s'appelle {elle}. Il dit « Freine plus tôt ».",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Et personne ne m'écoute. Mais c'est un bon capteur.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "gt3-5": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "happy",
+          "text": "Suzuka, le Japon ! Un circuit en forme de huit. Le seul qui se croise lui-même. C'est comme nous : on se rencontre sans arrêt."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Le virage 130R est mythique. Il faut le prendre à fond. Ou presque. Ou pas du tout."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Ce n'est pas très clair."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je suis japonaise de cœur, pas encore d'esprit. Mais je suis sûre que tu peux le faire."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! Et {kevin} P{rival} ! Le 130R, à fond.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "À fond ? Tu as freiné quand même. Je l'ai entendu. Mais à fond dans l'esprit.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Un garçon qui freine, c'est un garçon qui reste en vie. Je suis rassuré.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Papa a dit que si je ne gagne pas, je rentre. Je lui ai dit que j'allais gagner. Il m'a regardé avec pitié.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Ça va aller, {kevin}. Reste concentré.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Merci. Je ne pensais pas que ça me ferait plaisir, venant de toi.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "gt3-6": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Dernière course de la saison. Bathurst, la montagne. Une descente rapide, une montée raide, et un mur à chaque virage."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je dois te dire quelque chose, {pilote}. Mais pas maintenant. Après la course."
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Pourquoi pas maintenant ?"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Parce que si je te le dis maintenant, tu ne penseras plus à la course. Et je tiens à ce que tu gagnes."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} P{rival} ! Alors, qu'est-ce que tu voulais me dire ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je… ça peut attendre. En fait, non. Tu me plais, {pilote}. Beaucoup. Je ne sais pas ce que tu en penses.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "…Je pense que j'ai du mal à parler.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "C'est une réponse. Je la prends.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Bon, je vous laisse. Vous avez l'air d'avoir à parler.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je te dirai ça plus tard, {pilote}. Mais ce n'est pas grave : tu m'as plu, même sans gagner. Surtout sans gagner. C'est plus authentique.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Et… tu me plais aussi.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je sais. Léo a déjà tout raconté. Il a parlé pendant deux heures.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
@@ -1174,112 +4186,570 @@
       "before": [
         {
           "who": "marcel",
+          "expr": "happy",
+          "text": "Endurance Hypercar ! Des courses plus longues, des voitures plus rapides, et des repas froids. Un rêve."
+        },
+        {
+          "who": "leo",
           "expr": "neutral",
-          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
-          "when": "always"
+          "text": "J'ai prévu des sandwichs pour tout le monde. Même pour la voiture."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ne donne pas de sandwich à la voiture, Léo."
         },
         {
           "who": "babass",
           "expr": "neutral",
-          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
-          "when": "always"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Mes pneus sont neufs. Ta confiance, un peu moins.",
-          "when": "always"
+          "text": "Et je prends ma place de pilote officiel à côté de ma directrice sportive officielle. Ça me plaît."
         }
       ],
       "after": [
         {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
-          "when": "rivalBehind"
-        },
-        {
           "who": "babass",
           "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
+          "text": "P{pos} ! Et {kevin} P{rival} !",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
-          "when": "rivalAhead"
+          "text": "Je suis fière de toi. Tiens, un sandwich.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "expr": "neutral",
+          "text": "Du fromage ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "De l'amour. Et un peu de fromage.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Pourquoi tout le monde parle d'amour dans cette écurie ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Dis donc, {pilote}, tu t'es fait doubler par une couverture de survie.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "C'était une bâche de la tribune.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Une bâche volante. Italien, ce pays. Tout vole : les bâches, les tifosi, les chapeaux.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
     "hypercar-2": {
-      "before": [],
-      "after": [
-        {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "babass",
-          "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
-        },
+      "before": [
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
-          "when": "rivalAhead"
+          "text": "Bakou : un peu d'histoire, un peu de pétrole, beaucoup de lignes droites. Tu vas rouler à 350."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "J'ai peint les roues en rouge. Ça va plus vite. C'est scientifique."
         },
         {
           "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "expr": "neutral",
+          "text": "Ce n'est pas scientifique, Léo."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "C'est une théorie."
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Allez, au travail. Et n'oublie pas : en endurance, ce n'est pas celui qui va le plus vite qui gagne, c'est celui qui reste le plus longtemps dans la course."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} P{rival}.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Tu as géré parfaitement ta course. Pas un tour de trop, pas un tour de moins.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Mon père dit que je ne suis pas assez agressif. Je lui ai dit que j'étais en train de réfléchir.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Une belle bagarre, {pilote}. Mon père m'a dit : « Ce petit, il fait du bon travail ». Il parlait de toi.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Moi ? Ton père me connaît ?",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Il connaît tout le monde qui me bat. Même pas à chaque fois, mais assez pour te retenir.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "hypercar-3": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "happy",
+          "text": "Suzuka, en endurance. Huit heures de course. Huit heures ! Et moi qui ne tiens pas deux heures devant la télé."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Les fans japonais sont impressionnants. Ils sont venus avec des pancartes. J'ai demandé ce qu'elles disaient."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Alors ?"
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "« {pilote}, épouse-moi ». Je crois que c'était pour toi, {elle}."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ou pour {pilote}. Ça pourrait être pour n'importe qui."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! Huit heures ! {kevin} est P{rival} !",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Tu as les yeux rouges. Viens, je te frictionne les épaules.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Je ne dis pas non.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Je dis non, moi. Pas de massage avant la fin du championnat. Règlement de l'écurie.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Huit heures de course, c'est long. Mais ça m'a fait du bien de me concentrer.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Moi aussi. Je me suis même endormi à un moment. Au volant. Pendant deux secondes.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "surprised",
+          "text": "PARDON ?",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Mais j'ai tourné. Dans le bon sens.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "hypercar-4": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Bathurst, de nuit. Un tour de 6 km sous les étoiles. Le soir, c'est beau. Le matin, c'est effrayant."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "La nuit, la montagne chuchote. On l'entend à travers les micros. Tu verras."
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Elle dit quoi ?"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "« Freine plus tôt ». Comme moi."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} P{rival} !",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Viens, regarde les étoiles. C'est le seul endroit où le ciel est aussi grand que ton ego.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Mon ego ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je plaisante. Viens, rapproche-toi. Je veux te dire… non. Je veux te montrer.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "…",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Voilà. C'était mon baiser. Il est un peu timide, mais il est sincère.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Il y a un ciel magnifique ce soir. Je vais vous laisser.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Merci, {kevin}. C'est gentil.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tu avais prévu de me dire quelque chose, non ?",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je te l'ai dit à Bathurst, l'année dernière. Aujourd'hui, je te le montre.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "(voix de Gérard) « Alerte : baiser détecté. »",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "surprised",
+          "text": "LÉO !!",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "hypercar-5": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Singapour : une course de nuit, trente-cinq degrés, quatre-vingt-dix pour cent d'humidité. On transpire même quand on dort."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "J'ai prévu des serviettes. Beaucoup de serviettes. Et des éponges. Et un seau pour Marcel."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il y a une rumeur : Vortex pourrait licencier {kevin}. Son père n'est pas content des résultats."
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Licencier {kevin} ? Il ne peut pas."
+        }
+      ],
+      "after": [
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Je crois que c'est la fin. Vortex a dit que je suis trop mou. Ils ont raison.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tu n'es pas mou. Tu es… prudent. Parfois un peu trop. Mais ça te donne de la classe.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "P{pos} pour toi, {pilote}. Mais je crois que ce soir, quelqu'un a plus besoin de nous que toi.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Je vais lui préparer un sandwich.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Mon père a appelé. Il m'a dit que j'étais viré. Parce que j'ai fini devant toi, mais « pas assez largement ».",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Quoi ? Mais tu m'as battu !",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Oui. Mais pas comme il le voulait.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Viens, {kevin}. Il fait chaud, il y a de l'air frais dans le camion. Tu peux t'asseoir. Marcel, un sandwich.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "hypercar-6": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "happy",
+          "text": "Monaco ! Des yachts, des caméras, des gens très riches. Et moi dans ma veste en cuir. Je me sens à ma place."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Tu as l'air d'un vendeur de glaces."
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Salut, tout le monde. Je suis libre. Je roule pour un petit team pour la fin de saison. C'est mon choix."
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Un petit team ? Comme nous ?"
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Oui. Je commence à comprendre pourquoi c'est mieux."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! Et {kevin} P{rival} !",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Je te félicite. Pour de vrai. Sans ironie. C'est étrange.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il y a du progrès. Je suis fière de vous deux.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Moi, je suis fier de moi aussi. J'ai oublié un boulon. Il est dans ma poche.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "P{rival}. Je n'ai jamais été aussi heureux d'être devant quelqu'un. Et jamais aussi content que ce soit toi derrière.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Merci ? Je crois.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "C'était un compliment. Je crois que {kevin} vient de te dire « Je t'aime bien ». Pour de vrai.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Je n'ai jamais dit ça !",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
@@ -1287,161 +4757,468 @@
       "before": [
         {
           "who": "marcel",
-          "expr": "neutral",
-          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
-          "when": "always"
+          "expr": "happy",
+          "text": "La F1. La Formule 1 ! Je n'en reviens pas. On a une monoplace. Elle a des ailes. Elle a même des roues qui tournent."
         },
         {
-          "who": "babass",
+          "who": "elle",
           "expr": "neutral",
-          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
-          "when": "always"
+          "text": "Elle a un volant et une piste. On a tout ce qu'il faut. Surtout un pilote."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "J'ai tout vérifié. Elle est parfaite. Sauf l'aileron arrière, qui est à l'envers. Mais ça se corrige."
         },
         {
           "who": "kevin",
-          "expr": "angry",
-          "text": "Je t’enroule au premier virage, Babass.",
-          "when": "always"
+          "expr": "neutral",
+          "text": "Salut, {pilote}. Je suis dans le team Pastis maintenant. On n'a pas de budget, mais on a de la sauce. Courage."
         }
       ],
       "after": [
         {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Bravo Babass ! Tu as battu {kevin} !",
-          "when": "rivalBehind"
-        },
-        {
           "who": "babass",
           "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
+          "text": "P{pos} ! {kevin} P{rival} ! Notre première F1 !",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
-          "when": "rivalAhead"
+          "text": "Je crois que je vais pleurer. Léo, passe-moi un chiffon.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
-          "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Je n'en ai plus. Marcel les a tous utilisés.",
+          "if": {
+            "rival": "behind"
+          }
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Moi, je n'ai pas pleuré. C'est de la sueur. De la sueur par les yeux.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Pastis, c'est petit mais c'est efficace. Ça sent le pastis, mais on s'habitue.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Moi, je suis P{pos}. Mais j'ai encore la saison devant moi.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Et une directrice sportive qui y croit. Allez, on rentre. Il y a des nouilles pour tout le monde.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
     "f1-2": {
-      "before": [],
-      "after": [
+      "before": [
         {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "babass",
-          "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Bathurst. On y est déjà venus, deux fois. Il n'y a jamais de kangourous. Il y a toujours un bruit de kangourou dans ma tête."
         },
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
-          "when": "rivalAhead"
-        },
-        {
-          "who": "babass",
-          "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "text": "Marcel, tu es fatigué. Je veux que tu me parles. Je vois bien que quelque chose ne va pas."
         },
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Je pense à ma retraite. Cette écurie, je l'ai montée il y a vingt ans, dans ce hangar. Je suis fatigué."
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Marcel…"
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} P{rival}. Marcel, c'est pour toi.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Merci, mon garçon. Je ne sais pas ce que je ferais sans vous. Sans vous trois. Même sans Léo.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Merci, Marcel. Même si c'est « même sans ».",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "On est une famille. Une famille un peu bizarre. Mais une famille.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. Marcel, tu as une bonne équipe. Ne leur dis pas que je l'ai dit.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Je ne dirai rien. Je ne suis pas fou.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "P{pos}, ce n'est pas grave. Marcel, ce qui compte, c'est que tu sois content de ta petite écurie.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Ça, c'est vrai. Allez, on rentre.",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
     },
     "f1-3": {
-      "before": [],
-      "after": [
-        {
-          "who": "elle",
-          "expr": "happy",
-          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "babass",
-          "expr": "happy",
-          "text": "Merci ! C’est le moteur. Et le croissant.",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "angry",
-          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
-          "when": "rivalBehind"
-        },
-        {
-          "who": "kevin",
-          "expr": "happy",
-          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
-          "when": "rivalAhead"
-        },
+      "before": [
         {
           "who": "elle",
           "expr": "neutral",
-          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
-          "when": "rivalAhead"
+          "text": "Marcel m'a demandé de prendre la tête de l'écurie. À sa retraite. À la fin de la saison."
         },
         {
           "who": "babass",
           "expr": "surprised",
-          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
-          "when": "rivalAhead"
+          "text": "Quoi ? Tu vas devenir la cheffe ?"
         },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je vais devenir la cheffe. Marcel me l'a offert avec les clés du hangar. Et le tiroir « Plus tard »."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Elle va devoir l'ouvrir, ce tiroir. Il y a un sandwich dedans."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} P{rival} ! Cheffe, c'est un honneur.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je suis ta cheffe depuis longtemps. Depuis le début, en fait. Il me manquait juste le titre.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Félicitations, {elle}. Tu es l'avenir de ce sport. Et tu as le meilleur pilote.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Pardon ? Tu viens de dire que j'étais le meilleur ?",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "J'ai dit « un des meilleurs ». Ne t'emballe pas.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "P{rival}. {elle}, cheffe ! Je te salue.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Merci, {kevin}. Et P{pos} pour {pilote}, c'est une bonne base pour progresser.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tu es toujours aussi encourageante.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "C'est mon métier. Et ma passion. Et ma façon de te dire que je suis là.",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "f1-4": {
+      "before": [
         {
           "who": "marcel",
           "expr": "neutral",
-          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
-          "when": "failed"
+          "text": "Monaco. La dernière fois. Pour moi, du moins. Ensuite, je me retire. Je vais pêcher. Dans un lac, avec des poissons qui ne parlent pas."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Tu vas nous manquer, Marcel. Tu es le seul qui a cru en nous quand on n'avait rien."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "On avait un hangar. C'était déjà bien."
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Je veux gagner. Pour Marcel. Pour {elle}. Pour Léo. Et pour l'honneur du fromage de Gaston."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} P{rival} ! Monaco, c'est à nous !",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Viens ici, {pilote}. J'ai quelque chose à te dire. Devant tout le monde. Je t'aime. Voilà. C'est dit.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Je t'aime aussi. Depuis le premier jour. Depuis le hangar. Depuis le café.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "happy",
+          "text": "Il y a des caméras. Vous êtes en direct. Et je pleure. Léo, passe-moi un chiffon !",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. {pilote}, {elle}. Je dois vous dire quelque chose. Je suis content pour vous. Vraiment. Même si ça m'embête.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Merci, {kevin}. Tu es un meilleur ami que tu ne le crois.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Et moi, je t'aime bien, {elle}. Je ne le disais pas, mais c'est vrai. Depuis le premier jour. Depuis le hangar.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "marcel",
+          "expr": "happy",
+          "text": "Tout le monde pleure, ça me gêne. Léo, un chiffon !",
+          "if": {
+            "rival": "ahead"
+          }
         }
       ]
+    },
+    "f1-5": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Spa. La Belgique. Un circuit où il pleut sur une moitié, et où le soleil brille sur l'autre. Les Belges appellent ça un « petit temps »."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Eau Rouge, c'est le virage le plus célèbre de la planète. Il faut le prendre à fond. Je compte sur toi."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "Il y a de l'eau, de la boue, et des frites. Je suis aux anges."
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Mon équipe Pastis a un parapluie. Je ne plaisante pas."
+        }
+      ],
+      "after": [
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "P{pos} ! {kevin} P{rival} ! Eau Rouge, à fond !",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Et moi, trempé. Je me suis trempé les pieds en descendant de voiture. C'était limite, mais je m'en sors.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il reste une course. Une seule. La finale. Je suis stressée. Léo, mon café.",
+          "if": {
+            "rival": "behind"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "P{rival}. J'ai pris ton aspiration pendant trois tours. Merci, mon pote.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Ton pote ?",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Oui. Mon pote. Je me suis laissé aller. Ne le répète pas.",
+          "if": {
+            "rival": "ahead"
+          }
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Il est devenu ton ami. Je le sentais. C'était écrit dans le tiroir « Plus tard ».",
+          "if": {
+            "rival": "ahead"
+          }
+        }
+      ]
+    },
+    "f1-6": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Le Mans. Le dernier chapitre. Je ne sais pas comment un Grand Championnat de F1 finit au Mans, mais il paraît que le calendrier a été fait un lundi."
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Je suis fière de toi, {pilote}. Peu importe le résultat. Mais je tiens à ce que tu gagnes. Pour de vrai."
+        },
+        {
+          "who": "leo",
+          "expr": "neutral",
+          "text": "J'ai serré tous les boulons. Je n'ai rien changé. Il ne reste aucun boulon en trop. Je suis très inquiet."
+        },
+        {
+          "who": "kevin",
+          "expr": "neutral",
+          "text": "Une dernière course. Entre vieux rivaux. Je te souhaite bonne chance. Pour de vrai. Mais je vais quand même essayer de te battre."
+        }
+      ],
+      "after": []
     }
   }
 }

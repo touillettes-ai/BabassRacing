@@ -112,7 +112,7 @@ export class PitController {
     return { litres, tyreS, fuelS, totalS };
   }
   hasService(player: Player): boolean {
-    return this.plan.tyre !== 'none' || this.litresFor(player) > 0.5;
+    return this.plan.tyre !== 'none' || this.litresFor(player) > 0.5 || player.damage > 0.02;
   }
 
   /** Distance restante jusqu'à la boîte (m) pendant l'approche guidée, sinon null. */
@@ -240,6 +240,7 @@ export class PitController {
           if (this.serviceTyre !== 'none' && !this.tyreApplied) player.tyres.fit(this.serviceTyre);
           player.hold = false;
           player.pitFrame = -1;
+          player.damage = 0; // passage au stand : réparation intégrale
           this.served = true;
           this.stops++;
           this.lastServiceS = crew.totalS;

@@ -384,6 +384,11 @@ export class Field {
         this.penaltyS += TOW.penaltyS;
         this.penaltyFlash = 4;
         this.autoCap = TOW.speed;
+        // panne d'essence : voiture hors service sur la piste → safety car
+        if (this.scEnabled && this.sc.state === 'none') {
+          this.sc.request();
+          this.scRequestedBy = this.entries.find((e) => e.isPlayer) ?? null;
+        }
       }
     } else if (pl.pit.stops > this.towStops && pl.pit.phase === 'none') {
       this.towActive = false;
@@ -428,19 +433,17 @@ export class Field {
     if (this.towActive) this.playerAuto = true;
   }
 
-  /** Détecte les débuts de tête-à-queue : appelle la safety car avec une certaine probabilité. */
-  private detectIncidents(): void {
-    for (const e of this.entries) {
-      const spinning = e.car.spinning;
-      if (spinning && !e.wasSpinning && this.time > SC.minRaceTimeS && this.raceState === 'racing') {
-        const p = e.isPlayer ? SC.chancePlayer : SC.chanceAi;
-        if (this.scEnabled && this.sc.state === 'none' && Math.random() < p) {
-          this.sc.request();
-          this.scRequestedBy = e;
-        }
-      }
-      e.wasSpinning = spinning;
+  /** Un adversaire tombe en panne : safety car (si aucune n'est déjà en piste). */
+  reportBreakdown(e: Entry): void {
+    if (this.sc.state === 'none') {
+      this.sc.request();
+      this.scRequestedBy = e;
     }
+  }
+
+  /** Suit les tête-à-queue (sans safety car : seule une voiture hors service ou une panne d'essence en déclenche une). */
+  private detectIncidents(): void {
+    for (const e of this.entries) e.wasSpinning = e.car.spinning;
   }
 
   /** Dépasser sous safety car coûte une pénalité (sauf voiture garée, au stand ou en tête-à-queue). */
@@ -495,7 +498,7 @@ export class Field {
       if (tz !== null) {
         const seg = this.track.segmentAt(tz);
         const idx = Math.max(0, Math.min(6, Math.round(3 + Math.max(-1, Math.min(1, seg.curve / 0.08)) * 2)));
-        out.push({ img: s.tow, sx: idx * f.w, sy: 0, sw: f.w, sh: f.h, ax: s.spec.anchor.x, ay: s.spec.anchor.y, ppm: 36, z: tz, x: tx });
+        out.push({ img: s.tow, sx: idx * f.w, sy: 0, sw: f.w, sh: f.h, ax: s.spec.anchor.x, ay: s.spec.anchor.y, ppm: s.towPpm, z: tz, x: tx });
       }
     }
     if (this.sc.state === 'out' || this.sc.state === 'ending') {

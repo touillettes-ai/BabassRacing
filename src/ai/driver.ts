@@ -85,6 +85,14 @@ export class Driver {
 
     if (this.assist && car.spinning) return { ...NEUTRAL, brake: true };
 
+    // --- Panne rare (jamais le rival) : voiture hors service, garée sur le bas-côté pour de bon
+    if (!this.assist && !this.isRival && e.stoppedT <= 0 && f.raceState === 'racing' && f.scEnabled && car.speed > 10 && e.pit.phase === 'none'
+      && Math.random() < AI.breakdownPerS * dt) {
+      this.shoulderSide = car.x >= 0 ? 1 : -1;
+      e.stoppedT = Infinity;
+      f.reportBreakdown(e);
+    }
+
     // --- Incident : tête-à-queue puis arrêt sur le bas-côté, puis reprise
     if (!this.assist && car.spinning) {
       this.wasSpinning = true;

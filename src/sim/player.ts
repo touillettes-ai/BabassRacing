@@ -43,6 +43,8 @@ export class Player {
   scCap: number | null = null;
   /** Aspiration 0..1 (1 = collé derrière une voiture) : posée par Field avant chaque pas */
   draft = 0;
+  /** Améliorations de la voiture (garage) : multiplicateurs propres à CETTE voiture (les adversaires gardent la physique de la catégorie) */
+  perf = { engine: 1, accel: 1, brake: 1, spin: 0 };
   /** Remorquée (panne sèche) : les limites de panne sèche ne s'appliquent plus */
   towed = false;
 
@@ -69,7 +71,7 @@ export class Player {
 
   /** Vitesse maximale du moment : pneus usés, crevaison, dégâts, panne sèche. */
   vmaxNow(): number {
-    let vmax = PHYSICS.maxSpeed * TYRES.compounds[this.tyres.compound].speed * (1 - TYRES.maxSpeedWearLoss * this.tyres.avgWear);
+    let vmax = PHYSICS.maxSpeed * this.perf.engine * TYRES.compounds[this.tyres.compound].speed * (1 - TYRES.maxSpeedWearLoss * this.tyres.avgWear);
     if (this.tyres.anyPunctured) vmax = Math.min(vmax, TYRES.punctureMaxSpeed);
     vmax *= 1 - COLLISION.damageSpeedLoss * this.damage;
     if (this.dry && !this.towed) vmax = Math.min(vmax, FUEL.emptyMaxSpeed);
@@ -129,10 +131,10 @@ export class Player {
     const accelMult = (this.dry && !this.towed ? FUEL.emptyAccelFactor : 1 + FUEL.accelBonusEmpty * (1 - fuelFrac)) * (1 + DRAFT.accelBonus * this.draft) * (1 - TYRES.accelWearLoss * this.tyres.avgWear);
     if (input.brake) {
       const brakeGrip = 1 - P.brakeGripShare + P.brakeGripShare * (grip / P.gripRef);
-      this.speed -= P.brakeDecel * brakeGrip * dt;
+      this.speed -= P.brakeDecel * this.perf.brake * brakeGrip * dt;
     } else if (this.throttle) {
       const r = Math.min(1, this.speed / vmax);
-      this.speed += P.accel * accelMult * (1 - Math.pow(r, P.accelCurvePower)) * dt;
+      this.speed += P.accel * this.perf.accel * accelMult * (1 - Math.pow(r, P.accelCurvePower)) * dt;
     } else {
       this.speed -= P.coastDecel * dt;
     }
@@ -195,7 +197,7 @@ export class Player {
       if (this.slideRatio > P.scrubStart) this.speed -= P.scrub * (this.slideRatio - P.scrubStart) * dt;
 
       // --- Tête-à-queue après un dérapage soutenu
-      if (this.slideRatio > P.spinRatio && this.speed > P.spinMinSpeed) this.slideAccum += dt;
+      if (this.slideRatio > P.spinRatio + this.perf.spin && this.speed > P.spinMinSpeed) this.slideAccum += dt;
       else this.slideAccum = Math.max(0, this.slideAccum - dt * 2);
       if (this.slideAccum > P.spinTime) {
         this.spinT = 0;
@@ -241,7 +243,7 @@ export class Player {
   }
 
   private advance(dt: number, track: Track): void {
-    this.speed = Math.max(0, Math.min(PHYSICS.maxSpeed * (1 + FUEL.speedBonusEmpty) * (1 + DRAFT.speedBonus), this.speed));
+    this.speed = Math.max(0, Math.min(PHYSICS.maxSpeed * this.perf.engine * (1 + FUEL.speedBonusEmpty) * (1 + DRAFT.speedBonus), this.speed));
     this.z += this.speed * dt;
     this.odometer += this.speed * dt;
     this.z = ((this.z % track.length) + track.length) % track.length;

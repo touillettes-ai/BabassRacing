@@ -17,7 +17,7 @@ import type { DynSprite } from './road';
  */
 const STEP = PIT.stepS;
 const JACK_T = 8; // pas du levage = « arrêt de la voiture »
-const TYRE_END_T = JACK_T + PIT.tyreServiceS / STEP; // 28
+const TYRE_END_T = JACK_T + PIT.tyreServiceSBase / STEP; // 28 (animation de base ; accélérée par `scale` si les mécanos sont améliorés)
 const WHEELS_ON_T = 20;
 const FUEL_START_T = 12;
 const PPM = 36; // px par mètre à l'échelle 1
@@ -47,17 +47,20 @@ export class PitCrew {
   readonly fuelEndT: number;
   /** Durée du service, de l'arrêt jusqu'au feu vert (s) */
   readonly totalS: number;
+  /** Vitesse de l'équipe une fois la voiture arrêtée (mécaniciens améliorés = séquence jouée plus vite) */
+  private readonly scale: number;
 
   constructor(readonly z: number, readonly x: number, readonly plan: CrewPlan) {
-    const fuelSteps = plan.fuelSeconds / STEP;
+    this.scale = Math.max(0.5, PIT.tyreServiceSBase / PIT.tyreServiceS);
+    const fuelSteps = (plan.fuelSeconds * this.scale) / STEP;
     this.fuelEndT = FUEL_START_T + fuelSteps;
     const end = Math.max(plan.tyres ? TYRE_END_T : 0, plan.fuelSeconds > 0 ? this.fuelEndT : 0);
-    this.totalS = Math.max(0, (end - JACK_T) * STEP);
+    this.totalS = Math.max(0, ((end - JACK_T) * STEP) / this.scale);
   }
 
   /** Pas courant de la séquence */
   get t(): number {
-    return this.stopped ? JACK_T + this.svc / STEP : Math.min(this.clock, JACK_T * STEP) / STEP;
+    return this.stopped ? JACK_T + (this.svc * this.scale) / STEP : Math.min(this.clock, JACK_T * STEP) / STEP;
   }
   get ready(): boolean {
     return this.t >= JACK_T - 0.01; // l'équipe est en place
@@ -76,7 +79,7 @@ export class PitCrew {
   /** Avancement du ravitaillement 0..1 */
   get fuelProgress(): number {
     if (this.plan.fuelSeconds <= 0) return 0;
-    return Math.max(0, Math.min(1, (this.t - FUEL_START_T) / (this.plan.fuelSeconds / STEP)));
+    return Math.max(0, Math.min(1, (this.t - FUEL_START_T) / ((this.plan.fuelSeconds * this.scale) / STEP)));
   }
   /** Tout le monde est reparti : l'équipe peut être supprimée. */
   get finished(): boolean {
@@ -96,7 +99,7 @@ export class PitCrew {
 
   update(dt: number, carStopped: boolean): void {
     if (!this.stopped && carStopped && this.clock >= JACK_T * STEP - 1e-6) this.stopped = true;
-    if (this.stopped) this.svc += dt;
+    if (this.stopped) this.svc += dt; // temps réel ; `t` applique l'échelle
     else this.clock += dt;
   }
 
@@ -104,7 +107,7 @@ export class PitCrew {
   sprites(a: Assets): DynSprite[] {
     const out: DynSprite[] = [];
     const t = this.t;
-    const ct = this.stopped ? JACK_T * STEP + this.svc : Math.min(this.clock, JACK_T * STEP); // pour les cycles de marche
+    const ct = this.stopped ? JACK_T * STEP + this.svc * this.scale : Math.min(this.clock, JACK_T * STEP); // pour les cycles de marche
     const add = (p: Pose | null) => {
       if (!p) return;
       out.push({

@@ -4,13 +4,15 @@ import type { AudioSettings } from '../audio/audio';
 import { TEAMS, pickColor } from '../config/teams';
 import { loadJSON } from '../core/assets';
 import type { Compound } from '../sim/tyres';
-import { CAREER, FUEL, RENDER, TYRES } from '../config/balance';
+import { FUEL, RENDER, SEASON, TYRES } from '../config/balance';
 import { ALL_RACES, CATEGORIES } from '../config/categories';
 import { loadImage } from '../core/assets';
 import { formatTime, t } from '../i18n';
 import type { TextKey } from '../i18n/fr';
 import type { MenuEvent } from './menuInput';
 import { drawBackdrop, drawText, drawTextCentered, panel, type UiAssets } from './ui';
+import { money } from './garage';
+import type { SeasonSummary } from '../career/career';
 
 const W = RENDER.width, H = RENDER.height;
 const tk = (k: string, v?: Record<string, string | number>) => t(k as TextKey, v);
@@ -198,6 +200,11 @@ export interface RaceSummary {
   penaltyS: number;
   playerName: string;
   kevinName: string;
+  /** Saison : points gagnés, prime (EUR), rang et total de points au championnat (renseignés après l'enregistrement) */
+  points?: number;
+  prize?: number;
+  seasonRank?: number;
+  seasonPoints?: number;
 }
 
 const DRIVER_FRAME = { w: 96, h: 108, ax: 48, ay: 100 };
@@ -251,9 +258,12 @@ export class ResultsScreen {
     if (pt !== null && kt !== null) drawText(ctx, ui, tk('res.gap', { v: Math.abs(pt - kt).toFixed(2) }), 258, y0 + 52);
     drawTextCentered(ctx, ui, s.beatKevin ? tk('res.win', { a: s.playerName, b: s.kevinName }) : tk('res.lose', { a: s.playerName, b: s.kevinName }), 361, y0 + 68);
 
-    const note = s.passed ? (s.unlockedNext ? tk('res.unlocked') : '') : tk('res.retry', { n: CAREER.unlockPosition });
-    if (note) drawTextCentered(ctx, ui, note, W / 2, H - 40);
-    if (s.penaltyS > 0) drawText(ctx, ui, tk('res.pen', { n: s.penaltyS }), 8, H - 40);
+    if (s.points !== undefined) {
+      drawText(ctx, ui, tk('res.points', { p: s.points }), 8, H - 80);
+      drawText(ctx, ui, tk('res.prize', { n: money(s.prize ?? 0) }), 8, H - 62);
+      drawText(ctx, ui, tk('res.season', { r: s.seasonRank ?? 0, n: s.seasonPoints ?? 0 }), 8, H - 44);
+    }
+    if (s.penaltyS > 0) drawText(ctx, ui, tk('res.pen', { n: s.penaltyS }), 250, H - 40);
     if (Math.floor(this.clock * 2) % 2 === 0) drawTextCentered(ctx, ui, tk('res.continue'), W / 2, H - 20);
   }
 }
@@ -551,5 +561,103 @@ export class TeamScreen {
       ctx.strokeRect(x + 0.5, 196.5, 45, 25);
     });
     drawTextCentered(ctx, ui, tk('team.hint'), W / 2, H - 22);
+  }
+}
+
+// ---------------------------------------------------------------- Nom du pilote et de l'écurie
+export interface NameChoice {
+  pilot: string;
+  teamName: string;
+}
+const NAME_MAX = 14;
+
+export class NameScreen {
+  private row = 0;
+  private clock = 0;
+  private vals: [string, string];
+
+  constructor(pilot = 'Babass', teamName = 'Babass Racing') {
+    this.vals = [pilot, teamName];
+  }
+
+  private finish(): NameChoice {
+    return { pilot: this.vals[0].trim() || 'Babass', teamName: this.vals[1].trim() || 'Babass Racing' };
+  }
+
+  update(dt: number, events: MenuEvent[]): 'back' | NameChoice | null {
+    this.clock += dt;
+    for (const e of events) {
+      if (e.type === 'up') this.row = 0;
+      else if (e.type === 'down') this.row = 1;
+      else if (e.type === 'back') return 'back';
+      else if (e.type === 'confirm') {
+        if (this.row === 0) this.row = 1;
+        else return this.finish();
+      } else if (e.type === 'char') {
+        if (e.ch === '\b') this.vals[this.row] = this.vals[this.row].slice(0, -1);
+        else if (/^[\p{L}\p{N} '-]$/u.test(e.ch) && this.vals[this.row].length < NAME_MAX) this.vals[this.row] += e.ch;
+      } else if (e.type === 'tap') {
+        const r = Math.floor((e.y - 92) / 44);
+        if (r === 0 || r === 1) {
+          this.row = r;
+          // appui : saisie par la boîte du navigateur (clavier tactile)
+          const v = window.prompt(tk(r === 0 ? 'name.pilot' : 'name.team'), this.vals[r]);
+          if (v !== null) this.vals[r] = v.slice(0, NAME_MAX);
+        } else if (e.y > 190) return this.finish();
+      }
+    }
+    return null;
+  }
+
+  draw(ctx: CanvasRenderingContext2D, ui: UiAssets): void {
+    drawBackdrop(ctx, ui, this.clock * 5);
+    drawTextCentered(ctx, ui, tk('name.title'), W / 2, 20);
+    panel(ctx, 40, 84, W - 80, 92);
+    const labels = [tk('name.pilot'), tk('name.team')];
+    this.vals.forEach((v, i) => {
+      const y = 94 + i * 44;
+      const sel = i === this.row;
+      drawText(ctx, ui, (sel ? '> ' : '  ') + labels[i], 52, y);
+      const caret = sel && Math.floor(this.clock * 2) % 2 === 0 ? '_' : ' ';
+      ctx.fillStyle = sel ? '#2f3470' : '#1c1f3d';
+      ctx.fillRect(52, y + 18, NAME_MAX * 8 + 12, 18);
+      drawText(ctx, ui, v + caret, 58, y + 18);
+    });
+    drawTextCentered(ctx, ui, tk('name.hint'), W / 2, H - 40);
+  }
+}
+
+// ---------------------------------------------------------------- Fin de saison : classement final et verdict
+export class SeasonScreen {
+  private clock = 0;
+  constructor(private readonly s: SeasonSummary, private readonly catName: string) {}
+  update(dt: number, events: MenuEvent[]): boolean {
+    this.clock += dt;
+    return events.some((e) => e.type === 'confirm' || e.type === 'tap');
+  }
+  draw(ctx: CanvasRenderingContext2D, ui: UiAssets): void {
+    const s = this.s;
+    drawBackdrop(ctx, ui, this.clock * 5);
+    drawTextCentered(ctx, ui, tk('season.title'), W / 2, 8);
+    drawTextCentered(ctx, ui, this.catName.slice(0, 40), W / 2, 28);
+    panel(ctx, 70, 52, 340, 8 + s.table.length * 18 + 8);
+    s.table.forEach((r, i) => {
+      const y = 58 + i * 18;
+      if (r.id === 'player') {
+        ctx.fillStyle = 'rgba(255,210,58,0.22)';
+        ctx.fillRect(76, y - 2, 328, 18);
+      }
+      drawText(ctx, ui, `${String(i + 1).padStart(2)} ${r.name.padEnd(14).slice(0, 14)}`, 84, y);
+      const p = `${r.points} PTS`;
+      drawText(ctx, ui, p, 396 - p.length * 8, y);
+      if (i === SEASON.promotionRank - 1) {
+        ctx.fillStyle = '#7be07b';
+        ctx.fillRect(76, y + 16, 328, 1);
+      }
+    });
+    const y0 = 52 + s.table.length * 18 + 24;
+    drawTextCentered(ctx, ui, tk('season.rank', { r: s.rank }), W / 2, y0);
+    drawTextCentered(ctx, ui, s.champion ? tk('season.champion') : s.promoted ? tk('season.promoted') : tk('season.retry', { n: SEASON.promotionRank }), W / 2, y0 + 22);
+    if (Math.floor(this.clock * 2) % 2 === 0) drawTextCentered(ctx, ui, tk('res.continue'), W / 2, H - 20);
   }
 }

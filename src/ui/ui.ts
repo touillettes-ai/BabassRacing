@@ -3,7 +3,10 @@ import { loadImage } from '../core/assets';
 import { BUST_FILE, type Expr, type Who } from '../story/scenes';
 
 const FRAME_W = 128, FRAME_H = 144;
-const EXPR_INDEX: Record<Expr | 'talk', number> = { neutral: 0, happy: 1, angry: 2, surprised: 3, talk: 4 };
+/** Ordre des 12 frames des planches de bustes (v2 du pack, `dialogue.json` → `frames`). */
+const EXPR_INDEX: Record<Expr, number> = {
+  neutral: 0, happy: 1, laugh: 2, talk: 3, talk_happy: 4, angry: 5, determined: 6, surprised: 7, sad: 8, worried: 9, smug: 10, wink: 11,
+};
 const CHARS = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~àâäçéèêëîïôöùûüÀÂÇÉÈÊËÎÏÔÙÛœŒ«»€’…';
 
 /** Ressources des écrans hors course : titre, dialogues, podium, polices. */
@@ -95,7 +98,7 @@ dim.height = FRAME_H;
 
 /** Buste de personnage : à gauche = celui qui parle, à droite = interlocuteur (miroir et assombri, RGB × 0,55). */
 export function drawBust(
-  ctx: CanvasRenderingContext2D, ui: UiAssets, who: Who, expr: Expr | 'talk', x: number, y: number, side: 'left' | 'right', dimmed: boolean,
+  ctx: CanvasRenderingContext2D, ui: UiAssets, who: Who, expr: Expr, x: number, y: number, side: 'left' | 'right', dimmed: boolean,
 ): void {
   const frame = EXPR_INDEX[expr];
   const dc = dim.getContext('2d')!;

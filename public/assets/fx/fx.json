@@ -110,5 +110,19 @@
    "y": 8
   },
   "note": "impact de goutte, a semer au hasard sur la route"
+ },
+ "fx_lightning": {
+  "frame": {
+   "w": 96,
+   "h": 160
+  },
+  "count": 3,
+  "fps": 12,
+  "loop": false,
+  "anchor": {
+   "x": 48,
+   "y": 0
+  },
+  "note": "eclair a coller du haut du ciel vers l'horizon ; frame 0 = coup, 1 = retombee, 2 = vide ; accompagner d'un flash blanc plein ecran (alpha 160 puis 60) sur 2 frames"
  }
 }

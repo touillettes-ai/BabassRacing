@@ -13,7 +13,7 @@ Toutes les marques des panneaux sont inventées.
 
 ## cars/
 
-`cars.json` : pour chaque voiture (`safetycar`, `hothatch`, `gt3`, `f1`, `hypercar`, `muscle`, `retro`, `wedge`, `futur`, `supercar`, `pickup`) → `sheets` (6 coloris, 1 seul pour la safety car), `brake_sheets`, `frame` 160×96, `anchor`, `pixels_per_meter` (36), `frames`, `yaw_deg`, `pit_sheets`, `pit_frames`.
+`cars.json` : pour chaque voiture (`safetycar`, `hothatch`, `gt3`, `f1`, `hypercar`, `muscle`, `retro`, `wedge`, `futur`, `supercar`, `pickup`, `towtruck`) → `sheets` (6 coloris, 1 seul pour la safety car), `brake_sheets`, `frame` 160×96, `anchor`, `pixels_per_meter` (36 ; **27 pour `towtruck`**, camion plus grand : toujours lire la valeur dans l'atlas), `frames`, `yaw_deg`, `pit_sheets`, `pit_frames`.
 
 **Planche de virage** `<car>_<couleur>.png` : 7 frames horizontales de 160 px.
 
@@ -144,8 +144,11 @@ Poser l'ancre de l'effet sur le point au sol voulu ; pour la fumée, ±34 px de 
 
 ## dialogue/
 
-- `char_<babass|leo|clara|marcel|viktor>.png` : bustes de dialogue détourés, 5 frames de 128×144 : `neutral`, `happy`, `angry`, `surprised`, `talk`. Pendant qu'un personnage parle, alterner `neutral`/`talk` à 8 fps (ou l'expression voulue/`talk`). Personnage qui parle à gauche ; l'interlocuteur à droite en miroir horizontal et assombri (RGB × 0,55).
-  Babass : pilote chauve à barbe de 3 jours (sans écouteur) · Léo : le beau gosse · Clara : pilote rousse · Marcel : vieux directeur d'écurie (casque radio, moustache) · Viktor : le rival blond.
+- `char_<babass|leo|clara|marcel|viktor>.png` : bustes de dialogue détourés (v2 : visages ombrés, yeux détaillés), **12 frames** de 128×144, dans cet ordre (`dialogue.json` → `frames`) :
+  `neutral`, `happy`, `laugh`, `talk`, `talk_happy`, `angry`, `determined`, `surprised`, `sad` (larme), `worried` (goutte de sueur), `smug` (sourire en coin, un sourcil levé), `wink` (clin d'œil).
+  Parole : alterner `neutral`/`talk` à 8 fps, ou `happy`/`talk_happy` pour une réplique joyeuse ; pour une réplique en colère ou triste, alterner l'expression voulue et `talk`. Personnage qui parle à gauche ; l'interlocuteur à droite en miroir horizontal et assombri (RGB × 0,55).
+- `char_<nom>_helmet.png` : **même personnage avec un casque de course** (casque jet aux couleurs de son équipe, visière relevée, jugulaire), mêmes 12 expressions dans le même ordre. À utiliser dans les scènes sur la grille, dans le stand ou en course (radio).
+  Babass : pilote chauve à barbe de 3 jours · Léo : le beau gosse (mèche relevée) · Clara : pilote rousse aux cheveux longs · Marcel : vieux directeur d'écurie (lunettes, moustache blanche, veston et cravate) · Viktor : le rival, cheveux noirs plaqués en arrière, cicatrice sur la joue.
 - `dialog_box.png` (464×76) : boîte de dialogue avec onglet de nom ; positions du nom et du texte dans `dialogue.json` (`dialog_box`).
 - `font_dialog.png` : police bitmap avec minuscules et accents français (cellules 10×16, liste des caractères dans `dialogue.json` → `font_dialog`). Avancer de `cell.w - 2` px par caractère ; 2 lignes d'environ 53 caractères.
 
@@ -179,3 +182,36 @@ Quatre préréglages prêts à charger : `circuit_jour`, `cote_coucher_soleil`, 
 ## previews/
 
 Images de contrôle uniquement, à ne pas charger dans le jeu.
+
+
+## Hub garage (menu entre les courses) — `garage/`
+Écran complet **480×270** (même base que l'écran titre ; afficher en x2/x3/x4 au plus proche voisin). Tout est décrit dans `garage/garage.json`.
+
+Ordre des calques, du fond vers l'avant :
+1. `garage_bg_day.png` ou `garage_bg_night.png` (fond complet, éclairage compris).
+2. Animations à coller aux coordonnées de `animations` : `tv` (4 frames, 6 fps), `door_light` (rouge = course verrouillée, vert = prête).
+3. Mécanos : `garage_mechanic_<red|blue|black>.png`, 5 frames (`idle`, `hands_hips`, `wave`, `thumbs_up`, `carry_tyre`), ancre aux pieds, 48 px/m. Emplacements suggérés dans `mechanic_spots` (miroir horizontal pour celui de droite). Le nombre de mécanos affichés peut refléter la taille de l'équipe.
+4. Voiture du joueur : `garage_<voiture>_<coloris>.png`, vue 3/4 arrière, ancre au sol à placer en **(240, 240)** écran (`car_anchor_screen`). 48 px/m, donc plus grande que sur la piste.
+5. `garage_fg_<day|night>.png` : servante, pneus, câble (devant la voiture et les mécanos).
+6. Surbrillance de la zone survolée : `hotspots.<zone>.highlight` donne l'image et sa position ; `rect` est la zone cliquable, `label` une suggestion d'usage (voiture, mécanos, pièces, bureau, tableau, sortie vers la course, TV, sponsors).
+
+`previews/preview_garage.png` montre une composition jour et une nuit.
+
+
+## Diversité v18 : ciels, horizons, routes, ambiances et circuits
+
+**Ciels** (`backgrounds/`, 1024×256, répétables en X, chacun avec sa version `_clear` sans nuages) : en plus de `day`, `sunset`, `night`, `storm`, `dawn` → `sky_overcast` (couvert), `sky_noon` (midi écrasant), `sky_golden` (heure dorée), `sky_dusk` (crépuscule violet), `sky_aurora` (aurore boréale), `sky_fog` (brume), `sky_tropical`, `sky_ember` (soir de cendres), `sky_winter`.
+
+**Horizons** (`backgrounds/`, 1024×128, transparents, répétables) : en plus de `mountains`, `forest`, `desert`, `city` → `horizon_sea` (mer, phare, voiliers), `horizon_hills` (collines, champs, éoliennes), `horizon_canyon` (mesas), `horizon_alps` (alpes enneigées), `horizon_industrial` (usines, grues, fumées), `horizon_volcano` (volcan en éruption), `horizon_city_day` (ville de jour), `horizon_jungle`, `horizon_dunes`. Ciel, horizon et couches de nuages se combinent librement : `levels.json` donne des combinaisons éprouvées.
+
+**Routes** (`roads/`, 512×64, même format que les autres, décrites dans `roads.json`) : `road_concrete` (dalles de béton, circuit urbain), `road_cobble` (pavés), `road_dirt` (terre, ornières), `road_modern` (asphalte neuf, vibreurs bleu/blanc), `road_autumn` (feuilles mortes), `road_ice` (plaques de verglas), `road_highway` (4 voies, bandes d'arrêt d'urgence, pas de vibreur), `road_lava` (basalte, fissures incandescentes), `road_jungle` (humide, boue), `road_worn` (rustines, fissures), `road_sand`.
+
+**Foudre** : `fx/fx_lightning.png` (3 frames 96×160, ancre en haut) + flash blanc plein écran à faire soi-même (alpha 160 puis 60). Utilisée par l'ambiance `orage`.
+
+**Ambiances** : `levels.json` passe de 4 à 16 entrées (désert à midi, campagne le matin, autoroute à l'heure dorée, glacier, volcan, docks dans la brume, jungle, nuit d'aurore, vieille ville en automne, ville au crépuscule, orage, dunes). Chaque entrée garde le même format (ciel, horizon, nuages, route, atlas, décor de bord de route, musique, voiture suggérée) et liste maintenant les `tracks` qui l'utilisent. `weather.fog_strength` (docks) : renforcer le fondu vers la couleur du ciel avec la distance. `previews/preview_levels.png` montre les 16.
+
+**Types de circuits et tracés** (`circuits/circuits.json`) :
+- `types` : 10 types (`permanent`, `urbain`, `montagne`, `rallye`, `ovale`, `autoroute`, `kart`, `glace`, `plage`, `industriel`) avec `grip` (0.45 glace → 1.0 permanent, à appliquer à l'adhérence), `width_m`, `road` par défaut, `curbs`, `walls` (murs/rails près de la piste) et une description à afficher dans le hub.
+- `tracks` : 14 tracés, chacun avec un fichier `track_<nom>.json` : liste de **segments de 50 m** (`curve` entre −1 et 1, `turn_deg`, `elev_m`, position `x,y` en mètres, `event` = `corner`/`hairpin` pour les zones de freinage et les panneaux), longueur, type, ambiance, tours suggérés. Le tracé est une boucle fermée : enchaîner les segments en boucle, le départ est au segment 0.
+- Minimaps : `map_<nom>_64.png` et `_128.png` (tracé blanc, point de départ jaune) + planches `maps_64.png` / `maps_128.png` dans l'ordre `maps_sheet.order`. Pour positionner le joueur sur la minimap, utiliser le `x,y` du segment courant avec la même mise à l'échelle que la planche (bornes min/max des `x,y`, marge de 5 px).
+- Pour un tracé OutRun classique (sans boucle), prendre les segments dans l'ordre et s'arrêter à la longueur voulue.

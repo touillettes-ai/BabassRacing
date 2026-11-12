@@ -62,10 +62,10 @@ export class Dialogue {
     const boxY = H - 80;
 
     if (this.other && this.other !== line.who) drawBust(ctx, ui, this.other, 'neutral', W - 144, boxY - 140, 'right', true);
-    drawBust(ctx, ui, line.who, talk ? 'talk' : line.expr, 16, boxY - 140, 'left', false);
+    drawBust(ctx, ui, line.who, talk ? (line.expr === 'happy' || line.expr === 'laugh' || line.expr === 'wink' ? 'talk_happy' : 'talk') : line.expr, 16, boxY - 140, 'left', false);
 
     ctx.drawImage(ui.box, 8, boxY);
-    drawText(ctx, ui, t(`name.${line.who}` as TextKey, this.vars), 8 + 22, boxY + 2);
+    drawText(ctx, ui, String(this.vars[`name.${line.who}`] ?? t(`name.${line.who}` as TextKey, this.vars)), 8 + 22, boxY + 2);
     // mise en page du texte COMPLET (les mots ne sautent pas de ligne pendant l'écriture), affichée progressivement
     let left = Math.floor(this.chars);
     wrap(this.text, 53).forEach((l, i) => {

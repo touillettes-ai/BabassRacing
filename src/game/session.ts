@@ -1,6 +1,6 @@
 import { buildRoster } from '../ai/roster';
-import { AI, CAREER, FUEL, PHYSICS, TYRES, WEATHER } from '../config/balance';
-import { loadAssets, loadMarshal, loadSafetyCar, type Assets } from '../core/assets';
+import { AI, CAREER, FUEL, PHYSICS, PIT, TYRES, UPGRADES, WEATHER } from '../config/balance';
+import { loadAssets, loadMarshal, loadSafetyCar, type Assets, type LevelDef } from '../core/assets';
 import type { AudioState } from '../audio/audio';
 import type { Input, InputState } from '../core/input';
 import { t } from '../i18n';
@@ -26,6 +26,8 @@ import type { RaceSummary } from '../ui/screens';
 export interface RaceSetup {
   carId: string;
   level: string;
+  /** Assets choisis pour ce circuit (voir config/circuits.json) */
+  levelOverride?: Partial<LevelDef>;
   params: TrackParams;
   laps: number;
   startTyre?: Compound;
@@ -42,6 +44,12 @@ export interface RaceSetup {
   onLap?: (lapTime: number) => boolean;
   /** Meilleur tour déjà enregistré (affiché en course) */
   recordLap?: number | null;
+  /** Carrière : améliorations du garage (niveaux) et stratèges embauchés ; absent = voiture de série */
+  upgrades?: {
+    refuel: number; tyre: number; engine: number; clutch: number; brakes: number; stratTyre: boolean; stratFuel: boolean;
+  };
+  /** Nom affiché du joueur */
+  pilotName?: string;
 }
 
 /**
@@ -69,6 +77,10 @@ export class RaceSession {
   /** Estimation de consommation / usure par tour (écran de stratégie) */
   estimate!: Estimate;
   private lastLapSeen: number | null = null;
+  /** Stratèges : le menu du stand vient de s'ouvrir ; appel déjà fait pour cet arrêt ; durée d'affichage du message (s) */
+  private menuWas = false;
+  private calledStops = -1;
+  stratCall = 0;
 
   private constructor(
     readonly setup: RaceSetup, readonly assets: Assets, readonly track: Track, private readonly minimap: Minimap,
@@ -77,6 +89,13 @@ export class RaceSession {
     this.race = new Race(track, setup.laps);
     this.pit = new PitController(track);
     this.pit.askPlayer = true;
+    const up = setup.upgrades;
+    this.player.perf = {
+      engine: 1 + UPGRADES.effects.engineSpeed * (up?.engine ?? 0),
+      accel: 1 + UPGRADES.effects.clutchAccel * (up?.clutch ?? 0),
+      brake: 1 + UPGRADES.effects.brakeDecel * (up?.brakes ?? 0),
+      spin: UPGRADES.effects.brakeSpin * (up?.brakes ?? 0),
+    };
     this.field = field(this);
     this.road = new RoadRenderer(assets);
     this.gantry = new GantryLights(assets);
@@ -95,10 +114,15 @@ export class RaceSession {
     PHYSICS.slidePush = PHYSICS.slidePushBase * (1 - 0.5 * stab);
     PHYSICS.spinRatio = PHYSICS.spinRatioBase + 0.35 * stab;
     if (setup.aiDifficulty !== undefined) AI.difficulty = setup.aiDifficulty;
+    // mécaniciens : valeurs de base à chaque course (puis améliorées par le garage)
+    const up = setup.upgrades;
+    PIT.refuelRate = PIT.refuelRateBase * (1 + UPGRADES.effects.refuelRate * (up?.refuel ?? 0));
+    PIT.tyreServiceS = PIT.tyreServiceSBase * (1 - UPGRADES.effects.tyreService * (up?.tyre ?? 0));
 
-    const assets = await loadAssets(setup.level, setup.carId);
+    const assets = await loadAssets(setup.level, setup.carId, setup.levelOverride);
     // météo : l'ambiance « pluie » détrempe la piste (les gommes sèches glissent)
-    WEATHER.wetness = assets.level.weather ? 1 : 0;
+    // seules les ambiances avec pluie (weather.overlay) détrempent la piste ; la brume (docks) ne change pas l'adhérence
+    WEATHER.wetness = (assets.level.weather as { overlay?: string } | undefined)?.overlay ? 1 : 0;
     const track = generateTrack(setup.params);
     const issues = validateTrack(track);
     if (issues.length) console.warn('Circuit invalide :', issues);
@@ -110,7 +134,7 @@ export class RaceSession {
     const session = new RaceSession(
       setup, assets, track, minimap,
       (s) => {
-        const f = new Field(track, s.player, s.pit, roster, scAssets, marshal, t('driver.babass'));
+        const f = new Field(track, s.player, s.pit, roster, scAssets, marshal, setup.pilotName ?? t('driver.babass'));
         f.scEnabled = !setup.solo;
         return f;
       },
@@ -139,6 +163,9 @@ export class RaceSession {
     this.record = s.recordLap ?? null;
     this.recordFlash = 0;
     this.lastLapSeen = null;
+    this.menuWas = false;
+    this.calledStops = -1;
+    this.stratCall = 0;
   }
 
   /** Un pas de simulation (60 Hz). `confirmPressed` : Entrée/appui pour passer à l'écran de résultats une fois arrivé. */
@@ -163,6 +190,9 @@ export class RaceSession {
     // pilote auto (safety car, dépanneuse) : remplace les commandes du joueur ; le stand peut reprendre direction/gaz
     const base = field.playerAuto && this.race.state === 'racing' ? field.autopilot(dt) : this.race.controls(st);
     const ctrl = this.race.state === 'racing' ? pit.update(dt, player, base) : base;
+    if (pit.menuOpen && !this.menuWas) this.presetPlan();
+    this.menuWas = pit.menuOpen;
+    this.fuelCall(dt);
     field.beforePlayer();
     player.update(dt, ctrl, track);
     this.race.update(dt, player);
@@ -180,6 +210,47 @@ export class RaceSession {
     }
     if (this.recordFlash > 0) this.recordFlash -= dt;
     if (this.race.state === 'finished') this.finishedFor = Math.max(0, this.finishedFor) + dt;
+  }
+
+  /** Tours restants à parcourir (estimation : tours non terminés, le tour en cours compte en entier). */
+  private get lapsToGo(): number {
+    return Math.max(0.3, this.race.lapsLeft);
+  }
+
+  /** Stratèges embauchés : préréglage du menu du stand à l'entrée dans la voie (pneus et/ou essence). */
+  private presetPlan(): void {
+    const up = this.setup.upgrades, { player, pit, track } = this;
+    if (!up) return;
+    const L = track.length, need = this.lapsToGo;
+    if (up.stratTyre) {
+      const worth = player.tyreLaps(L) < need * 1.1;
+      pit.plan.tyre = !worth ? 'none' : WEATHER.wetness > 0.3 ? 'rain' : need <= 4.5 ? 'soft' : need <= 7 ? 'medium' : 'hard';
+    }
+    if (up.stratFuel) {
+      let step = 0;
+      if (player.fuelLaps(L) < need * 1.08) {
+        step = PIT.fuelOptions.length - 1;
+        for (let i = 1; i < PIT.fuelOptions.length; i++) {
+          if (player.fuelLaps(L, PIT.fuelOptions[i] * FUEL.capacity) >= need * 1.08) { step = i; break; }
+        }
+      }
+      pit.plan.fuelStep = step;
+    }
+  }
+
+  /** Stratège essence : arme l'arrêt (et prévient le pilote) quand il faut rentrer pour finir la course. */
+  private fuelCall(dt: number): void {
+    if (this.stratCall > 0) this.stratCall -= dt;
+    const { player, pit, track } = this;
+    if (!this.setup.upgrades?.stratFuel || this.race.state !== 'racing' || this.setup.solo) return;
+    if (pit.phase !== 'none' || pit.intent || this.calledStops === pit.stops) return;
+    const left = player.fuelLaps(track.length);
+    // il reste moins de ~1,4 tour d'essence et la course est plus longue que ça : c'est le moment idéal
+    if (left <= 1.4 && this.lapsToGo > left + 0.3) {
+      pit.intent = true;
+      this.calledStops = pit.stops;
+      this.stratCall = 6;
+    }
   }
 
   /** Vrai quand on peut passer aux résultats : délai écoulé ou tous les concurrents arrivés. */
@@ -204,7 +275,7 @@ export class RaceSession {
     this.speedFx.streaks(ctx, player);
     ctx.restore();
     drawHud(ctx, assets, player, this.race, this.minimap, pit, field, this.st.debugToggled ? `FPS ${Math.round(this.fps)}` : null, {
-      record: this.record, flash: this.recordFlash > 0,
+      record: this.record, flash: this.recordFlash > 0, call: this.stratCall > 0,
     });
   }
 
@@ -239,7 +310,7 @@ export class RaceSession {
     const passed = playerPos <= unlockPosition;
     return {
       rows, playerPos, kevinPos, beatKevin: playerPos < kevinPos, passed, unlockedNext: passed && hasNext,
-      stops: this.pit.stops, penaltyS: f.penaltyS, playerName: t('driver.babass'), kevinName: kevin?.name ?? t('driver.kevin'),
+      stops: this.pit.stops, penaltyS: f.penaltyS, playerName: this.setup.pilotName ?? t('driver.babass'), kevinName: kevin?.name ?? t('driver.kevin'),
     };
   }
 }

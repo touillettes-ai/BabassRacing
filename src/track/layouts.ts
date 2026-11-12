@@ -1,4 +1,5 @@
 import { RENDER, TRACKGEN as G } from '../config/balance';
+import { appendOfficial, OFFICIAL } from './official';
 import type { TrackBuilder } from './segments';
 
 /**
@@ -21,6 +22,14 @@ export interface LayoutDef {
 }
 
 export const LAYOUTS: LayoutDef[] = [
+  { id: 'sebring', nameKey: 'circuit.sebring', lengthFactor: 1.0, tokens: 'S30 Rm S10 Lt Rt S12 Lm S18 Rh S16 Lm Rm S20 Lh S12 Rm S22 Lc S12 Rt' },
+  { id: 'paulricard', nameKey: 'circuit.paulricard', lengthFactor: 1.1, tokens: 'S40 Rm S10 Lm Rg S60 Lc S40 Rt S12 Lm S10 Rm S14 Rw S12 Lt' },
+  { id: 'portimao', nameKey: 'circuit.portimao', lengthFactor: 1.0, tokens: 'S20 Rm Lm S12^+5 Rt S10^-4 Lh S10 Rm S14^+6 Rw S10^-6 Lt Rt S14 Lm Rh S12 Lc' },
+  { id: 'montreal', nameKey: 'circuit.montreal', lengthFactor: 0.95, tokens: 'S30 Rc S30 Lh S34 Rc S34 Lm Rm S10 Lt S40 Rh S26 Lc' },
+  { id: 'melbourne', nameKey: 'circuit.melbourne', lengthFactor: 1.0, tokens: 'S24 Rm S10 Lt S14 Rg S20 Lm Rm S16 Lw S12 Rt S10 Lm Rt S18 Lw Rm S10' },
+  { id: 'singapore', nameKey: 'circuit.singapore', lengthFactor: 0.85, tokens: 'S14 Rt S8 Lt S10 Rm Lm Rt S10 Lh S8 Rm S10 Lc S8 Rt Lt S10 Rm S8 Lh S10 Rt Lm S8' },
+  { id: 'baku', nameKey: 'circuit.baku', lengthFactor: 1.1, tokens: 'S60 Rt S20 Lt Rm S10 Lm Rt S12 Lt Rh S10 Lm Rt S14 Lt S10 Rm S40 Lm' },
+  { id: 'bathurst', nameKey: 'circuit.bathurst', lengthFactor: 1.1, tokens: 'S30^+8 Rm S8 Lt^+4 Rg S12^+6 Lm Rt S10^-6 Lh^-4 S10 Rm Lm S24^-8 Rt S10 Lm S20 Rh S30 Lc' },
   { id: 'redbullring', nameKey: 'circuit.redbullring', lengthFactor: 0.8, tokens: 'S34^+6 Rh S28^+4 Rt S26^-4 Lm S24 Rm S12 Lm S14' },
   { id: 'zandvoort', nameKey: 'circuit.zandvoort', lengthFactor: 0.85, tokens: 'S14 Rm S8 Lt Rg S14 Lw Rt S10 Lt Rm S10 Lm S12 Rm S10 Rw' },
   { id: 'hungaroring', nameKey: 'circuit.hungaroring', lengthFactor: 0.9, tokens: 'S22 Rm S8 Lm Rm S14 Lt S10 Rm Lm S12 Rt Lt S10 Rt Lm' },
@@ -74,6 +83,7 @@ const clampDy = (dy: number, segs: number) => Math.sign(dy) * Math.min(Math.abs(
  * et droite finale). Les lignes droites sont proportionnellement allongées / raccourcies pour atteindre cette longueur.
  */
 export function appendLayout(b: TrackBuilder, id: string, avail: number): void {
+  if (OFFICIAL[id]) return appendOfficial(b, id);
   const def = LAYOUTS.find((l) => l.id === id);
   if (!def) throw new Error('Circuit inconnu : ' + id);
   const toks = parse(def.tokens);

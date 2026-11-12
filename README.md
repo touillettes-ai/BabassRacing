@@ -131,20 +131,32 @@ Config : `AI`, `SC`, `COLLISION` dans `config/balance.ts`.
 
 ## Carrière, histoire, menus
 
-Parcours : écran titre → (nouvelle partie : scène d'introduction) → sélection de course → (briefing de catégorie la 1re fois)
-→ course → résultats (podium, classement, Babass contre Kevin) → scène d'après-course (réaction d'« Elle » selon que Babass a battu
-Kevin) → sélection… À la fin de la dernière course, scène de fin (3 fins selon la part de courses où Babass a battu Kevin) puis
-écran final. **Échap** en course = retour à la sélection. La progression (résultats, scènes vues) est dans le `localStorage`
-(`CAREER.saveKey`) ; il faut finir dans les 4 premiers (`CAREER.unlockPosition`) pour débloquer la course suivante.
+Parcours : écran titre → (nouvelle partie : couleur d'écurie → **nom du pilote et de l'écurie** → introduction) → **garage** → porte =
+sélection de course → (briefing) → course → résultats (podium, classement, **points et prime d'argent**) → scène d'après-course → garage…
+Chaque catégorie est une **saison** de 4 à 6 courses (`RACES_PER_TIER` dans `config/categories.ts`, circuits pris dans `LAYOUT_POOL`, 24 tracés).
+À chaque course, tous les pilotes marquent des points selon leur place (`SEASON.points`) ; à la fin de la saison, il faut être dans les
+**3 premiers du classement** (`SEASON.promotionRank`) pour monter, sinon on **rejoue toute la catégorie** (argent et améliorations conservés).
+Une scène de fin de saison (différente selon promu/non promu et devant/derrière Kevin) suit l'écran de classement final.
+**Échap** en course = retour à la sélection. Sauvegarde : `localStorage` (`CAREER.saveKey`, format v2 ; une ancienne sauvegarde redémarre la carrière).
 Les paramètres d'URL de debug (`?seed=…`, `?laps=…`, `?car=…`) lancent directement une course libre sans menus.
+
+### Garage et améliorations (`ui/garage.ts`, `UPGRADES` / `SEASON` dans `config/balance.ts`)
+Scène du pack `garage/garage.json` : zones sélectionnables aux flèches ou au clic (voiture/pièces, mécanos, bureau, tableau, porte, télé, sponsors).
+- **Mécaniciens** (conservés d'une catégorie à l'autre) : vitesse de ravitaillement, vitesse de changement de pneus (5 niveaux).
+- **Mur des stands** (conservé, cher, débloqué à partir de la catégorie 5) : stratège pneus (gomme préréglée à l'entrée au stand), stratège essence
+  (plein préréglé et appel « rentre au stand » au moment idéal).
+- **Voiture** (remise à zéro à chaque changement de catégorie) : moteur (vitesse max), embrayage (accélération), freins (freinage, moins de tête-à-queue).
+  Ces bonus sont propres à la voiture du joueur (`Player.perf`), les adversaires gardent la physique de la catégorie.
+- **Tableau** : classement de la saison ; prix = base × (1 + croissance × niveau) × (1 + croissance catégorie).
 
 ### Écurie, réglages du son, éditeur de dialogues
 - **Couleur d'écurie** : choisie à la « Nouvelle partie » (8 couleurs, `config/teams.ts`) ; chaque modèle de voiture prend le coloris disponible le plus proche.
 - **Réglages du son** : depuis l'écran titre (« Réglages du son ») : volume général, musique, effets, son coupé ; sauvegardés dans le `localStorage`.
-- **Dialogues** : `src/story/dialogues.json` (introduction, 3 fins, et pour chaque course « avant » et « après » ; chaque réplique a un personnage,
-  une expression, un texte et une condition : toujours / rival derrière (Babass a battu Kevin) / rival devant / qualifié / non qualifié).
+- **Dialogues** : `src/story/dialogues.json` (noms des personnages, introduction, 3 fins, fin de saison par catégorie, et pour chaque course « avant » et « après » ;
+  chaque réplique a un personnage, une expression, un texte et une condition `if` facultative : `result` won/podium/noPodium, `rival` ahead/behind, `season` promoted/notPromoted).
+  Variables : `{pilote}` `{ecurie}` `{kevin}` `{elle}` `{marcel}` `{leo}` `{cat}` `{pos}` `{rival}` `{n}`.
   Éditeur local (non versionné, dossier `tools/` ignoré par git) : `npm run dev` puis ouvrir `http://localhost:5173/tools/dialogue-editor.html` :
-  ajouter, supprimer, réordonner, dupliquer des répliques, choisir qui parle et son expression, et prévisualiser la scène « rival devant / derrière ».
+  ajouter, supprimer, réordonner, dupliquer des répliques, **renommer les personnages**, choisir qui parle, son expression et les conditions, et prévisualiser selon le résultat / le rival / la saison.
 
 ### Ajouter un circuit ou une catégorie (`src/config/categories.ts`)
 - **Circuit** : ajouter une course à une catégorie en augmentant son nombre dans `RACES_PER_TIER` ; la seed est fixe
@@ -155,7 +167,7 @@ Les paramètres d'URL de debug (`?seed=…`, `?laps=…`, `?car=…`) lancent di
 ### Ajouter une ligne de dialogue (`src/story/scenes.ts` + `src/i18n/fr.ts`)
 1. Écrire le texte dans `i18n/fr.ts` (clé `story.…`, variables `{kevin}` `{elle}` `{cat}`).
 2. L'ajouter à la scène voulue : `L('elle', 'happy', 'story.ma.cle')` (personnages : babass, marcel, kevin, elle, leo ;
-   expressions : neutral, happy, angry, surprised). Le prénom d'« Elle » se change avec `name.elle`.
+   expressions : neutral, happy, laugh, angry, determined, surprised, sad, worried, smug, wink ; `talk`/`talk_happy` sont alternées automatiquement pendant la frappe du texte). Le prénom d'« Elle » se change avec `name.elle`.
 
 ## Audio
 

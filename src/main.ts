@@ -1,7 +1,7 @@
 import { Audio } from './audio/audio';
-import { Career } from './career/career';
+import { Career, type SeasonSummary } from './career/career';
 import { Records } from './career/records';
-import { AUDIO, CAREER, FUEL, PLAYER, RACE, RENDER, TYRES, WEATHER } from './config/balance';
+import { AUDIO, FUEL, SEASON, PLAYER, RACE, RENDER, TYRES, WEATHER } from './config/balance';
 import { ALL_RACES, CATEGORIES } from './config/categories';
 import { Input } from './core/input';
 import { startLoop } from './core/loop';
@@ -9,16 +9,17 @@ import { RaceSession, type RaceSetup } from './game/session';
 import { t } from './i18n';
 import { Dialogue } from './ui/dialogue';
 import { MenuInput } from './ui/menuInput';
-import { EndScreen, OptionsScreen, ResultsScreen, SelectScreen, StrategyScreen, TeamScreen, TimeAttackScreen, TitleScreen } from './ui/screens';
+import { EndScreen, NameScreen, OptionsScreen, ResultsScreen, SeasonScreen, SelectScreen, StrategyScreen, TeamScreen, TimeAttackScreen, TitleScreen } from './ui/screens';
+import { GarageAssets, GarageScreen } from './ui/garage';
 import { TEAMS, pickColor } from './config/teams';
 import { listCarColors } from './core/assets';
 import { drawTextCentered, loadUiAssets, type UiAssets } from './ui/ui';
-import { afterLines, beforeLines, endingLines, introLines } from './story/dialogueData';
+import { afterLines, beforeLines, characterNames, endingLines, introLines, seasonEndLines } from './story/dialogueData';
 import type { Line } from './story/scenes';
 import { generateTrack, validateTrack, DEFAULT_PARAMS } from './track/generator';
 import type { TextKey } from './i18n/fr';
 
-type Mode = 'loading' | 'title' | 'select' | 'story' | 'race' | 'results' | 'end' | 'ta' | 'strategy' | 'options' | 'team';
+type Mode = 'loading' | 'title' | 'select' | 'story' | 'race' | 'results' | 'end' | 'ta' | 'strategy' | 'options' | 'team' | 'name' | 'garage' | 'season';
 
 async function main(): Promise<void> {
   const canvas = document.getElementById('game') as HTMLCanvasElement;
@@ -65,6 +66,12 @@ async function main(): Promise<void> {
   let strategy: StrategyScreen | null = null;
   let optionsScreen: OptionsScreen | null = null;
   let teamScreen: TeamScreen | null = null;
+  let nameScreen: NameScreen | null = null;
+  let garage: GarageScreen | null = null;
+  let seasonScreen: SeasonScreen | null = null;
+  let afterSeason: (() => void) | null = null;
+  const names = characterNames();
+  const garageAssets = await GarageAssets.load();
   let strategyBack: () => void = () => undefined;
 
   /** Écran de stratégie (pneus + essence de départ) entre le chargement et le départ. */
@@ -79,8 +86,12 @@ async function main(): Promise<void> {
   let raceIndex = 0;
   let loadingText = '';
 
+  /** Variables des dialogues : noms des personnages (éditables), pilote et écurie du joueur ; `name.<qui>` = nom sur l'onglet de la boîte. */
   const vars = (extra: Record<string, string | number> = {}) => ({
-    kevin: t('name.kevin'), elle: t('name.elle'), babass: t('name.babass'), ...extra,
+    pilote: career.pilot, ecurie: career.teamName, babass: career.pilot,
+    kevin: names.kevin, elle: names.elle, marcel: names.marcel, leo: names.leo,
+    'name.babass': career.pilot, 'name.kevin': names.kevin, 'name.elle': names.elle, 'name.marcel': names.marcel, 'name.leo': names.leo,
+    ...extra,
   });
 
   // ---------------------------------------------------------------- enchaînement des écrans
@@ -96,6 +107,10 @@ async function main(): Promise<void> {
   const goSelect = () => {
     select = new SelectScreen(career);
     mode = 'select';
+  };
+  const goGarage = () => {
+    garage = new GarageScreen(career, garageAssets);
+    mode = 'garage';
   };
 
   const hookDebug = (s: RaceSession) => {
@@ -116,10 +131,12 @@ async function main(): Promise<void> {
     const color = pickColor(career.team, await listCarColors(cat.model));
     const setup: RaceSetup = {
       carId: `${cat.model}_${color}`,
-      level: cat.level,
-      params: { seed: race.seed, lengthM: race.lengthM, corners: race.corners, elevation: race.elevation, difficulty: race.difficulty, theme: cat.level, layout: race.layout },
+      level: race.level,
+      levelOverride: race.assets,
+      params: { seed: race.seed, lengthM: race.lengthM, corners: race.corners, elevation: race.elevation, difficulty: race.difficulty, theme: race.level, layout: race.layout },
       laps: race.laps,
       maxSpeed: cat.maxSpeed, accel: cat.accel, gripLimit: cat.gripLimit, stability: cat.stability, tank: cat.tank, aiDifficulty: cat.aiDifficulty,
+      upgrades: { ...career.upgrades }, pilotName: career.pilot,
     };
     session = await RaceSession.create(setup, input);
     hookDebug(session);
@@ -137,15 +154,16 @@ async function main(): Promise<void> {
   /** Time attack : voiture (catégorie) + circuit + pneus choisis ; tours illimités, seul en piste, records sauvegardés. */
   const launchTimeAttack = async (catIndex: number, index: number, tyre: import('./sim/tyres').Compound) => {
     const cat = CATEGORIES[catIndex];
-    const { cat: trackCat, race } = ALL_RACES[index];
+    const { race } = ALL_RACES[index];
     mode = 'loading';
     loadingText = t('menu.loading' as TextKey);
     taActive = true;
     const taColor = pickColor(career.team, await listCarColors(cat.model));
     const setup: RaceSetup = {
       carId: `${cat.model}_${taColor}`,
-      level: trackCat.level,
-      params: { seed: race.seed, lengthM: race.lengthM, corners: race.corners, elevation: race.elevation, difficulty: race.difficulty, theme: trackCat.level, layout: race.layout },
+      level: race.level,
+      levelOverride: race.assets,
+      params: { seed: race.seed, lengthM: race.lengthM, corners: race.corners, elevation: race.elevation, difficulty: race.difficulty, theme: race.level, layout: race.layout },
       laps: 999,
       startTyre: tyre,
       maxSpeed: cat.maxSpeed, accel: cat.accel, gripLimit: cat.gripLimit, stability: cat.stability, tank: cat.tank,
@@ -162,38 +180,57 @@ async function main(): Promise<void> {
     });
   };
 
-  /** Fin de course : enregistre le résultat, affiche podium et comparaison. */
+  /** Fin de course : enregistre le résultat (points, prime), affiche podium et comparaison. */
   const finishRace = () => {
     if (!session) return;
     const info = ALL_RACES[raceIndex];
-    const summary = session.summary(CAREER.unlockPosition, raceIndex + 1 < ALL_RACES.length);
+    const summary = session.summary(SEASON.promotionRank, false);
     summary.playerDriver = TEAMS.find((x) => x.id === career.team)?.driver;
+    summary.kevinName = names.kevin;
+    for (const r of summary.rows) if (r.id === 'kevin') r.name = names.kevin;
     const player = summary.rows.find((r) => r.isPlayer);
-    career.record(info.race.id, {
+    const order = summary.rows.map((r) => ({ id: r.id, name: r.name }));
+    const gain = career.recordRace(raceIndex, {
       position: summary.playerPos, kevinPosition: summary.kevinPos, beatKevin: summary.beatKevin, time: player?.time ?? null,
-    });
+    }, order);
+    summary.points = gain.points;
+    summary.prize = gain.prize;
+    const table = career.table(info.catIndex);
+    summary.seasonRank = table.findIndex((r) => r.id === 'player') + 1;
+    summary.seasonPoints = table.find((r) => r.id === 'player')?.points ?? 0;
     results = new ResultsScreen(summary);
     mode = 'results';
+  };
+
+  /** Fin de saison : classement final, verdict (promotion ou catégorie à rejouer), dialogue, puis garage ou fin de l'histoire. */
+  const endOfSeason = () => {
+    const cat = CATEGORIES[career.catUnlocked];
+    const sum: SeasonSummary = career.endSeason();
+    const extra = { pos: sum.rank, rival: sum.kevinRank, cat: t(cat.nameKey as TextKey), n: SEASON.promotionRank };
+    const next = () => {
+      if (sum.champion) {
+        const kind = career.ending();
+        startStory(endingLines(kind, { rivalAhead: !sum.playerAhead }), () => {
+          end = new EndScreen(kind);
+          mode = 'end';
+        }, extra);
+      } else goGarage();
+    };
+    seasonScreen = new SeasonScreen(sum, t(cat.nameKey as TextKey));
+    afterSeason = () => {
+      const lines = seasonEndLines(cat.id, { rivalAhead: !sum.playerAhead, promoted: sum.promoted });
+      if (lines.length > 0) startStory(lines, next, extra);
+      else next();
+    };
+    mode = 'season';
   };
 
   const afterResults = () => {
     const info = ALL_RACES[raceIndex];
     const r = career.results[info.race.id];
-    const beat = r ? r.beatKevin : false;
-    const passed = r ? r.position <= CAREER.unlockPosition : false;
-    // la scène de fin n'a lieu qu'une fois : toutes les courses réussies
-    const last = career.finished;
-    const lines = afterLines(info.race.id, { beatKevin: beat, passed });
-    const next = () => {
-      if (last) {
-        const kind = career.ending();
-        startStory(endingLines(kind), () => {
-          end = new EndScreen(kind);
-          mode = 'end';
-        });
-      } else goSelect();
-    };
-    const extra = { n: CAREER.unlockPosition, pos: r?.position ?? 0, rival: r?.kevinPosition ?? 0, cat: t(info.cat.nameKey as TextKey) };
+    const lines = afterLines(info.race.id, { rivalAhead: r ? !r.beatKevin : true, position: r?.position });
+    const next = () => (career.seasonOver() ? endOfSeason() : goGarage());
+    const extra = { n: SEASON.promotionRank, pos: r?.position ?? 0, rival: r?.kevinPosition ?? 0, cat: t(info.cat.nameKey as TextKey) };
     if (lines.length > 0) startStory(lines, next, extra);
     else next();
   };
@@ -220,9 +257,12 @@ async function main(): Promise<void> {
     mode = 'race';
   }
 
+  if (import.meta.env.DEV) (window as unknown as Record<string, unknown>).__dbg = { get career() { return career; }, goGarage, endOfSeason, get mode() { return mode; } };
+
   // ---------------------------------------------------------------- boucle
   startLoop(
     (dt) => {
+      menu.typing = mode === 'name';
       const events = menu.poll();
       // musique : menus/histoire = thème, course = musique de l'ambiance ; on ne change rien pendant un chargement
       if (mode !== 'loading') {
@@ -250,7 +290,13 @@ async function main(): Promise<void> {
             mode = 'ta';
           } else if (a === 'continue') {
             career = Career.load();
-            goSelect();
+            if (career.seen.has('intro')) goGarage();
+            else {
+              // ancienne sauvegarde ou carrière jamais commencée : on repart du début
+              career = new Career();
+              teamScreen = new TeamScreen(career.team);
+              mode = 'team';
+            }
           }
           break;
         }
@@ -268,13 +314,39 @@ async function main(): Promise<void> {
           const team = teamScreen!.update(dt, events);
           if (team) {
             career.team = team;
+            nameScreen = new NameScreen(career.pilot, career.teamName);
+            mode = 'name';
+          }
+          break;
+        }
+        case 'name': {
+          const n = nameScreen!.update(dt, events);
+          if (n === 'back') {
+            teamScreen = new TeamScreen(career.team);
+            mode = 'team';
+          } else if (n) {
+            career.pilot = n.pilot;
+            career.teamName = n.teamName;
             career.save();
             startStory(introLines(), () => {
               career.seen.add('intro');
               career.save();
-              goSelect();
+              goGarage();
             });
           }
+          break;
+        }
+        case 'garage': {
+          const a = garage!.update(dt, events);
+          if (a === 'title') goTitle();
+          else if (a === 'race') {
+            if (career.complete) goTitle();
+            else goSelect();
+          }
+          break;
+        }
+        case 'season': {
+          if (seasonScreen!.update(dt, events)) afterSeason?.();
           break;
         }
         case 'options': {
@@ -289,7 +361,7 @@ async function main(): Promise<void> {
         }
         case 'select': {
           const a = select!.update(dt, events);
-          if (a === 'title') goTitle();
+          if (a === 'title') goGarage();
           else if (a) startRace(a.start);
           break;
         }
@@ -360,6 +432,9 @@ async function main(): Promise<void> {
         case 'select': select!.draw(ctx, ui); break;
         case 'ta': taScreen!.draw(ctx, ui); break;
         case 'team': teamScreen!.draw(ctx, ui); break;
+        case 'name': nameScreen!.draw(ctx, ui); break;
+        case 'garage': garage!.draw(ctx, ui); break;
+        case 'season': seasonScreen!.draw(ctx, ui); break;
         case 'options': optionsScreen!.draw(ctx, ui); break;
         case 'strategy': strategy!.draw(ctx, ui); break;
         case 'story': dialogue?.draw(ctx, ui); break;

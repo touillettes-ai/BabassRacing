@@ -7,7 +7,8 @@ export type Who = 'babass' | 'marcel' | 'kevin' | 'elle' | 'leo';
 export const BUST_FILE: Record<Who, string> = {
   babass: 'char_babass', marcel: 'char_marcel', kevin: 'char_viktor', elle: 'char_clara', leo: 'char_leo',
 };
-export type Expr = 'neutral' | 'happy' | 'angry' | 'surprised';
+export type Expr =
+  | 'neutral' | 'happy' | 'laugh' | 'talk' | 'talk_happy' | 'angry' | 'determined' | 'surprised' | 'sad' | 'worried' | 'smug' | 'wink';
 
 export interface Line {
   who: Who;
