@@ -1,0 +1,181 @@
+{
+ "image": "buildings.png",
+ "sprites": {
+  "control_tower": {
+   "x": 0,
+   "y": 0,
+   "w": 120,
+   "h": 250,
+   "anchor": {
+    "x": 61,
+    "y": 251
+   },
+   "pixels_per_meter": 12
+  },
+  "ferris_wheel": {
+   "x": 122,
+   "y": 0,
+   "w": 210,
+   "h": 220,
+   "anchor": {
+    "x": 106,
+    "y": 221
+   },
+   "pixels_per_meter": 8
+  },
+  "floodlight": {
+   "x": 334,
+   "y": 0,
+   "w": 46,
+   "h": 210,
+   "anchor": {
+    "x": 24,
+    "y": 211
+   },
+   "pixels_per_meter": 14
+  },
+  "wind_turbine": {
+   "x": 382,
+   "y": 0,
+   "w": 110,
+   "h": 210,
+   "anchor": {
+    "x": 56,
+    "y": 211
+   },
+   "pixels_per_meter": 5
+  },
+  "lighthouse": {
+   "x": 494,
+   "y": 0,
+   "w": 60,
+   "h": 170,
+   "anchor": {
+    "x": 31,
+    "y": 171
+   },
+   "pixels_per_meter": 8
+  },
+  "big_screen": {
+   "x": 556,
+   "y": 0,
+   "w": 210,
+   "h": 160,
+   "anchor": {
+    "x": 106,
+    "y": 161
+   },
+   "pixels_per_meter": 14
+  },
+  "tv_tower": {
+   "x": 768,
+   "y": 0,
+   "w": 64,
+   "h": 136,
+   "anchor": {
+    "x": 33,
+    "y": 137
+   },
+   "pixels_per_meter": 20
+  },
+  "paddock": {
+   "x": 0,
+   "y": 252,
+   "w": 330,
+   "h": 130,
+   "anchor": {
+    "x": 166,
+    "y": 131
+   },
+   "pixels_per_meter": 12
+  },
+  "lamppost": {
+   "x": 332,
+   "y": 252,
+   "w": 34,
+   "h": 116,
+   "anchor": {
+    "x": 18,
+    "y": 117
+   },
+   "pixels_per_meter": 20
+  },
+  "hot_air_balloon": {
+   "x": 368,
+   "y": 252,
+   "w": 72,
+   "h": 104,
+   "anchor": {
+    "x": 37,
+    "y": 105
+   },
+   "pixels_per_meter": 6
+  },
+  "house": {
+   "x": 442,
+   "y": 252,
+   "w": 112,
+   "h": 92,
+   "anchor": {
+    "x": 57,
+    "y": 93
+   },
+   "pixels_per_meter": 14
+  },
+  "marshal_post": {
+   "x": 556,
+   "y": 252,
+   "w": 74,
+   "h": 84,
+   "anchor": {
+    "x": 38,
+    "y": 85
+   },
+   "pixels_per_meter": 24
+  },
+  "blimp": {
+   "x": 632,
+   "y": 252,
+   "w": 156,
+   "h": 62,
+   "anchor": {
+    "x": 79,
+    "y": 63
+   },
+   "pixels_per_meter": 4
+  },
+  "snowman": {
+   "x": 790,
+   "y": 252,
+   "w": 34,
+   "h": 46,
+   "anchor": {
+    "x": 18,
+    "y": 47
+   },
+   "pixels_per_meter": 30
+  },
+  "fence": {
+   "x": 826,
+   "y": 252,
+   "w": 120,
+   "h": 40,
+   "anchor": {
+    "x": 61,
+    "y": 41
+   },
+   "pixels_per_meter": 30
+  },
+  "hay_bale": {
+   "x": 948,
+   "y": 252,
+   "w": 44,
+   "h": 28,
+   "anchor": {
+    "x": 23,
+    "y": 29
+   },
+   "pixels_per_meter": 30
+  }
+ }
+}

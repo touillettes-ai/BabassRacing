@@ -1,0 +1,23 @@
+{
+ "frame": {
+  "w": 144,
+  "h": 136
+ },
+ "count": 4,
+ "anchor": {
+  "x": 72,
+  "y": 128
+ },
+ "pixels_per_meter": 36,
+ "fps": 6,
+ "loop": true,
+ "facing": "vers la gauche et la camera (poste a droite de la piste) ; miroir horizontal pour un poste a gauche",
+ "flags": [
+  "yellow",
+  "green",
+  "blue",
+  "red",
+  "white",
+  "checkered"
+ ]
+}

@@ -1,0 +1,60 @@
+{
+ "gantry_start": {
+  "w": 420,
+  "h": 170,
+  "anchor": {
+   "x": 210,
+   "y": 169
+  },
+  "pixels_per_meter": 19,
+  "lights_slot": {
+   "x": 156,
+   "y": 62,
+   "w": 108,
+   "h": 31
+  }
+ },
+ "gantry_finish": {
+  "w": 420,
+  "h": 170,
+  "anchor": {
+   "x": 210,
+   "y": 169
+  },
+  "pixels_per_meter": 19,
+  "lights_slot": {
+   "x": 156,
+   "y": 62,
+   "w": 108,
+   "h": 31
+  }
+ },
+ "start_lights": {
+  "w": 756,
+  "h": 31,
+  "frame": {
+   "w": 108,
+   "h": 31
+  },
+  "frames": [
+   "off",
+   "red1",
+   "red2",
+   "red3",
+   "red4",
+   "red5",
+   "green"
+  ],
+  "note": "a coller dans lights_slot du portique"
+ },
+ "overlay_start_line": {
+  "w": 512,
+  "h": 64,
+  "note": "damier a poser sur une route 3 voies"
+ },
+ "overlay_grid_slots": {
+  "w": 512,
+  "h": 64,
+  "note": "emplacements de grille en quinconce (voies 1 et 3)"
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "image": "overhead.png",
+ "sprites": {
+  "tunnel_entrance": {
+   "x": 0,
+   "y": 0,
+   "w": 560,
+   "h": 250,
+   "anchor": {
+    "x": 281,
+    "y": 251
+   },
+   "pixels_per_meter": 19,
+   "note": "ouverture transparente"
+  },
+  "tunnel_ring": {
+   "x": 0,
+   "y": 252,
+   "w": 560,
+   "h": 250,
+   "anchor": {
+    "x": 280,
+    "y": 250
+   },
+   "pixels_per_meter": 19,
+   "note": "a repeter tous les 8-10 m derriere l'entree"
+  },
+  "bridge": {
+   "x": 0,
+   "y": 504,
+   "w": 560,
+   "h": 180,
+   "anchor": {
+    "x": 281,
+    "y": 181
+   },
+   "pixels_per_meter": 19
+  },
+  "ad_gantry_gommax": {
+   "x": 562,
+   "y": 504,
+   "w": 440,
+   "h": 160,
+   "anchor": {
+    "x": 221,
+    "y": 161
+   },
+   "pixels_per_meter": 19
+  },
+  "ad_gantry_voltix": {
+   "x": 0,
+   "y": 686,
+   "w": 440,
+   "h": 160,
+   "anchor": {
+    "x": 221,
+    "y": 161
+   },
+   "pixels_per_meter": 19
+  },
+  "ad_gantry_air_pixel": {
+   "x": 442,
+   "y": 686,
+   "w": 440,
+   "h": 160,
+   "anchor": {
+    "x": 221,
+    "y": 161
+   },
+   "pixels_per_meter": 19
+  }
+ }
+}

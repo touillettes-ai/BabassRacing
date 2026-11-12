@@ -1,0 +1,114 @@
+{
+ "fx_smoke": {
+  "frame": {
+   "w": 48,
+   "h": 48
+  },
+  "count": 6,
+  "anchor": {
+   "x": 24,
+   "y": 40
+  },
+  "fps": 12,
+  "loop": false
+ },
+ "fx_dust": {
+  "frame": {
+   "w": 48,
+   "h": 48
+  },
+  "count": 6,
+  "anchor": {
+   "x": 24,
+   "y": 40
+  },
+  "fps": 12,
+  "loop": false
+ },
+ "fx_grass": {
+  "frame": {
+   "w": 48,
+   "h": 48
+  },
+  "count": 6,
+  "anchor": {
+   "x": 24,
+   "y": 40
+  },
+  "fps": 12,
+  "loop": false
+ },
+ "fx_spray": {
+  "frame": {
+   "w": 48,
+   "h": 48
+  },
+  "count": 6,
+  "anchor": {
+   "x": 24,
+   "y": 40
+  },
+  "fps": 12,
+  "loop": false
+ },
+ "fx_sparks": {
+  "frame": {
+   "w": 64,
+   "h": 40
+  },
+  "count": 6,
+  "anchor": {
+   "x": 32,
+   "y": 36
+  },
+  "fps": 15,
+  "loop": false
+ },
+ "fx_exhaust_flame": {
+  "frame": {
+   "w": 24,
+   "h": 24
+  },
+  "count": 4,
+  "anchor": {
+   "x": 12,
+   "y": 12
+  },
+  "fps": 15,
+  "loop": true
+ },
+ "fx_confetti": {
+  "frame": {
+   "w": 96,
+   "h": 96
+  },
+  "count": 6,
+  "fps": 10,
+  "loop": true,
+  "note": "juxtaposable dans les deux directions"
+ },
+ "fx_rain": {
+  "frame": {
+   "w": 128,
+   "h": 128
+  },
+  "count": 4,
+  "fps": 16,
+  "loop": true,
+  "note": "plein ecran : juxtaposer dans les deux directions, par-dessus tout sauf l'interface"
+ },
+ "fx_rain_splash": {
+  "frame": {
+   "w": 24,
+   "h": 12
+  },
+  "count": 4,
+  "fps": 14,
+  "loop": false,
+  "anchor": {
+   "x": 12,
+   "y": 8
+  },
+  "note": "impact de goutte, a semer au hasard sur la route"
+ }
+}

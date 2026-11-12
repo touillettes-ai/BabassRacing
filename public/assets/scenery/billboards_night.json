@@ -1,0 +1,126 @@
+{
+ "image": "billboards_night.png",
+ "sprites": {
+  "billboard_kola_boom": {
+   "x": 0,
+   "y": 0,
+   "w": 136,
+   "h": 100,
+   "anchor": {
+    "x": 68,
+    "y": 99
+   },
+   "pixels_per_meter": 16
+  },
+  "billboard_gommax": {
+   "x": 138,
+   "y": 0,
+   "w": 136,
+   "h": 100,
+   "anchor": {
+    "x": 68,
+    "y": 99
+   },
+   "pixels_per_meter": 16
+  },
+  "billboard_glisseo": {
+   "x": 276,
+   "y": 0,
+   "w": 136,
+   "h": 100,
+   "anchor": {
+    "x": 68,
+    "y": 99
+   },
+   "pixels_per_meter": 16
+  },
+  "billboard_voltix": {
+   "x": 414,
+   "y": 0,
+   "w": 136,
+   "h": 100,
+   "anchor": {
+    "x": 68,
+    "y": 99
+   },
+   "pixels_per_meter": 16
+  },
+  "billboard_cafe_paddock": {
+   "x": 552,
+   "y": 0,
+   "w": 136,
+   "h": 100,
+   "anchor": {
+    "x": 68,
+    "y": 99
+   },
+   "pixels_per_meter": 16
+  },
+  "billboard_radio_apex": {
+   "x": 690,
+   "y": 0,
+   "w": 136,
+   "h": 100,
+   "anchor": {
+    "x": 68,
+    "y": 99
+   },
+   "pixels_per_meter": 16
+  },
+  "billboard_zenix": {
+   "x": 828,
+   "y": 0,
+   "w": 136,
+   "h": 100,
+   "anchor": {
+    "x": 68,
+    "y": 99
+   },
+   "pixels_per_meter": 16
+  },
+  "billboard_air_pixel": {
+   "x": 0,
+   "y": 102,
+   "w": 136,
+   "h": 100,
+   "anchor": {
+    "x": 68,
+    "y": 99
+   },
+   "pixels_per_meter": 16
+  },
+  "banner_kola_boom": {
+   "x": 138,
+   "y": 102,
+   "w": 196,
+   "h": 30,
+   "anchor": {
+    "x": 98,
+    "y": 29
+   },
+   "pixels_per_meter": 20
+  },
+  "banner_voltix": {
+   "x": 336,
+   "y": 102,
+   "w": 196,
+   "h": 30,
+   "anchor": {
+    "x": 98,
+    "y": 29
+   },
+   "pixels_per_meter": 20
+  },
+  "banner_gommax": {
+   "x": 534,
+   "y": 102,
+   "w": 196,
+   "h": 30,
+   "anchor": {
+    "x": 98,
+    "y": 29
+   },
+   "pixels_per_meter": 20
+  }
+ }
+}

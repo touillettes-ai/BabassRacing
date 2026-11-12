@@ -1,0 +1,14 @@
+{
+ "frame": {
+  "w": 260,
+  "h": 118
+ },
+ "count": 4,
+ "fps": 6,
+ "loop": true,
+ "anchor": {
+  "x": 130,
+  "y": 117
+ },
+ "pixels_per_meter": 14
+}

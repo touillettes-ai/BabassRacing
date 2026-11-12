@@ -1,0 +1,12 @@
+{
+ "frame": {
+  "w": 96,
+  "h": 96
+ },
+ "frames": [
+  "neutral",
+  "happy",
+  "surprised"
+ ],
+ "note": "portrait_player.png = avec cadre et fond ; portrait_player_cutout.png = detoure sur fond transparent"
+}

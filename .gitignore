@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.claude/
+# éditeur de dialogues : outil local, non versionné
+tools/

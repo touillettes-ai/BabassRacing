@@ -1,0 +1,43 @@
+{
+ "frame": {
+  "w": 128,
+  "h": 144
+ },
+ "frames": [
+  "neutral",
+  "happy",
+  "angry",
+  "surprised",
+  "talk"
+ ],
+ "characters": {
+  "babass": "Babass",
+  "leo": "Léo",
+  "clara": "Clara",
+  "marcel": "Marcel",
+  "viktor": "Viktor"
+ },
+ "note": "bustes detoures sur fond transparent ; alterner neutral/talk (8 fps) pendant qu'un personnage parle",
+ "dialog_box": {
+  "w": 464,
+  "h": 76,
+  "name_tag": {
+   "x": 16,
+   "y": 2
+  },
+  "text": {
+   "x": 16,
+   "y": 24,
+   "line_h": 15,
+   "max_chars": 53
+  }
+ },
+ "font_dialog": {
+  "cell": {
+   "w": 10,
+   "h": 16
+  },
+  "columns": 16,
+  "chars": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~àâäçéèêëîïôöùûüÀÂÇÉÈÊËÎÏÔÙÛœŒ«»€’…"
+ }
+}

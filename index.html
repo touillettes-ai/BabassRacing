@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Babass Racing</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #000; overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; }
+    #stage { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+    canvas { image-rendering: pixelated; image-rendering: crisp-edges; background: #000; }
+    #touch { position: fixed; inset: 0; pointer-events: none; display: none; }
+    @media (pointer: coarse) { #touch { display: block; } }
+    .tbtn { position: absolute; bottom: 16px; width: 22vmin; height: 22vmin; max-width: 110px; max-height: 110px; border-radius: 50%;
+      background: rgba(255,255,255,.18); border: 2px solid rgba(255,255,255,.5); color: #fff; font: bold 28px monospace;
+      display: flex; align-items: center; justify-content: center; pointer-events: auto; }
+    .tbtn.on { background: rgba(255,255,255,.45); }
+    #t-left { left: 16px; } #t-right { left: calc(16px + 24vmin); }
+    #t-gas { right: 16px; } #t-brake { right: calc(16px + 24vmin); }
+    .abtn { position: absolute; left: 10px; width: 13vmin; height: 9vmin; max-width: 64px; max-height: 40px; border-radius: 8px;
+      background: rgba(20,30,70,.55); border: 2px solid rgba(255,255,255,.5); color: #fff; font: bold 13px monospace;
+      display: flex; align-items: center; justify-content: center; pointer-events: auto; }
+    #a-pit { top: 38%; } #a-tyre { top: calc(38% + 11vmin); } #a-fuel { top: calc(38% + 22vmin); }
+  </style>
+</head>
+<body>
+  <div id="stage"><canvas id="game"></canvas></div>
+  <div id="touch">
+    <div class="abtn" id="a-pit" data-act="pit">PIT</div>
+    <div class="abtn" id="a-tyre" data-act="tyre">PNEU</div>
+    <div class="abtn" id="a-fuel" data-act="fuel">CARB</div>
+    <div class="tbtn" id="t-left" data-act="left">◀</div>
+    <div class="tbtn" id="t-right" data-act="right">▶</div>
+    <div class="tbtn" id="t-brake" data-act="brake">■</div>
+    <div class="tbtn" id="t-gas" data-act="gas">▲</div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

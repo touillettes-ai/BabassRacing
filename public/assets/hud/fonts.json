@@ -1,0 +1,27 @@
+{
+ "font_digits_big": {
+  "cell": {
+   "w": 20,
+   "h": 30
+  },
+  "columns": 15,
+  "chars": "0123456789:.'/ "
+ },
+ "font_small": {
+  "cell": {
+   "w": 10,
+   "h": 14
+  },
+  "columns": 16,
+  "chars": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_",
+  "note": "ASCII 32-95 (majuscules, chiffres, ponctuation)"
+ },
+ "needle": {
+  "frame": {
+   "w": 96,
+   "h": 96
+  },
+  "count": 28,
+  "note": "a superposer au cadran ; frame = round(valeur / max * 27)"
+ }
+}

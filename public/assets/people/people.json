@@ -1,0 +1,78 @@
+{
+ "drivers": {
+  "frame": {
+   "w": 96,
+   "h": 108
+  },
+  "anchor": {
+   "x": 48,
+   "y": 100
+  },
+  "pixels_per_meter": 36,
+  "frames": [
+   "idle",
+   "walk0",
+   "walk1",
+   "walk2",
+   "walk3",
+   "walk4",
+   "walk5",
+   "getup0",
+   "getup1",
+   "getup2",
+   "cheer0",
+   "cheer1",
+   "cheer2",
+   "cheer3",
+   "trophy0",
+   "trophy1"
+  ],
+  "animations": {
+   "idle": [
+    0
+   ],
+   "walk": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "get_up": [
+    7,
+    8,
+    9
+   ],
+   "cheer": [
+    10,
+    11,
+    12,
+    13
+   ],
+   "trophy": [
+    14,
+    15
+   ]
+  },
+  "facing": "idle/walk/get_up tournes vers la gauche (miroir pour la droite) ; cheer/trophy face camera"
+ },
+ "photographers": {
+  "frame": {
+   "w": 96,
+   "h": 84
+  },
+  "anchor": {
+   "x": 48,
+   "y": 76
+  },
+  "pixels_per_meter": 36,
+  "frames": [
+   "stand",
+   "stand_flash",
+   "kneel",
+   "kneel_flash"
+  ],
+  "note": "tournes vers la gauche/camera (bord droit de la piste) ; miroir pour la gauche. Afficher *_flash une frame de temps en temps."
+ }
+}

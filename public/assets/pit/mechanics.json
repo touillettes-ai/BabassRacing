@@ -1,0 +1,60 @@
+{
+ "frame": {
+  "w": 96,
+  "h": 84
+ },
+ "anchor": {
+  "x": 48,
+  "y": 76
+ },
+ "pixels_per_meter": 36,
+ "facing": "left (miroir horizontal pour la droite)",
+ "frames": [
+  "idle",
+  "walk0",
+  "walk1",
+  "walk2",
+  "walk3",
+  "walk4",
+  "walk5",
+  "carry0",
+  "carry1",
+  "carry2",
+  "carry3",
+  "carry4",
+  "carry5",
+  "gun0",
+  "gun1",
+  "fuel0",
+  "fuel1"
+ ],
+ "animations": {
+  "idle": [
+   0
+  ],
+  "walk": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "carry_tyre": [
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "wheel_gun": [
+   13,
+   14
+  ],
+  "refuel": [
+   15,
+   16
+  ]
+ }
+}

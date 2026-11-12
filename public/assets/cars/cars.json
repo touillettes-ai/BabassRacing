@@ -1,0 +1,1658 @@
+{
+ "safetycar": {
+  "sheets": [
+   "safetycar_silver.png"
+  ],
+  "brake_sheets": [
+   "safetycar_silver_brake.png"
+  ],
+  "pixels_per_meter": 36,
+  "frame": {
+   "w": 160,
+   "h": 96
+  },
+  "anchor": {
+   "x": 80,
+   "y": 79
+  },
+  "yaw_deg": [
+   -18,
+   -12.0,
+   -6.0,
+   0,
+   6.0,
+   12.0,
+   18
+  ],
+  "frames": {
+   "left3": {
+    "x": 0,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left2": {
+    "x": 160,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left1": {
+    "x": 320,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "center": {
+    "x": 480,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right1": {
+    "x": 640,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right2": {
+    "x": 800,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right3": {
+    "x": 960,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   }
+  },
+  "slope": {
+   "frame": {
+    "w": 160,
+    "h": 112
+   },
+   "anchor": {
+    "x": 80,
+    "y": 85
+   },
+   "tilt_deg": 7,
+   "sheets_up": [
+    "safetycar_silver_up.png"
+   ],
+   "sheets_down": [
+    "safetycar_silver_down.png"
+   ]
+  },
+  "spin": {
+   "frame": {
+    "w": 240,
+    "h": 112
+   },
+   "count": 16,
+   "step_deg": 22.5,
+   "anchor": {
+    "x": 120,
+    "y": 92
+   },
+   "sheets": [
+    "safetycar_silver_spin.png"
+   ]
+  },
+  "rows": [
+   "flash_a",
+   "flash_b"
+  ]
+ },
+ "hothatch": {
+  "sheets": [
+   "hothatch_yellow.png",
+   "hothatch_blue.png",
+   "hothatch_red.png",
+   "hothatch_white.png",
+   "hothatch_green.png",
+   "hothatch_orange.png"
+  ],
+  "brake_sheets": [
+   "hothatch_yellow_brake.png",
+   "hothatch_blue_brake.png",
+   "hothatch_red_brake.png",
+   "hothatch_white_brake.png",
+   "hothatch_green_brake.png",
+   "hothatch_orange_brake.png"
+  ],
+  "pixels_per_meter": 36,
+  "frame": {
+   "w": 160,
+   "h": 96
+  },
+  "anchor": {
+   "x": 80,
+   "y": 80
+  },
+  "yaw_deg": [
+   -18,
+   -12.0,
+   -6.0,
+   0,
+   6.0,
+   12.0,
+   18
+  ],
+  "frames": {
+   "left3": {
+    "x": 0,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left2": {
+    "x": 160,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left1": {
+    "x": 320,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "center": {
+    "x": 480,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right1": {
+    "x": 640,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right2": {
+    "x": 800,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right3": {
+    "x": 960,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   }
+  },
+  "slope": {
+   "frame": {
+    "w": 160,
+    "h": 112
+   },
+   "anchor": {
+    "x": 80,
+    "y": 89
+   },
+   "tilt_deg": 7,
+   "sheets_up": [
+    "hothatch_yellow_up.png",
+    "hothatch_blue_up.png",
+    "hothatch_red_up.png",
+    "hothatch_white_up.png",
+    "hothatch_green_up.png",
+    "hothatch_orange_up.png"
+   ],
+   "sheets_down": [
+    "hothatch_yellow_down.png",
+    "hothatch_blue_down.png",
+    "hothatch_red_down.png",
+    "hothatch_white_down.png",
+    "hothatch_green_down.png",
+    "hothatch_orange_down.png"
+   ]
+  },
+  "spin": {
+   "frame": {
+    "w": 240,
+    "h": 112
+   },
+   "count": 16,
+   "step_deg": 22.5,
+   "anchor": {
+    "x": 120,
+    "y": 94
+   },
+   "sheets": [
+    "hothatch_yellow_spin.png",
+    "hothatch_blue_spin.png",
+    "hothatch_red_spin.png",
+    "hothatch_white_spin.png",
+    "hothatch_green_spin.png",
+    "hothatch_orange_spin.png"
+   ]
+  },
+  "damaged_sheets": [
+   "hothatch_yellow_damaged.png",
+   "hothatch_blue_damaged.png",
+   "hothatch_red_damaged.png",
+   "hothatch_white_damaged.png",
+   "hothatch_green_damaged.png",
+   "hothatch_orange_damaged.png"
+  ],
+  "puncture_sheets": [
+   "hothatch_yellow_puncture.png",
+   "hothatch_blue_puncture.png",
+   "hothatch_red_puncture.png",
+   "hothatch_white_puncture.png",
+   "hothatch_green_puncture.png",
+   "hothatch_orange_puncture.png"
+  ],
+  "pit_sheets": [
+   "hothatch_yellow_pit.png",
+   "hothatch_blue_pit.png",
+   "hothatch_red_pit.png",
+   "hothatch_white_pit.png",
+   "hothatch_green_pit.png",
+   "hothatch_orange_pit.png"
+  ],
+  "pit_frames": [
+   "jacked",
+   "no_wheels"
+  ]
+ },
+ "gt3": {
+  "sheets": [
+   "gt3_green.png",
+   "gt3_red.png",
+   "gt3_silver.png",
+   "gt3_blue.png",
+   "gt3_black.png",
+   "gt3_yellow.png"
+  ],
+  "brake_sheets": [
+   "gt3_green_brake.png",
+   "gt3_red_brake.png",
+   "gt3_silver_brake.png",
+   "gt3_blue_brake.png",
+   "gt3_black_brake.png",
+   "gt3_yellow_brake.png"
+  ],
+  "pixels_per_meter": 36,
+  "frame": {
+   "w": 160,
+   "h": 96
+  },
+  "anchor": {
+   "x": 80,
+   "y": 74
+  },
+  "yaw_deg": [
+   -18,
+   -12.0,
+   -6.0,
+   0,
+   6.0,
+   12.0,
+   18
+  ],
+  "frames": {
+   "left3": {
+    "x": 0,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left2": {
+    "x": 160,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left1": {
+    "x": 320,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "center": {
+    "x": 480,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right1": {
+    "x": 640,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right2": {
+    "x": 800,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right3": {
+    "x": 960,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   }
+  },
+  "slope": {
+   "frame": {
+    "w": 160,
+    "h": 112
+   },
+   "anchor": {
+    "x": 80,
+    "y": 79
+   },
+   "tilt_deg": 7,
+   "sheets_up": [
+    "gt3_green_up.png",
+    "gt3_red_up.png",
+    "gt3_silver_up.png",
+    "gt3_blue_up.png",
+    "gt3_black_up.png",
+    "gt3_yellow_up.png"
+   ],
+   "sheets_down": [
+    "gt3_green_down.png",
+    "gt3_red_down.png",
+    "gt3_silver_down.png",
+    "gt3_blue_down.png",
+    "gt3_black_down.png",
+    "gt3_yellow_down.png"
+   ]
+  },
+  "spin": {
+   "frame": {
+    "w": 240,
+    "h": 112
+   },
+   "count": 16,
+   "step_deg": 22.5,
+   "anchor": {
+    "x": 120,
+    "y": 90
+   },
+   "sheets": [
+    "gt3_green_spin.png",
+    "gt3_red_spin.png",
+    "gt3_silver_spin.png",
+    "gt3_blue_spin.png",
+    "gt3_black_spin.png",
+    "gt3_yellow_spin.png"
+   ]
+  },
+  "damaged_sheets": [
+   "gt3_green_damaged.png",
+   "gt3_red_damaged.png",
+   "gt3_silver_damaged.png",
+   "gt3_blue_damaged.png",
+   "gt3_black_damaged.png",
+   "gt3_yellow_damaged.png"
+  ],
+  "puncture_sheets": [
+   "gt3_green_puncture.png",
+   "gt3_red_puncture.png",
+   "gt3_silver_puncture.png",
+   "gt3_blue_puncture.png",
+   "gt3_black_puncture.png",
+   "gt3_yellow_puncture.png"
+  ],
+  "pit_sheets": [
+   "gt3_green_pit.png",
+   "gt3_red_pit.png",
+   "gt3_silver_pit.png",
+   "gt3_blue_pit.png",
+   "gt3_black_pit.png",
+   "gt3_yellow_pit.png"
+  ],
+  "pit_frames": [
+   "jacked",
+   "no_wheels"
+  ]
+ },
+ "f1": {
+  "sheets": [
+   "f1_red.png",
+   "f1_navy.png",
+   "f1_papaya.png",
+   "f1_silver.png",
+   "f1_green.png",
+   "f1_pink.png"
+  ],
+  "brake_sheets": [
+   "f1_red_brake.png",
+   "f1_navy_brake.png",
+   "f1_papaya_brake.png",
+   "f1_silver_brake.png",
+   "f1_green_brake.png",
+   "f1_pink_brake.png"
+  ],
+  "pixels_per_meter": 36,
+  "frame": {
+   "w": 160,
+   "h": 96
+  },
+  "anchor": {
+   "x": 80,
+   "y": 74
+  },
+  "yaw_deg": [
+   -18,
+   -12.0,
+   -6.0,
+   0,
+   6.0,
+   12.0,
+   18
+  ],
+  "frames": {
+   "left3": {
+    "x": 0,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left2": {
+    "x": 160,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left1": {
+    "x": 320,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "center": {
+    "x": 480,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right1": {
+    "x": 640,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right2": {
+    "x": 800,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right3": {
+    "x": 960,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   }
+  },
+  "slope": {
+   "frame": {
+    "w": 160,
+    "h": 112
+   },
+   "anchor": {
+    "x": 80,
+    "y": 79
+   },
+   "tilt_deg": 7,
+   "sheets_up": [
+    "f1_red_up.png",
+    "f1_navy_up.png",
+    "f1_papaya_up.png",
+    "f1_silver_up.png",
+    "f1_green_up.png",
+    "f1_pink_up.png"
+   ],
+   "sheets_down": [
+    "f1_red_down.png",
+    "f1_navy_down.png",
+    "f1_papaya_down.png",
+    "f1_silver_down.png",
+    "f1_green_down.png",
+    "f1_pink_down.png"
+   ]
+  },
+  "spin": {
+   "frame": {
+    "w": 240,
+    "h": 112
+   },
+   "count": 16,
+   "step_deg": 22.5,
+   "anchor": {
+    "x": 120,
+    "y": 81
+   },
+   "sheets": [
+    "f1_red_spin.png",
+    "f1_navy_spin.png",
+    "f1_papaya_spin.png",
+    "f1_silver_spin.png",
+    "f1_green_spin.png",
+    "f1_pink_spin.png"
+   ]
+  },
+  "damaged_sheets": [
+   "f1_red_damaged.png",
+   "f1_navy_damaged.png",
+   "f1_papaya_damaged.png",
+   "f1_silver_damaged.png",
+   "f1_green_damaged.png",
+   "f1_pink_damaged.png"
+  ],
+  "puncture_sheets": [
+   "f1_red_puncture.png",
+   "f1_navy_puncture.png",
+   "f1_papaya_puncture.png",
+   "f1_silver_puncture.png",
+   "f1_green_puncture.png",
+   "f1_pink_puncture.png"
+  ],
+  "pit_sheets": [
+   "f1_red_pit.png",
+   "f1_navy_pit.png",
+   "f1_papaya_pit.png",
+   "f1_silver_pit.png",
+   "f1_green_pit.png",
+   "f1_pink_pit.png"
+  ],
+  "pit_frames": [
+   "jacked",
+   "no_wheels"
+  ]
+ },
+ "hypercar": {
+  "sheets": [
+   "hypercar_white.png",
+   "hypercar_black.png",
+   "hypercar_blue.png",
+   "hypercar_red.png",
+   "hypercar_yellow.png",
+   "hypercar_green.png"
+  ],
+  "brake_sheets": [
+   "hypercar_white_brake.png",
+   "hypercar_black_brake.png",
+   "hypercar_blue_brake.png",
+   "hypercar_red_brake.png",
+   "hypercar_yellow_brake.png",
+   "hypercar_green_brake.png"
+  ],
+  "pixels_per_meter": 36,
+  "frame": {
+   "w": 160,
+   "h": 96
+  },
+  "anchor": {
+   "x": 80,
+   "y": 71
+  },
+  "yaw_deg": [
+   -18,
+   -12.0,
+   -6.0,
+   0,
+   6.0,
+   12.0,
+   18
+  ],
+  "frames": {
+   "left3": {
+    "x": 0,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left2": {
+    "x": 160,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left1": {
+    "x": 320,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "center": {
+    "x": 480,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right1": {
+    "x": 640,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right2": {
+    "x": 800,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right3": {
+    "x": 960,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   }
+  },
+  "slope": {
+   "frame": {
+    "w": 160,
+    "h": 112
+   },
+   "anchor": {
+    "x": 80,
+    "y": 74
+   },
+   "tilt_deg": 7,
+   "sheets_up": [
+    "hypercar_white_up.png",
+    "hypercar_black_up.png",
+    "hypercar_blue_up.png",
+    "hypercar_red_up.png",
+    "hypercar_yellow_up.png",
+    "hypercar_green_up.png"
+   ],
+   "sheets_down": [
+    "hypercar_white_down.png",
+    "hypercar_black_down.png",
+    "hypercar_blue_down.png",
+    "hypercar_red_down.png",
+    "hypercar_yellow_down.png",
+    "hypercar_green_down.png"
+   ]
+  },
+  "spin": {
+   "frame": {
+    "w": 240,
+    "h": 112
+   },
+   "count": 16,
+   "step_deg": 22.5,
+   "anchor": {
+    "x": 120,
+    "y": 87
+   },
+   "sheets": [
+    "hypercar_white_spin.png",
+    "hypercar_black_spin.png",
+    "hypercar_blue_spin.png",
+    "hypercar_red_spin.png",
+    "hypercar_yellow_spin.png",
+    "hypercar_green_spin.png"
+   ]
+  },
+  "damaged_sheets": [
+   "hypercar_white_damaged.png",
+   "hypercar_black_damaged.png",
+   "hypercar_blue_damaged.png",
+   "hypercar_red_damaged.png",
+   "hypercar_yellow_damaged.png",
+   "hypercar_green_damaged.png"
+  ],
+  "puncture_sheets": [
+   "hypercar_white_puncture.png",
+   "hypercar_black_puncture.png",
+   "hypercar_blue_puncture.png",
+   "hypercar_red_puncture.png",
+   "hypercar_yellow_puncture.png",
+   "hypercar_green_puncture.png"
+  ],
+  "pit_sheets": [
+   "hypercar_white_pit.png",
+   "hypercar_black_pit.png",
+   "hypercar_blue_pit.png",
+   "hypercar_red_pit.png",
+   "hypercar_yellow_pit.png",
+   "hypercar_green_pit.png"
+  ],
+  "pit_frames": [
+   "jacked",
+   "no_wheels"
+  ]
+ },
+ "muscle": {
+  "sheets": [
+   "muscle_orange.png",
+   "muscle_black.png",
+   "muscle_blue.png",
+   "muscle_green.png",
+   "muscle_yellow.png",
+   "muscle_purple.png"
+  ],
+  "brake_sheets": [
+   "muscle_orange_brake.png",
+   "muscle_black_brake.png",
+   "muscle_blue_brake.png",
+   "muscle_green_brake.png",
+   "muscle_yellow_brake.png",
+   "muscle_purple_brake.png"
+  ],
+  "pixels_per_meter": 36,
+  "frame": {
+   "w": 160,
+   "h": 96
+  },
+  "anchor": {
+   "x": 80,
+   "y": 79
+  },
+  "yaw_deg": [
+   -18,
+   -12.0,
+   -6.0,
+   0,
+   6.0,
+   12.0,
+   18
+  ],
+  "frames": {
+   "left3": {
+    "x": 0,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left2": {
+    "x": 160,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left1": {
+    "x": 320,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "center": {
+    "x": 480,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right1": {
+    "x": 640,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right2": {
+    "x": 800,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right3": {
+    "x": 960,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   }
+  },
+  "slope": {
+   "frame": {
+    "w": 160,
+    "h": 112
+   },
+   "anchor": {
+    "x": 80,
+    "y": 84
+   },
+   "tilt_deg": 7,
+   "sheets_up": [
+    "muscle_orange_up.png",
+    "muscle_black_up.png",
+    "muscle_blue_up.png",
+    "muscle_green_up.png",
+    "muscle_yellow_up.png",
+    "muscle_purple_up.png"
+   ],
+   "sheets_down": [
+    "muscle_orange_down.png",
+    "muscle_black_down.png",
+    "muscle_blue_down.png",
+    "muscle_green_down.png",
+    "muscle_yellow_down.png",
+    "muscle_purple_down.png"
+   ]
+  },
+  "spin": {
+   "frame": {
+    "w": 240,
+    "h": 112
+   },
+   "count": 16,
+   "step_deg": 22.5,
+   "anchor": {
+    "x": 120,
+    "y": 93
+   },
+   "sheets": [
+    "muscle_orange_spin.png",
+    "muscle_black_spin.png",
+    "muscle_blue_spin.png",
+    "muscle_green_spin.png",
+    "muscle_yellow_spin.png",
+    "muscle_purple_spin.png"
+   ]
+  },
+  "damaged_sheets": [
+   "muscle_orange_damaged.png",
+   "muscle_black_damaged.png",
+   "muscle_blue_damaged.png",
+   "muscle_green_damaged.png",
+   "muscle_yellow_damaged.png",
+   "muscle_purple_damaged.png"
+  ],
+  "puncture_sheets": [
+   "muscle_orange_puncture.png",
+   "muscle_black_puncture.png",
+   "muscle_blue_puncture.png",
+   "muscle_green_puncture.png",
+   "muscle_yellow_puncture.png",
+   "muscle_purple_puncture.png"
+  ],
+  "pit_sheets": [
+   "muscle_orange_pit.png",
+   "muscle_black_pit.png",
+   "muscle_blue_pit.png",
+   "muscle_green_pit.png",
+   "muscle_yellow_pit.png",
+   "muscle_purple_pit.png"
+  ],
+  "pit_frames": [
+   "jacked",
+   "no_wheels"
+  ]
+ },
+ "retro": {
+  "sheets": [
+   "retro_white.png",
+   "retro_red.png",
+   "retro_beige.png",
+   "retro_sky.png",
+   "retro_green.png",
+   "retro_grey.png"
+  ],
+  "brake_sheets": [
+   "retro_white_brake.png",
+   "retro_red_brake.png",
+   "retro_beige_brake.png",
+   "retro_sky_brake.png",
+   "retro_green_brake.png",
+   "retro_grey_brake.png"
+  ],
+  "pixels_per_meter": 36,
+  "frame": {
+   "w": 160,
+   "h": 96
+  },
+  "anchor": {
+   "x": 80,
+   "y": 81
+  },
+  "yaw_deg": [
+   -18,
+   -12.0,
+   -6.0,
+   0,
+   6.0,
+   12.0,
+   18
+  ],
+  "frames": {
+   "left3": {
+    "x": 0,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left2": {
+    "x": 160,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left1": {
+    "x": 320,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "center": {
+    "x": 480,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right1": {
+    "x": 640,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right2": {
+    "x": 800,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right3": {
+    "x": 960,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   }
+  },
+  "slope": {
+   "frame": {
+    "w": 160,
+    "h": 112
+   },
+   "anchor": {
+    "x": 80,
+    "y": 90
+   },
+   "tilt_deg": 7,
+   "sheets_up": [
+    "retro_white_up.png",
+    "retro_red_up.png",
+    "retro_beige_up.png",
+    "retro_sky_up.png",
+    "retro_green_up.png",
+    "retro_grey_up.png"
+   ],
+   "sheets_down": [
+    "retro_white_down.png",
+    "retro_red_down.png",
+    "retro_beige_down.png",
+    "retro_sky_down.png",
+    "retro_green_down.png",
+    "retro_grey_down.png"
+   ]
+  },
+  "spin": {
+   "frame": {
+    "w": 240,
+    "h": 112
+   },
+   "count": 16,
+   "step_deg": 22.5,
+   "anchor": {
+    "x": 120,
+    "y": 95
+   },
+   "sheets": [
+    "retro_white_spin.png",
+    "retro_red_spin.png",
+    "retro_beige_spin.png",
+    "retro_sky_spin.png",
+    "retro_green_spin.png",
+    "retro_grey_spin.png"
+   ]
+  },
+  "damaged_sheets": [
+   "retro_white_damaged.png",
+   "retro_red_damaged.png",
+   "retro_beige_damaged.png",
+   "retro_sky_damaged.png",
+   "retro_green_damaged.png",
+   "retro_grey_damaged.png"
+  ],
+  "puncture_sheets": [
+   "retro_white_puncture.png",
+   "retro_red_puncture.png",
+   "retro_beige_puncture.png",
+   "retro_sky_puncture.png",
+   "retro_green_puncture.png",
+   "retro_grey_puncture.png"
+  ],
+  "pit_sheets": [
+   "retro_white_pit.png",
+   "retro_red_pit.png",
+   "retro_beige_pit.png",
+   "retro_sky_pit.png",
+   "retro_green_pit.png",
+   "retro_grey_pit.png"
+  ],
+  "pit_frames": [
+   "jacked",
+   "no_wheels"
+  ]
+ },
+ "wedge": {
+  "sheets": [
+   "wedge_red.png",
+   "wedge_white.png",
+   "wedge_yellow.png",
+   "wedge_black.png",
+   "wedge_blue.png",
+   "wedge_silver.png"
+  ],
+  "brake_sheets": [
+   "wedge_red_brake.png",
+   "wedge_white_brake.png",
+   "wedge_yellow_brake.png",
+   "wedge_black_brake.png",
+   "wedge_blue_brake.png",
+   "wedge_silver_brake.png"
+  ],
+  "pixels_per_meter": 36,
+  "frame": {
+   "w": 160,
+   "h": 96
+  },
+  "anchor": {
+   "x": 80,
+   "y": 79
+  },
+  "yaw_deg": [
+   -18,
+   -12.0,
+   -6.0,
+   0,
+   6.0,
+   12.0,
+   18
+  ],
+  "frames": {
+   "left3": {
+    "x": 0,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left2": {
+    "x": 160,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left1": {
+    "x": 320,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "center": {
+    "x": 480,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right1": {
+    "x": 640,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right2": {
+    "x": 800,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right3": {
+    "x": 960,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   }
+  },
+  "slope": {
+   "frame": {
+    "w": 160,
+    "h": 112
+   },
+   "anchor": {
+    "x": 80,
+    "y": 88
+   },
+   "tilt_deg": 7,
+   "sheets_up": [
+    "wedge_red_up.png",
+    "wedge_white_up.png",
+    "wedge_yellow_up.png",
+    "wedge_black_up.png",
+    "wedge_blue_up.png",
+    "wedge_silver_up.png"
+   ],
+   "sheets_down": [
+    "wedge_red_down.png",
+    "wedge_white_down.png",
+    "wedge_yellow_down.png",
+    "wedge_black_down.png",
+    "wedge_blue_down.png",
+    "wedge_silver_down.png"
+   ]
+  },
+  "spin": {
+   "frame": {
+    "w": 240,
+    "h": 112
+   },
+   "count": 16,
+   "step_deg": 22.5,
+   "anchor": {
+    "x": 120,
+    "y": 93
+   },
+   "sheets": [
+    "wedge_red_spin.png",
+    "wedge_white_spin.png",
+    "wedge_yellow_spin.png",
+    "wedge_black_spin.png",
+    "wedge_blue_spin.png",
+    "wedge_silver_spin.png"
+   ]
+  },
+  "damaged_sheets": [
+   "wedge_red_damaged.png",
+   "wedge_white_damaged.png",
+   "wedge_yellow_damaged.png",
+   "wedge_black_damaged.png",
+   "wedge_blue_damaged.png",
+   "wedge_silver_damaged.png"
+  ],
+  "puncture_sheets": [
+   "wedge_red_puncture.png",
+   "wedge_white_puncture.png",
+   "wedge_yellow_puncture.png",
+   "wedge_black_puncture.png",
+   "wedge_blue_puncture.png",
+   "wedge_silver_puncture.png"
+  ],
+  "pit_sheets": [
+   "wedge_red_pit.png",
+   "wedge_white_pit.png",
+   "wedge_yellow_pit.png",
+   "wedge_black_pit.png",
+   "wedge_blue_pit.png",
+   "wedge_silver_pit.png"
+  ],
+  "pit_frames": [
+   "jacked",
+   "no_wheels"
+  ]
+ },
+ "futur": {
+  "sheets": [
+   "futur_white.png",
+   "futur_black.png",
+   "futur_silver.png",
+   "futur_purple.png",
+   "futur_teal.png",
+   "futur_red.png"
+  ],
+  "brake_sheets": [
+   "futur_white_brake.png",
+   "futur_black_brake.png",
+   "futur_silver_brake.png",
+   "futur_purple_brake.png",
+   "futur_teal_brake.png",
+   "futur_red_brake.png"
+  ],
+  "pixels_per_meter": 36,
+  "frame": {
+   "w": 160,
+   "h": 96
+  },
+  "anchor": {
+   "x": 80,
+   "y": 78
+  },
+  "yaw_deg": [
+   -18,
+   -12.0,
+   -6.0,
+   0,
+   6.0,
+   12.0,
+   18
+  ],
+  "frames": {
+   "left3": {
+    "x": 0,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left2": {
+    "x": 160,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left1": {
+    "x": 320,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "center": {
+    "x": 480,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right1": {
+    "x": 640,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right2": {
+    "x": 800,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right3": {
+    "x": 960,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   }
+  },
+  "slope": {
+   "frame": {
+    "w": 160,
+    "h": 112
+   },
+   "anchor": {
+    "x": 80,
+    "y": 86
+   },
+   "tilt_deg": 7,
+   "sheets_up": [
+    "futur_white_up.png",
+    "futur_black_up.png",
+    "futur_silver_up.png",
+    "futur_purple_up.png",
+    "futur_teal_up.png",
+    "futur_red_up.png"
+   ],
+   "sheets_down": [
+    "futur_white_down.png",
+    "futur_black_down.png",
+    "futur_silver_down.png",
+    "futur_purple_down.png",
+    "futur_teal_down.png",
+    "futur_red_down.png"
+   ]
+  },
+  "spin": {
+   "frame": {
+    "w": 240,
+    "h": 112
+   },
+   "count": 16,
+   "step_deg": 22.5,
+   "anchor": {
+    "x": 120,
+    "y": 93
+   },
+   "sheets": [
+    "futur_white_spin.png",
+    "futur_black_spin.png",
+    "futur_silver_spin.png",
+    "futur_purple_spin.png",
+    "futur_teal_spin.png",
+    "futur_red_spin.png"
+   ]
+  },
+  "damaged_sheets": [
+   "futur_white_damaged.png",
+   "futur_black_damaged.png",
+   "futur_silver_damaged.png",
+   "futur_purple_damaged.png",
+   "futur_teal_damaged.png",
+   "futur_red_damaged.png"
+  ],
+  "puncture_sheets": [
+   "futur_white_puncture.png",
+   "futur_black_puncture.png",
+   "futur_silver_puncture.png",
+   "futur_purple_puncture.png",
+   "futur_teal_puncture.png",
+   "futur_red_puncture.png"
+  ],
+  "pit_sheets": [
+   "futur_white_pit.png",
+   "futur_black_pit.png",
+   "futur_silver_pit.png",
+   "futur_purple_pit.png",
+   "futur_teal_pit.png",
+   "futur_red_pit.png"
+  ],
+  "pit_frames": [
+   "jacked",
+   "no_wheels"
+  ]
+ },
+ "supercar": {
+  "sheets": [
+   "supercar_orange.png",
+   "supercar_red.png",
+   "supercar_yellow.png",
+   "supercar_blue.png",
+   "supercar_white.png",
+   "supercar_lime.png"
+  ],
+  "brake_sheets": [
+   "supercar_orange_brake.png",
+   "supercar_red_brake.png",
+   "supercar_yellow_brake.png",
+   "supercar_blue_brake.png",
+   "supercar_white_brake.png",
+   "supercar_lime_brake.png"
+  ],
+  "pixels_per_meter": 36,
+  "frame": {
+   "w": 160,
+   "h": 96
+  },
+  "anchor": {
+   "x": 80,
+   "y": 76
+  },
+  "yaw_deg": [
+   -18,
+   -12.0,
+   -6.0,
+   0,
+   6.0,
+   12.0,
+   18
+  ],
+  "frames": {
+   "left3": {
+    "x": 0,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left2": {
+    "x": 160,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left1": {
+    "x": 320,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "center": {
+    "x": 480,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right1": {
+    "x": 640,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right2": {
+    "x": 800,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right3": {
+    "x": 960,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   }
+  },
+  "slope": {
+   "frame": {
+    "w": 160,
+    "h": 112
+   },
+   "anchor": {
+    "x": 80,
+    "y": 80
+   },
+   "tilt_deg": 7,
+   "sheets_up": [
+    "supercar_orange_up.png",
+    "supercar_red_up.png",
+    "supercar_yellow_up.png",
+    "supercar_blue_up.png",
+    "supercar_white_up.png",
+    "supercar_lime_up.png"
+   ],
+   "sheets_down": [
+    "supercar_orange_down.png",
+    "supercar_red_down.png",
+    "supercar_yellow_down.png",
+    "supercar_blue_down.png",
+    "supercar_white_down.png",
+    "supercar_lime_down.png"
+   ]
+  },
+  "spin": {
+   "frame": {
+    "w": 240,
+    "h": 112
+   },
+   "count": 16,
+   "step_deg": 22.5,
+   "anchor": {
+    "x": 120,
+    "y": 91
+   },
+   "sheets": [
+    "supercar_orange_spin.png",
+    "supercar_red_spin.png",
+    "supercar_yellow_spin.png",
+    "supercar_blue_spin.png",
+    "supercar_white_spin.png",
+    "supercar_lime_spin.png"
+   ]
+  },
+  "damaged_sheets": [
+   "supercar_orange_damaged.png",
+   "supercar_red_damaged.png",
+   "supercar_yellow_damaged.png",
+   "supercar_blue_damaged.png",
+   "supercar_white_damaged.png",
+   "supercar_lime_damaged.png"
+  ],
+  "puncture_sheets": [
+   "supercar_orange_puncture.png",
+   "supercar_red_puncture.png",
+   "supercar_yellow_puncture.png",
+   "supercar_blue_puncture.png",
+   "supercar_white_puncture.png",
+   "supercar_lime_puncture.png"
+  ],
+  "pit_sheets": [
+   "supercar_orange_pit.png",
+   "supercar_red_pit.png",
+   "supercar_yellow_pit.png",
+   "supercar_blue_pit.png",
+   "supercar_white_pit.png",
+   "supercar_lime_pit.png"
+  ],
+  "pit_frames": [
+   "jacked",
+   "no_wheels"
+  ]
+ },
+ "pickup": {
+  "sheets": [
+   "pickup_steel.png",
+   "pickup_black.png",
+   "pickup_sand.png",
+   "pickup_olive.png",
+   "pickup_white.png",
+   "pickup_red.png"
+  ],
+  "brake_sheets": [
+   "pickup_steel_brake.png",
+   "pickup_black_brake.png",
+   "pickup_sand_brake.png",
+   "pickup_olive_brake.png",
+   "pickup_white_brake.png",
+   "pickup_red_brake.png"
+  ],
+  "pixels_per_meter": 36,
+  "frame": {
+   "w": 160,
+   "h": 96
+  },
+  "anchor": {
+   "x": 80,
+   "y": 75
+  },
+  "yaw_deg": [
+   -18,
+   -12.0,
+   -6.0,
+   0,
+   6.0,
+   12.0,
+   18
+  ],
+  "frames": {
+   "left3": {
+    "x": 0,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left2": {
+    "x": 160,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "left1": {
+    "x": 320,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "center": {
+    "x": 480,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right1": {
+    "x": 640,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right2": {
+    "x": 800,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   },
+   "right3": {
+    "x": 960,
+    "y": 0,
+    "w": 160,
+    "h": 96
+   }
+  },
+  "slope": {
+   "frame": {
+    "w": 160,
+    "h": 112
+   },
+   "anchor": {
+    "x": 80,
+    "y": 79
+   },
+   "tilt_deg": 7,
+   "sheets_up": [
+    "pickup_steel_up.png",
+    "pickup_black_up.png",
+    "pickup_sand_up.png",
+    "pickup_olive_up.png",
+    "pickup_white_up.png",
+    "pickup_red_up.png"
+   ],
+   "sheets_down": [
+    "pickup_steel_down.png",
+    "pickup_black_down.png",
+    "pickup_sand_down.png",
+    "pickup_olive_down.png",
+    "pickup_white_down.png",
+    "pickup_red_down.png"
+   ]
+  },
+  "spin": {
+   "frame": {
+    "w": 240,
+    "h": 112
+   },
+   "count": 16,
+   "step_deg": 22.5,
+   "anchor": {
+    "x": 120,
+    "y": 90
+   },
+   "sheets": [
+    "pickup_steel_spin.png",
+    "pickup_black_spin.png",
+    "pickup_sand_spin.png",
+    "pickup_olive_spin.png",
+    "pickup_white_spin.png",
+    "pickup_red_spin.png"
+   ]
+  },
+  "damaged_sheets": [
+   "pickup_steel_damaged.png",
+   "pickup_black_damaged.png",
+   "pickup_sand_damaged.png",
+   "pickup_olive_damaged.png",
+   "pickup_white_damaged.png",
+   "pickup_red_damaged.png"
+  ],
+  "puncture_sheets": [
+   "pickup_steel_puncture.png",
+   "pickup_black_puncture.png",
+   "pickup_sand_puncture.png",
+   "pickup_olive_puncture.png",
+   "pickup_white_puncture.png",
+   "pickup_red_puncture.png"
+  ],
+  "pit_sheets": [
+   "pickup_steel_pit.png",
+   "pickup_black_pit.png",
+   "pickup_sand_pit.png",
+   "pickup_olive_pit.png",
+   "pickup_white_pit.png",
+   "pickup_red_pit.png"
+  ],
+  "pit_frames": [
+   "jacked",
+   "no_wheels"
+  ]
+ }
+}

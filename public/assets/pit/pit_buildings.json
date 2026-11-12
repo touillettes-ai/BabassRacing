@@ -1,0 +1,87 @@
+{
+ "image": "pit_buildings.png",
+ "sprites": {
+  "garage_red": {
+   "x": 0,
+   "y": 0,
+   "w": 160,
+   "h": 112,
+   "anchor": {
+    "x": 81,
+    "y": 113
+   },
+   "pixels_per_meter": 20,
+   "tile_x": true
+  },
+  "garage_blue": {
+   "x": 162,
+   "y": 0,
+   "w": 160,
+   "h": 112,
+   "anchor": {
+    "x": 81,
+    "y": 113
+   },
+   "pixels_per_meter": 20,
+   "tile_x": true
+  },
+  "garage_black": {
+   "x": 324,
+   "y": 0,
+   "w": 160,
+   "h": 112,
+   "anchor": {
+    "x": 81,
+    "y": 113
+   },
+   "pixels_per_meter": 20,
+   "tile_x": true
+  },
+  "garage_closed": {
+   "x": 486,
+   "y": 0,
+   "w": 160,
+   "h": 112,
+   "anchor": {
+    "x": 81,
+    "y": 113
+   },
+   "pixels_per_meter": 20,
+   "tile_x": true
+  },
+  "pit_timing_stand": {
+   "x": 648,
+   "y": 0,
+   "w": 96,
+   "h": 84,
+   "anchor": {
+    "x": 49,
+    "y": 85
+   },
+   "pixels_per_meter": 24
+  },
+  "lollipop_stop": {
+   "x": 746,
+   "y": 0,
+   "w": 30,
+   "h": 70,
+   "anchor": {
+    "x": 15,
+    "y": 71
+   },
+   "pixels_per_meter": 30
+  },
+  "pit_wall": {
+   "x": 778,
+   "y": 0,
+   "w": 200,
+   "h": 64,
+   "anchor": {
+    "x": 101,
+    "y": 65
+   },
+   "pixels_per_meter": 20,
+   "tile_x": true
+  }
+ }
+}

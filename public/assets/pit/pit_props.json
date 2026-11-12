@@ -1,0 +1,71 @@
+{
+ "image": "pit_props.png",
+ "sprites": {
+  "fuel_rig": {
+   "x": 0,
+   "y": 0,
+   "w": 60,
+   "h": 86,
+   "anchor": {
+    "x": 30,
+    "y": 76
+   },
+   "pixels_per_meter": 36
+  },
+  "tool_cart": {
+   "x": 62,
+   "y": 0,
+   "w": 50,
+   "h": 46,
+   "anchor": {
+    "x": 25,
+    "y": 39
+   },
+   "pixels_per_meter": 36
+  },
+  "tyre_stack": {
+   "x": 114,
+   "y": 0,
+   "w": 42,
+   "h": 43,
+   "anchor": {
+    "x": 21,
+    "y": 35
+   },
+   "pixels_per_meter": 36
+  },
+  "tyre_side_view": {
+   "x": 158,
+   "y": 0,
+   "w": 36,
+   "h": 34,
+   "anchor": {
+    "x": 18,
+    "y": 28
+   },
+   "pixels_per_meter": 36
+  },
+  "tyre_rear_view": {
+   "x": 196,
+   "y": 0,
+   "w": 24,
+   "h": 33,
+   "anchor": {
+    "x": 12,
+    "y": 27
+   },
+   "pixels_per_meter": 36
+  },
+  "jerrycan": {
+   "x": 222,
+   "y": 0,
+   "w": 24,
+   "h": 30,
+   "anchor": {
+    "x": 12,
+    "y": 24
+   },
+   "pixels_per_meter": 36
+  }
+ }
+}

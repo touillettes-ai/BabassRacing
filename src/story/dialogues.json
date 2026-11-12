@@ -1,0 +1,1447 @@
+{
+  "_help": "Dialogues du mode carrière, édités avec tools/dialogue-editor.html (npm run dev, puis /tools/dialogue-editor.html). who : babass | marcel | kevin | elle | leo ; expr : neutral | happy | angry | surprised ; when : always | rivalBehind (Babass a battu Kevin) | rivalAhead (Kevin devant) | passed (qualifié pour la suite) | failed (non qualifié). Variables du texte : {kevin} {elle} {cat} {pos} {rival} {n}.",
+  "intro": [
+    {
+      "who": "marcel",
+      "expr": "happy",
+      "text": "Babass ! Réveille-toi, la saison commence aujourd’hui !",
+      "when": "always"
+    },
+    {
+      "who": "babass",
+      "expr": "surprised",
+      "text": "Déjà ? J’ai à peine fini mon croissant, patron.",
+      "when": "always"
+    },
+    {
+      "who": "marcel",
+      "expr": "neutral",
+      "text": "Ton rival de toujours s’est inscrit lui aussi : {kevin}.",
+      "when": "always"
+    },
+    {
+      "who": "kevin",
+      "expr": "angry",
+      "text": "Salut Babass. Prépare-toi à manger de la poussière, comme d’habitude.",
+      "when": "always"
+    },
+    {
+      "who": "babass",
+      "expr": "angry",
+      "text": "Un jour, {kevin}, un jour... Et ce jour-là, {elle} me dira oui !",
+      "when": "always"
+    },
+    {
+      "who": "elle",
+      "expr": "happy",
+      "text": "Je ne dis rien, mais j’aime les pilotes qui gagnent. Bonne chance, Babass !",
+      "when": "always"
+    },
+    {
+      "who": "babass",
+      "expr": "happy",
+      "text": "Tu as entendu ça ?! Contact, patron !",
+      "when": "always"
+    }
+  ],
+  "endings": {
+    "good": [
+      {
+        "who": "marcel",
+        "expr": "happy",
+        "text": "Champion ! Tu as dominé {kevin} toute la saison !",
+        "when": "always"
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Babass... je crois que j’ai trouvé mon pilote préféré.",
+        "when": "always"
+      },
+      {
+        "who": "babass",
+        "expr": "surprised",
+        "text": "Tu veux dire que... oui ?!",
+        "when": "always"
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Oui, pour un dîner. Pas dans ta voiture : elle sent la gomme.",
+        "when": "always"
+      },
+      {
+        "who": "kevin",
+        "expr": "angry",
+        "text": "Je démissionne. Enfin, je prends une pause.",
+        "when": "always"
+      }
+    ],
+    "mid": [
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "Une saison honorable. Ni champion, ni ridicule.",
+        "when": "always"
+      },
+      {
+        "who": "elle",
+        "expr": "happy",
+        "text": "Tu as de la ressource, Babass. On verra l’an prochain.",
+        "when": "always"
+      },
+      {
+        "who": "babass",
+        "expr": "neutral",
+        "text": "L’an prochain, c’est dans combien de tours ?",
+        "when": "always"
+      }
+    ],
+    "bad": [
+      {
+        "who": "marcel",
+        "expr": "neutral",
+        "text": "Bon... la saison est finie. Tu as roulé, c’est déjà ça.",
+        "when": "always"
+      },
+      {
+        "who": "kevin",
+        "expr": "happy",
+        "text": "{elle}, un café ? Babass peut venir, il y a de la place pour les spectateurs.",
+        "when": "always"
+      },
+      {
+        "who": "elle",
+        "expr": "neutral",
+        "text": "Babass, je préfère les pilotes qui finissent devant. Mais je garde ton numéro, pour les pneus.",
+        "when": "always"
+      },
+      {
+        "who": "babass",
+        "expr": "angry",
+        "text": "Je reviendrai plus fort. Avec une dépanneuse en option.",
+        "when": "always"
+      }
+    ]
+  },
+  "races": {
+    "retro-1": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
+          "when": "always"
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
+          "when": "always"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Je t’enroule au premier virage, Babass.",
+          "when": "always"
+        }
+      ],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Bravo Babass ! Tu as battu {kevin} !",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "retro-2": {
+      "before": [],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "hothatch-1": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
+          "when": "always"
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
+          "when": "always"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "{elle} regarde la course, tu sais. Pas de pression.",
+          "when": "always"
+        }
+      ],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "hothatch-2": {
+      "before": [],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Bravo Babass ! Tu as battu {kevin} !",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "pickup-1": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
+          "when": "always"
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
+          "when": "always"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Mes pneus sont neufs. Ta confiance, un peu moins.",
+          "when": "always"
+        }
+      ],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "pickup-2": {
+      "before": [],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "muscle-1": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
+          "when": "always"
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
+          "when": "always"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Je t’enroule au premier virage, Babass.",
+          "when": "always"
+        }
+      ],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Bravo Babass ! Tu as battu {kevin} !",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "muscle-2": {
+      "before": [],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "muscle-3": {
+      "before": [],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "wedge-1": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
+          "when": "always"
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
+          "when": "always"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Je t’enroule au premier virage, Babass.",
+          "when": "always"
+        }
+      ],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Bravo Babass ! Tu as battu {kevin} !",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "wedge-2": {
+      "before": [],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "supercar-1": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
+          "when": "always"
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
+          "when": "always"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "{elle} regarde la course, tu sais. Pas de pression.",
+          "when": "always"
+        }
+      ],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "supercar-2": {
+      "before": [],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Bravo Babass ! Tu as battu {kevin} !",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "supercar-3": {
+      "before": [],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "futur-1": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
+          "when": "always"
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
+          "when": "always"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "{elle} regarde la course, tu sais. Pas de pression.",
+          "when": "always"
+        }
+      ],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "futur-2": {
+      "before": [],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Bravo Babass ! Tu as battu {kevin} !",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "gt3-1": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
+          "when": "always"
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
+          "when": "always"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Mes pneus sont neufs. Ta confiance, un peu moins.",
+          "when": "always"
+        }
+      ],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "gt3-2": {
+      "before": [],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "gt3-3": {
+      "before": [],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Bravo Babass ! Tu as battu {kevin} !",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "hypercar-1": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
+          "when": "always"
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
+          "when": "always"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Mes pneus sont neufs. Ta confiance, un peu moins.",
+          "when": "always"
+        }
+      ],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "hypercar-2": {
+      "before": [],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "f1-1": {
+      "before": [
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Nouvelle catégorie : {cat}. Les voitures sont plus rapides, les virages plus méchants.",
+          "when": "always"
+        },
+        {
+          "who": "babass",
+          "expr": "neutral",
+          "text": "Tant que j’ai assez d’essence pour arriver au bout, ça devrait aller...",
+          "when": "always"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Je t’enroule au premier virage, Babass.",
+          "when": "always"
+        }
+      ],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Bravo Babass ! Tu as battu {kevin} !",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "{kevin} a gagné... mais tu as bien roulé, Babass.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "f1-2": {
+      "before": [],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Pas mal du tout... j’ai presque cru que tu allais caler.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Allez, relève-toi. Même Marcel a déjà perdu des courses.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    },
+    "f1-3": {
+      "before": [],
+      "after": [
+        {
+          "who": "elle",
+          "expr": "happy",
+          "text": "Voilà un pilote qui sait doubler. Je suis impressionnée.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "babass",
+          "expr": "happy",
+          "text": "Merci ! C’est le moteur. Et le croissant.",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "angry",
+          "text": "Tu as eu de la chance, c’est tout. La prochaine fois...",
+          "when": "rivalBehind"
+        },
+        {
+          "who": "kevin",
+          "expr": "happy",
+          "text": "Encore moi devant ! {elle}, tu as vu ça ?",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "elle",
+          "expr": "neutral",
+          "text": "Ce n’est pas grave. Mais gère mieux tes pneus, hein.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "babass",
+          "expr": "surprised",
+          "text": "Je dois m’améliorer... et surtout gérer mon essence.",
+          "when": "rivalAhead"
+        },
+        {
+          "who": "marcel",
+          "expr": "neutral",
+          "text": "Il faut finir dans les {n} premiers pour passer à la suite. On refait un essai !",
+          "when": "failed"
+        }
+      ]
+    }
+  }
+}

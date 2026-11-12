@@ -1,0 +1,148 @@
+{
+ "image": "trees.png",
+ "sprites": {
+  "tree_cypress": {
+   "x": 0,
+   "y": 0,
+   "w": 44,
+   "h": 135,
+   "anchor": {
+    "x": 22,
+    "y": 125
+   },
+   "pixels_per_meter": 20
+  },
+  "tree_oak": {
+   "x": 46,
+   "y": 0,
+   "w": 100,
+   "h": 131,
+   "anchor": {
+    "x": 50,
+    "y": 114
+   },
+   "pixels_per_meter": 20
+  },
+  "tree_oak_autumn": {
+   "x": 148,
+   "y": 0,
+   "w": 100,
+   "h": 131,
+   "anchor": {
+    "x": 50,
+    "y": 114
+   },
+   "pixels_per_meter": 20
+  },
+  "tree_cherry": {
+   "x": 250,
+   "y": 0,
+   "w": 100,
+   "h": 131,
+   "anchor": {
+    "x": 50,
+    "y": 114
+   },
+   "pixels_per_meter": 20
+  },
+  "tree_palm": {
+   "x": 352,
+   "y": 0,
+   "w": 140,
+   "h": 131,
+   "anchor": {
+    "x": 70,
+    "y": 116
+   },
+   "pixels_per_meter": 20
+  },
+  "tree_birch": {
+   "x": 494,
+   "y": 0,
+   "w": 66,
+   "h": 125,
+   "anchor": {
+    "x": 33,
+    "y": 112
+   },
+   "pixels_per_meter": 20
+  },
+  "tree_pine": {
+   "x": 562,
+   "y": 0,
+   "w": 76,
+   "h": 121,
+   "anchor": {
+    "x": 38,
+    "y": 107
+   },
+   "pixels_per_meter": 20
+  },
+  "tree_pine_snow": {
+   "x": 640,
+   "y": 0,
+   "w": 76,
+   "h": 121,
+   "anchor": {
+    "x": 38,
+    "y": 107
+   },
+   "pixels_per_meter": 20
+  },
+  "tree_dead": {
+   "x": 718,
+   "y": 0,
+   "w": 70,
+   "h": 94,
+   "anchor": {
+    "x": 35,
+    "y": 81
+   },
+   "pixels_per_meter": 20
+  },
+  "cactus": {
+   "x": 790,
+   "y": 0,
+   "w": 58,
+   "h": 81,
+   "anchor": {
+    "x": 29,
+    "y": 70
+   },
+   "pixels_per_meter": 20
+  },
+  "bush_flowers": {
+   "x": 850,
+   "y": 0,
+   "w": 58,
+   "h": 43,
+   "anchor": {
+    "x": 29,
+    "y": 31
+   },
+   "pixels_per_meter": 20
+  },
+  "bush": {
+   "x": 910,
+   "y": 0,
+   "w": 58,
+   "h": 43,
+   "anchor": {
+    "x": 29,
+    "y": 31
+   },
+   "pixels_per_meter": 20
+  },
+  "rock": {
+   "x": 0,
+   "y": 137,
+   "w": 66,
+   "h": 40,
+   "anchor": {
+    "x": 33,
+    "y": 27
+   },
+   "pixels_per_meter": 20
+  }
+ }
+}
