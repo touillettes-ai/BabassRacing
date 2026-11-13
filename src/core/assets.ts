@@ -2,6 +2,9 @@
 import { RENDER } from '../config/balance';
 
 const BASE = import.meta.env.BASE_URL + 'assets/';
+/** Version du pack : à changer quand des images/JSON gardent leur nom mais changent de contenu (évite les caches périmés). */
+const ASSET_VERSION = 'hd2';
+const v = (path: string) => `${BASE}${path}?v=${ASSET_VERSION}`;
 
 export interface SpriteDef {
   x: number; y: number; w: number; h: number;
@@ -98,11 +101,11 @@ export function loadImage(path: string): Promise<HTMLImageElement> {
     const img = new Image();
     img.onload = () => resolve(img);
     img.onerror = () => reject(new Error('Image introuvable : ' + path));
-    img.src = BASE + path;
+    img.src = v(path);
   });
 }
 export async function loadJSON<T>(path: string): Promise<T> {
-  const r = await fetch(BASE + path);
+  const r = await fetch(v(path));
   if (!r.ok) throw new Error('JSON introuvable : ' + path);
   return (await r.json()) as T;
 }
