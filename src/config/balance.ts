@@ -8,6 +8,13 @@ export const RENDER = {
   /** Résolution interne (pixel art, upscalé sans lissage). */
   width: 480,
   height: 270,
+  /**
+   * Facteur HD du pack d'assets (v23+ : tout est dessiné ×2). Les coordonnées de jeu, de menus et de HUD restent
+   * en 480×270 « logiques » ; le canvas est 960×540 (width × hd) et le contexte porte une transformation d'échelle hd.
+   * Les sprites HD sont dessinés avec une taille logique = taille source / hd. La route et les sprites du monde
+   * (road.ts) sont rendus directement en pixels du canvas.
+   */
+  hd: 2,
   /** Réglages calibrés sur le pack d'assets (cf. README des assets). */
   horizon: 130,
   focal: 300,
@@ -21,7 +28,7 @@ export const RENDER = {
   nearPlane: 1,
   /** La voiture du joueur est dessinée à l'échelle 1 = 36 px/m. */
   carPixelsPerMeter: 36,
-  roadTex: { width: 512, height: 64, pxPerMeter: 27, bandMeters: 5, bandRows: 32, centerPx: 256 },
+  roadTex: { width: 1024, height: 128, pxPerMeter: 54, bandMeters: 5, bandRows: 64, centerPx: 512 },
   /**
    * Gain visuel des virages : la route plie 1,9× plus à l'écran que sa courbure physique (la physique, les collisions
    * et la mini-carte ne changent pas). Sans cela, un virage « physiquement serré » paraît presque droit en pseudo-3D.

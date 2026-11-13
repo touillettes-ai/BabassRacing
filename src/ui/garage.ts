@@ -140,7 +140,7 @@ export class GarageScreen {
           if (a) return a;
         } else if (e.type === 'tap') {
           const hit = ORDER.findIndex((id) => {
-            const [x0, y0, x1, y1] = this.g.json.hotspots[id].rect;
+            const [x0, y0, x1, y1] = this.g.json.hotspots[id].rect.map((v) => v / RENDER.hd);
             return e.x >= x0 && e.x <= x1 && e.y >= y0 && e.y <= y1;
           });
           if (hit >= 0) {
@@ -176,6 +176,9 @@ export class GarageScreen {
   draw(ctx: CanvasRenderingContext2D, ui: UiAssets): void {
     const g = this.g, js = g.json;
     const time = this.career.catUnlocked % 2 === 0 ? 'day' : 'night';
+    // La scène du garage est dessinée en pixels HD (960×540) : coordonnées de garage.json telles quelles.
+    ctx.save();
+    ctx.scale(1 / RENDER.hd, 1 / RENDER.hd);
     ctx.drawImage(g.bg[time], 0, 0);
     // animations : télé, voyant de la porte (vert = course prête)
     const tv = js.animations.tv;
@@ -190,16 +193,17 @@ export class GarageScreen {
       ctx.save();
       ctx.translate(s.x, s.y);
       if (s.flip) ctx.scale(-1, 1);
-      ctx.drawImage(g.mech[i % g.mech.length], frame * 96, 0, 96, 112, -48, -104, 96, 112);
+      ctx.drawImage(g.mech[i % g.mech.length], frame * 192, 0, 192, 224, -96, -208, 192, 224);
       ctx.restore();
     });
 
     // voiture de la catégorie en cours
     if (this.car) {
-      const a = js.cars[this.carModel]?.anchor ?? { x: 112, y: 96 };
+      const a = js.cars[this.carModel]?.anchor ?? { x: 224, y: 192 };
       ctx.drawImage(this.car, js.car_anchor_screen.x - a.x, js.car_anchor_screen.y - a.y);
     }
     ctx.drawImage(g.fg[time], 0, 0);
+    ctx.restore();
 
     if (this.view === 'hub') this.drawHub(ctx, ui);
     else this.drawPanel(ctx, ui);
@@ -219,7 +223,7 @@ export class GarageScreen {
   private drawHub(ctx: CanvasRenderingContext2D, ui: UiAssets): void {
     const id = ORDER[this.cursor];
     const hs = this.g.json.hotspots[id];
-    if (Math.floor(this.clock * 3) % 3 !== 2) ctx.drawImage(this.g.hl[id], hs.highlight.x, hs.highlight.y);
+    if (Math.floor(this.clock * 3) % 3 !== 2) ctx.drawImage(this.g.hl[id], hs.highlight.x / RENDER.hd, hs.highlight.y / RENDER.hd, this.g.hl[id].width / RENDER.hd, this.g.hl[id].height / RENDER.hd);
     panel(ctx, 0, H - 38, W, 38);
     drawTextCentered(ctx, ui, tk(`garage.hs.${id}`), W / 2, H - 35);
     drawTextCentered(ctx, ui, tk('garage.hint.hub'), W / 2, H - 18);

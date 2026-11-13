@@ -4,145 +4,145 @@
   "tree_cypress": {
    "x": 0,
    "y": 0,
-   "w": 44,
-   "h": 135,
+   "w": 84,
+   "h": 278,
    "anchor": {
-    "x": 22,
-    "y": 125
+    "x": 42,
+    "y": 258
    },
-   "pixels_per_meter": 20
-  },
-  "tree_oak": {
-   "x": 46,
-   "y": 0,
-   "w": 100,
-   "h": 131,
-   "anchor": {
-    "x": 50,
-    "y": 114
-   },
-   "pixels_per_meter": 20
-  },
-  "tree_oak_autumn": {
-   "x": 148,
-   "y": 0,
-   "w": 100,
-   "h": 131,
-   "anchor": {
-    "x": 50,
-    "y": 114
-   },
-   "pixels_per_meter": 20
+   "pixels_per_meter": 40
   },
   "tree_cherry": {
-   "x": 250,
+   "x": 86,
    "y": 0,
-   "w": 100,
-   "h": 131,
+   "w": 202,
+   "h": 264,
    "anchor": {
-    "x": 50,
-    "y": 114
+    "x": 101,
+    "y": 230
    },
-   "pixels_per_meter": 20
+   "pixels_per_meter": 40
+  },
+  "tree_oak": {
+   "x": 290,
+   "y": 0,
+   "w": 210,
+   "h": 263,
+   "anchor": {
+    "x": 105,
+    "y": 229
+   },
+   "pixels_per_meter": 40
+  },
+  "tree_oak_autumn": {
+   "x": 502,
+   "y": 0,
+   "w": 210,
+   "h": 263,
+   "anchor": {
+    "x": 105,
+    "y": 229
+   },
+   "pixels_per_meter": 40
   },
   "tree_palm": {
-   "x": 352,
+   "x": 714,
    "y": 0,
-   "w": 140,
-   "h": 131,
+   "w": 276,
+   "h": 262,
    "anchor": {
-    "x": 70,
-    "y": 116
+    "x": 138,
+    "y": 232
    },
-   "pixels_per_meter": 20
+   "pixels_per_meter": 40
   },
   "tree_birch": {
-   "x": 494,
-   "y": 0,
-   "w": 66,
-   "h": 125,
+   "x": 0,
+   "y": 280,
+   "w": 138,
+   "h": 251,
    "anchor": {
-    "x": 33,
-    "y": 112
+    "x": 69,
+    "y": 225
    },
-   "pixels_per_meter": 20
+   "pixels_per_meter": 40
   },
   "tree_pine": {
-   "x": 562,
-   "y": 0,
-   "w": 76,
-   "h": 121,
+   "x": 140,
+   "y": 280,
+   "w": 162,
+   "h": 245,
    "anchor": {
-    "x": 38,
-    "y": 107
+    "x": 81,
+    "y": 217
    },
-   "pixels_per_meter": 20
+   "pixels_per_meter": 40
   },
   "tree_pine_snow": {
-   "x": 640,
-   "y": 0,
-   "w": 76,
-   "h": 121,
+   "x": 304,
+   "y": 280,
+   "w": 162,
+   "h": 245,
    "anchor": {
-    "x": 38,
-    "y": 107
+    "x": 81,
+    "y": 217
    },
-   "pixels_per_meter": 20
+   "pixels_per_meter": 40
   },
   "tree_dead": {
-   "x": 718,
-   "y": 0,
-   "w": 70,
-   "h": 94,
+   "x": 468,
+   "y": 280,
+   "w": 136,
+   "h": 188,
    "anchor": {
-    "x": 35,
-    "y": 81
+    "x": 68,
+    "y": 163
    },
-   "pixels_per_meter": 20
+   "pixels_per_meter": 40
   },
   "cactus": {
-   "x": 790,
-   "y": 0,
-   "w": 58,
-   "h": 81,
+   "x": 606,
+   "y": 280,
+   "w": 114,
+   "h": 163,
    "anchor": {
-    "x": 29,
-    "y": 70
+    "x": 57,
+    "y": 141
    },
-   "pixels_per_meter": 20
-  },
-  "bush_flowers": {
-   "x": 850,
-   "y": 0,
-   "w": 58,
-   "h": 43,
-   "anchor": {
-    "x": 29,
-    "y": 31
-   },
-   "pixels_per_meter": 20
+   "pixels_per_meter": 40
   },
   "bush": {
-   "x": 910,
-   "y": 0,
-   "w": 58,
-   "h": 43,
+   "x": 722,
+   "y": 280,
+   "w": 118,
+   "h": 87,
    "anchor": {
-    "x": 29,
-    "y": 31
+    "x": 59,
+    "y": 63
    },
-   "pixels_per_meter": 20
+   "pixels_per_meter": 40
+  },
+  "bush_flowers": {
+   "x": 842,
+   "y": 280,
+   "w": 120,
+   "h": 86,
+   "anchor": {
+    "x": 60,
+    "y": 62
+   },
+   "pixels_per_meter": 40
   },
   "rock": {
    "x": 0,
-   "y": 137,
-   "w": 66,
-   "h": 40,
+   "y": 533,
+   "w": 130,
+   "h": 84,
    "anchor": {
-    "x": 33,
-    "y": 27
+    "x": 65,
+    "y": 58
    },
-   "pixels_per_meter": 20
+   "pixels_per_meter": 40
   }
  }
 }

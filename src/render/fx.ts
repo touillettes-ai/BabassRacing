@@ -28,7 +28,10 @@ export class Effects {
       this.emitT = FX.emitInterval;
       const hardBrake = p.braking && vr > FX.smokeBrakeRatio;
       const drifting = (p.sliding || Math.abs(p.lateralForce) > FX.smokeLateral) && vr > 0.2;
-      if (p.offroad && p.speed > 4) {
+      if (a.level.weather?.spray && !p.offroad && p.speed > 22 && !p.spinning) {
+        // piste mouillée : gerbes d'eau derrière les roues (plus fréquentes avec la vitesse)
+        if (Math.random() < 0.4 + 0.6 * vr) this.wheels('fx_spray', false);
+      } else if (p.offroad && p.speed > 4) {
         const strip = /desert|coast/.test(a.level.road) ? 'fx_dust' : 'fx_grass';
         this.wheels(strip, false);
       } else if (hardBrake || drifting || p.spinning) {
@@ -73,9 +76,10 @@ export class Effects {
       let frame = Math.floor(q.t * s.fps);
       if (s.loop) frame %= s.count;
       else if (frame >= s.count) continue;
+      const hd = RENDER.hd;
       ctx.drawImage(
         s.img, frame * s.frame.w, 0, s.frame.w, s.frame.h,
-        Math.round(q.x - s.anchor.x), Math.round(q.y - s.anchor.y), s.frame.w, s.frame.h,
+        Math.round((q.x - s.anchor.x / hd) * hd) / hd, Math.round((q.y - s.anchor.y / hd) * hd) / hd, s.frame.w / hd, s.frame.h / hd,
       );
     }
   }

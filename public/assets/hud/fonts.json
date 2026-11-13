@@ -1,16 +1,16 @@
 {
  "font_digits_big": {
   "cell": {
-   "w": 20,
-   "h": 30
+   "w": 40,
+   "h": 60
   },
   "columns": 15,
   "chars": "0123456789:.'/ "
  },
  "font_small": {
   "cell": {
-   "w": 10,
-   "h": 14
+   "w": 20,
+   "h": 28
   },
   "columns": 16,
   "chars": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_",
@@ -18,10 +18,11 @@
  },
  "needle": {
   "frame": {
-   "w": 96,
-   "h": 96
+   "w": 192,
+   "h": 192
   },
   "count": 28,
   "note": "a superposer au cadran ; frame = round(valeur / max * 27)"
- }
+ },
+ "hd": "x2"
 }

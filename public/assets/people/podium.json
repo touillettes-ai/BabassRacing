@@ -4,72 +4,73 @@
   "podium_backdrop": {
    "x": 0,
    "y": 0,
-   "w": 300,
-   "h": 130,
+   "w": 600,
+   "h": 260,
    "anchor": {
-    "x": 151,
-    "y": 131
+    "x": 302,
+    "y": 262
    },
-   "pixels_per_meter": 36
+   "pixels_per_meter": 72
   },
   "podium": {
-   "x": 302,
+   "x": 604,
    "y": 0,
-   "w": 232,
-   "h": 46,
+   "w": 464,
+   "h": 92,
    "anchor": {
-    "x": 117,
-    "y": 47
+    "x": 234,
+    "y": 94
    },
-   "pixels_per_meter": 36,
+   "pixels_per_meter": 72,
    "stand": {
     "p1": {
-     "dx": -1,
-     "dy": -44
+     "dx": -2,
+     "dy": -88
     },
     "p2": {
-     "dx": -77,
-     "dy": -26
+     "dx": -154,
+     "dy": -52
     },
     "p3": {
-     "dx": 75,
-     "dy": -18
+     "dx": 150,
+     "dy": -36
     }
    },
    "note": "stand = decalage (px) de l'ancre du pilote par rapport a l'ancre du podium"
   },
   "trophy_gold": {
-   "x": 536,
+   "x": 1072,
    "y": 0,
-   "w": 18,
-   "h": 24,
+   "w": 36,
+   "h": 48,
    "anchor": {
-    "x": 10,
-    "y": 25
+    "x": 20,
+    "y": 50
    },
-   "pixels_per_meter": 36
+   "pixels_per_meter": 72
   },
   "trophy_silver": {
-   "x": 556,
+   "x": 1112,
    "y": 0,
-   "w": 18,
-   "h": 24,
+   "w": 36,
+   "h": 48,
    "anchor": {
-    "x": 10,
-    "y": 25
+    "x": 20,
+    "y": 50
    },
-   "pixels_per_meter": 36
+   "pixels_per_meter": 72
   },
   "trophy_bronze": {
-   "x": 576,
+   "x": 1152,
    "y": 0,
-   "w": 18,
-   "h": 24,
+   "w": 36,
+   "h": 48,
    "anchor": {
-    "x": 10,
-    "y": 25
+    "x": 20,
+    "y": 50
    },
-   "pixels_per_meter": 36
+   "pixels_per_meter": 72
   }
- }
+ },
+ "hd": "x2"
 }

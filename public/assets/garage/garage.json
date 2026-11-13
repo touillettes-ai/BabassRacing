@@ -1,7 +1,7 @@
 {
  "screen": {
-  "w": 480,
-  "h": 270,
+  "w": 960,
+  "h": 540,
   "scale_hint": "x2 = 960x540, x3 = 1440x810, x4 = 1920x1080 (nearest neighbour)"
  },
  "layers": [
@@ -13,18 +13,18 @@
   "surbrillance + UI"
  ],
  "car_anchor_screen": {
-  "x": 240,
-  "y": 240
+  "x": 480,
+  "y": 480
  },
  "mechanic_spots": [
   {
-   "x": 118,
-   "y": 228,
+   "x": 236,
+   "y": 456,
    "flip": false
   },
   {
-   "x": 372,
-   "y": 246,
+   "x": 744,
+   "y": 492,
    "flip": true
   }
  ],
@@ -34,14 +34,14 @@
     "garage_safetycar_silver.png"
    ],
    "frame": {
-    "w": 224,
-    "h": 128
+    "w": 448,
+    "h": 256
    },
    "anchor": {
-    "x": 112,
-    "y": 98
+    "x": 224,
+    "y": 196
    },
-   "pixels_per_meter": 48,
+   "pixels_per_meter": 96,
    "yaw_deg": -32
   },
   "hothatch": {
@@ -54,14 +54,14 @@
     "garage_hothatch_orange.png"
    ],
    "frame": {
-    "w": 224,
-    "h": 128
+    "w": 448,
+    "h": 256
    },
    "anchor": {
-    "x": 112,
-    "y": 100
+    "x": 224,
+    "y": 200
    },
-   "pixels_per_meter": 48,
+   "pixels_per_meter": 96,
    "yaw_deg": -32
   },
   "gt3": {
@@ -74,14 +74,14 @@
     "garage_gt3_yellow.png"
    ],
    "frame": {
-    "w": 224,
-    "h": 128
+    "w": 448,
+    "h": 256
    },
    "anchor": {
-    "x": 112,
-    "y": 94
+    "x": 224,
+    "y": 188
    },
-   "pixels_per_meter": 48,
+   "pixels_per_meter": 96,
    "yaw_deg": -32
   },
   "f1": {
@@ -94,14 +94,14 @@
     "garage_f1_pink.png"
    ],
    "frame": {
-    "w": 224,
-    "h": 128
+    "w": 448,
+    "h": 256
    },
    "anchor": {
-    "x": 112,
-    "y": 94
+    "x": 224,
+    "y": 188
    },
-   "pixels_per_meter": 48,
+   "pixels_per_meter": 96,
    "yaw_deg": -32
   },
   "hypercar": {
@@ -114,14 +114,14 @@
     "garage_hypercar_green.png"
    ],
    "frame": {
-    "w": 224,
-    "h": 128
+    "w": 448,
+    "h": 256
    },
    "anchor": {
-    "x": 112,
-    "y": 90
+    "x": 224,
+    "y": 180
    },
-   "pixels_per_meter": 48,
+   "pixels_per_meter": 96,
    "yaw_deg": -32
   },
   "muscle": {
@@ -134,14 +134,14 @@
     "garage_muscle_purple.png"
    ],
    "frame": {
-    "w": 224,
-    "h": 128
+    "w": 448,
+    "h": 256
    },
    "anchor": {
-    "x": 112,
-    "y": 97
+    "x": 224,
+    "y": 194
    },
-   "pixels_per_meter": 48,
+   "pixels_per_meter": 96,
    "yaw_deg": -32
   },
   "retro": {
@@ -154,14 +154,14 @@
     "garage_retro_grey.png"
    ],
    "frame": {
-    "w": 224,
-    "h": 128
+    "w": 448,
+    "h": 256
    },
    "anchor": {
-    "x": 112,
-    "y": 102
+    "x": 224,
+    "y": 204
    },
-   "pixels_per_meter": 48,
+   "pixels_per_meter": 96,
    "yaw_deg": -32
   },
   "wedge": {
@@ -174,14 +174,14 @@
     "garage_wedge_silver.png"
    ],
    "frame": {
-    "w": 224,
-    "h": 128
+    "w": 448,
+    "h": 256
    },
    "anchor": {
-    "x": 112,
-    "y": 99
+    "x": 224,
+    "y": 198
    },
-   "pixels_per_meter": 48,
+   "pixels_per_meter": 96,
    "yaw_deg": -32
   },
   "futur": {
@@ -194,14 +194,14 @@
     "garage_futur_red.png"
    ],
    "frame": {
-    "w": 224,
-    "h": 128
+    "w": 448,
+    "h": 256
    },
    "anchor": {
-    "x": 112,
-    "y": 98
+    "x": 224,
+    "y": 196
    },
-   "pixels_per_meter": 48,
+   "pixels_per_meter": 96,
    "yaw_deg": -32
   },
   "supercar": {
@@ -214,14 +214,14 @@
     "garage_supercar_lime.png"
    ],
    "frame": {
-    "w": 224,
-    "h": 128
+    "w": 448,
+    "h": 256
    },
    "anchor": {
-    "x": 112,
-    "y": 96
+    "x": 224,
+    "y": 192
    },
-   "pixels_per_meter": 48,
+   "pixels_per_meter": 96,
    "yaw_deg": -32
   },
   "pickup": {
@@ -234,14 +234,14 @@
     "garage_pickup_red.png"
    ],
    "frame": {
-    "w": 224,
-    "h": 128
+    "w": 448,
+    "h": 256
    },
    "anchor": {
-    "x": 112,
-    "y": 94
+    "x": 224,
+    "y": 188
    },
-   "pixels_per_meter": 48,
+   "pixels_per_meter": 96,
    "yaw_deg": -32
   },
   "towtruck": {
@@ -254,14 +254,14 @@
     "garage_towtruck_black.png"
    ],
    "frame": {
-    "w": 224,
-    "h": 128
+    "w": 448,
+    "h": 256
    },
    "anchor": {
-    "x": 112,
-    "y": 95
+    "x": 224,
+    "y": 190
    },
-   "pixels_per_meter": 48,
+   "pixels_per_meter": 96,
    "yaw_deg": -32
   }
  },
@@ -272,14 +272,14 @@
    "garage_mechanic_black.png"
   ],
   "frame": {
-   "w": 96,
-   "h": 112
+   "w": 192,
+   "h": 224
   },
   "anchor": {
-   "x": 48,
-   "y": 104
+   "x": 96,
+   "y": 208
   },
-  "pixels_per_meter": 48,
+  "pixels_per_meter": 96,
   "frames": [
    "idle",
    "hands_hips",
@@ -292,148 +292,149 @@
  "hotspots": {
   "car": {
    "rect": [
-    150,
-    150,
-    330,
-    245
+    300,
+    300,
+    660,
+    490
    ],
    "label": "Voiture : ameliorations / peinture",
    "shape": "ellipse",
    "highlight": {
     "image": "garage_hl_car.png",
-    "x": 146,
-    "y": 146
+    "x": 292,
+    "y": 292
    }
   },
   "mechanics": {
    "rect": [
-    66,
-    112,
-    164,
-    170
+    132,
+    224,
+    328,
+    340
    ],
    "label": "Equipe : recruter / entrainer les mecanos (rack a pneus)",
    "shape": "rect",
    "highlight": {
     "image": "garage_hl_mechanics.png",
-    "x": 62,
-    "y": 108
+    "x": 124,
+    "y": 216
    }
   },
   "parts": {
    "rect": [
-    66,
-    58,
-    160,
-    108
+    132,
+    116,
+    320,
+    216
    ],
    "label": "Pieces : moteur, pneus, aero (panneau d'outils)",
    "shape": "rect",
    "highlight": {
     "image": "garage_hl_parts.png",
-    "x": 62,
-    "y": 54
+    "x": 124,
+    "y": 108
    }
   },
   "office": {
    "rect": [
-    386,
-    92,
-    418,
-    170
+    772,
+    184,
+    836,
+    340
    ],
    "label": "Bureau : directeur, contrats, dialogues",
    "shape": "rect",
    "highlight": {
     "image": "garage_hl_office.png",
-    "x": 382,
-    "y": 88
+    "x": 764,
+    "y": 176
    }
   },
   "board": {
    "rect": [
-    320,
-    112,
-    378,
-    160
+    640,
+    224,
+    756,
+    320
    ],
    "label": "Tableau : calendrier, prochaine course, classement",
    "shape": "rect",
    "highlight": {
     "image": "garage_hl_board.png",
-    "x": 316,
-    "y": 108
+    "x": 632,
+    "y": 216
    }
   },
   "exit": {
    "rect": [
-    176,
-    80,
-    304,
-    172
+    352,
+    160,
+    608,
+    344
    ],
    "label": "Porte : aller a la course",
    "shape": "rect",
    "highlight": {
     "image": "garage_hl_exit.png",
-    "x": 172,
-    "y": 76
+    "x": 344,
+    "y": 152
    }
   },
   "tv": {
    "rect": [
-    8,
-    34,
-    54,
-    84
+    16,
+    68,
+    108,
+    168
    ],
    "label": "TV : replays / actualites",
    "shape": "rect",
    "highlight": {
     "image": "garage_hl_tv.png",
-    "x": 4,
-    "y": 30
+    "x": 8,
+    "y": 60
    }
   },
   "sponsors": {
    "rect": [
-    428,
-    56,
-    476,
-    150
+    856,
+    112,
+    952,
+    300
    ],
    "label": "Affiches : sponsors",
    "shape": "rect",
    "highlight": {
     "image": "garage_hl_sponsors.png",
-    "x": 424,
-    "y": 52
+    "x": 848,
+    "y": 104
    }
   }
  },
  "animations": {
   "tv": {
    "image": "garage_anim_tv.png",
-   "x": 8,
-   "y": 30,
+   "x": 16,
+   "y": 60,
    "frame": {
-    "w": 48,
-    "h": 56
+    "w": 96,
+    "h": 112
    },
    "count": 4,
    "fps": 6
   },
   "door_light": {
    "image": "garage_anim_doorlight.png",
-   "x": 310,
-   "y": 102,
+   "x": 620,
+   "y": 204,
    "frame": {
-    "w": 4,
-    "h": 4
+    "w": 8,
+    "h": 8
    },
    "count": 2,
    "fps": 1,
    "note": "frame 0 = rouge (course verrouillee), 1 = vert (pret)"
   }
- }
+ },
+ "hd": "x2"
 }

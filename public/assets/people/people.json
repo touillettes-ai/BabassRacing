@@ -1,14 +1,14 @@
 {
  "drivers": {
   "frame": {
-   "w": 96,
-   "h": 108
+   "w": 192,
+   "h": 216
   },
   "anchor": {
-   "x": 48,
-   "y": 100
+   "x": 96,
+   "y": 200
   },
-  "pixels_per_meter": 36,
+  "pixels_per_meter": 72,
   "frames": [
    "idle",
    "walk0",
@@ -59,14 +59,14 @@
  },
  "photographers": {
   "frame": {
-   "w": 96,
-   "h": 84
+   "w": 192,
+   "h": 168
   },
   "anchor": {
-   "x": 48,
-   "y": 76
+   "x": 96,
+   "y": 152
   },
-  "pixels_per_meter": 36,
+  "pixels_per_meter": 72,
   "frames": [
    "stand",
    "stand_flash",
@@ -74,5 +74,6 @@
    "kneel_flash"
   ],
   "note": "tournes vers la gauche/camera (bord droit de la piste) ; miroir pour la gauche. Afficher *_flash une frame de temps en temps."
- }
+ },
+ "hd": "x2"
 }

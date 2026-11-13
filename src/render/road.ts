@@ -53,7 +53,7 @@ export class RoadRenderer {
   private basePct = 0;
 
   constructor(assets: Assets) {
-    const { width: W, height: H } = RENDER;
+    const W = RENDER.width * RENDER.hd, H = RENDER.height * RENDER.hd;
     this.canvas = document.createElement('canvas');
     this.canvas.width = W;
     this.canvas.height = H;
@@ -107,6 +107,7 @@ export class RoadRenderer {
         else if (name === 'oil' && c && !next && hash(k) % 3 === 0) put(k + 1, id);
         else if (name === 'arrows' && !c && !corner(k + 2) && k % 20 === 5) put(k, id);
         else if (name === 'logo_asphalt' && !c && k % 40 === 17) put(k, id);
+        else if (name.startsWith('puddles') && !corner(k) && hash(k) % 4 === 0) put(k, id);
         else if (name === 'crosswalk' && k === startCell + 5) put(k, id);
       }
     });
@@ -115,7 +116,13 @@ export class RoadRenderer {
 
   draw(ctx: CanvasRenderingContext2D, a: Assets, track: Track, player: Player, dyn: DynSprite[]): void {
     const R = RENDER;
-    const W = R.width, H = R.height;
+    const hd = R.hd;
+    // Tout le rendu du monde se fait en pixels du canvas (HD) : focale, horizon et largeur sont multipliés par hd.
+    const W = R.width * hd, H = R.height * hd;
+    const FOCAL = R.focal * hd, HORIZON = R.horizon * hd;
+    ctx.save();
+    ctx.scale(1 / hd, 1 / hd);
+    ctx.imageSmoothingEnabled = false;
     const segs = track.segments;
     const n = segs.length;
     const segLen = R.segmentLength;
@@ -177,12 +184,12 @@ export class RoadRenderer {
         ry1 += (ry2 - ry1) * f;
         dz1 = R.nearPlane;
       }
-      const s1 = R.focal / dz1;
-      const s2 = R.focal / dz2;
+      const s1 = FOCAL / dz1;
+      const s2 = FOCAL / dz2;
       const sx1 = W / 2 + rx1 * s1;
-      const sy1 = R.horizon - ry1 * s1;
+      const sy1 = HORIZON - ry1 * s1;
       const sx2 = W / 2 + rx2 * s2;
-      const sy2 = R.horizon - ry2 * s2;
+      const sy2 = HORIZON - ry2 * s2;
 
       p.sx = sx1; p.sy = sy1; p.scale = s1; p.clip = top;
       p.sx2 = sx2; p.sy2 = sy2; p.dz1 = dz1; p.dz2 = dz2;
@@ -198,13 +205,13 @@ export class RoadRenderer {
         for (let y = yTop; y < yBot; y++) {
           const t = (sy1 - (y + 0.5)) / den;
           const invz = inv1 + (inv2 - inv1) * t;
-          const s = R.focal * invz;
+          const s = FOCAL * invz;
           const cx = sx1 + (sx2 - sx1) * t;
           const zAbs = camZ + 1 / invz;
           // anticrénelage : au loin, une ligne écran couvre `trpr` lignes de texture → on prend la mipmap moyennée
           const zr = 1 / invz;
           const trpr = (rowsPerMeter * zr * zr) / (R.camHeight * R.focal);
-          const m = trpr <= 1 ? 0 : Math.min(6, Math.ceil(Math.log2(trpr)));
+          const m = trpr <= 1 ? 0 : Math.min(7, Math.ceil(Math.log2(trpr)));
           const tex = mips[m], pitTex = pitMips[m];
           const v = (Math.floor(zAbs * rowsPerMeter) >> m) & ((T.height >> m) - 1);
           const rowTex = v * T.width;
@@ -214,21 +221,21 @@ export class RoadRenderer {
           const zw = ((zAbs % L) + L) % L;
           // surcouche de départ : r = floor((z - z0) / 10 m × 64) ; -1 si hors de la ligne
           const dOv = (((zAbs - startZ0) % L) + L) % L;
-          const ovRow = dOv < 10 ? Math.floor((dOv / 10) * 64) * T.width : -1;
+          const ovRow = dOv < 10 ? Math.floor((dOv / 10) * T.height) * T.width : -1;
           // marquages au sol (case de 10 m -> surcouche choisie)
           let mkRow = -1, mkPix = ov;
           if (ovCells) {
             const id = ovCells[Math.floor(zw / 10) % ovCells.length];
-            if (id > 0 && mkSets[id - 1]) { mkPix = mkSets[id - 1]; mkRow = Math.floor(((zw % 10) / 10) * 64) * T.width; }
+            if (id > 0 && mkSets[id - 1]) { mkPix = mkSets[id - 1]; mkRow = Math.floor(((zw % 10) / 10) * T.height) * T.width; }
           }
           // voie des stands : axe latéral à cette distance (NaN = aucune) et ligne de marquage de boîte
           const hasPit = track.pitRoadAt(zw, pitGeo);
-          // texture des stands, étirée de vibreur à vibreur (64 → 448 px) sur la largeur courante de la voie :
-          // u_pit = 64 + (m − bord gauche) × 384/largeur, avec m = (u_piste − 256)/27  →  u_pit = c0 + u_piste × sc
-          const sc = hasPit ? 384 / pitGeo.width / T.pxPerMeter : 0;
-          const c0 = hasPit ? 64 - pitGeo.left * (384 / pitGeo.width) - T.centerPx * sc : 0;
+          // texture des stands, étirée de vibreur à vibreur (128 → 896 px en HD) sur la largeur courante de la voie :
+          // u_pit = 128 + (m − bord gauche) × 768/largeur, avec m = (u_piste − 512)/54  →  u_pit = c0 + u_piste × sc
+          const sc = hasPit ? PIT_SPAN / pitGeo.width / T.pxPerMeter : 0;
+          const c0 = hasPit ? PIT_LEFT - pitGeo.left * (PIT_SPAN / pitGeo.width) - T.centerPx * sc : 0;
           const dBox = zw - boxZ0;
-          const boxRow = hasPit && dBox >= 0 && dBox < boxSpan ? Math.floor(((dBox % 10) / 10) * 64) * T.width : -1;
+          const boxRow = hasPit && dBox >= 0 && dBox < boxSpan ? Math.floor(((dBox % 10) / 10) * T.height) * T.width : -1;
           for (let xx = 0; xx < W; xx++) {
             const uf = u0 + xx * du;
             let u = uf | 0;
@@ -237,9 +244,9 @@ export class RoadRenderer {
             if (mkRow >= 0) col = blend(col, mkPix[mkRow + u]);
             if (ovRow >= 0) col = blend(col, ov[ovRow + u]);
             if (hasPit) {
-              // à partir du vibreur gauche de la voie (u = 64 dans sa texture)
+              // à partir du vibreur gauche de la voie (u = PIT_LEFT dans sa texture)
               const up = c0 + uf * sc;
-              if (up >= 64 && up < T.width) {
+              if (up >= PIT_LEFT && up < T.width) {
                 const upi = up | 0;
                 col = pitTex[rowTex + upi];
                 if (boxRow >= 0) col = blend(col, pitOv[boxRow + upi]);
@@ -256,13 +263,14 @@ export class RoadRenderer {
     ctx.drawImage(this.canvas, 0, 0);
 
     // Brume sous l'horizon
-    const g = ctx.createLinearGradient(0, R.horizon, 0, R.horizon + R.fog.height);
+    const g = ctx.createLinearGradient(0, HORIZON, 0, HORIZON + R.fog.height * hd);
     g.addColorStop(0, this.fog.replace('rgb', 'rgba').replace(')', `,${R.fog.maxAlpha})`));
     g.addColorStop(1, this.fog.replace('rgb', 'rgba').replace(')', ',0)'));
     ctx.fillStyle = g;
-    ctx.fillRect(0, R.horizon, W, R.fog.height);
+    ctx.fillRect(0, HORIZON, W, R.fog.height * hd);
 
     this.drawSprites(ctx, a, track, base, dyn, player.z);
+    ctx.restore();
   }
 
   /** Décor fixe + sprites dynamiques situés derrière la voiture (z > z joueur), du plus loin au plus proche. */
@@ -316,12 +324,13 @@ export class RoadRenderer {
     const tileLen = (def.w / def.pixels_per_meter) * mul; // longueur de la tuile le long de la route (m)
     const t0 = (sp.wallOffsetM ?? 0) / tileLen;
     const t1 = t0 + R.segmentLength / tileLen;
-    const xa = p.sx + sp.offset * (R.focal / p.dz1);
-    const xb = p.sx2 + sp.offset * (R.focal / p.dz2);
+    const F = R.focal * R.hd;
+    const xa = p.sx + sp.offset * (F / p.dz1);
+    const xb = p.sx2 + sp.offset * (F / p.dz2);
     if (Math.abs(xb - xa) < 0.5) return;
     const inv1 = 1 / p.dz1, inv2 = 1 / p.dz2;
     const xMin = Math.max(0, Math.floor(Math.min(xa, xb)));
-    const xMax = Math.min(R.width, Math.ceil(Math.max(xa, xb)));
+    const xMax = Math.min(R.width * R.hd, Math.ceil(Math.max(xa, xb)));
     for (let x = xMin; x < xMax; x++) {
       const t = (x + 0.5 - xa) / (xb - xa);
       if (t < 0 || t > 1) continue;
@@ -329,7 +338,7 @@ export class RoadRenderer {
       const fracZ = (1 / invz - p.dz1) / (p.dz2 - p.dz1); // 0 = bord proche, 1 = bord loin
       const tz = t0 + (t1 - t0) * fracZ; // position le long de la tuile, dans le sens de la route
       const fu = Math.max(0, Math.min(0.9999, sp.offset > 0 ? 1 - tz : tz)); // façade lue de l'arrière vers l'avant côté droit
-      const k = (R.focal * invz) / def.pixels_per_meter * mul;
+      const k = (F * invz) / def.pixels_per_meter * mul;
       const sy = p.sy + (p.sy2 - p.sy) * t;
       const dyT = sy - def.anchor.y * k;
       const dh = def.h * k;
@@ -342,12 +351,17 @@ export class RoadRenderer {
 
   /** Sprites dynamiques plus proches que la voiture du joueur : à dessiner APRÈS elle. */
   drawFront(ctx: CanvasRenderingContext2D, track: Track, dyn: DynSprite[], playerZ: number): void {
+    const hd = RENDER.hd;
+    ctx.save();
+    ctx.scale(1 / hd, 1 / hd);
+    ctx.imageSmoothingEnabled = false;
     for (const d of dyn) {
       if (!this.isFront(d, track, playerZ)) continue;
       const i = this.segIndexOf(d, track);
       if (i < 0) continue;
       this.drawDyn(ctx, d, this.proj[i], track);
     }
+    ctx.restore();
   }
 
   private isFront(d: DynSprite, track: Track, playerZ: number): boolean {
@@ -375,10 +389,13 @@ export class RoadRenderer {
     const t = Math.max(0, Math.min(1, (invz - inv1) / (inv2 - inv1)));
     const sx = p.sx + (p.sx2 - p.sx) * t;
     const sy = p.sy + (p.sy2 - p.sy) * t;
-    const scale = RENDER.focal * invz;
+    const scale = RENDER.focal * RENDER.hd * invz;
     blit(ctx, d.img, d.sx, d.sy, d.sw, d.sh, d.ax, d.ay, scale / d.ppm, sx + d.x * scale, sy, p.clip, !!d.flip);
   }
 }
+
+/** Voie des stands (texture HD) : bord gauche du vibreur et largeur vibreur à vibreur, en px de texture. */
+const PIT_LEFT = 128, PIT_SPAN = 768;
 
 /** Mélange alpha d'un pixel de surcouche (ABGR little-endian) sur un pixel opaque. */
 function blend(col: number, o: number): number {
@@ -400,10 +417,10 @@ function blit(
 ): void {
   const dw = sw * k;
   const dh = sh * k;
-  if (dw > RENDER.width * 8 || dw < 1 || dh < 1) return; // hors écran de toute façon, ou invisible
+  if (dw > RENDER.width * RENDER.hd * 8 || dw < 1 || dh < 1) return; // hors écran de toute façon, ou invisible
   const dyT = syGround - ay * k;
   const dxL = sxc - ax * k;
-  if (dxL + dw < 0 || dxL > RENDER.width) return;
+  if (dxL + dw < 0 || dxL > RENDER.width * RENDER.hd) return;
   // Masque la partie du sprite située sous la ligne de crête (colline devant lui)
   const cut = dyT + dh - clip;
   const srcH = cut > 0 ? sh - cut / k : sh;

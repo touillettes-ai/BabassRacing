@@ -1,13 +1,13 @@
 {
  "frame": {
-  "w": 96,
-  "h": 84
+  "w": 192,
+  "h": 168
  },
  "anchor": {
-  "x": 48,
-  "y": 76
+  "x": 96,
+  "y": 152
  },
- "pixels_per_meter": 36,
+ "pixels_per_meter": 72,
  "facing": "left (miroir horizontal pour la droite)",
  "frames": [
   "idle",
@@ -56,5 +56,6 @@
    15,
    16
   ]
- }
+ },
+ "hd": "x2"
 }

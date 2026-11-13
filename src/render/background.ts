@@ -13,10 +13,12 @@ export class Background {
   }
 
   private layer(ctx: CanvasRenderingContext2D, img: HTMLImageElement, factor: number, bottomY: number, extra = 0): void {
-    const w = img.width;
+    // images HD (2048 px de large = 1024 px logiques)
+    const hd = RENDER.hd;
+    const w = img.width / hd, h = img.height / hd;
     const off = (((this.scroll * factor + extra) % w) + w) % w;
-    const y = Math.round(bottomY - img.height);
-    for (let x = -off; x < RENDER.width; x += w) ctx.drawImage(img, Math.round(x), y);
+    const y = Math.round((bottomY - h) * hd) / hd;
+    for (let x = -off; x < RENDER.width; x += w) ctx.drawImage(img, Math.round(x * hd) / hd, y, w + 0.5 / hd, h);
   }
 
   draw(ctx: CanvasRenderingContext2D, a: Assets): void {

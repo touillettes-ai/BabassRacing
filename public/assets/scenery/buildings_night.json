@@ -4,178 +4,178 @@
   "control_tower": {
    "x": 0,
    "y": 0,
-   "w": 120,
-   "h": 250,
+   "w": 240,
+   "h": 500,
    "anchor": {
-    "x": 61,
-    "y": 251
-   },
-   "pixels_per_meter": 12
-  },
-  "ferris_wheel": {
-   "x": 122,
-   "y": 0,
-   "w": 210,
-   "h": 220,
-   "anchor": {
-    "x": 106,
-    "y": 221
-   },
-   "pixels_per_meter": 8
-  },
-  "floodlight": {
-   "x": 334,
-   "y": 0,
-   "w": 46,
-   "h": 210,
-   "anchor": {
-    "x": 24,
-    "y": 211
-   },
-   "pixels_per_meter": 14
-  },
-  "wind_turbine": {
-   "x": 382,
-   "y": 0,
-   "w": 110,
-   "h": 210,
-   "anchor": {
-    "x": 56,
-    "y": 211
-   },
-   "pixels_per_meter": 5
-  },
-  "lighthouse": {
-   "x": 494,
-   "y": 0,
-   "w": 60,
-   "h": 170,
-   "anchor": {
-    "x": 31,
-    "y": 171
-   },
-   "pixels_per_meter": 8
-  },
-  "big_screen": {
-   "x": 556,
-   "y": 0,
-   "w": 210,
-   "h": 160,
-   "anchor": {
-    "x": 106,
-    "y": 161
-   },
-   "pixels_per_meter": 14
-  },
-  "tv_tower": {
-   "x": 768,
-   "y": 0,
-   "w": 64,
-   "h": 136,
-   "anchor": {
-    "x": 33,
-    "y": 137
-   },
-   "pixels_per_meter": 20
-  },
-  "paddock": {
-   "x": 0,
-   "y": 252,
-   "w": 330,
-   "h": 130,
-   "anchor": {
-    "x": 166,
-    "y": 131
-   },
-   "pixels_per_meter": 12
-  },
-  "lamppost": {
-   "x": 332,
-   "y": 252,
-   "w": 34,
-   "h": 116,
-   "anchor": {
-    "x": 18,
-    "y": 117
-   },
-   "pixels_per_meter": 20
-  },
-  "hot_air_balloon": {
-   "x": 368,
-   "y": 252,
-   "w": 72,
-   "h": 104,
-   "anchor": {
-    "x": 37,
-    "y": 105
-   },
-   "pixels_per_meter": 6
-  },
-  "house": {
-   "x": 442,
-   "y": 252,
-   "w": 112,
-   "h": 92,
-   "anchor": {
-    "x": 57,
-    "y": 93
-   },
-   "pixels_per_meter": 14
-  },
-  "marshal_post": {
-   "x": 556,
-   "y": 252,
-   "w": 74,
-   "h": 84,
-   "anchor": {
-    "x": 38,
-    "y": 85
+    "x": 120,
+    "y": 500
    },
    "pixels_per_meter": 24
   },
-  "blimp": {
-   "x": 632,
-   "y": 252,
-   "w": 156,
-   "h": 62,
+  "ferris_wheel": {
+   "x": 242,
+   "y": 0,
+   "w": 420,
+   "h": 440,
    "anchor": {
-    "x": 79,
-    "y": 63
+    "x": 210,
+    "y": 440
    },
-   "pixels_per_meter": 4
+   "pixels_per_meter": 16
+  },
+  "floodlight": {
+   "x": 664,
+   "y": 0,
+   "w": 92,
+   "h": 420,
+   "anchor": {
+    "x": 46,
+    "y": 420
+   },
+   "pixels_per_meter": 28
+  },
+  "wind_turbine": {
+   "x": 758,
+   "y": 0,
+   "w": 220,
+   "h": 420,
+   "anchor": {
+    "x": 110,
+    "y": 420
+   },
+   "pixels_per_meter": 10
+  },
+  "lighthouse": {
+   "x": 0,
+   "y": 502,
+   "w": 120,
+   "h": 340,
+   "anchor": {
+    "x": 60,
+    "y": 340
+   },
+   "pixels_per_meter": 16
+  },
+  "big_screen": {
+   "x": 122,
+   "y": 502,
+   "w": 420,
+   "h": 320,
+   "anchor": {
+    "x": 210,
+    "y": 320
+   },
+   "pixels_per_meter": 28
+  },
+  "tv_tower": {
+   "x": 544,
+   "y": 502,
+   "w": 128,
+   "h": 272,
+   "anchor": {
+    "x": 64,
+    "y": 272
+   },
+   "pixels_per_meter": 40
+  },
+  "paddock": {
+   "x": 0,
+   "y": 844,
+   "w": 660,
+   "h": 260,
+   "anchor": {
+    "x": 330,
+    "y": 260
+   },
+   "pixels_per_meter": 24
+  },
+  "lamppost": {
+   "x": 662,
+   "y": 844,
+   "w": 68,
+   "h": 232,
+   "anchor": {
+    "x": 34,
+    "y": 232
+   },
+   "pixels_per_meter": 40
+  },
+  "hot_air_balloon": {
+   "x": 732,
+   "y": 844,
+   "w": 144,
+   "h": 208,
+   "anchor": {
+    "x": 72,
+    "y": 208
+   },
+   "pixels_per_meter": 12
+  },
+  "house": {
+   "x": 0,
+   "y": 1106,
+   "w": 224,
+   "h": 184,
+   "anchor": {
+    "x": 112,
+    "y": 184
+   },
+   "pixels_per_meter": 28
+  },
+  "marshal_post": {
+   "x": 226,
+   "y": 1106,
+   "w": 148,
+   "h": 168,
+   "anchor": {
+    "x": 74,
+    "y": 168
+   },
+   "pixels_per_meter": 48
+  },
+  "blimp": {
+   "x": 376,
+   "y": 1106,
+   "w": 312,
+   "h": 124,
+   "anchor": {
+    "x": 156,
+    "y": 124
+   },
+   "pixels_per_meter": 8
   },
   "snowman": {
-   "x": 790,
-   "y": 252,
-   "w": 34,
-   "h": 46,
+   "x": 690,
+   "y": 1106,
+   "w": 68,
+   "h": 92,
    "anchor": {
-    "x": 18,
-    "y": 47
+    "x": 34,
+    "y": 92
    },
-   "pixels_per_meter": 30
+   "pixels_per_meter": 60
   },
   "fence": {
-   "x": 826,
-   "y": 252,
-   "w": 120,
-   "h": 40,
+   "x": 760,
+   "y": 1106,
+   "w": 240,
+   "h": 80,
    "anchor": {
-    "x": 61,
-    "y": 41
+    "x": 120,
+    "y": 80
    },
-   "pixels_per_meter": 30
+   "pixels_per_meter": 60
   },
   "hay_bale": {
-   "x": 948,
-   "y": 252,
-   "w": 44,
-   "h": 28,
+   "x": 0,
+   "y": 1292,
+   "w": 88,
+   "h": 56,
    "anchor": {
-    "x": 23,
-    "y": 29
+    "x": 44,
+    "y": 56
    },
-   "pixels_per_meter": 30
+   "pixels_per_meter": 60
   }
  }
 }

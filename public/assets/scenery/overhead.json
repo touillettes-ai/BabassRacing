@@ -3,71 +3,71 @@
  "sprites": {
   "tunnel_entrance": {
    "x": 0,
-   "y": 0,
-   "w": 560,
-   "h": 250,
+   "y": 2,
+   "w": 1120,
+   "h": 500,
    "anchor": {
-    "x": 281,
-    "y": 251
+    "x": 560,
+    "y": 500
    },
-   "pixels_per_meter": 19,
+   "pixels_per_meter": 38,
    "note": "ouverture transparente"
   },
   "tunnel_ring": {
    "x": 0,
-   "y": 252,
-   "w": 560,
-   "h": 250,
+   "y": 504,
+   "w": 1120,
+   "h": 500,
    "anchor": {
-    "x": 280,
-    "y": 250
+    "x": 560,
+    "y": 500
    },
-   "pixels_per_meter": 19,
+   "pixels_per_meter": 38,
    "note": "a repeter tous les 8-10 m derriere l'entree"
   },
   "bridge": {
    "x": 0,
-   "y": 504,
-   "w": 560,
-   "h": 180,
+   "y": 1006,
+   "w": 1120,
+   "h": 360,
    "anchor": {
-    "x": 281,
-    "y": 181
+    "x": 560,
+    "y": 360
    },
-   "pixels_per_meter": 19
+   "pixels_per_meter": 38
   },
   "ad_gantry_gommax": {
-   "x": 562,
-   "y": 504,
-   "w": 440,
-   "h": 160,
+   "x": 0,
+   "y": 1368,
+   "w": 880,
+   "h": 320,
    "anchor": {
-    "x": 221,
-    "y": 161
+    "x": 440,
+    "y": 320
    },
-   "pixels_per_meter": 19
+   "pixels_per_meter": 38
   },
   "ad_gantry_voltix": {
    "x": 0,
-   "y": 686,
-   "w": 440,
-   "h": 160,
+   "y": 1690,
+   "w": 880,
+   "h": 320,
    "anchor": {
-    "x": 221,
-    "y": 161
+    "x": 440,
+    "y": 320
    },
-   "pixels_per_meter": 19
+   "pixels_per_meter": 38
   },
   "ad_gantry_air_pixel": {
-   "x": 442,
-   "y": 686,
-   "w": 440,
-   "h": 160,
+   "x": 0,
+   "y": 2012,
+   "w": 880,
+   "h": 320,
    "anchor": {
-    "x": 221,
-    "y": 161
+    "x": 440,
+    "y": 320
    },
-   "pixels_per_meter": 19
+   "pixels_per_meter": 38
   }
  }
 }

@@ -23,10 +23,11 @@ type Mode = 'loading' | 'title' | 'select' | 'story' | 'race' | 'results' | 'end
 
 async function main(): Promise<void> {
   const canvas = document.getElementById('game') as HTMLCanvasElement;
-  canvas.width = RENDER.width;
-  canvas.height = RENDER.height;
+  canvas.width = RENDER.width * RENDER.hd;
+  canvas.height = RENDER.height * RENDER.hd;
   const ctx = canvas.getContext('2d', { alpha: false })!;
   ctx.imageSmoothingEnabled = false;
+  ctx.setTransform(RENDER.hd, 0, 0, RENDER.hd, 0, 0);
 
   // Mise à l'échelle sans lissage, ratio conservé
   const fit = () => {
@@ -430,6 +431,8 @@ async function main(): Promise<void> {
       }
     },
     (frameMs) => {
+      ctx.setTransform(RENDER.hd, 0, 0, RENDER.hd, 0, 0);
+      ctx.imageSmoothingEnabled = false;
       ctx.fillStyle = '#000';
       switch (mode) {
         case 'title': title.draw(ctx, ui); break;

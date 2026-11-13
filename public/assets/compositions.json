@@ -1,0 +1,689 @@
+{
+ "description": "Regles pour composer un niveau : choisir une ambiance (mood), un ciel de cette ambiance, un horizon compatible, une route (selon le type de circuit), du decor, puis completer avec les valeurs par defaut de l'ambiance.",
+ "layers_order": [
+  "sky (ou sky_clear + clouds_far/near en parallaxe)",
+  "horizon",
+  "route (+ surcouches)",
+  "decor de bord de route (atlas trees/signs/buildings/overhead)",
+  "voitures",
+  "meteo (fx) + teinte",
+  "HUD"
+ ],
+ "moods": {
+  "jour": {
+   "label": "Plein jour",
+   "skies": [
+    "sky_day",
+    "sky_morning",
+    "sky_cumulus",
+    "sky_noon",
+    "sky_tropical",
+    "sky_dawn",
+    "sky_rainbow"
+   ],
+   "clouds": "clouds_day",
+   "atlas_suffix": "",
+   "music": [
+    "level_circuit",
+    "babass_racing_theme"
+   ],
+   "tint": null
+  },
+  "dore": {
+   "label": "Lever / coucher de soleil",
+   "skies": [
+    "sky_sunrise",
+    "sky_golden",
+    "sky_sunset"
+   ],
+   "clouds": "clouds_sunset",
+   "atlas_suffix": "",
+   "music": [
+    "level_sunset",
+    "babass_racing_theme"
+   ],
+   "tint": null
+  },
+  "crepuscule": {
+   "label": "Crépuscule",
+   "skies": [
+    "sky_violet",
+    "sky_dusk"
+   ],
+   "clouds": "clouds_sunset",
+   "atlas_suffix": "_night",
+   "music": [
+    "level_night",
+    "level_sunset"
+   ],
+   "tint": null
+  },
+  "nuit": {
+   "label": "Nuit",
+   "skies": [
+    "sky_night",
+    "sky_aurora",
+    "sky_milkyway",
+    "sky_fullmoon",
+    "sky_ember"
+   ],
+   "clouds": "clouds_night",
+   "atlas_suffix": "_night",
+   "music": [
+    "level_night"
+   ],
+   "tint": null
+  },
+  "couvert": {
+   "label": "Couvert / brume",
+   "skies": [
+    "sky_overcast",
+    "sky_fog",
+    "sky_winter",
+    "sky_sandstorm"
+   ],
+   "clouds": "clouds_storm",
+   "atlas_suffix": "",
+   "music": [
+    "level_rain",
+    "babass_racing_theme"
+   ],
+   "tint": [
+    0.9,
+    0.92,
+    0.96
+   ]
+  },
+  "pluie": {
+   "label": "Pluie / orage",
+   "skies": [
+    "sky_storm",
+    "sky_rain",
+    "sky_greenstorm"
+   ],
+   "clouds": "clouds_storm",
+   "atlas_suffix": "",
+   "music": [
+    "level_rain"
+   ],
+   "tint": [
+    0.82,
+    0.86,
+    0.96
+   ],
+   "weather": {
+    "overlay": "fx/fx_rain.png",
+    "splash": "fx/fx_rain_splash.png",
+    "spray": "fx/fx_spray.png",
+    "puddles": "roads/overlay_puddles_a.png"
+   }
+  }
+ },
+ "horizons": {
+  "horizon_forest": {
+   "label": "Forêt",
+   "best": [
+    "jour",
+    "dore",
+    "couvert",
+    "pluie"
+   ],
+   "roadside": [
+    "tree_oak",
+    "tree_pine",
+    "tree_birch",
+    "bush_flowers"
+   ]
+  },
+  "horizon_mountains": {
+   "label": "Montagnes",
+   "best": [
+    "jour",
+    "dore",
+    "couvert",
+    "pluie",
+    "nuit"
+   ],
+   "roadside": [
+    "tree_pine",
+    "rock",
+    "tree_dead"
+   ]
+  },
+  "horizon_desert": {
+   "label": "Désert / mesas rouges",
+   "best": [
+    "jour",
+    "dore",
+    "crepuscule"
+   ],
+   "roadside": [
+    "cactus",
+    "rock",
+    "tree_palm"
+   ]
+  },
+  "horizon_city": {
+   "label": "Ville de nuit (fenêtres allumées)",
+   "best": [
+    "crepuscule",
+    "nuit",
+    "dore"
+   ],
+   "roadside": [
+    "tree_cypress",
+    "tree_cherry",
+    "tree_oak"
+   ]
+  },
+  "horizon_sea": {
+   "label": "Mer, phare, voiliers",
+   "best": [
+    "jour",
+    "dore",
+    "crepuscule"
+   ],
+   "roadside": [
+    "tree_palm",
+    "bush",
+    "rock"
+   ]
+  },
+  "horizon_hills": {
+   "label": "Collines, champs, éoliennes",
+   "best": [
+    "jour",
+    "dore",
+    "couvert",
+    "pluie"
+   ],
+   "roadside": [
+    "tree_oak",
+    "bush_flowers",
+    "tree_birch"
+   ]
+  },
+  "horizon_canyon": {
+   "label": "Canyon / mesas",
+   "best": [
+    "jour",
+    "dore",
+    "couvert"
+   ],
+   "roadside": [
+    "cactus",
+    "rock",
+    "tree_dead"
+   ]
+  },
+  "horizon_alps": {
+   "label": "Alpes enneigées",
+   "best": [
+    "jour",
+    "couvert",
+    "nuit",
+    "pluie"
+   ],
+   "roadside": [
+    "tree_pine_snow",
+    "tree_pine",
+    "rock"
+   ]
+  },
+  "horizon_industrial": {
+   "label": "Zone industrielle",
+   "best": [
+    "couvert",
+    "pluie",
+    "nuit",
+    "dore"
+   ],
+   "roadside": [
+    "tree_dead",
+    "bush",
+    "rock"
+   ]
+  },
+  "horizon_volcano": {
+   "label": "Volcan",
+   "best": [
+    "nuit",
+    "dore",
+    "couvert",
+    "crepuscule"
+   ],
+   "roadside": [
+    "rock",
+    "tree_dead"
+   ]
+  },
+  "horizon_city_day": {
+   "label": "Ville de jour",
+   "best": [
+    "jour",
+    "couvert",
+    "pluie",
+    "dore"
+   ],
+   "roadside": [
+    "tree_oak",
+    "tree_cypress",
+    "bush"
+   ]
+  },
+  "horizon_jungle": {
+   "label": "Jungle",
+   "best": [
+    "jour",
+    "pluie",
+    "dore",
+    "couvert"
+   ],
+   "roadside": [
+    "tree_palm",
+    "bush",
+    "bush_flowers"
+   ]
+  },
+  "horizon_dunes": {
+   "label": "Dunes",
+   "best": [
+    "jour",
+    "dore",
+    "couvert"
+   ],
+   "roadside": [
+    "tree_palm",
+    "rock",
+    "cactus"
+   ]
+  },
+  "horizon_vineyards": {
+   "label": "Vignobles et villages",
+   "best": [
+    "jour",
+    "dore",
+    "couvert"
+   ],
+   "roadside": [
+    "tree_cypress",
+    "tree_oak",
+    "bush_flowers"
+   ]
+  },
+  "horizon_lake": {
+   "label": "Lac et montagnes",
+   "best": [
+    "jour",
+    "dore",
+    "nuit",
+    "couvert"
+   ],
+   "roadside": [
+    "tree_pine",
+    "tree_birch",
+    "rock"
+   ]
+  },
+  "horizon_castle": {
+   "label": "Château en ruine",
+   "best": [
+    "couvert",
+    "crepuscule",
+    "nuit",
+    "jour"
+   ],
+   "roadside": [
+    "tree_oak",
+    "tree_dead",
+    "bush"
+   ]
+  },
+  "horizon_stadium": {
+   "label": "Tribunes de stade",
+   "best": [
+    "jour",
+    "nuit",
+    "dore"
+   ],
+   "roadside": [
+    "bush"
+   ]
+  },
+  "horizon_cliffs": {
+   "label": "Falaises blanches et mer",
+   "best": [
+    "jour",
+    "dore",
+    "couvert"
+   ],
+   "roadside": [
+    "tree_palm",
+    "bush",
+    "rock"
+   ]
+  },
+  "horizon_pyramids": {
+   "label": "Pyramides et sphinx",
+   "best": [
+    "jour",
+    "dore",
+    "nuit"
+   ],
+   "roadside": [
+    "tree_palm",
+    "rock",
+    "cactus"
+   ]
+  },
+  "horizon_metropolis": {
+   "label": "Métropole futuriste (néons)",
+   "best": [
+    "crepuscule",
+    "nuit"
+   ],
+   "roadside": [
+    "tree_cypress",
+    "tree_cherry"
+   ]
+  },
+  "horizon_farm": {
+   "label": "Ferme, granges, silos",
+   "best": [
+    "jour",
+    "dore",
+    "couvert",
+    "pluie"
+   ],
+   "roadside": [
+    "tree_oak",
+    "bush_flowers",
+    "tree_birch"
+   ]
+  },
+  "horizon_mesa": {
+   "label": "Désert rouge (monument valley)",
+   "best": [
+    "jour",
+    "dore",
+    "crepuscule",
+    "couvert"
+   ],
+   "roadside": [
+    "cactus",
+    "rock",
+    "tree_dead"
+   ]
+  }
+ },
+ "track_types": {
+  "permanent": {
+   "roads": [
+    "road_modern",
+    "road_circuit",
+    "road_classic",
+    "road_runoff",
+    "road_rumble_edges",
+    "road_no_lines",
+    "road_asphalt_blue",
+    "road_asphalt_warm",
+    "road_asphalt_green",
+    "road_asphalt_purple",
+    "road_asphalt_black",
+    "road_asphalt_light",
+    "road_asphalt_teal",
+    "road_asphalt_orange",
+    "road_asphalt_pink",
+    "road_asphalt_olive"
+   ],
+   "overlays": [
+    "overlay_start_line",
+    "overlay_finish",
+    "overlay_pit_entry",
+    "overlay_skid_marks",
+    "overlay_chevrons",
+    "overlay_runoff_stripes",
+    "overlay_logo_asphalt",
+    "overlay_grid_slots"
+   ]
+  },
+  "urbain": {
+   "roads": [
+    "road_urban",
+    "road_red_asphalt",
+    "road_double_yellow",
+    "road_night_wet",
+    "road_asphalt_black",
+    "road_asphalt_light",
+    "road_asphalt_blue"
+   ],
+   "overlays": [
+    "overlay_start_line",
+    "overlay_finish",
+    "overlay_crosswalk",
+    "overlay_arrows",
+    "overlay_oil",
+    "overlay_skid_marks",
+    "overlay_pit_entry"
+   ]
+  },
+  "montagne": {
+   "roads": [
+    "road_worn",
+    "road_mountain_narrow",
+    "road_wet",
+    "road_snow",
+    "road_asphalt_olive",
+    "road_asphalt_teal",
+    "road_double_yellow"
+   ],
+   "overlays": [
+    "overlay_arrows",
+    "overlay_oil",
+    "overlay_skid_marks",
+    "overlay_chevrons",
+    "overlay_finish"
+   ]
+  },
+  "rallye": {
+   "roads": [
+    "road_worn",
+    "road_mountain_narrow",
+    "road_asphalt_warm",
+    "road_asphalt_orange",
+    "road_jungle",
+    "road_autumn"
+   ],
+   "overlays": [
+    "overlay_arrows",
+    "overlay_skid_marks",
+    "overlay_finish"
+   ]
+  },
+  "ovale": {
+   "roads": [
+    "road_modern",
+    "road_asphalt_black",
+    "road_asphalt_light",
+    "road_runoff",
+    "road_classic"
+   ],
+   "overlays": [
+    "overlay_start_line",
+    "overlay_finish",
+    "overlay_grid_slots",
+    "overlay_pit_entry",
+    "overlay_skid_marks",
+    "overlay_logo_asphalt"
+   ]
+  },
+  "autoroute": {
+   "roads": [
+    "road_highway",
+    "road_asphalt_black",
+    "road_asphalt_light",
+    "road_asphalt_blue",
+    "road_night_wet"
+   ],
+   "overlays": [
+    "overlay_arrows",
+    "overlay_finish",
+    "overlay_skid_marks"
+   ]
+  },
+  "kart": {
+   "roads": [
+    "road_kart",
+    "road_circuit_narrow",
+    "road_asphalt_green",
+    "road_asphalt_blue",
+    "road_asphalt_light"
+   ],
+   "overlays": [
+    "overlay_start_line",
+    "overlay_finish",
+    "overlay_grid_slots",
+    "overlay_skid_marks",
+    "overlay_chevrons"
+   ]
+  },
+  "glace": {
+   "roads": [
+    "road_snow",
+    "road_asphalt_blue",
+    "road_asphalt_light",
+    "road_mountain_narrow"
+   ],
+   "overlays": [
+    "overlay_arrows",
+    "overlay_skid_marks",
+    "overlay_finish"
+   ]
+  },
+  "plage": {
+   "roads": [
+    "road_coast",
+    "road_asphalt_warm",
+    "road_asphalt_light",
+    "road_asphalt_orange",
+    "road_asphalt_pink"
+   ],
+   "overlays": [
+    "overlay_arrows",
+    "overlay_finish",
+    "overlay_skid_marks"
+   ]
+  },
+  "industriel": {
+   "roads": [
+    "road_worn",
+    "road_urban",
+    "road_asphalt_black",
+    "road_asphalt_olive",
+    "road_double_yellow"
+   ],
+   "overlays": [
+    "overlay_start_line",
+    "overlay_finish",
+    "overlay_oil",
+    "overlay_crosswalk",
+    "overlay_skid_marks"
+   ]
+  }
+ },
+ "weather_presets": {
+  "rain": {
+   "overlay": "fx/fx_rain.png",
+   "splash": "fx/fx_rain_splash.png",
+   "spray": "fx/fx_spray.png",
+   "puddles": "roads/overlay_puddles_a.png",
+   "tint": [
+    0.82,
+    0.86,
+    0.96
+   ],
+   "road": "road_wet",
+   "note": "pluie battante : projections derriere les voitures, flaques"
+  },
+  "storm": {
+   "overlay": "fx/fx_rain.png",
+   "lightning": "fx/fx_lightning.png",
+   "tint": [
+    0.78,
+    0.8,
+    0.9
+   ],
+   "road": "road_wet",
+   "note": "pluie + eclairs aleatoires toutes les 4 a 12 s, flash blanc"
+  },
+  "after_rain": {
+   "puddles": "roads/overlay_puddles_b.png",
+   "tint": [
+    0.97,
+    0.98,
+    1.0
+   ],
+   "road": "road_wet",
+   "note": "pas de pluie, route mouillee"
+  },
+  "fog": {
+   "fog_strength": 0.8,
+   "tint": [
+    0.9,
+    0.92,
+    0.96
+   ],
+   "note": "renforcer le fondu vers la couleur du ciel avec la distance"
+  }
+ },
+ "presets": [
+  "apres_pluie",
+  "automne",
+  "autoroute_aube",
+  "autoroute_nuit",
+  "brume_industrielle",
+  "chateau_brume",
+  "circuit_jour",
+  "cote_coucher_soleil",
+  "crepuscule_ville",
+  "desert_nuit",
+  "dunes",
+  "falaises_aube",
+  "falaises_orage",
+  "heure_doree",
+  "hiver",
+  "industriel_nuit",
+  "jungle",
+  "jungle_pluie",
+  "kart_ete",
+  "lac_ete",
+  "lac_hiver",
+  "matin_campagne",
+  "mesa_coucher",
+  "metropole_jour",
+  "metropole_violette",
+  "midi_desert",
+  "montagne_pluie",
+  "montagne_pourpre",
+  "neon_futur",
+  "nuit_aurore",
+  "orage",
+  "plage_aube",
+  "pleine_lune",
+  "pluie_ferme",
+  "pyramides",
+  "pyramides_nuit",
+  "rallye_automne",
+  "stade_jour",
+  "stade_nuit",
+  "tempete_sable",
+  "tornade",
+  "vignes_dorees",
+  "vignes_matin",
+  "ville_matin",
+  "ville_nuit",
+  "ville_pluie",
+  "voie_lactee",
+  "volcan"
+ ]
+}

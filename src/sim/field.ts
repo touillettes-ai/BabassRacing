@@ -1,7 +1,7 @@
 import { Driver } from '../ai/driver';
 import type { DriverProfile, RosterEntry } from '../ai/roster';
 import { SafetyCar } from '../ai/safetycar';
-import { AI, COLLISION, DRAFT, PHYSICS, SC, TOW, WEATHER } from '../config/balance';
+import { AI, COLLISION, RENDER, DRAFT, PHYSICS, SC, TOW, WEATHER } from '../config/balance';
 import type { Assets, CarSheets, MarshalAssets, SafetyCarAssets } from '../core/assets';
 import type { InputState } from '../core/input';
 import { t } from '../i18n';
@@ -475,7 +475,7 @@ export class Field {
     for (const e of this.entries) {
       if (e.isPlayer || !e.sheets) continue;
       const fr = pickCarFrame(e.sheets, e.car);
-      out.push({ img: fr.img, sx: fr.sx, sy: fr.sy, sw: fr.sw, sh: fr.sh, ax: fr.ax, ay: fr.ay, ppm: 36, z: e.car.z, x: e.car.x });
+      out.push({ img: fr.img, sx: fr.sx, sy: fr.sy, sw: fr.sw, sh: fr.sh, ax: fr.ax, ay: fr.ay, ppm: 36 * RENDER.hd, z: e.car.z, x: e.car.x });
       out.push(...e.pit.sprites(a));
       // commissaire au drapeau jaune près d'une voiture garée
       if (e.stoppedT > 0 && e.car.speed < 1) {
@@ -483,7 +483,7 @@ export class Field {
         const frame = Math.floor(this.clock * m.fps) % m.count;
         const left = e.car.x < 0;
         out.push({
-          img: m.img, sx: frame * m.frame.w, sy: 0, sw: m.frame.w, sh: m.frame.h, ax: m.anchor.x, ay: m.anchor.y, ppm: 36,
+          img: m.img, sx: frame * m.frame.w, sy: 0, sw: m.frame.w, sh: m.frame.h, ax: m.anchor.x, ay: m.anchor.y, ppm: 36 * RENDER.hd,
           z: e.car.z - 3, x: e.car.x + (left ? -3.5 : 3.5), flip: left,
         });
       }
@@ -498,7 +498,7 @@ export class Field {
       if (tz !== null) {
         const seg = this.track.segmentAt(tz);
         const idx = Math.max(0, Math.min(6, Math.round(3 + Math.max(-1, Math.min(1, seg.curve / 0.08)) * 2)));
-        out.push({ img: s.tow, sx: idx * f.w, sy: 0, sw: f.w, sh: f.h, ax: s.spec.anchor.x, ay: s.spec.anchor.y, ppm: s.towPpm, z: tz, x: tx });
+        out.push({ img: s.tow, sx: idx * f.w, sy: (Math.floor(this.clock * 20) % 3) * f.h, sw: f.w, sh: f.h, ax: s.spec.anchor.x, ay: s.spec.anchor.y, ppm: s.towPpm, z: tz, x: tx });
       }
     }
     if (this.sc.state === 'out' || this.sc.state === 'ending') {
@@ -508,7 +508,7 @@ export class Field {
       const idx = Math.max(0, Math.min(6, Math.round(3 + Math.max(-1, Math.min(1, seg.curve / 0.08)) * 2)));
       const row = this.sc.flashRow(this.clock);
       const f = s.spec.frame;
-      out.push({ img: s.sheet, sx: idx * f.w, sy: row * f.h, sw: f.w, sh: f.h, ax: s.spec.anchor.x, ay: s.spec.anchor.y, ppm: 36, z: zc, x: 0 });
+      out.push({ img: s.sheet, sx: idx * f.w, sy: (row * 3 + (Math.floor(this.clock * 20) % 3)) * f.h, sw: f.w, sh: f.h, ax: s.spec.anchor.x, ay: s.spec.anchor.y, ppm: 36 * RENDER.hd, z: zc, x: 0 });
     }
     return out;
   }

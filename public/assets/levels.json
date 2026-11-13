@@ -1,1280 +1,1280 @@
 {
-  "circuit_jour": {
-    "label": "Circuit — plein jour",
-    "sky": "backgrounds/sky_day.png",
-    "sky_clear": "backgrounds/sky_day_clear.png",
-    "horizon": "backgrounds/horizon_forest.png",
-    "clouds_far": "backgrounds/clouds_day_far.png",
-    "clouds_near": "backgrounds/clouds_day_near.png",
-    "road": "roads/road_circuit.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_oak",
-      "tree_pine",
-      "tree_birch",
-      "bush_flowers"
-    ],
-    "music": "music/level_circuit.ogg",
-    "suggested_car": "gt3_green",
-    "mood": "jour",
-    "road_type": "road_circuit",
-    "tracks": [
-      "grand_prix_vert"
-    ]
+ "circuit_jour": {
+  "label": "Circuit — plein jour",
+  "sky": "backgrounds/sky_day.png",
+  "sky_clear": "backgrounds/sky_day_clear.png",
+  "horizon": "backgrounds/horizon_forest.png",
+  "clouds_far": "backgrounds/clouds_day_far.png",
+  "clouds_near": "backgrounds/clouds_day_near.png",
+  "road": "roads/road_circuit.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "cote_coucher_soleil": {
-    "label": "Côte — coucher de soleil",
-    "sky": "backgrounds/sky_sunset.png",
-    "sky_clear": "backgrounds/sky_sunset_clear.png",
-    "horizon": "backgrounds/horizon_desert.png",
-    "clouds_far": "backgrounds/clouds_sunset_far.png",
-    "clouds_near": "backgrounds/clouds_sunset_near.png",
-    "road": "roads/road_coast.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_palm",
-      "cactus",
-      "rock",
-      "tree_palm"
-    ],
-    "music": "music/level_sunset.ogg",
-    "suggested_car": "wedge_red",
-    "mood": "dore",
-    "road_type": "road_coast",
-    "tracks": [
-      "boucle_cotiere"
-    ]
+  "roadside": [
+   "tree_oak",
+   "tree_pine",
+   "tree_birch",
+   "bush_flowers"
+  ],
+  "music": "music/level_circuit.ogg",
+  "suggested_car": "gt3_green",
+  "mood": "jour",
+  "road_type": "road_circuit",
+  "tracks": [
+   "grand_prix_vert"
+  ]
+ },
+ "cote_coucher_soleil": {
+  "label": "Côte — coucher de soleil",
+  "sky": "backgrounds/sky_sunset.png",
+  "sky_clear": "backgrounds/sky_sunset_clear.png",
+  "horizon": "backgrounds/horizon_desert.png",
+  "clouds_far": "backgrounds/clouds_sunset_far.png",
+  "clouds_near": "backgrounds/clouds_sunset_near.png",
+  "road": "roads/road_coast.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "ville_nuit": {
-    "label": "Ville — nuit",
-    "sky": "backgrounds/sky_night.png",
-    "sky_clear": "backgrounds/sky_night_clear.png",
-    "horizon": "backgrounds/horizon_city.png",
-    "clouds_far": "backgrounds/clouds_night_far.png",
-    "clouds_near": "backgrounds/clouds_night_near.png",
-    "road": "roads/road_night.png",
-    "atlases": {
-      "trees": "scenery/trees_night.png",
-      "billboards": "scenery/billboards_night.png",
-      "signs": "scenery/signs_night.png",
-      "buildings": "scenery/buildings_night.png"
-    },
-    "roadside": [
-      "tree_cypress",
-      "tree_oak",
-      "tree_cherry"
-    ],
-    "music": "music/level_night.ogg",
-    "suggested_car": "futur_white",
-    "mood": "nuit",
-    "road_type": "road_night",
-    "tracks": [
-      "neon_city"
-    ]
+  "roadside": [
+   "tree_palm",
+   "cactus",
+   "rock",
+   "tree_palm"
+  ],
+  "music": "music/level_sunset.ogg",
+  "suggested_car": "wedge_red",
+  "mood": "dore",
+  "road_type": "road_coast",
+  "tracks": [
+   "boucle_cotiere"
+  ]
+ },
+ "ville_nuit": {
+  "label": "Ville — nuit",
+  "sky": "backgrounds/sky_night.png",
+  "sky_clear": "backgrounds/sky_night_clear.png",
+  "horizon": "backgrounds/horizon_city.png",
+  "clouds_far": "backgrounds/clouds_night_far.png",
+  "clouds_near": "backgrounds/clouds_night_near.png",
+  "road": "roads/road_night.png",
+  "atlases": {
+   "trees": "scenery/trees_night.png",
+   "billboards": "scenery/billboards_night.png",
+   "signs": "scenery/signs_night.png",
+   "buildings": "scenery/buildings_night.png"
   },
-  "montagne_pluie": {
-    "label": "Montagne — pluie",
-    "sky": "backgrounds/sky_storm.png",
-    "sky_clear": "backgrounds/sky_storm_clear.png",
-    "horizon": "backgrounds/horizon_mountains.png",
-    "clouds_far": "backgrounds/clouds_storm_far.png",
-    "clouds_near": "backgrounds/clouds_storm_near.png",
-    "road": "roads/road_wet.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_pine",
-      "tree_dead",
-      "rock",
-      "tree_pine"
-    ],
-    "music": "music/level_rain.ogg",
-    "suggested_car": "pickup_steel",
-    "weather": {
-      "overlay": "fx/fx_rain.png",
-      "splash": "fx/fx_rain_splash.png",
-      "spray": "fx/fx_spray.png",
-      "puddles": "roads/overlay_puddles_a.png",
-      "tint": [
-        0.82,
-        0.86,
-        0.96
-      ]
-    },
-    "mood": "pluie",
-    "road_type": "road_wet",
-    "tracks": [
-      "col_de_la_tempete"
-    ]
+  "roadside": [
+   "tree_cypress",
+   "tree_oak",
+   "tree_cherry"
+  ],
+  "music": "music/level_night.ogg",
+  "suggested_car": "futur_white",
+  "mood": "nuit",
+  "road_type": "road_night",
+  "tracks": [
+   "neon_city"
+  ]
+ },
+ "montagne_pluie": {
+  "label": "Montagne — pluie",
+  "sky": "backgrounds/sky_storm.png",
+  "sky_clear": "backgrounds/sky_storm_clear.png",
+  "horizon": "backgrounds/horizon_mountains.png",
+  "clouds_far": "backgrounds/clouds_storm_far.png",
+  "clouds_near": "backgrounds/clouds_storm_near.png",
+  "road": "roads/road_wet.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "midi_desert": {
-    "label": "Désert — plein midi",
-    "sky": "backgrounds/sky_noon.png",
-    "sky_clear": "backgrounds/sky_noon_clear.png",
-    "horizon": "backgrounds/horizon_canyon.png",
-    "clouds_far": "backgrounds/clouds_day_far.png",
-    "clouds_near": "backgrounds/clouds_day_near.png",
-    "road": "roads/road_desert.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "cactus",
-      "rock",
-      "tree_dead",
-      "cactus"
-    ],
-    "music": "music/level_circuit.ogg",
-    "suggested_car": "muscle_orange",
-    "mood": "jour",
-    "road_type": "road_desert",
-    "tracks": [
-      "speedway",
-      "rallye_des_dunes"
-    ]
+  "roadside": [
+   "tree_pine",
+   "tree_dead",
+   "rock",
+   "tree_pine"
+  ],
+  "music": "music/level_rain.ogg",
+  "suggested_car": "pickup_steel",
+  "weather": {
+   "overlay": "fx/fx_rain.png",
+   "splash": "fx/fx_rain_splash.png",
+   "spray": "fx/fx_spray.png",
+   "puddles": "roads/overlay_puddles_a.png",
+   "tint": [
+    0.82,
+    0.86,
+    0.96
+   ]
   },
-  "matin_campagne": {
-    "label": "Campagne — matin",
-    "sky": "backgrounds/sky_dawn.png",
-    "sky_clear": "backgrounds/sky_dawn_clear.png",
-    "horizon": "backgrounds/horizon_hills.png",
-    "clouds_far": "backgrounds/clouds_day_far.png",
-    "clouds_near": "backgrounds/clouds_day_near.png",
-    "road": "roads/road_circuit.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_oak",
-      "bush_flowers",
-      "tree_cherry",
-      "tree_birch"
-    ],
-    "music": "music/babass_racing_theme.ogg",
-    "suggested_car": "hothatch_yellow",
-    "mood": "jour",
-    "road_type": "road_circuit",
-    "tracks": [
-      "kartodrome"
-    ]
+  "mood": "pluie",
+  "road_type": "road_wet",
+  "tracks": [
+   "col_de_la_tempete"
+  ]
+ },
+ "midi_desert": {
+  "label": "Désert — plein midi",
+  "sky": "backgrounds/sky_noon.png",
+  "sky_clear": "backgrounds/sky_noon_clear.png",
+  "horizon": "backgrounds/horizon_canyon.png",
+  "clouds_far": "backgrounds/clouds_day_far.png",
+  "clouds_near": "backgrounds/clouds_day_near.png",
+  "road": "roads/road_desert.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "heure_doree": {
-    "label": "Autoroute — heure dorée",
-    "sky": "backgrounds/sky_golden.png",
-    "sky_clear": "backgrounds/sky_golden_clear.png",
-    "horizon": "backgrounds/horizon_sea.png",
-    "clouds_far": "backgrounds/clouds_sunset_far.png",
-    "clouds_near": "backgrounds/clouds_sunset_near.png",
-    "road": "roads/road_highway.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_palm",
-      "tree_palm",
-      "bush",
-      "rock"
-    ],
-    "music": "music/level_sunset.ogg",
-    "suggested_car": "retro_white",
-    "mood": "dore",
-    "road_type": "road_highway",
-    "tracks": [
-      "autoroute_66"
-    ]
+  "roadside": [
+   "cactus",
+   "rock",
+   "tree_dead",
+   "cactus"
+  ],
+  "music": "music/level_circuit.ogg",
+  "suggested_car": "muscle_orange",
+  "mood": "jour",
+  "road_type": "road_desert",
+  "tracks": [
+   "speedway",
+   "rallye_des_dunes"
+  ]
+ },
+ "matin_campagne": {
+  "label": "Campagne — matin",
+  "sky": "backgrounds/sky_dawn.png",
+  "sky_clear": "backgrounds/sky_dawn_clear.png",
+  "horizon": "backgrounds/horizon_hills.png",
+  "clouds_far": "backgrounds/clouds_day_far.png",
+  "clouds_near": "backgrounds/clouds_day_near.png",
+  "road": "roads/road_circuit.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "hiver": {
-    "label": "Glacier — neige",
-    "sky": "backgrounds/sky_winter.png",
-    "sky_clear": "backgrounds/sky_winter_clear.png",
-    "horizon": "backgrounds/horizon_alps.png",
-    "clouds_far": "backgrounds/clouds_storm_far.png",
-    "clouds_near": "backgrounds/clouds_storm_near.png",
-    "road": "roads/road_snow.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_pine_snow",
-      "rock",
-      "tree_pine_snow",
-      "tree_dead"
-    ],
-    "music": "music/level_rain.ogg",
-    "suggested_car": "pickup_white",
-    "mood": "couvert",
-    "road_type": "road_snow",
-    "tracks": [
-      "glacier"
-    ]
+  "roadside": [
+   "tree_oak",
+   "bush_flowers",
+   "tree_cherry",
+   "tree_birch"
+  ],
+  "music": "music/babass_racing_theme.ogg",
+  "suggested_car": "hothatch_yellow",
+  "mood": "jour",
+  "road_type": "road_circuit",
+  "tracks": [
+   "kartodrome"
+  ]
+ },
+ "heure_doree": {
+  "label": "Autoroute — heure dorée",
+  "sky": "backgrounds/sky_golden.png",
+  "sky_clear": "backgrounds/sky_golden_clear.png",
+  "horizon": "backgrounds/horizon_sea.png",
+  "clouds_far": "backgrounds/clouds_sunset_far.png",
+  "clouds_near": "backgrounds/clouds_sunset_near.png",
+  "road": "roads/road_highway.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "volcan": {
-    "label": "Volcan — soir de cendres",
-    "sky": "backgrounds/sky_ember.png",
-    "sky_clear": "backgrounds/sky_ember_clear.png",
-    "horizon": "backgrounds/horizon_volcano.png",
-    "clouds_far": "backgrounds/clouds_night_far.png",
-    "clouds_near": "backgrounds/clouds_night_near.png",
-    "road": "roads/road_lava.png",
-    "atlases": {
-      "trees": "scenery/trees_night.png",
-      "billboards": "scenery/billboards_night.png",
-      "signs": "scenery/signs_night.png",
-      "buildings": "scenery/buildings_night.png"
-    },
-    "roadside": [
-      "rock",
-      "tree_dead",
-      "rock"
-    ],
-    "music": "music/level_night.ogg",
-    "suggested_car": "futur_black",
-    "mood": "nuit",
-    "road_type": "road_lava",
-    "tracks": [
-      "volcan_rouge"
-    ]
+  "roadside": [
+   "tree_palm",
+   "tree_palm",
+   "bush",
+   "rock"
+  ],
+  "music": "music/level_sunset.ogg",
+  "suggested_car": "retro_white",
+  "mood": "dore",
+  "road_type": "road_highway",
+  "tracks": [
+   "autoroute_66"
+  ]
+ },
+ "hiver": {
+  "label": "Glacier — neige",
+  "sky": "backgrounds/sky_winter.png",
+  "sky_clear": "backgrounds/sky_winter_clear.png",
+  "horizon": "backgrounds/horizon_alps.png",
+  "clouds_far": "backgrounds/clouds_storm_far.png",
+  "clouds_near": "backgrounds/clouds_storm_near.png",
+  "road": "roads/road_snow.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "brume_industrielle": {
-    "label": "Docks — brume",
-    "sky": "backgrounds/sky_fog.png",
-    "sky_clear": "backgrounds/sky_fog_clear.png",
-    "horizon": "backgrounds/horizon_industrial.png",
-    "clouds_far": "backgrounds/clouds_storm_far.png",
-    "clouds_near": "backgrounds/clouds_storm_near.png",
-    "road": "roads/road_worn.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_dead",
-      "bush",
-      "rock"
-    ],
-    "music": "music/level_rain.ogg",
-    "suggested_car": "towtruck_orange",
-    "weather": {
-      "tint": [
-        0.9,
-        0.92,
-        0.96
-      ],
-      "fog_strength": 0.8
-    },
-    "mood": "couvert",
-    "road_type": "road_worn",
-    "tracks": [
-      "docks"
-    ]
+  "roadside": [
+   "tree_pine_snow",
+   "rock",
+   "tree_pine_snow",
+   "tree_dead"
+  ],
+  "music": "music/level_rain.ogg",
+  "suggested_car": "pickup_white",
+  "mood": "couvert",
+  "road_type": "road_snow",
+  "tracks": [
+   "glacier"
+  ]
+ },
+ "volcan": {
+  "label": "Volcan — soir de cendres",
+  "sky": "backgrounds/sky_ember.png",
+  "sky_clear": "backgrounds/sky_ember_clear.png",
+  "horizon": "backgrounds/horizon_volcano.png",
+  "clouds_far": "backgrounds/clouds_night_far.png",
+  "clouds_near": "backgrounds/clouds_night_near.png",
+  "road": "roads/road_lava.png",
+  "atlases": {
+   "trees": "scenery/trees_night.png",
+   "billboards": "scenery/billboards_night.png",
+   "signs": "scenery/signs_night.png",
+   "buildings": "scenery/buildings_night.png"
   },
-  "jungle": {
-    "label": "Jungle — tropicale",
-    "sky": "backgrounds/sky_tropical.png",
-    "sky_clear": "backgrounds/sky_tropical_clear.png",
-    "horizon": "backgrounds/horizon_jungle.png",
-    "clouds_far": "backgrounds/clouds_day_far.png",
-    "clouds_near": "backgrounds/clouds_day_near.png",
-    "road": "roads/road_jungle.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_palm",
-      "bush",
-      "tree_palm",
-      "bush_flowers"
-    ],
-    "music": "music/level_circuit.ogg",
-    "suggested_car": "supercar_lime",
-    "mood": "jour",
-    "road_type": "road_jungle",
-    "tracks": [
-      "jungle_run"
-    ]
+  "roadside": [
+   "rock",
+   "tree_dead",
+   "rock"
+  ],
+  "music": "music/level_night.ogg",
+  "suggested_car": "futur_black",
+  "mood": "nuit",
+  "road_type": "road_lava",
+  "tracks": [
+   "volcan_rouge"
+  ]
+ },
+ "brume_industrielle": {
+  "label": "Docks — brume",
+  "sky": "backgrounds/sky_fog.png",
+  "sky_clear": "backgrounds/sky_fog_clear.png",
+  "horizon": "backgrounds/horizon_industrial.png",
+  "clouds_far": "backgrounds/clouds_storm_far.png",
+  "clouds_near": "backgrounds/clouds_storm_near.png",
+  "road": "roads/road_worn.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "nuit_aurore": {
-    "label": "Nuit — aurore boréale",
-    "sky": "backgrounds/sky_aurora.png",
-    "sky_clear": "backgrounds/sky_aurora_clear.png",
-    "horizon": "backgrounds/horizon_alps.png",
-    "clouds_far": "backgrounds/clouds_night_far.png",
-    "clouds_near": "backgrounds/clouds_night_near.png",
-    "road": "roads/road_night.png",
-    "atlases": {
-      "trees": "scenery/trees_night.png",
-      "billboards": "scenery/billboards_night.png",
-      "signs": "scenery/signs_night.png",
-      "buildings": "scenery/buildings_night.png"
-    },
-    "roadside": [
-      "tree_pine",
-      "tree_pine_snow",
-      "rock"
-    ],
-    "music": "music/level_night.ogg",
-    "suggested_car": "hypercar_blue",
-    "mood": "nuit",
-    "road_type": "road_night",
-    "tracks": [
-      "aurore"
-    ]
+  "roadside": [
+   "tree_dead",
+   "bush",
+   "rock"
+  ],
+  "music": "music/level_rain.ogg",
+  "suggested_car": "towtruck_orange",
+  "weather": {
+   "tint": [
+    0.9,
+    0.92,
+    0.96
+   ],
+   "fog_strength": 0.8
   },
-  "automne": {
-    "label": "Vieille ville — automne",
-    "sky": "backgrounds/sky_overcast.png",
-    "sky_clear": "backgrounds/sky_overcast_clear.png",
-    "horizon": "backgrounds/horizon_city_day.png",
-    "clouds_far": "backgrounds/clouds_storm_far.png",
-    "clouds_near": "backgrounds/clouds_storm_near.png",
-    "road": "roads/road_urban.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_oak_autumn",
-      "tree_cypress",
-      "tree_oak_autumn"
-    ],
-    "music": "music/babass_racing_theme.ogg",
-    "suggested_car": "retro_red",
-    "mood": "couvert",
-    "road_type": "road_urban",
-    "tracks": [
-      "vieille_ville"
-    ]
+  "mood": "couvert",
+  "road_type": "road_worn",
+  "tracks": [
+   "docks"
+  ]
+ },
+ "jungle": {
+  "label": "Jungle — tropicale",
+  "sky": "backgrounds/sky_tropical.png",
+  "sky_clear": "backgrounds/sky_tropical_clear.png",
+  "horizon": "backgrounds/horizon_jungle.png",
+  "clouds_far": "backgrounds/clouds_day_far.png",
+  "clouds_near": "backgrounds/clouds_day_near.png",
+  "road": "roads/road_jungle.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "crepuscule_ville": {
-    "label": "Ville — crépuscule",
-    "sky": "backgrounds/sky_dusk.png",
-    "sky_clear": "backgrounds/sky_dusk_clear.png",
-    "horizon": "backgrounds/horizon_city.png",
-    "clouds_far": "backgrounds/clouds_sunset_far.png",
-    "clouds_near": "backgrounds/clouds_sunset_near.png",
-    "road": "roads/road_urban.png",
-    "atlases": {
-      "trees": "scenery/trees_night.png",
-      "billboards": "scenery/billboards_night.png",
-      "signs": "scenery/signs_night.png",
-      "buildings": "scenery/buildings_night.png"
-    },
-    "roadside": [
-      "tree_cypress",
-      "tree_cherry"
-    ],
-    "music": "music/level_night.ogg",
-    "suggested_car": "gt3_black",
-    "mood": "crepuscule",
-    "road_type": "road_urban"
+  "roadside": [
+   "tree_palm",
+   "bush",
+   "tree_palm",
+   "bush_flowers"
+  ],
+  "music": "music/level_circuit.ogg",
+  "suggested_car": "supercar_lime",
+  "mood": "jour",
+  "road_type": "road_jungle",
+  "tracks": [
+   "jungle_run"
+  ]
+ },
+ "nuit_aurore": {
+  "label": "Nuit — aurore boréale",
+  "sky": "backgrounds/sky_aurora.png",
+  "sky_clear": "backgrounds/sky_aurora_clear.png",
+  "horizon": "backgrounds/horizon_alps.png",
+  "clouds_far": "backgrounds/clouds_night_far.png",
+  "clouds_near": "backgrounds/clouds_night_near.png",
+  "road": "roads/road_night.png",
+  "atlases": {
+   "trees": "scenery/trees_night.png",
+   "billboards": "scenery/billboards_night.png",
+   "signs": "scenery/signs_night.png",
+   "buildings": "scenery/buildings_night.png"
   },
-  "orage": {
-    "label": "Orage — éclairs",
-    "sky": "backgrounds/sky_storm.png",
-    "sky_clear": "backgrounds/sky_storm_clear.png",
-    "horizon": "backgrounds/horizon_hills.png",
-    "clouds_far": "backgrounds/clouds_storm_far.png",
-    "clouds_near": "backgrounds/clouds_storm_near.png",
-    "road": "roads/road_wet.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_oak",
-      "tree_dead",
-      "bush"
-    ],
-    "music": "music/level_rain.ogg",
-    "suggested_car": "safetycar_silver",
-    "weather": {
-      "overlay": "fx/fx_rain.png",
-      "splash": "fx/fx_rain_splash.png",
-      "spray": "fx/fx_spray.png",
-      "puddles": "roads/overlay_puddles_b.png",
-      "tint": [
-        0.78,
-        0.8,
-        0.9
-      ],
-      "lightning": "fx/fx_lightning.png"
-    },
-    "mood": "pluie",
-    "road_type": "road_wet"
+  "roadside": [
+   "tree_pine",
+   "tree_pine_snow",
+   "rock"
+  ],
+  "music": "music/level_night.ogg",
+  "suggested_car": "hypercar_blue",
+  "mood": "nuit",
+  "road_type": "road_night",
+  "tracks": [
+   "aurore"
+  ]
+ },
+ "automne": {
+  "label": "Vieille ville — automne",
+  "sky": "backgrounds/sky_overcast.png",
+  "sky_clear": "backgrounds/sky_overcast_clear.png",
+  "horizon": "backgrounds/horizon_city_day.png",
+  "clouds_far": "backgrounds/clouds_storm_far.png",
+  "clouds_near": "backgrounds/clouds_storm_near.png",
+  "road": "roads/road_urban.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "dunes": {
-    "label": "Dunes — sable",
-    "sky": "backgrounds/sky_noon.png",
-    "sky_clear": "backgrounds/sky_noon_clear.png",
-    "horizon": "backgrounds/horizon_dunes.png",
-    "clouds_far": "backgrounds/clouds_day_far.png",
-    "clouds_near": "backgrounds/clouds_day_near.png",
-    "road": "roads/road_coast.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_palm",
-      "rock",
-      "cactus"
-    ],
-    "music": "music/level_sunset.ogg",
-    "suggested_car": "pickup_sand",
-    "mood": "jour",
-    "road_type": "road_coast"
+  "roadside": [
+   "tree_oak_autumn",
+   "tree_cypress",
+   "tree_oak_autumn"
+  ],
+  "music": "music/babass_racing_theme.ogg",
+  "suggested_car": "retro_red",
+  "mood": "couvert",
+  "road_type": "road_urban",
+  "tracks": [
+   "vieille_ville"
+  ]
+ },
+ "crepuscule_ville": {
+  "label": "Ville — crépuscule",
+  "sky": "backgrounds/sky_dusk.png",
+  "sky_clear": "backgrounds/sky_dusk_clear.png",
+  "horizon": "backgrounds/horizon_city.png",
+  "clouds_far": "backgrounds/clouds_sunset_far.png",
+  "clouds_near": "backgrounds/clouds_sunset_near.png",
+  "road": "roads/road_urban.png",
+  "atlases": {
+   "trees": "scenery/trees_night.png",
+   "billboards": "scenery/billboards_night.png",
+   "signs": "scenery/signs_night.png",
+   "buildings": "scenery/buildings_night.png"
   },
-  "vignes_matin": {
-    "label": "Vignobles — matin clair",
-    "sky": "backgrounds/sky_morning.png",
-    "sky_clear": "backgrounds/sky_morning_clear.png",
-    "horizon": "backgrounds/horizon_vineyards.png",
-    "clouds_far": "backgrounds/clouds_day_far.png",
-    "clouds_near": "backgrounds/clouds_day_near.png",
-    "road": "roads/road_asphalt_warm.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_cypress",
-      "tree_oak",
-      "bush_flowers"
-    ],
-    "music": "music/level_circuit.ogg",
-    "suggested_car": "hothatch_blue",
-    "mood": "jour",
-    "road_type": "road_asphalt_warm"
+  "roadside": [
+   "tree_cypress",
+   "tree_cherry"
+  ],
+  "music": "music/level_night.ogg",
+  "suggested_car": "gt3_black",
+  "mood": "crepuscule",
+  "road_type": "road_urban"
+ },
+ "orage": {
+  "label": "Orage — éclairs",
+  "sky": "backgrounds/sky_storm.png",
+  "sky_clear": "backgrounds/sky_storm_clear.png",
+  "horizon": "backgrounds/horizon_hills.png",
+  "clouds_far": "backgrounds/clouds_storm_far.png",
+  "clouds_near": "backgrounds/clouds_storm_near.png",
+  "road": "roads/road_wet.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "lac_ete": {
-    "label": "Lac — été",
-    "sky": "backgrounds/sky_cumulus.png",
-    "sky_clear": "backgrounds/sky_cumulus_clear.png",
-    "horizon": "backgrounds/horizon_lake.png",
-    "clouds_far": "backgrounds/clouds_day_far.png",
-    "clouds_near": "backgrounds/clouds_day_near.png",
-    "road": "roads/road_asphalt_blue.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_pine",
-      "tree_birch",
-      "rock"
-    ],
-    "music": "music/level_circuit.ogg",
-    "suggested_car": "gt3_blue",
-    "mood": "jour",
-    "road_type": "road_asphalt_blue"
+  "roadside": [
+   "tree_oak",
+   "tree_dead",
+   "bush"
+  ],
+  "music": "music/level_rain.ogg",
+  "suggested_car": "safetycar_silver",
+  "weather": {
+   "overlay": "fx/fx_rain.png",
+   "splash": "fx/fx_rain_splash.png",
+   "spray": "fx/fx_spray.png",
+   "puddles": "roads/overlay_puddles_b.png",
+   "tint": [
+    0.78,
+    0.8,
+    0.9
+   ],
+   "lightning": "fx/fx_lightning.png"
   },
-  "falaises_aube": {
-    "label": "Falaises — lever de soleil",
-    "sky": "backgrounds/sky_sunrise.png",
-    "sky_clear": "backgrounds/sky_sunrise_clear.png",
-    "horizon": "backgrounds/horizon_cliffs.png",
-    "clouds_far": "backgrounds/clouds_sunset_far.png",
-    "clouds_near": "backgrounds/clouds_sunset_near.png",
-    "road": "roads/road_asphalt_light.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_palm",
-      "bush",
-      "rock"
-    ],
-    "music": "music/level_sunset.ogg",
-    "suggested_car": "supercar_orange",
-    "mood": "dore",
-    "road_type": "road_asphalt_light"
+  "mood": "pluie",
+  "road_type": "road_wet"
+ },
+ "dunes": {
+  "label": "Dunes — sable",
+  "sky": "backgrounds/sky_noon.png",
+  "sky_clear": "backgrounds/sky_noon_clear.png",
+  "horizon": "backgrounds/horizon_dunes.png",
+  "clouds_far": "backgrounds/clouds_day_far.png",
+  "clouds_near": "backgrounds/clouds_day_near.png",
+  "road": "roads/road_coast.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "tempete_sable": {
-    "label": "Désert — tempête de sable",
-    "sky": "backgrounds/sky_sandstorm.png",
-    "sky_clear": "backgrounds/sky_sandstorm_clear.png",
-    "horizon": "backgrounds/horizon_mesa.png",
-    "clouds_far": "backgrounds/clouds_storm_far.png",
-    "clouds_near": "backgrounds/clouds_storm_near.png",
-    "road": "roads/road_asphalt_orange.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "cactus",
-      "rock",
-      "tree_dead"
-    ],
-    "music": "music/level_rain.ogg",
-    "suggested_car": "muscle_black",
-    "mood": "couvert",
-    "road_type": "road_asphalt_orange"
+  "roadside": [
+   "tree_palm",
+   "rock",
+   "cactus"
+  ],
+  "music": "music/level_sunset.ogg",
+  "suggested_car": "pickup_sand",
+  "mood": "jour",
+  "road_type": "road_coast"
+ },
+ "vignes_matin": {
+  "label": "Vignobles — matin clair",
+  "sky": "backgrounds/sky_morning.png",
+  "sky_clear": "backgrounds/sky_morning_clear.png",
+  "horizon": "backgrounds/horizon_vineyards.png",
+  "clouds_far": "backgrounds/clouds_day_far.png",
+  "clouds_near": "backgrounds/clouds_day_near.png",
+  "road": "roads/road_asphalt_warm.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "pyramides": {
-    "label": "Pyramides — plein midi",
-    "sky": "backgrounds/sky_noon.png",
-    "sky_clear": "backgrounds/sky_noon_clear.png",
-    "horizon": "backgrounds/horizon_pyramids.png",
-    "clouds_far": "backgrounds/clouds_day_far.png",
-    "clouds_near": "backgrounds/clouds_day_near.png",
-    "road": "roads/road_desert.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_palm",
-      "rock",
-      "cactus"
-    ],
-    "music": "music/level_circuit.ogg",
-    "suggested_car": "wedge_yellow",
-    "mood": "jour",
-    "road_type": "road_desert"
+  "roadside": [
+   "tree_cypress",
+   "tree_oak",
+   "bush_flowers"
+  ],
+  "music": "music/level_circuit.ogg",
+  "suggested_car": "hothatch_blue",
+  "mood": "jour",
+  "road_type": "road_asphalt_warm"
+ },
+ "lac_ete": {
+  "label": "Lac — été",
+  "sky": "backgrounds/sky_cumulus.png",
+  "sky_clear": "backgrounds/sky_cumulus_clear.png",
+  "horizon": "backgrounds/horizon_lake.png",
+  "clouds_far": "backgrounds/clouds_day_far.png",
+  "clouds_near": "backgrounds/clouds_day_near.png",
+  "road": "roads/road_asphalt_blue.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "voie_lactee": {
-    "label": "Nuit — voie lactée",
-    "sky": "backgrounds/sky_milkyway.png",
-    "sky_clear": "backgrounds/sky_milkyway_clear.png",
-    "horizon": "backgrounds/horizon_lake.png",
-    "clouds_far": "backgrounds/clouds_night_far.png",
-    "clouds_near": "backgrounds/clouds_night_near.png",
-    "road": "roads/road_asphalt_black.png",
-    "atlases": {
-      "trees": "scenery/trees_night.png",
-      "billboards": "scenery/billboards_night.png",
-      "signs": "scenery/signs_night.png",
-      "buildings": "scenery/buildings_night.png"
-    },
-    "roadside": [
-      "tree_pine",
-      "tree_pine_snow",
-      "rock"
-    ],
-    "music": "music/level_night.ogg",
-    "suggested_car": "hypercar_black",
-    "mood": "nuit",
-    "road_type": "road_asphalt_black"
+  "roadside": [
+   "tree_pine",
+   "tree_birch",
+   "rock"
+  ],
+  "music": "music/level_circuit.ogg",
+  "suggested_car": "gt3_blue",
+  "mood": "jour",
+  "road_type": "road_asphalt_blue"
+ },
+ "falaises_aube": {
+  "label": "Falaises — lever de soleil",
+  "sky": "backgrounds/sky_sunrise.png",
+  "sky_clear": "backgrounds/sky_sunrise_clear.png",
+  "horizon": "backgrounds/horizon_cliffs.png",
+  "clouds_far": "backgrounds/clouds_sunset_far.png",
+  "clouds_near": "backgrounds/clouds_sunset_near.png",
+  "road": "roads/road_asphalt_light.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "pleine_lune": {
-    "label": "Château — pleine lune",
-    "sky": "backgrounds/sky_fullmoon.png",
-    "sky_clear": "backgrounds/sky_fullmoon_clear.png",
-    "horizon": "backgrounds/horizon_castle.png",
-    "clouds_far": "backgrounds/clouds_night_far.png",
-    "clouds_near": "backgrounds/clouds_night_near.png",
-    "road": "roads/road_asphalt_purple.png",
-    "atlases": {
-      "trees": "scenery/trees_night.png",
-      "billboards": "scenery/billboards_night.png",
-      "signs": "scenery/signs_night.png",
-      "buildings": "scenery/buildings_night.png"
-    },
-    "roadside": [
-      "tree_cypress",
-      "tree_dead",
-      "bush"
-    ],
-    "music": "music/level_night.ogg",
-    "suggested_car": "gt3_silver",
-    "mood": "nuit",
-    "road_type": "road_asphalt_purple"
+  "roadside": [
+   "tree_palm",
+   "bush",
+   "rock"
+  ],
+  "music": "music/level_sunset.ogg",
+  "suggested_car": "supercar_orange",
+  "mood": "dore",
+  "road_type": "road_asphalt_light"
+ },
+ "tempete_sable": {
+  "label": "Désert — tempête de sable",
+  "sky": "backgrounds/sky_sandstorm.png",
+  "sky_clear": "backgrounds/sky_sandstorm_clear.png",
+  "horizon": "backgrounds/horizon_mesa.png",
+  "clouds_far": "backgrounds/clouds_storm_far.png",
+  "clouds_near": "backgrounds/clouds_storm_near.png",
+  "road": "roads/road_asphalt_orange.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "apres_pluie": {
-    "label": "Après la pluie — arc-en-ciel",
-    "sky": "backgrounds/sky_rainbow.png",
-    "sky_clear": "backgrounds/sky_rainbow_clear.png",
-    "horizon": "backgrounds/horizon_hills.png",
-    "clouds_far": "backgrounds/clouds_day_far.png",
-    "clouds_near": "backgrounds/clouds_day_near.png",
-    "road": "roads/road_wet.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_oak",
-      "bush_flowers",
-      "tree_birch"
-    ],
-    "music": "music/level_circuit.ogg",
-    "suggested_car": "hothatch_red",
-    "weather": {
-      "puddles": "roads/overlay_puddles_b.png",
-      "tint": [
-        0.97,
-        0.98,
-        1.0
-      ]
-    },
-    "mood": "jour",
-    "road_type": "road_wet"
+  "roadside": [
+   "cactus",
+   "rock",
+   "tree_dead"
+  ],
+  "music": "music/level_rain.ogg",
+  "suggested_car": "muscle_black",
+  "mood": "couvert",
+  "road_type": "road_asphalt_orange"
+ },
+ "pyramides": {
+  "label": "Pyramides — plein midi",
+  "sky": "backgrounds/sky_noon.png",
+  "sky_clear": "backgrounds/sky_noon_clear.png",
+  "horizon": "backgrounds/horizon_pyramids.png",
+  "clouds_far": "backgrounds/clouds_day_far.png",
+  "clouds_near": "backgrounds/clouds_day_near.png",
+  "road": "roads/road_desert.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "metropole_violette": {
-    "label": "Métropole — crépuscule violet",
-    "sky": "backgrounds/sky_violet.png",
-    "sky_clear": "backgrounds/sky_violet_clear.png",
-    "horizon": "backgrounds/horizon_metropolis.png",
-    "clouds_far": "backgrounds/clouds_sunset_far.png",
-    "clouds_near": "backgrounds/clouds_sunset_near.png",
-    "road": "roads/road_night_wet.png",
-    "atlases": {
-      "trees": "scenery/trees_night.png",
-      "billboards": "scenery/billboards_night.png",
-      "signs": "scenery/signs_night.png",
-      "buildings": "scenery/buildings_night.png"
-    },
-    "roadside": [
-      "tree_cypress",
-      "tree_cherry"
-    ],
-    "music": "music/level_night.ogg",
-    "suggested_car": "futur_purple",
-    "mood": "crepuscule",
-    "road_type": "road_night_wet"
+  "roadside": [
+   "tree_palm",
+   "rock",
+   "cactus"
+  ],
+  "music": "music/level_circuit.ogg",
+  "suggested_car": "wedge_yellow",
+  "mood": "jour",
+  "road_type": "road_desert"
+ },
+ "voie_lactee": {
+  "label": "Nuit — voie lactée",
+  "sky": "backgrounds/sky_milkyway.png",
+  "sky_clear": "backgrounds/sky_milkyway_clear.png",
+  "horizon": "backgrounds/horizon_lake.png",
+  "clouds_far": "backgrounds/clouds_night_far.png",
+  "clouds_near": "backgrounds/clouds_night_near.png",
+  "road": "roads/road_asphalt_black.png",
+  "atlases": {
+   "trees": "scenery/trees_night.png",
+   "billboards": "scenery/billboards_night.png",
+   "signs": "scenery/signs_night.png",
+   "buildings": "scenery/buildings_night.png"
   },
-  "pluie_ferme": {
-    "label": "Ferme — pluie battante",
-    "sky": "backgrounds/sky_rain.png",
-    "sky_clear": "backgrounds/sky_rain_clear.png",
-    "horizon": "backgrounds/horizon_farm.png",
-    "clouds_far": "backgrounds/clouds_storm_far.png",
-    "clouds_near": "backgrounds/clouds_storm_near.png",
-    "road": "roads/road_wet.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_oak",
-      "tree_dead",
-      "bush"
-    ],
-    "music": "music/level_rain.ogg",
-    "suggested_car": "pickup_olive",
-    "weather": {
-      "overlay": "fx/fx_rain.png",
-      "splash": "fx/fx_rain_splash.png",
-      "spray": "fx/fx_spray.png",
-      "puddles": "roads/overlay_puddles_a.png",
-      "tint": [
-        0.82,
-        0.86,
-        0.96
-      ]
-    },
-    "mood": "pluie",
-    "road_type": "road_wet"
+  "roadside": [
+   "tree_pine",
+   "tree_pine_snow",
+   "rock"
+  ],
+  "music": "music/level_night.ogg",
+  "suggested_car": "hypercar_black",
+  "mood": "nuit",
+  "road_type": "road_asphalt_black"
+ },
+ "pleine_lune": {
+  "label": "Château — pleine lune",
+  "sky": "backgrounds/sky_fullmoon.png",
+  "sky_clear": "backgrounds/sky_fullmoon_clear.png",
+  "horizon": "backgrounds/horizon_castle.png",
+  "clouds_far": "backgrounds/clouds_night_far.png",
+  "clouds_near": "backgrounds/clouds_night_near.png",
+  "road": "roads/road_asphalt_purple.png",
+  "atlases": {
+   "trees": "scenery/trees_night.png",
+   "billboards": "scenery/billboards_night.png",
+   "signs": "scenery/signs_night.png",
+   "buildings": "scenery/buildings_night.png"
   },
-  "tornade": {
-    "label": "Plaines — ciel d'orage vert",
-    "sky": "backgrounds/sky_greenstorm.png",
-    "sky_clear": "backgrounds/sky_greenstorm_clear.png",
-    "horizon": "backgrounds/horizon_farm.png",
-    "clouds_far": "backgrounds/clouds_storm_far.png",
-    "clouds_near": "backgrounds/clouds_storm_near.png",
-    "road": "roads/road_worn.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_dead",
-      "bush",
-      "rock"
-    ],
-    "music": "music/level_rain.ogg",
-    "suggested_car": "pickup_steel",
-    "weather": {
-      "tint": [
-        0.85,
-        1.0,
-        0.88
-      ]
-    },
-    "mood": "pluie",
-    "road_type": "road_worn"
+  "roadside": [
+   "tree_cypress",
+   "tree_dead",
+   "bush"
+  ],
+  "music": "music/level_night.ogg",
+  "suggested_car": "gt3_silver",
+  "mood": "nuit",
+  "road_type": "road_asphalt_purple"
+ },
+ "apres_pluie": {
+  "label": "Après la pluie — arc-en-ciel",
+  "sky": "backgrounds/sky_rainbow.png",
+  "sky_clear": "backgrounds/sky_rainbow_clear.png",
+  "horizon": "backgrounds/horizon_hills.png",
+  "clouds_far": "backgrounds/clouds_day_far.png",
+  "clouds_near": "backgrounds/clouds_day_near.png",
+  "road": "roads/road_wet.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "stade_jour": {
-    "label": "Ovale — jour de course",
-    "sky": "backgrounds/sky_cumulus.png",
-    "sky_clear": "backgrounds/sky_cumulus_clear.png",
-    "horizon": "backgrounds/horizon_stadium.png",
-    "clouds_far": "backgrounds/clouds_day_far.png",
-    "clouds_near": "backgrounds/clouds_day_near.png",
-    "road": "roads/road_modern.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "bush"
-    ],
-    "music": "music/level_circuit.ogg",
-    "suggested_car": "f1_red",
-    "mood": "jour",
-    "road_type": "road_modern"
+  "roadside": [
+   "tree_oak",
+   "bush_flowers",
+   "tree_birch"
+  ],
+  "music": "music/level_circuit.ogg",
+  "suggested_car": "hothatch_red",
+  "weather": {
+   "puddles": "roads/overlay_puddles_b.png",
+   "tint": [
+    0.97,
+    0.98,
+    1.0
+   ]
   },
-  "stade_nuit": {
-    "label": "Ovale — sous les projecteurs",
-    "sky": "backgrounds/sky_night.png",
-    "sky_clear": "backgrounds/sky_night_clear.png",
-    "horizon": "backgrounds/horizon_stadium.png",
-    "clouds_far": "backgrounds/clouds_night_far.png",
-    "clouds_near": "backgrounds/clouds_night_near.png",
-    "road": "roads/road_modern.png",
-    "atlases": {
-      "trees": "scenery/trees_night.png",
-      "billboards": "scenery/billboards_night.png",
-      "signs": "scenery/signs_night.png",
-      "buildings": "scenery/buildings_night.png"
-    },
-    "roadside": [
-      "bush"
-    ],
-    "music": "music/level_night.ogg",
-    "suggested_car": "f1_navy",
-    "mood": "nuit",
-    "road_type": "road_modern"
+  "mood": "jour",
+  "road_type": "road_wet"
+ },
+ "metropole_violette": {
+  "label": "Métropole — crépuscule violet",
+  "sky": "backgrounds/sky_violet.png",
+  "sky_clear": "backgrounds/sky_violet_clear.png",
+  "horizon": "backgrounds/horizon_metropolis.png",
+  "clouds_far": "backgrounds/clouds_sunset_far.png",
+  "clouds_near": "backgrounds/clouds_sunset_near.png",
+  "road": "roads/road_night_wet.png",
+  "atlases": {
+   "trees": "scenery/trees_night.png",
+   "billboards": "scenery/billboards_night.png",
+   "signs": "scenery/signs_night.png",
+   "buildings": "scenery/buildings_night.png"
   },
-  "ville_matin": {
-    "label": "Ville — matin",
-    "sky": "backgrounds/sky_morning.png",
-    "sky_clear": "backgrounds/sky_morning_clear.png",
-    "horizon": "backgrounds/horizon_city_day.png",
-    "clouds_far": "backgrounds/clouds_day_far.png",
-    "clouds_near": "backgrounds/clouds_day_near.png",
-    "road": "roads/road_urban.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_oak",
-      "tree_cypress",
-      "bush"
-    ],
-    "music": "music/level_circuit.ogg",
-    "suggested_car": "hothatch_white",
-    "mood": "jour",
-    "road_type": "road_urban"
+  "roadside": [
+   "tree_cypress",
+   "tree_cherry"
+  ],
+  "music": "music/level_night.ogg",
+  "suggested_car": "futur_purple",
+  "mood": "crepuscule",
+  "road_type": "road_night_wet"
+ },
+ "pluie_ferme": {
+  "label": "Ferme — pluie battante",
+  "sky": "backgrounds/sky_rain.png",
+  "sky_clear": "backgrounds/sky_rain_clear.png",
+  "horizon": "backgrounds/horizon_farm.png",
+  "clouds_far": "backgrounds/clouds_storm_far.png",
+  "clouds_near": "backgrounds/clouds_storm_near.png",
+  "road": "roads/road_wet.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "neon_futur": {
-    "label": "Futur — néons",
-    "sky": "backgrounds/sky_dusk.png",
-    "sky_clear": "backgrounds/sky_dusk_clear.png",
-    "horizon": "backgrounds/horizon_metropolis.png",
-    "clouds_far": "backgrounds/clouds_sunset_far.png",
-    "clouds_near": "backgrounds/clouds_sunset_near.png",
-    "road": "roads/road_night_wet.png",
-    "atlases": {
-      "trees": "scenery/trees_night.png",
-      "billboards": "scenery/billboards_night.png",
-      "signs": "scenery/signs_night.png",
-      "buildings": "scenery/buildings_night.png"
-    },
-    "roadside": [
-      "tree_cypress",
-      "tree_cherry"
-    ],
-    "music": "music/level_night.ogg",
-    "suggested_car": "futur_white",
-    "mood": "crepuscule",
-    "road_type": "road_night_wet"
+  "roadside": [
+   "tree_oak",
+   "tree_dead",
+   "bush"
+  ],
+  "music": "music/level_rain.ogg",
+  "suggested_car": "pickup_olive",
+  "weather": {
+   "overlay": "fx/fx_rain.png",
+   "splash": "fx/fx_rain_splash.png",
+   "spray": "fx/fx_spray.png",
+   "puddles": "roads/overlay_puddles_a.png",
+   "tint": [
+    0.82,
+    0.86,
+    0.96
+   ]
   },
-  "autoroute_aube": {
-    "label": "Autoroute — aube rose",
-    "sky": "backgrounds/sky_sunrise.png",
-    "sky_clear": "backgrounds/sky_sunrise_clear.png",
-    "horizon": "backgrounds/horizon_sea.png",
-    "clouds_far": "backgrounds/clouds_sunset_far.png",
-    "clouds_near": "backgrounds/clouds_sunset_near.png",
-    "road": "roads/road_highway.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_palm",
-      "bush",
-      "rock"
-    ],
-    "music": "music/level_sunset.ogg",
-    "suggested_car": "supercar_white",
-    "mood": "dore",
-    "road_type": "road_highway"
+  "mood": "pluie",
+  "road_type": "road_wet"
+ },
+ "tornade": {
+  "label": "Plaines — ciel d'orage vert",
+  "sky": "backgrounds/sky_greenstorm.png",
+  "sky_clear": "backgrounds/sky_greenstorm_clear.png",
+  "horizon": "backgrounds/horizon_farm.png",
+  "clouds_far": "backgrounds/clouds_storm_far.png",
+  "clouds_near": "backgrounds/clouds_storm_near.png",
+  "road": "roads/road_worn.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "vignes_dorees": {
-    "label": "Vignobles — heure dorée",
-    "sky": "backgrounds/sky_golden.png",
-    "sky_clear": "backgrounds/sky_golden_clear.png",
-    "horizon": "backgrounds/horizon_vineyards.png",
-    "clouds_far": "backgrounds/clouds_sunset_far.png",
-    "clouds_near": "backgrounds/clouds_sunset_near.png",
-    "road": "roads/road_asphalt_warm.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_cypress",
-      "tree_oak",
-      "bush_flowers"
-    ],
-    "music": "music/level_sunset.ogg",
-    "suggested_car": "retro_beige",
-    "mood": "dore",
-    "road_type": "road_asphalt_warm"
+  "roadside": [
+   "tree_dead",
+   "bush",
+   "rock"
+  ],
+  "music": "music/level_rain.ogg",
+  "suggested_car": "pickup_steel",
+  "weather": {
+   "tint": [
+    0.85,
+    1.0,
+    0.88
+   ]
   },
-  "lac_hiver": {
-    "label": "Lac — hiver",
-    "sky": "backgrounds/sky_winter.png",
-    "sky_clear": "backgrounds/sky_winter_clear.png",
-    "horizon": "backgrounds/horizon_lake.png",
-    "clouds_far": "backgrounds/clouds_storm_far.png",
-    "clouds_near": "backgrounds/clouds_storm_near.png",
-    "road": "roads/road_snow.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_pine_snow",
-      "rock",
-      "tree_pine_snow"
-    ],
-    "music": "music/level_rain.ogg",
-    "suggested_car": "hypercar_white",
-    "mood": "couvert",
-    "road_type": "road_snow"
+  "mood": "pluie",
+  "road_type": "road_worn"
+ },
+ "stade_jour": {
+  "label": "Ovale — jour de course",
+  "sky": "backgrounds/sky_cumulus.png",
+  "sky_clear": "backgrounds/sky_cumulus_clear.png",
+  "horizon": "backgrounds/horizon_stadium.png",
+  "clouds_far": "backgrounds/clouds_day_far.png",
+  "clouds_near": "backgrounds/clouds_day_near.png",
+  "road": "roads/road_modern.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "mesa_coucher": {
-    "label": "Désert rouge — coucher de soleil",
-    "sky": "backgrounds/sky_sunset.png",
-    "sky_clear": "backgrounds/sky_sunset_clear.png",
-    "horizon": "backgrounds/horizon_mesa.png",
-    "clouds_far": "backgrounds/clouds_sunset_far.png",
-    "clouds_near": "backgrounds/clouds_sunset_near.png",
-    "road": "roads/road_asphalt_orange.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "cactus",
-      "rock",
-      "tree_dead"
-    ],
-    "music": "music/level_sunset.ogg",
-    "suggested_car": "muscle_orange",
-    "mood": "dore",
-    "road_type": "road_asphalt_orange"
+  "roadside": [
+   "bush"
+  ],
+  "music": "music/level_circuit.ogg",
+  "suggested_car": "f1_red",
+  "mood": "jour",
+  "road_type": "road_modern"
+ },
+ "stade_nuit": {
+  "label": "Ovale — sous les projecteurs",
+  "sky": "backgrounds/sky_night.png",
+  "sky_clear": "backgrounds/sky_night_clear.png",
+  "horizon": "backgrounds/horizon_stadium.png",
+  "clouds_far": "backgrounds/clouds_night_far.png",
+  "clouds_near": "backgrounds/clouds_night_near.png",
+  "road": "roads/road_modern.png",
+  "atlases": {
+   "trees": "scenery/trees_night.png",
+   "billboards": "scenery/billboards_night.png",
+   "signs": "scenery/signs_night.png",
+   "buildings": "scenery/buildings_night.png"
   },
-  "pyramides_nuit": {
-    "label": "Pyramides — nuit de pleine lune",
-    "sky": "backgrounds/sky_fullmoon.png",
-    "sky_clear": "backgrounds/sky_fullmoon_clear.png",
-    "horizon": "backgrounds/horizon_pyramids.png",
-    "clouds_far": "backgrounds/clouds_night_far.png",
-    "clouds_near": "backgrounds/clouds_night_near.png",
-    "road": "roads/road_night.png",
-    "atlases": {
-      "trees": "scenery/trees_night.png",
-      "billboards": "scenery/billboards_night.png",
-      "signs": "scenery/signs_night.png",
-      "buildings": "scenery/buildings_night.png"
-    },
-    "roadside": [
-      "tree_palm",
-      "rock",
-      "cactus"
-    ],
-    "music": "music/level_night.ogg",
-    "suggested_car": "supercar_white",
-    "mood": "nuit",
-    "road_type": "road_night"
+  "roadside": [
+   "bush"
+  ],
+  "music": "music/level_night.ogg",
+  "suggested_car": "f1_navy",
+  "mood": "nuit",
+  "road_type": "road_modern"
+ },
+ "ville_matin": {
+  "label": "Ville — matin",
+  "sky": "backgrounds/sky_morning.png",
+  "sky_clear": "backgrounds/sky_morning_clear.png",
+  "horizon": "backgrounds/horizon_city_day.png",
+  "clouds_far": "backgrounds/clouds_day_far.png",
+  "clouds_near": "backgrounds/clouds_day_near.png",
+  "road": "roads/road_urban.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "chateau_brume": {
-    "label": "Château — brume",
-    "sky": "backgrounds/sky_fog.png",
-    "sky_clear": "backgrounds/sky_fog_clear.png",
-    "horizon": "backgrounds/horizon_castle.png",
-    "clouds_far": "backgrounds/clouds_storm_far.png",
-    "clouds_near": "backgrounds/clouds_storm_near.png",
-    "road": "roads/road_worn.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_oak",
-      "tree_dead",
-      "bush"
-    ],
-    "music": "music/level_rain.ogg",
-    "suggested_car": "retro_grey",
-    "mood": "couvert",
-    "road_type": "road_worn"
+  "roadside": [
+   "tree_oak",
+   "tree_cypress",
+   "bush"
+  ],
+  "music": "music/level_circuit.ogg",
+  "suggested_car": "hothatch_white",
+  "mood": "jour",
+  "road_type": "road_urban"
+ },
+ "neon_futur": {
+  "label": "Futur — néons",
+  "sky": "backgrounds/sky_dusk.png",
+  "sky_clear": "backgrounds/sky_dusk_clear.png",
+  "horizon": "backgrounds/horizon_metropolis.png",
+  "clouds_far": "backgrounds/clouds_sunset_far.png",
+  "clouds_near": "backgrounds/clouds_sunset_near.png",
+  "road": "roads/road_night_wet.png",
+  "atlases": {
+   "trees": "scenery/trees_night.png",
+   "billboards": "scenery/billboards_night.png",
+   "signs": "scenery/signs_night.png",
+   "buildings": "scenery/buildings_night.png"
   },
-  "jungle_pluie": {
-    "label": "Jungle — averse tropicale",
-    "sky": "backgrounds/sky_rain.png",
-    "sky_clear": "backgrounds/sky_rain_clear.png",
-    "horizon": "backgrounds/horizon_jungle.png",
-    "clouds_far": "backgrounds/clouds_storm_far.png",
-    "clouds_near": "backgrounds/clouds_storm_near.png",
-    "road": "roads/road_jungle.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_palm",
-      "bush",
-      "bush_flowers"
-    ],
-    "music": "music/level_rain.ogg",
-    "suggested_car": "pickup_olive",
-    "weather": {
-      "overlay": "fx/fx_rain.png",
-      "splash": "fx/fx_rain_splash.png",
-      "spray": "fx/fx_spray.png",
-      "puddles": "roads/overlay_puddles_a.png",
-      "tint": [
-        0.82,
-        0.86,
-        0.96
-      ]
-    },
-    "mood": "pluie",
-    "road_type": "road_jungle"
+  "roadside": [
+   "tree_cypress",
+   "tree_cherry"
+  ],
+  "music": "music/level_night.ogg",
+  "suggested_car": "futur_white",
+  "mood": "crepuscule",
+  "road_type": "road_night_wet"
+ },
+ "autoroute_aube": {
+  "label": "Autoroute — aube rose",
+  "sky": "backgrounds/sky_sunrise.png",
+  "sky_clear": "backgrounds/sky_sunrise_clear.png",
+  "horizon": "backgrounds/horizon_sea.png",
+  "clouds_far": "backgrounds/clouds_sunset_far.png",
+  "clouds_near": "backgrounds/clouds_sunset_near.png",
+  "road": "roads/road_highway.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "plage_aube": {
-    "label": "Plage — aube",
-    "sky": "backgrounds/sky_dawn.png",
-    "sky_clear": "backgrounds/sky_dawn_clear.png",
-    "horizon": "backgrounds/horizon_sea.png",
-    "clouds_far": "backgrounds/clouds_day_far.png",
-    "clouds_near": "backgrounds/clouds_day_near.png",
-    "road": "roads/road_coast.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_palm",
-      "bush",
-      "rock"
-    ],
-    "music": "music/level_circuit.ogg",
-    "suggested_car": "hothatch_orange",
-    "mood": "jour",
-    "road_type": "road_coast"
+  "roadside": [
+   "tree_palm",
+   "bush",
+   "rock"
+  ],
+  "music": "music/level_sunset.ogg",
+  "suggested_car": "supercar_white",
+  "mood": "dore",
+  "road_type": "road_highway"
+ },
+ "vignes_dorees": {
+  "label": "Vignobles — heure dorée",
+  "sky": "backgrounds/sky_golden.png",
+  "sky_clear": "backgrounds/sky_golden_clear.png",
+  "horizon": "backgrounds/horizon_vineyards.png",
+  "clouds_far": "backgrounds/clouds_sunset_far.png",
+  "clouds_near": "backgrounds/clouds_sunset_near.png",
+  "road": "roads/road_asphalt_warm.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "kart_ete": {
-    "label": "Kartodrome — été",
-    "sky": "backgrounds/sky_cumulus.png",
-    "sky_clear": "backgrounds/sky_cumulus_clear.png",
-    "horizon": "backgrounds/horizon_hills.png",
-    "clouds_far": "backgrounds/clouds_day_far.png",
-    "clouds_near": "backgrounds/clouds_day_near.png",
-    "road": "roads/road_kart.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "bush_flowers",
-      "tree_birch"
-    ],
-    "music": "music/level_circuit.ogg",
-    "suggested_car": "hothatch_green",
-    "mood": "jour",
-    "road_type": "road_kart"
+  "roadside": [
+   "tree_cypress",
+   "tree_oak",
+   "bush_flowers"
+  ],
+  "music": "music/level_sunset.ogg",
+  "suggested_car": "retro_beige",
+  "mood": "dore",
+  "road_type": "road_asphalt_warm"
+ },
+ "lac_hiver": {
+  "label": "Lac — hiver",
+  "sky": "backgrounds/sky_winter.png",
+  "sky_clear": "backgrounds/sky_winter_clear.png",
+  "horizon": "backgrounds/horizon_lake.png",
+  "clouds_far": "backgrounds/clouds_storm_far.png",
+  "clouds_near": "backgrounds/clouds_storm_near.png",
+  "road": "roads/road_snow.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "industriel_nuit": {
-    "label": "Zone industrielle — nuit",
-    "sky": "backgrounds/sky_night.png",
-    "sky_clear": "backgrounds/sky_night_clear.png",
-    "horizon": "backgrounds/horizon_industrial.png",
-    "clouds_far": "backgrounds/clouds_night_far.png",
-    "clouds_near": "backgrounds/clouds_night_near.png",
-    "road": "roads/road_asphalt_black.png",
-    "atlases": {
-      "trees": "scenery/trees_night.png",
-      "billboards": "scenery/billboards_night.png",
-      "signs": "scenery/signs_night.png",
-      "buildings": "scenery/buildings_night.png"
-    },
-    "roadside": [
-      "tree_dead",
-      "bush"
-    ],
-    "music": "music/level_night.ogg",
-    "suggested_car": "towtruck_blue",
-    "mood": "nuit",
-    "road_type": "road_asphalt_black"
+  "roadside": [
+   "tree_pine_snow",
+   "rock",
+   "tree_pine_snow"
+  ],
+  "music": "music/level_rain.ogg",
+  "suggested_car": "hypercar_white",
+  "mood": "couvert",
+  "road_type": "road_snow"
+ },
+ "mesa_coucher": {
+  "label": "Désert rouge — coucher de soleil",
+  "sky": "backgrounds/sky_sunset.png",
+  "sky_clear": "backgrounds/sky_sunset_clear.png",
+  "horizon": "backgrounds/horizon_mesa.png",
+  "clouds_far": "backgrounds/clouds_sunset_far.png",
+  "clouds_near": "backgrounds/clouds_sunset_near.png",
+  "road": "roads/road_asphalt_orange.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "ville_pluie": {
-    "label": "Ville — pluie",
-    "sky": "backgrounds/sky_rain.png",
-    "sky_clear": "backgrounds/sky_rain_clear.png",
-    "horizon": "backgrounds/horizon_city_day.png",
-    "clouds_far": "backgrounds/clouds_storm_far.png",
-    "clouds_near": "backgrounds/clouds_storm_near.png",
-    "road": "roads/road_wet.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_oak",
-      "tree_cypress"
-    ],
-    "music": "music/level_rain.ogg",
-    "suggested_car": "gt3_silver",
-    "weather": {
-      "overlay": "fx/fx_rain.png",
-      "splash": "fx/fx_rain_splash.png",
-      "spray": "fx/fx_spray.png",
-      "puddles": "roads/overlay_puddles_a.png",
-      "tint": [
-        0.82,
-        0.86,
-        0.96
-      ]
-    },
-    "mood": "pluie",
-    "road_type": "road_wet"
+  "roadside": [
+   "cactus",
+   "rock",
+   "tree_dead"
+  ],
+  "music": "music/level_sunset.ogg",
+  "suggested_car": "muscle_orange",
+  "mood": "dore",
+  "road_type": "road_asphalt_orange"
+ },
+ "pyramides_nuit": {
+  "label": "Pyramides — nuit de pleine lune",
+  "sky": "backgrounds/sky_fullmoon.png",
+  "sky_clear": "backgrounds/sky_fullmoon_clear.png",
+  "horizon": "backgrounds/horizon_pyramids.png",
+  "clouds_far": "backgrounds/clouds_night_far.png",
+  "clouds_near": "backgrounds/clouds_night_near.png",
+  "road": "roads/road_night.png",
+  "atlases": {
+   "trees": "scenery/trees_night.png",
+   "billboards": "scenery/billboards_night.png",
+   "signs": "scenery/signs_night.png",
+   "buildings": "scenery/buildings_night.png"
   },
-  "autoroute_nuit": {
-    "label": "Autoroute — nuit",
-    "sky": "backgrounds/sky_night.png",
-    "sky_clear": "backgrounds/sky_night_clear.png",
-    "horizon": "backgrounds/horizon_city.png",
-    "clouds_far": "backgrounds/clouds_night_far.png",
-    "clouds_near": "backgrounds/clouds_night_near.png",
-    "road": "roads/road_asphalt_black.png",
-    "atlases": {
-      "trees": "scenery/trees_night.png",
-      "billboards": "scenery/billboards_night.png",
-      "signs": "scenery/signs_night.png",
-      "buildings": "scenery/buildings_night.png"
-    },
-    "roadside": [
-      "tree_cypress",
-      "tree_oak"
-    ],
-    "music": "music/level_night.ogg",
-    "suggested_car": "hypercar_red",
-    "mood": "nuit",
-    "road_type": "road_asphalt_black"
+  "roadside": [
+   "tree_palm",
+   "rock",
+   "cactus"
+  ],
+  "music": "music/level_night.ogg",
+  "suggested_car": "supercar_white",
+  "mood": "nuit",
+  "road_type": "road_night"
+ },
+ "chateau_brume": {
+  "label": "Château — brume",
+  "sky": "backgrounds/sky_fog.png",
+  "sky_clear": "backgrounds/sky_fog_clear.png",
+  "horizon": "backgrounds/horizon_castle.png",
+  "clouds_far": "backgrounds/clouds_storm_far.png",
+  "clouds_near": "backgrounds/clouds_storm_near.png",
+  "road": "roads/road_worn.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "montagne_pourpre": {
-    "label": "Alpes — coucher violet",
-    "sky": "backgrounds/sky_violet.png",
-    "sky_clear": "backgrounds/sky_violet_clear.png",
-    "horizon": "backgrounds/horizon_alps.png",
-    "clouds_far": "backgrounds/clouds_sunset_far.png",
-    "clouds_near": "backgrounds/clouds_sunset_near.png",
-    "road": "roads/road_mountain_narrow.png",
-    "atlases": {
-      "trees": "scenery/trees_night.png",
-      "billboards": "scenery/billboards_night.png",
-      "signs": "scenery/signs_night.png",
-      "buildings": "scenery/buildings_night.png"
-    },
-    "roadside": [
-      "tree_pine",
-      "tree_pine_snow",
-      "rock"
-    ],
-    "music": "music/level_night.ogg",
-    "suggested_car": "gt3_red",
-    "mood": "crepuscule",
-    "road_type": "road_mountain_narrow"
+  "roadside": [
+   "tree_oak",
+   "tree_dead",
+   "bush"
+  ],
+  "music": "music/level_rain.ogg",
+  "suggested_car": "retro_grey",
+  "mood": "couvert",
+  "road_type": "road_worn"
+ },
+ "jungle_pluie": {
+  "label": "Jungle — averse tropicale",
+  "sky": "backgrounds/sky_rain.png",
+  "sky_clear": "backgrounds/sky_rain_clear.png",
+  "horizon": "backgrounds/horizon_jungle.png",
+  "clouds_far": "backgrounds/clouds_storm_far.png",
+  "clouds_near": "backgrounds/clouds_storm_near.png",
+  "road": "roads/road_jungle.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "desert_nuit": {
-    "label": "Désert — nuit étoilée",
-    "sky": "backgrounds/sky_milkyway.png",
-    "sky_clear": "backgrounds/sky_milkyway_clear.png",
-    "horizon": "backgrounds/horizon_canyon.png",
-    "clouds_far": "backgrounds/clouds_night_far.png",
-    "clouds_near": "backgrounds/clouds_night_near.png",
-    "road": "roads/road_desert.png",
-    "atlases": {
-      "trees": "scenery/trees_night.png",
-      "billboards": "scenery/billboards_night.png",
-      "signs": "scenery/signs_night.png",
-      "buildings": "scenery/buildings_night.png"
-    },
-    "roadside": [
-      "cactus",
-      "rock",
-      "tree_dead"
-    ],
-    "music": "music/level_night.ogg",
-    "suggested_car": "muscle_blue",
-    "mood": "nuit",
-    "road_type": "road_desert"
+  "roadside": [
+   "tree_palm",
+   "bush",
+   "bush_flowers"
+  ],
+  "music": "music/level_rain.ogg",
+  "suggested_car": "pickup_olive",
+  "weather": {
+   "overlay": "fx/fx_rain.png",
+   "splash": "fx/fx_rain_splash.png",
+   "spray": "fx/fx_spray.png",
+   "puddles": "roads/overlay_puddles_a.png",
+   "tint": [
+    0.82,
+    0.86,
+    0.96
+   ]
   },
-  "rallye_automne": {
-    "label": "Col d'automne",
-    "sky": "backgrounds/sky_overcast.png",
-    "sky_clear": "backgrounds/sky_overcast_clear.png",
-    "horizon": "backgrounds/horizon_forest.png",
-    "clouds_far": "backgrounds/clouds_storm_far.png",
-    "clouds_near": "backgrounds/clouds_storm_near.png",
-    "road": "roads/road_autumn.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_oak_autumn",
-      "tree_oak_autumn",
-      "tree_pine"
-    ],
-    "music": "music/level_rain.ogg",
-    "suggested_car": "hothatch_green",
-    "mood": "couvert",
-    "road_type": "road_autumn"
+  "mood": "pluie",
+  "road_type": "road_jungle"
+ },
+ "plage_aube": {
+  "label": "Plage — aube",
+  "sky": "backgrounds/sky_dawn.png",
+  "sky_clear": "backgrounds/sky_dawn_clear.png",
+  "horizon": "backgrounds/horizon_sea.png",
+  "clouds_far": "backgrounds/clouds_day_far.png",
+  "clouds_near": "backgrounds/clouds_day_near.png",
+  "road": "roads/road_coast.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "falaises_orage": {
-    "label": "Falaises — orage",
-    "sky": "backgrounds/sky_storm.png",
-    "sky_clear": "backgrounds/sky_storm_clear.png",
-    "horizon": "backgrounds/horizon_cliffs.png",
-    "clouds_far": "backgrounds/clouds_storm_far.png",
-    "clouds_near": "backgrounds/clouds_storm_near.png",
-    "road": "roads/road_wet.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_palm",
-      "bush",
-      "rock"
-    ],
-    "music": "music/level_rain.ogg",
-    "suggested_car": "gt3_blue",
-    "weather": {
-      "overlay": "fx/fx_rain.png",
-      "splash": "fx/fx_rain_splash.png",
-      "spray": "fx/fx_spray.png",
-      "puddles": "roads/overlay_puddles_a.png",
-      "tint": [
-        0.82,
-        0.86,
-        0.96
-      ]
-    },
-    "mood": "pluie",
-    "road_type": "road_wet"
+  "roadside": [
+   "tree_palm",
+   "bush",
+   "rock"
+  ],
+  "music": "music/level_circuit.ogg",
+  "suggested_car": "hothatch_orange",
+  "mood": "jour",
+  "road_type": "road_coast"
+ },
+ "kart_ete": {
+  "label": "Kartodrome — été",
+  "sky": "backgrounds/sky_cumulus.png",
+  "sky_clear": "backgrounds/sky_cumulus_clear.png",
+  "horizon": "backgrounds/horizon_hills.png",
+  "clouds_far": "backgrounds/clouds_day_far.png",
+  "clouds_near": "backgrounds/clouds_day_near.png",
+  "road": "roads/road_kart.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
   },
-  "metropole_jour": {
-    "label": "Métropole — plein jour",
-    "sky": "backgrounds/sky_noon.png",
-    "sky_clear": "backgrounds/sky_noon_clear.png",
-    "horizon": "backgrounds/horizon_metropolis.png",
-    "clouds_far": "backgrounds/clouds_day_far.png",
-    "clouds_near": "backgrounds/clouds_day_near.png",
-    "road": "roads/road_asphalt_teal.png",
-    "atlases": {
-      "trees": "scenery/trees.png",
-      "billboards": "scenery/billboards.png",
-      "signs": "scenery/signs.png",
-      "buildings": "scenery/buildings.png"
-    },
-    "roadside": [
-      "tree_cherry",
-      "tree_cypress"
-    ],
-    "music": "music/level_circuit.ogg",
-    "suggested_car": "futur_teal",
-    "mood": "jour",
-    "road_type": "road_asphalt_teal"
-  }
+  "roadside": [
+   "bush_flowers",
+   "tree_birch"
+  ],
+  "music": "music/level_circuit.ogg",
+  "suggested_car": "hothatch_green",
+  "mood": "jour",
+  "road_type": "road_kart"
+ },
+ "industriel_nuit": {
+  "label": "Zone industrielle — nuit",
+  "sky": "backgrounds/sky_night.png",
+  "sky_clear": "backgrounds/sky_night_clear.png",
+  "horizon": "backgrounds/horizon_industrial.png",
+  "clouds_far": "backgrounds/clouds_night_far.png",
+  "clouds_near": "backgrounds/clouds_night_near.png",
+  "road": "roads/road_asphalt_black.png",
+  "atlases": {
+   "trees": "scenery/trees_night.png",
+   "billboards": "scenery/billboards_night.png",
+   "signs": "scenery/signs_night.png",
+   "buildings": "scenery/buildings_night.png"
+  },
+  "roadside": [
+   "tree_dead",
+   "bush"
+  ],
+  "music": "music/level_night.ogg",
+  "suggested_car": "towtruck_blue",
+  "mood": "nuit",
+  "road_type": "road_asphalt_black"
+ },
+ "ville_pluie": {
+  "label": "Ville — pluie",
+  "sky": "backgrounds/sky_rain.png",
+  "sky_clear": "backgrounds/sky_rain_clear.png",
+  "horizon": "backgrounds/horizon_city_day.png",
+  "clouds_far": "backgrounds/clouds_storm_far.png",
+  "clouds_near": "backgrounds/clouds_storm_near.png",
+  "road": "roads/road_wet.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
+  },
+  "roadside": [
+   "tree_oak",
+   "tree_cypress"
+  ],
+  "music": "music/level_rain.ogg",
+  "suggested_car": "gt3_silver",
+  "weather": {
+   "overlay": "fx/fx_rain.png",
+   "splash": "fx/fx_rain_splash.png",
+   "spray": "fx/fx_spray.png",
+   "puddles": "roads/overlay_puddles_a.png",
+   "tint": [
+    0.82,
+    0.86,
+    0.96
+   ]
+  },
+  "mood": "pluie",
+  "road_type": "road_wet"
+ },
+ "autoroute_nuit": {
+  "label": "Autoroute — nuit",
+  "sky": "backgrounds/sky_night.png",
+  "sky_clear": "backgrounds/sky_night_clear.png",
+  "horizon": "backgrounds/horizon_city.png",
+  "clouds_far": "backgrounds/clouds_night_far.png",
+  "clouds_near": "backgrounds/clouds_night_near.png",
+  "road": "roads/road_asphalt_black.png",
+  "atlases": {
+   "trees": "scenery/trees_night.png",
+   "billboards": "scenery/billboards_night.png",
+   "signs": "scenery/signs_night.png",
+   "buildings": "scenery/buildings_night.png"
+  },
+  "roadside": [
+   "tree_cypress",
+   "tree_oak"
+  ],
+  "music": "music/level_night.ogg",
+  "suggested_car": "hypercar_red",
+  "mood": "nuit",
+  "road_type": "road_asphalt_black"
+ },
+ "montagne_pourpre": {
+  "label": "Alpes — coucher violet",
+  "sky": "backgrounds/sky_violet.png",
+  "sky_clear": "backgrounds/sky_violet_clear.png",
+  "horizon": "backgrounds/horizon_alps.png",
+  "clouds_far": "backgrounds/clouds_sunset_far.png",
+  "clouds_near": "backgrounds/clouds_sunset_near.png",
+  "road": "roads/road_mountain_narrow.png",
+  "atlases": {
+   "trees": "scenery/trees_night.png",
+   "billboards": "scenery/billboards_night.png",
+   "signs": "scenery/signs_night.png",
+   "buildings": "scenery/buildings_night.png"
+  },
+  "roadside": [
+   "tree_pine",
+   "tree_pine_snow",
+   "rock"
+  ],
+  "music": "music/level_night.ogg",
+  "suggested_car": "gt3_red",
+  "mood": "crepuscule",
+  "road_type": "road_mountain_narrow"
+ },
+ "desert_nuit": {
+  "label": "Désert — nuit étoilée",
+  "sky": "backgrounds/sky_milkyway.png",
+  "sky_clear": "backgrounds/sky_milkyway_clear.png",
+  "horizon": "backgrounds/horizon_canyon.png",
+  "clouds_far": "backgrounds/clouds_night_far.png",
+  "clouds_near": "backgrounds/clouds_night_near.png",
+  "road": "roads/road_desert.png",
+  "atlases": {
+   "trees": "scenery/trees_night.png",
+   "billboards": "scenery/billboards_night.png",
+   "signs": "scenery/signs_night.png",
+   "buildings": "scenery/buildings_night.png"
+  },
+  "roadside": [
+   "cactus",
+   "rock",
+   "tree_dead"
+  ],
+  "music": "music/level_night.ogg",
+  "suggested_car": "muscle_blue",
+  "mood": "nuit",
+  "road_type": "road_desert"
+ },
+ "rallye_automne": {
+  "label": "Col d'automne",
+  "sky": "backgrounds/sky_overcast.png",
+  "sky_clear": "backgrounds/sky_overcast_clear.png",
+  "horizon": "backgrounds/horizon_forest.png",
+  "clouds_far": "backgrounds/clouds_storm_far.png",
+  "clouds_near": "backgrounds/clouds_storm_near.png",
+  "road": "roads/road_autumn.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
+  },
+  "roadside": [
+   "tree_oak_autumn",
+   "tree_oak_autumn",
+   "tree_pine"
+  ],
+  "music": "music/level_rain.ogg",
+  "suggested_car": "hothatch_green",
+  "mood": "couvert",
+  "road_type": "road_autumn"
+ },
+ "falaises_orage": {
+  "label": "Falaises — orage",
+  "sky": "backgrounds/sky_storm.png",
+  "sky_clear": "backgrounds/sky_storm_clear.png",
+  "horizon": "backgrounds/horizon_cliffs.png",
+  "clouds_far": "backgrounds/clouds_storm_far.png",
+  "clouds_near": "backgrounds/clouds_storm_near.png",
+  "road": "roads/road_wet.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
+  },
+  "roadside": [
+   "tree_palm",
+   "bush",
+   "rock"
+  ],
+  "music": "music/level_rain.ogg",
+  "suggested_car": "gt3_blue",
+  "weather": {
+   "overlay": "fx/fx_rain.png",
+   "splash": "fx/fx_rain_splash.png",
+   "spray": "fx/fx_spray.png",
+   "puddles": "roads/overlay_puddles_a.png",
+   "tint": [
+    0.82,
+    0.86,
+    0.96
+   ]
+  },
+  "mood": "pluie",
+  "road_type": "road_wet"
+ },
+ "metropole_jour": {
+  "label": "Métropole — plein jour",
+  "sky": "backgrounds/sky_noon.png",
+  "sky_clear": "backgrounds/sky_noon_clear.png",
+  "horizon": "backgrounds/horizon_metropolis.png",
+  "clouds_far": "backgrounds/clouds_day_far.png",
+  "clouds_near": "backgrounds/clouds_day_near.png",
+  "road": "roads/road_asphalt_teal.png",
+  "atlases": {
+   "trees": "scenery/trees.png",
+   "billboards": "scenery/billboards.png",
+   "signs": "scenery/signs.png",
+   "buildings": "scenery/buildings.png"
+  },
+  "roadside": [
+   "tree_cherry",
+   "tree_cypress"
+  ],
+  "music": "music/level_circuit.ogg",
+  "suggested_car": "futur_teal",
+  "mood": "jour",
+  "road_type": "road_asphalt_teal"
+ }
 }

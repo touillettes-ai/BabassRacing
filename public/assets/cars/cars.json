@@ -6,14 +6,14 @@
   "brake_sheets": [
    "safetycar_silver_brake.png"
   ],
-  "pixels_per_meter": 36,
+  "pixels_per_meter": 72,
   "frame": {
-   "w": 160,
-   "h": 96
+   "w": 320,
+   "h": 192
   },
   "anchor": {
-   "x": 80,
-   "y": 79
+   "x": 160,
+   "y": 162
   },
   "yaw_deg": [
    -18,
@@ -28,54 +28,54 @@
    "left3": {
     "x": 0,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
    "left2": {
-    "x": 160,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "left1": {
     "x": 320,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "center": {
-    "x": 480,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right1": {
+   "left1": {
     "x": 640,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "right2": {
-    "x": 800,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right3": {
+   "center": {
     "x": 960,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
+   },
+   "right1": {
+    "x": 1280,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right2": {
+    "x": 1600,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right3": {
+    "x": 1920,
+    "y": 0,
+    "w": 320,
+    "h": 192
    }
   },
   "slope": {
    "frame": {
-    "w": 160,
-    "h": 112
+    "w": 320,
+    "h": 224
    },
    "anchor": {
-    "x": 80,
-    "y": 85
+    "x": 160,
+    "y": 175
    },
    "tilt_deg": 7,
    "sheets_up": [
@@ -87,22 +87,41 @@
   },
   "spin": {
    "frame": {
-    "w": 240,
-    "h": 112
+    "w": 480,
+    "h": 224
    },
    "count": 16,
    "step_deg": 22.5,
    "anchor": {
-    "x": 120,
-    "y": 92
+    "x": 240,
+    "y": 189
    },
    "sheets": [
     "safetycar_silver_spin.png"
    ]
   },
+  "wheel_phases": 3,
+  "wheel_anim": {
+   "rows": 3,
+   "row_h": 192,
+   "row_h_slope": 224,
+   "applies_to": [
+    "sheets",
+    "brake_sheets",
+    "sheets_up",
+    "sheets_down",
+    "damaged_sheets",
+    "puncture_sheets"
+   ],
+   "note": "ligne r (y = r * row_h) = phase de rotation des roues ; boucler 0,1,2 a une cadence proportionnelle a la vitesse (ordre inverse en marche arriere) ; tete-a-queue et stand : 1 seule ligne"
+  },
   "rows": [
-   "flash_a",
-   "flash_b"
+   "flash_a_wheel0",
+   "flash_a_wheel1",
+   "flash_a_wheel2",
+   "flash_b_wheel0",
+   "flash_b_wheel1",
+   "flash_b_wheel2"
   ]
  },
  "hothatch": {
@@ -122,14 +141,14 @@
    "hothatch_green_brake.png",
    "hothatch_orange_brake.png"
   ],
-  "pixels_per_meter": 36,
+  "pixels_per_meter": 72,
   "frame": {
-   "w": 160,
-   "h": 96
+   "w": 320,
+   "h": 192
   },
   "anchor": {
-   "x": 80,
-   "y": 80
+   "x": 160,
+   "y": 165
   },
   "yaw_deg": [
    -18,
@@ -144,54 +163,54 @@
    "left3": {
     "x": 0,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
    "left2": {
-    "x": 160,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "left1": {
     "x": 320,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "center": {
-    "x": 480,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right1": {
+   "left1": {
     "x": 640,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "right2": {
-    "x": 800,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right3": {
+   "center": {
     "x": 960,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
+   },
+   "right1": {
+    "x": 1280,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right2": {
+    "x": 1600,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right3": {
+    "x": 1920,
+    "y": 0,
+    "w": 320,
+    "h": 192
    }
   },
   "slope": {
    "frame": {
-    "w": 160,
-    "h": 112
+    "w": 320,
+    "h": 224
    },
    "anchor": {
-    "x": 80,
-    "y": 89
+    "x": 160,
+    "y": 182
    },
    "tilt_deg": 7,
    "sheets_up": [
@@ -213,14 +232,14 @@
   },
   "spin": {
    "frame": {
-    "w": 240,
-    "h": 112
+    "w": 480,
+    "h": 224
    },
    "count": 16,
    "step_deg": 22.5,
    "anchor": {
-    "x": 120,
-    "y": 94
+    "x": 240,
+    "y": 193
    },
    "sheets": [
     "hothatch_yellow_spin.png",
@@ -230,6 +249,21 @@
     "hothatch_green_spin.png",
     "hothatch_orange_spin.png"
    ]
+  },
+  "wheel_phases": 3,
+  "wheel_anim": {
+   "rows": 3,
+   "row_h": 192,
+   "row_h_slope": 224,
+   "applies_to": [
+    "sheets",
+    "brake_sheets",
+    "sheets_up",
+    "sheets_down",
+    "damaged_sheets",
+    "puncture_sheets"
+   ],
+   "note": "ligne r (y = r * row_h) = phase de rotation des roues ; boucler 0,1,2 a une cadence proportionnelle a la vitesse (ordre inverse en marche arriere) ; tete-a-queue et stand : 1 seule ligne"
   },
   "damaged_sheets": [
    "hothatch_yellow_damaged.png",
@@ -277,14 +311,14 @@
    "gt3_black_brake.png",
    "gt3_yellow_brake.png"
   ],
-  "pixels_per_meter": 36,
+  "pixels_per_meter": 72,
   "frame": {
-   "w": 160,
-   "h": 96
+   "w": 320,
+   "h": 192
   },
   "anchor": {
-   "x": 80,
-   "y": 74
+   "x": 160,
+   "y": 153
   },
   "yaw_deg": [
    -18,
@@ -299,54 +333,54 @@
    "left3": {
     "x": 0,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
    "left2": {
-    "x": 160,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "left1": {
     "x": 320,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "center": {
-    "x": 480,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right1": {
+   "left1": {
     "x": 640,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "right2": {
-    "x": 800,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right3": {
+   "center": {
     "x": 960,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
+   },
+   "right1": {
+    "x": 1280,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right2": {
+    "x": 1600,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right3": {
+    "x": 1920,
+    "y": 0,
+    "w": 320,
+    "h": 192
    }
   },
   "slope": {
    "frame": {
-    "w": 160,
-    "h": 112
+    "w": 320,
+    "h": 224
    },
    "anchor": {
-    "x": 80,
-    "y": 79
+    "x": 160,
+    "y": 162
    },
    "tilt_deg": 7,
    "sheets_up": [
@@ -368,14 +402,14 @@
   },
   "spin": {
    "frame": {
-    "w": 240,
-    "h": 112
+    "w": 480,
+    "h": 224
    },
    "count": 16,
    "step_deg": 22.5,
    "anchor": {
-    "x": 120,
-    "y": 90
+    "x": 240,
+    "y": 184
    },
    "sheets": [
     "gt3_green_spin.png",
@@ -385,6 +419,21 @@
     "gt3_black_spin.png",
     "gt3_yellow_spin.png"
    ]
+  },
+  "wheel_phases": 3,
+  "wheel_anim": {
+   "rows": 3,
+   "row_h": 192,
+   "row_h_slope": 224,
+   "applies_to": [
+    "sheets",
+    "brake_sheets",
+    "sheets_up",
+    "sheets_down",
+    "damaged_sheets",
+    "puncture_sheets"
+   ],
+   "note": "ligne r (y = r * row_h) = phase de rotation des roues ; boucler 0,1,2 a une cadence proportionnelle a la vitesse (ordre inverse en marche arriere) ; tete-a-queue et stand : 1 seule ligne"
   },
   "damaged_sheets": [
    "gt3_green_damaged.png",
@@ -432,14 +481,14 @@
    "f1_green_brake.png",
    "f1_pink_brake.png"
   ],
-  "pixels_per_meter": 36,
+  "pixels_per_meter": 72,
   "frame": {
-   "w": 160,
-   "h": 96
+   "w": 320,
+   "h": 192
   },
   "anchor": {
-   "x": 80,
-   "y": 74
+   "x": 160,
+   "y": 152
   },
   "yaw_deg": [
    -18,
@@ -454,54 +503,54 @@
    "left3": {
     "x": 0,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
    "left2": {
-    "x": 160,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "left1": {
     "x": 320,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "center": {
-    "x": 480,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right1": {
+   "left1": {
     "x": 640,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "right2": {
-    "x": 800,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right3": {
+   "center": {
     "x": 960,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
+   },
+   "right1": {
+    "x": 1280,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right2": {
+    "x": 1600,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right3": {
+    "x": 1920,
+    "y": 0,
+    "w": 320,
+    "h": 192
    }
   },
   "slope": {
    "frame": {
-    "w": 160,
-    "h": 112
+    "w": 320,
+    "h": 224
    },
    "anchor": {
-    "x": 80,
-    "y": 79
+    "x": 160,
+    "y": 163
    },
    "tilt_deg": 7,
    "sheets_up": [
@@ -523,14 +572,14 @@
   },
   "spin": {
    "frame": {
-    "w": 240,
-    "h": 112
+    "w": 480,
+    "h": 224
    },
    "count": 16,
    "step_deg": 22.5,
    "anchor": {
-    "x": 120,
-    "y": 81
+    "x": 240,
+    "y": 167
    },
    "sheets": [
     "f1_red_spin.png",
@@ -540,6 +589,21 @@
     "f1_green_spin.png",
     "f1_pink_spin.png"
    ]
+  },
+  "wheel_phases": 3,
+  "wheel_anim": {
+   "rows": 3,
+   "row_h": 192,
+   "row_h_slope": 224,
+   "applies_to": [
+    "sheets",
+    "brake_sheets",
+    "sheets_up",
+    "sheets_down",
+    "damaged_sheets",
+    "puncture_sheets"
+   ],
+   "note": "ligne r (y = r * row_h) = phase de rotation des roues ; boucler 0,1,2 a une cadence proportionnelle a la vitesse (ordre inverse en marche arriere) ; tete-a-queue et stand : 1 seule ligne"
   },
   "damaged_sheets": [
    "f1_red_damaged.png",
@@ -587,14 +651,14 @@
    "hypercar_yellow_brake.png",
    "hypercar_green_brake.png"
   ],
-  "pixels_per_meter": 36,
+  "pixels_per_meter": 72,
   "frame": {
-   "w": 160,
-   "h": 96
+   "w": 320,
+   "h": 192
   },
   "anchor": {
-   "x": 80,
-   "y": 71
+   "x": 160,
+   "y": 147
   },
   "yaw_deg": [
    -18,
@@ -609,54 +673,54 @@
    "left3": {
     "x": 0,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
    "left2": {
-    "x": 160,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "left1": {
     "x": 320,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "center": {
-    "x": 480,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right1": {
+   "left1": {
     "x": 640,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "right2": {
-    "x": 800,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right3": {
+   "center": {
     "x": 960,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
+   },
+   "right1": {
+    "x": 1280,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right2": {
+    "x": 1600,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right3": {
+    "x": 1920,
+    "y": 0,
+    "w": 320,
+    "h": 192
    }
   },
   "slope": {
    "frame": {
-    "w": 160,
-    "h": 112
+    "w": 320,
+    "h": 224
    },
    "anchor": {
-    "x": 80,
-    "y": 74
+    "x": 160,
+    "y": 153
    },
    "tilt_deg": 7,
    "sheets_up": [
@@ -678,14 +742,14 @@
   },
   "spin": {
    "frame": {
-    "w": 240,
-    "h": 112
+    "w": 480,
+    "h": 224
    },
    "count": 16,
    "step_deg": 22.5,
    "anchor": {
-    "x": 120,
-    "y": 87
+    "x": 240,
+    "y": 178
    },
    "sheets": [
     "hypercar_white_spin.png",
@@ -695,6 +759,21 @@
     "hypercar_yellow_spin.png",
     "hypercar_green_spin.png"
    ]
+  },
+  "wheel_phases": 3,
+  "wheel_anim": {
+   "rows": 3,
+   "row_h": 192,
+   "row_h_slope": 224,
+   "applies_to": [
+    "sheets",
+    "brake_sheets",
+    "sheets_up",
+    "sheets_down",
+    "damaged_sheets",
+    "puncture_sheets"
+   ],
+   "note": "ligne r (y = r * row_h) = phase de rotation des roues ; boucler 0,1,2 a une cadence proportionnelle a la vitesse (ordre inverse en marche arriere) ; tete-a-queue et stand : 1 seule ligne"
   },
   "damaged_sheets": [
    "hypercar_white_damaged.png",
@@ -742,14 +821,14 @@
    "muscle_yellow_brake.png",
    "muscle_purple_brake.png"
   ],
-  "pixels_per_meter": 36,
+  "pixels_per_meter": 72,
   "frame": {
-   "w": 160,
-   "h": 96
+   "w": 320,
+   "h": 192
   },
   "anchor": {
-   "x": 80,
-   "y": 79
+   "x": 160,
+   "y": 161
   },
   "yaw_deg": [
    -18,
@@ -764,54 +843,54 @@
    "left3": {
     "x": 0,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
    "left2": {
-    "x": 160,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "left1": {
     "x": 320,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "center": {
-    "x": 480,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right1": {
+   "left1": {
     "x": 640,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "right2": {
-    "x": 800,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right3": {
+   "center": {
     "x": 960,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
+   },
+   "right1": {
+    "x": 1280,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right2": {
+    "x": 1600,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right3": {
+    "x": 1920,
+    "y": 0,
+    "w": 320,
+    "h": 192
    }
   },
   "slope": {
    "frame": {
-    "w": 160,
-    "h": 112
+    "w": 320,
+    "h": 224
    },
    "anchor": {
-    "x": 80,
-    "y": 84
+    "x": 160,
+    "y": 173
    },
    "tilt_deg": 7,
    "sheets_up": [
@@ -833,14 +912,14 @@
   },
   "spin": {
    "frame": {
-    "w": 240,
-    "h": 112
+    "w": 480,
+    "h": 224
    },
    "count": 16,
    "step_deg": 22.5,
    "anchor": {
-    "x": 120,
-    "y": 93
+    "x": 240,
+    "y": 189
    },
    "sheets": [
     "muscle_orange_spin.png",
@@ -850,6 +929,21 @@
     "muscle_yellow_spin.png",
     "muscle_purple_spin.png"
    ]
+  },
+  "wheel_phases": 3,
+  "wheel_anim": {
+   "rows": 3,
+   "row_h": 192,
+   "row_h_slope": 224,
+   "applies_to": [
+    "sheets",
+    "brake_sheets",
+    "sheets_up",
+    "sheets_down",
+    "damaged_sheets",
+    "puncture_sheets"
+   ],
+   "note": "ligne r (y = r * row_h) = phase de rotation des roues ; boucler 0,1,2 a une cadence proportionnelle a la vitesse (ordre inverse en marche arriere) ; tete-a-queue et stand : 1 seule ligne"
   },
   "damaged_sheets": [
    "muscle_orange_damaged.png",
@@ -897,14 +991,14 @@
    "retro_green_brake.png",
    "retro_grey_brake.png"
   ],
-  "pixels_per_meter": 36,
+  "pixels_per_meter": 72,
   "frame": {
-   "w": 160,
-   "h": 96
+   "w": 320,
+   "h": 192
   },
   "anchor": {
-   "x": 80,
-   "y": 81
+   "x": 160,
+   "y": 167
   },
   "yaw_deg": [
    -18,
@@ -919,54 +1013,54 @@
    "left3": {
     "x": 0,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
    "left2": {
-    "x": 160,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "left1": {
     "x": 320,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "center": {
-    "x": 480,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right1": {
+   "left1": {
     "x": 640,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "right2": {
-    "x": 800,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right3": {
+   "center": {
     "x": 960,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
+   },
+   "right1": {
+    "x": 1280,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right2": {
+    "x": 1600,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right3": {
+    "x": 1920,
+    "y": 0,
+    "w": 320,
+    "h": 192
    }
   },
   "slope": {
    "frame": {
-    "w": 160,
-    "h": 112
+    "w": 320,
+    "h": 224
    },
    "anchor": {
-    "x": 80,
-    "y": 90
+    "x": 160,
+    "y": 185
    },
    "tilt_deg": 7,
    "sheets_up": [
@@ -988,14 +1082,14 @@
   },
   "spin": {
    "frame": {
-    "w": 240,
-    "h": 112
+    "w": 480,
+    "h": 224
    },
    "count": 16,
    "step_deg": 22.5,
    "anchor": {
-    "x": 120,
-    "y": 95
+    "x": 240,
+    "y": 195
    },
    "sheets": [
     "retro_white_spin.png",
@@ -1005,6 +1099,21 @@
     "retro_green_spin.png",
     "retro_grey_spin.png"
    ]
+  },
+  "wheel_phases": 3,
+  "wheel_anim": {
+   "rows": 3,
+   "row_h": 192,
+   "row_h_slope": 224,
+   "applies_to": [
+    "sheets",
+    "brake_sheets",
+    "sheets_up",
+    "sheets_down",
+    "damaged_sheets",
+    "puncture_sheets"
+   ],
+   "note": "ligne r (y = r * row_h) = phase de rotation des roues ; boucler 0,1,2 a une cadence proportionnelle a la vitesse (ordre inverse en marche arriere) ; tete-a-queue et stand : 1 seule ligne"
   },
   "damaged_sheets": [
    "retro_white_damaged.png",
@@ -1052,14 +1161,14 @@
    "wedge_blue_brake.png",
    "wedge_silver_brake.png"
   ],
-  "pixels_per_meter": 36,
+  "pixels_per_meter": 72,
   "frame": {
-   "w": 160,
-   "h": 96
+   "w": 320,
+   "h": 192
   },
   "anchor": {
-   "x": 80,
-   "y": 79
+   "x": 160,
+   "y": 163
   },
   "yaw_deg": [
    -18,
@@ -1074,54 +1183,54 @@
    "left3": {
     "x": 0,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
    "left2": {
-    "x": 160,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "left1": {
     "x": 320,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "center": {
-    "x": 480,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right1": {
+   "left1": {
     "x": 640,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "right2": {
-    "x": 800,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right3": {
+   "center": {
     "x": 960,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
+   },
+   "right1": {
+    "x": 1280,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right2": {
+    "x": 1600,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right3": {
+    "x": 1920,
+    "y": 0,
+    "w": 320,
+    "h": 192
    }
   },
   "slope": {
    "frame": {
-    "w": 160,
-    "h": 112
+    "w": 320,
+    "h": 224
    },
    "anchor": {
-    "x": 80,
-    "y": 88
+    "x": 160,
+    "y": 180
    },
    "tilt_deg": 7,
    "sheets_up": [
@@ -1143,14 +1252,14 @@
   },
   "spin": {
    "frame": {
-    "w": 240,
-    "h": 112
+    "w": 480,
+    "h": 224
    },
    "count": 16,
    "step_deg": 22.5,
    "anchor": {
-    "x": 120,
-    "y": 93
+    "x": 240,
+    "y": 190
    },
    "sheets": [
     "wedge_red_spin.png",
@@ -1160,6 +1269,21 @@
     "wedge_blue_spin.png",
     "wedge_silver_spin.png"
    ]
+  },
+  "wheel_phases": 3,
+  "wheel_anim": {
+   "rows": 3,
+   "row_h": 192,
+   "row_h_slope": 224,
+   "applies_to": [
+    "sheets",
+    "brake_sheets",
+    "sheets_up",
+    "sheets_down",
+    "damaged_sheets",
+    "puncture_sheets"
+   ],
+   "note": "ligne r (y = r * row_h) = phase de rotation des roues ; boucler 0,1,2 a une cadence proportionnelle a la vitesse (ordre inverse en marche arriere) ; tete-a-queue et stand : 1 seule ligne"
   },
   "damaged_sheets": [
    "wedge_red_damaged.png",
@@ -1207,14 +1331,14 @@
    "futur_teal_brake.png",
    "futur_red_brake.png"
   ],
-  "pixels_per_meter": 36,
+  "pixels_per_meter": 72,
   "frame": {
-   "w": 160,
-   "h": 96
+   "w": 320,
+   "h": 192
   },
   "anchor": {
-   "x": 80,
-   "y": 78
+   "x": 160,
+   "y": 160
   },
   "yaw_deg": [
    -18,
@@ -1229,54 +1353,54 @@
    "left3": {
     "x": 0,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
    "left2": {
-    "x": 160,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "left1": {
     "x": 320,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "center": {
-    "x": 480,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right1": {
+   "left1": {
     "x": 640,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "right2": {
-    "x": 800,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right3": {
+   "center": {
     "x": 960,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
+   },
+   "right1": {
+    "x": 1280,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right2": {
+    "x": 1600,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right3": {
+    "x": 1920,
+    "y": 0,
+    "w": 320,
+    "h": 192
    }
   },
   "slope": {
    "frame": {
-    "w": 160,
-    "h": 112
+    "w": 320,
+    "h": 224
    },
    "anchor": {
-    "x": 80,
-    "y": 86
+    "x": 160,
+    "y": 177
    },
    "tilt_deg": 7,
    "sheets_up": [
@@ -1298,14 +1422,14 @@
   },
   "spin": {
    "frame": {
-    "w": 240,
-    "h": 112
+    "w": 480,
+    "h": 224
    },
    "count": 16,
    "step_deg": 22.5,
    "anchor": {
-    "x": 120,
-    "y": 93
+    "x": 240,
+    "y": 190
    },
    "sheets": [
     "futur_white_spin.png",
@@ -1315,6 +1439,21 @@
     "futur_teal_spin.png",
     "futur_red_spin.png"
    ]
+  },
+  "wheel_phases": 3,
+  "wheel_anim": {
+   "rows": 3,
+   "row_h": 192,
+   "row_h_slope": 224,
+   "applies_to": [
+    "sheets",
+    "brake_sheets",
+    "sheets_up",
+    "sheets_down",
+    "damaged_sheets",
+    "puncture_sheets"
+   ],
+   "note": "ligne r (y = r * row_h) = phase de rotation des roues ; boucler 0,1,2 a une cadence proportionnelle a la vitesse (ordre inverse en marche arriere) ; tete-a-queue et stand : 1 seule ligne"
   },
   "damaged_sheets": [
    "futur_white_damaged.png",
@@ -1362,14 +1501,14 @@
    "supercar_white_brake.png",
    "supercar_lime_brake.png"
   ],
-  "pixels_per_meter": 36,
+  "pixels_per_meter": 72,
   "frame": {
-   "w": 160,
-   "h": 96
+   "w": 320,
+   "h": 192
   },
   "anchor": {
-   "x": 80,
-   "y": 76
+   "x": 160,
+   "y": 156
   },
   "yaw_deg": [
    -18,
@@ -1384,54 +1523,54 @@
    "left3": {
     "x": 0,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
    "left2": {
-    "x": 160,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "left1": {
     "x": 320,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "center": {
-    "x": 480,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right1": {
+   "left1": {
     "x": 640,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "right2": {
-    "x": 800,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right3": {
+   "center": {
     "x": 960,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
+   },
+   "right1": {
+    "x": 1280,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right2": {
+    "x": 1600,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right3": {
+    "x": 1920,
+    "y": 0,
+    "w": 320,
+    "h": 192
    }
   },
   "slope": {
    "frame": {
-    "w": 160,
-    "h": 112
+    "w": 320,
+    "h": 224
    },
    "anchor": {
-    "x": 80,
-    "y": 80
+    "x": 160,
+    "y": 164
    },
    "tilt_deg": 7,
    "sheets_up": [
@@ -1453,14 +1592,14 @@
   },
   "spin": {
    "frame": {
-    "w": 240,
-    "h": 112
+    "w": 480,
+    "h": 224
    },
    "count": 16,
    "step_deg": 22.5,
    "anchor": {
-    "x": 120,
-    "y": 91
+    "x": 240,
+    "y": 186
    },
    "sheets": [
     "supercar_orange_spin.png",
@@ -1470,6 +1609,21 @@
     "supercar_white_spin.png",
     "supercar_lime_spin.png"
    ]
+  },
+  "wheel_phases": 3,
+  "wheel_anim": {
+   "rows": 3,
+   "row_h": 192,
+   "row_h_slope": 224,
+   "applies_to": [
+    "sheets",
+    "brake_sheets",
+    "sheets_up",
+    "sheets_down",
+    "damaged_sheets",
+    "puncture_sheets"
+   ],
+   "note": "ligne r (y = r * row_h) = phase de rotation des roues ; boucler 0,1,2 a une cadence proportionnelle a la vitesse (ordre inverse en marche arriere) ; tete-a-queue et stand : 1 seule ligne"
   },
   "damaged_sheets": [
    "supercar_orange_damaged.png",
@@ -1517,14 +1671,14 @@
    "pickup_white_brake.png",
    "pickup_red_brake.png"
   ],
-  "pixels_per_meter": 36,
+  "pixels_per_meter": 72,
   "frame": {
-   "w": 160,
-   "h": 96
+   "w": 320,
+   "h": 192
   },
   "anchor": {
-   "x": 80,
-   "y": 75
+   "x": 160,
+   "y": 155
   },
   "yaw_deg": [
    -18,
@@ -1539,54 +1693,54 @@
    "left3": {
     "x": 0,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
    "left2": {
-    "x": 160,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "left1": {
     "x": 320,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "center": {
-    "x": 480,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right1": {
+   "left1": {
     "x": 640,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "right2": {
-    "x": 800,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right3": {
+   "center": {
     "x": 960,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
+   },
+   "right1": {
+    "x": 1280,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right2": {
+    "x": 1600,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right3": {
+    "x": 1920,
+    "y": 0,
+    "w": 320,
+    "h": 192
    }
   },
   "slope": {
    "frame": {
-    "w": 160,
-    "h": 112
+    "w": 320,
+    "h": 224
    },
    "anchor": {
-    "x": 80,
-    "y": 79
+    "x": 160,
+    "y": 163
    },
    "tilt_deg": 7,
    "sheets_up": [
@@ -1608,14 +1762,14 @@
   },
   "spin": {
    "frame": {
-    "w": 240,
-    "h": 112
+    "w": 480,
+    "h": 224
    },
    "count": 16,
    "step_deg": 22.5,
    "anchor": {
-    "x": 120,
-    "y": 90
+    "x": 240,
+    "y": 183
    },
    "sheets": [
     "pickup_steel_spin.png",
@@ -1625,6 +1779,21 @@
     "pickup_white_spin.png",
     "pickup_red_spin.png"
    ]
+  },
+  "wheel_phases": 3,
+  "wheel_anim": {
+   "rows": 3,
+   "row_h": 192,
+   "row_h_slope": 224,
+   "applies_to": [
+    "sheets",
+    "brake_sheets",
+    "sheets_up",
+    "sheets_down",
+    "damaged_sheets",
+    "puncture_sheets"
+   ],
+   "note": "ligne r (y = r * row_h) = phase de rotation des roues ; boucler 0,1,2 a une cadence proportionnelle a la vitesse (ordre inverse en marche arriere) ; tete-a-queue et stand : 1 seule ligne"
   },
   "damaged_sheets": [
    "pickup_steel_damaged.png",
@@ -1672,14 +1841,14 @@
    "towtruck_blue_brake.png",
    "towtruck_black_brake.png"
   ],
-  "pixels_per_meter": 27,
+  "pixels_per_meter": 54,
   "frame": {
-   "w": 160,
-   "h": 96
+   "w": 320,
+   "h": 192
   },
   "anchor": {
-   "x": 80,
-   "y": 80
+   "x": 160,
+   "y": 164
   },
   "yaw_deg": [
    -18,
@@ -1694,54 +1863,54 @@
    "left3": {
     "x": 0,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
    "left2": {
-    "x": 160,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "left1": {
     "x": 320,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "center": {
-    "x": 480,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right1": {
+   "left1": {
     "x": 640,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
    },
-   "right2": {
-    "x": 800,
-    "y": 0,
-    "w": 160,
-    "h": 96
-   },
-   "right3": {
+   "center": {
     "x": 960,
     "y": 0,
-    "w": 160,
-    "h": 96
+    "w": 320,
+    "h": 192
+   },
+   "right1": {
+    "x": 1280,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right2": {
+    "x": 1600,
+    "y": 0,
+    "w": 320,
+    "h": 192
+   },
+   "right3": {
+    "x": 1920,
+    "y": 0,
+    "w": 320,
+    "h": 192
    }
   },
   "slope": {
    "frame": {
-    "w": 160,
-    "h": 112
+    "w": 320,
+    "h": 224
    },
    "anchor": {
-    "x": 80,
-    "y": 84
+    "x": 160,
+    "y": 173
    },
    "tilt_deg": 7,
    "sheets_up": [
@@ -1763,14 +1932,14 @@
   },
   "spin": {
    "frame": {
-    "w": 240,
-    "h": 112
+    "w": 480,
+    "h": 224
    },
    "count": 16,
    "step_deg": 22.5,
    "anchor": {
-    "x": 120,
-    "y": 94
+    "x": 240,
+    "y": 192
    },
    "sheets": [
     "towtruck_orange_spin.png",
@@ -1780,6 +1949,21 @@
     "towtruck_blue_spin.png",
     "towtruck_black_spin.png"
    ]
+  },
+  "wheel_phases": 3,
+  "wheel_anim": {
+   "rows": 3,
+   "row_h": 192,
+   "row_h_slope": 224,
+   "applies_to": [
+    "sheets",
+    "brake_sheets",
+    "sheets_up",
+    "sheets_down",
+    "damaged_sheets",
+    "puncture_sheets"
+   ],
+   "note": "ligne r (y = r * row_h) = phase de rotation des roues ; boucler 0,1,2 a une cadence proportionnelle a la vitesse (ordre inverse en marche arriere) ; tete-a-queue et stand : 1 seule ligne"
   },
   "damaged_sheets": [
    "towtruck_orange_damaged.png",

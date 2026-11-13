@@ -4,68 +4,69 @@
   "fuel_rig": {
    "x": 0,
    "y": 0,
-   "w": 60,
-   "h": 86,
+   "w": 120,
+   "h": 172,
    "anchor": {
-    "x": 30,
-    "y": 76
+    "x": 60,
+    "y": 152
    },
-   "pixels_per_meter": 36
+   "pixels_per_meter": 72
   },
   "tool_cart": {
-   "x": 62,
+   "x": 124,
    "y": 0,
-   "w": 50,
-   "h": 46,
+   "w": 100,
+   "h": 92,
    "anchor": {
-    "x": 25,
-    "y": 39
+    "x": 50,
+    "y": 78
    },
-   "pixels_per_meter": 36
+   "pixels_per_meter": 72
   },
   "tyre_stack": {
-   "x": 114,
+   "x": 228,
    "y": 0,
-   "w": 42,
-   "h": 43,
+   "w": 84,
+   "h": 86,
    "anchor": {
-    "x": 21,
-    "y": 35
+    "x": 42,
+    "y": 70
    },
-   "pixels_per_meter": 36
+   "pixels_per_meter": 72
   },
   "tyre_side_view": {
-   "x": 158,
+   "x": 316,
    "y": 0,
-   "w": 36,
-   "h": 34,
+   "w": 72,
+   "h": 68,
    "anchor": {
-    "x": 18,
-    "y": 28
+    "x": 36,
+    "y": 56
    },
-   "pixels_per_meter": 36
+   "pixels_per_meter": 72
   },
   "tyre_rear_view": {
-   "x": 196,
+   "x": 392,
    "y": 0,
-   "w": 24,
-   "h": 33,
+   "w": 48,
+   "h": 66,
    "anchor": {
-    "x": 12,
-    "y": 27
+    "x": 24,
+    "y": 54
    },
-   "pixels_per_meter": 36
+   "pixels_per_meter": 72
   },
   "jerrycan": {
-   "x": 222,
+   "x": 444,
    "y": 0,
-   "w": 24,
-   "h": 30,
+   "w": 48,
+   "h": 60,
    "anchor": {
-    "x": 12,
-    "y": 24
+    "x": 24,
+    "y": 48
    },
-   "pixels_per_meter": 36
+   "pixels_per_meter": 72
   }
- }
+ },
+ "hd": "x2"
 }

@@ -111,7 +111,7 @@ export class PitCrew {
     const add = (p: Pose | null) => {
       if (!p) return;
       out.push({
-        img: a.mechanic, sx: p.frame * 96, sy: 0, sw: 96, sh: 84, ax: 48, ay: 76, ppm: PPM,
+        img: a.mechanic, sx: p.frame * 96 * RENDER.hd, sy: 0, sw: 96 * RENDER.hd, sh: 84 * RENDER.hd, ax: 48 * RENDER.hd, ay: 76 * RENDER.hd, ppm: PPM * RENDER.hd,
         z: this.z + dyToDz(p.dy), x: this.x + p.dx / PPM, flip: p.flip,
       });
     };

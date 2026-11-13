@@ -52,7 +52,7 @@ export interface LevelDef {
   roadside: string[];
   music: string;
   /** Météo (levels.json) : pluie, éclairs, teinte, flaques… */
-  weather?: { overlay?: string; lightning?: string; tint?: number[] };
+  weather?: { overlay?: string; lightning?: string; splash?: string; spray?: string; puddles?: string; tint?: number[] };
   /** Marquages au sol posés par le jeu (surcouches `roads/overlay_*.png`), choisis dans circuits.json */
   overlays?: string[];
 }
@@ -153,7 +153,7 @@ export async function loadSafetyCar(): Promise<SafetyCarAssets> {
     loadImage('cars/safetycar_silver.png'),
     loadImage('cars/towtruck_yellow.png'),
   ]);
-  return { sheet, spec: cars.safetycar, tow, towPpm: (cars.towtruck as unknown as { pixels_per_meter?: number })?.pixels_per_meter ?? 27 };
+  return { sheet, spec: cars.safetycar, tow, towPpm: (cars.towtruck as unknown as { pixels_per_meter?: number })?.pixels_per_meter ?? 54 };
 }
 
 export interface MarshalAssets {
@@ -177,6 +177,9 @@ export async function loadAssets(levelId: string, carId: string, override?: Part
   if (!levels[levelId]) throw new Error('Niveau inconnu : ' + levelId);
   // assets choisis pour le circuit (circuits.json) par-dessus l'ambiance
   const level: LevelDef = { ...levels[levelId], ...override };
+  // flaques de la météo : une surcouche de marquage de plus (posée par RoadRenderer.setOverlays)
+  const puddles = level.weather?.puddles;
+  if (puddles && !(level.overlays ?? []).includes(puddles)) level.overlays = [...(level.overlays ?? []), puddles];
 
   const [roadsJson, fxJson] = await Promise.all([
     loadJSON<{ textures: Record<string, { palette: { shoulder: number[] } }> }>('roads/roads.json'),
@@ -184,7 +187,7 @@ export async function loadAssets(levelId: string, carId: string, override?: Part
   ]);
 
   const atlasNames = Object.keys(level.atlases);
-  const fxNames = ['fx_smoke', 'fx_dust', 'fx_grass', 'fx_sparks', 'fx_exhaust_flame'];
+  const fxNames = ['fx_smoke', 'fx_dust', 'fx_grass', 'fx_sparks', 'fx_exhaust_flame', 'fx_spray', 'fx_rain_splash'];
 
   const [sky, cloudsFar, cloudsNear, horizon, roadImg, car, hud, needle, fontSmall, fontBig, atlasList, fxImgs, pit, gantryImg, startJson, overlayImg, pitRoadImg, pitBoxImg, mechanic, startLights] =
     await Promise.all([
@@ -256,7 +259,7 @@ export async function loadAssets(levelId: string, carId: string, override?: Part
   return {
     level, sky, cloudsFar, cloudsNear, horizon, roadTex, overlayStart, pitRoadTex, pitBoxOverlay, mechanic,
     roadMips: buildMips(roadTex), pitMips: buildMips(pitRoadTex),
-    startLights, gantryStart: gantryImg, lightsSlot: g.lights_slot ?? { x: 156, y: 62, w: 108, h: 31 },
+    startLights, gantryStart: gantryImg, lightsSlot: g.lights_slot ?? { x: 312, y: 124, w: 216, h: 62 },
     groundColor: rgbToCss(shoulder),
     overlayPix, weatherFx,
     atlases,

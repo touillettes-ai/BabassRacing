@@ -65,7 +65,7 @@ export class TitleScreen {
   }
 
   draw(ctx: CanvasRenderingContext2D, ui: UiAssets): void {
-    ctx.drawImage(ui.title, 0, 0);
+    ctx.drawImage(ui.title, 0, 0, RENDER.width, RENDER.height);
     if (this.stage === 'press') {
       if (Math.floor(this.clock * 2) % 2 === 0) drawTextCentered(ctx, ui, tk('title.press'), W / 2, H - 24);
       return;
@@ -166,7 +166,7 @@ export class SelectScreen {
     const sel = ALL_RACES[this.cursor];
     panel(ctx, 262, 28, 210, LIST_ROWS * ROW_H + 12);
     const img = preview(sel.cat.model, sel.cat.playerColor);
-    if (img) ctx.drawImage(img, 8 * 240, 0, 240, 112, 262 + 105 - 120, 40, 240, 112);
+    if (img) ctx.drawImage(img, 8 * 240 * RENDER.hd, 0, 240 * RENDER.hd, 112 * RENDER.hd, 262 + 105 - 120, 40, 240, 112);
     drawTextCentered(ctx, ui, tk(sel.cat.nameKey), 262 + 105, 150);
     drawTextCentered(ctx, ui, tk('select.car', { v: tk(`car.${sel.cat.model}`) }), 262 + 105, 164);
     drawTextCentered(ctx, ui, tk('select.vmax', { n: Math.round(sel.cat.maxSpeed * 3.6) }), 262 + 105, 178);
@@ -226,7 +226,7 @@ export class ResultsScreen {
 
     // podium : pose du pack (podium.png, offsets des marches dans podium.json)
     const cx = 124, cy = 214;
-    ctx.drawImage(ui.podium, 302, 0, 232, 46, cx - 117, cy - 47, 232, 46);
+    ctx.drawImage(ui.podium, 302 * RENDER.hd, 0, 232 * RENDER.hd, 46 * RENDER.hd, cx - 117, cy - 47, 232, 46);
     const stand = [{ dx: -1, dy: -44 }, { dx: -77, dy: -26 }, { dx: 75, dy: -18 }];
     let other = 0;
     const others = ['white', 'green'];
@@ -234,7 +234,7 @@ export class ResultsScreen {
       const color = r.isPlayer ? (s.playerDriver ?? 'red') : r.id === 'kevin' ? (s.playerDriver === 'blue' ? 'white' : 'blue') : others[other++ % 2];
       const img = ui.drivers[color] ?? ui.drivers.white;
       const frame = i === 0 ? 14 + (Math.floor(this.clock * 3) % 2) : 10 + (Math.floor(this.clock * 8) % 4);
-      ctx.drawImage(img, frame * DRIVER_FRAME.w, 0, DRIVER_FRAME.w, DRIVER_FRAME.h,
+      ctx.drawImage(img, frame * DRIVER_FRAME.w * RENDER.hd, 0, DRIVER_FRAME.w * RENDER.hd, DRIVER_FRAME.h * RENDER.hd,
         cx + stand[i].dx - DRIVER_FRAME.ax, cy + stand[i].dy - DRIVER_FRAME.ay, DRIVER_FRAME.w, DRIVER_FRAME.h);
     });
     void DRIVER_COLORS;
@@ -278,7 +278,7 @@ export class EndScreen {
   }
   draw(ctx: CanvasRenderingContext2D, ui: UiAssets): void {
     drawBackdrop(ctx, ui, this.clock * 8);
-    ctx.drawImage(ui.logo, W / 2 - 192, 20);
+    ctx.drawImage(ui.logo, W / 2 - 192, 20, ui.logo.width / RENDER.hd, ui.logo.height / RENDER.hd);
     drawTextCentered(ctx, ui, tk('end.fin'), W / 2, 130);
     drawTextCentered(ctx, ui, tk(`end.${this.kind}`), W / 2, 156);
     drawTextCentered(ctx, ui, tk('end.thanks'), W / 2, 180);
@@ -336,7 +336,7 @@ export class TimeAttackScreen {
     const cat = CATEGORIES[this.car];
     const info = ALL_RACES[this.track];
     const img = preview(cat.model, cat.playerColor);
-    if (img) ctx.drawImage(img, 8 * 240, 0, 240, 112, W / 2 - 120, 28, 240, 112);
+    if (img) ctx.drawImage(img, 8 * 240 * RENDER.hd, 0, 240 * RENDER.hd, 112 * RENDER.hd, W / 2 - 120, 28, 240, 112);
 
     const lines = [
       [tk('ta.car'), tk(`car.${cat.model}`) + '  ' + Math.round(cat.maxSpeed * 3.6) + ' KM/H'],
@@ -549,7 +549,7 @@ export class TeamScreen {
     const model = Object.keys(this.colors).find((m) => team.prefs.some((c) => this.colors[m].includes(c)));
     if (model) {
       const img = preview(model, pickColor(team.id, this.colors[model]));
-      if (img) ctx.drawImage(img, 8 * 240, 0, 240, 112, W / 2 - 120, 40, 240, 112);
+      if (img) ctx.drawImage(img, 8 * 240 * RENDER.hd, 0, 240 * RENDER.hd, 112 * RENDER.hd, W / 2 - 120, 40, 240, 112);
     }
     drawTextCentered(ctx, ui, tk(team.nameKey), W / 2, 158);
     TEAMS.forEach((tm, i) => {

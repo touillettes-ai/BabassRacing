@@ -1,28 +1,28 @@
 {
- "pixels_per_meter_x": 27,
+ "pixels_per_meter_x": 54,
  "band_length_m": 5,
  "textures": {
   "road_circuit": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -60,26 +60,26 @@
    }
   },
   "road_desert": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -117,26 +117,26 @@
    }
   },
   "road_night": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -174,26 +174,26 @@
    }
   },
   "road_snow": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -231,26 +231,26 @@
    }
   },
   "road_coast": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -288,26 +288,26 @@
    }
   },
   "road_kart": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     112
+     224
     ],
     "curb": [
-     112,
-     140
+     224,
+     280
     ],
     "edge_line": [
-     140,
-     144
+     280,
+     288
     ],
     "road": [
-     144,
-     368
+     288,
+     736
     ]
    },
    "lanes": 1,
@@ -345,36 +345,36 @@
    }
   },
   "overlay_start_line": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "note": "damier a poser sur une route 3 voies"
   },
   "overlay_grid_slots": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "note": "emplacements de grille en quinconce (voies 1 et 3)"
   },
   "road_wet": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -413,36 +413,36 @@
    "note": "asphalte mouille avec flaques integrees"
   },
   "overlay_puddles_a": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "note": "flaques transparentes a poser sur n'importe quelle route 3 voies (64 lignes = 10 m)"
   },
   "overlay_puddles_b": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "note": "version plus dense"
   },
   "road_modern": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     96
+     176,
+     192
     ],
     "road": [
-     96,
-     416
+     192,
+     832
     ]
    },
    "lanes": 3,
@@ -480,26 +480,26 @@
    }
   },
   "road_autumn": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -537,26 +537,26 @@
    }
   },
   "road_highway": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     40
+     80
     ],
     "curb": [
-     40,
-     60
+     80,
+     120
     ],
     "edge_line": [
-     60,
-     65
+     120,
+     130
     ],
     "road": [
-     65,
-     447
+     130,
+     894
     ]
    },
    "lanes": 4,
@@ -594,26 +594,26 @@
    }
   },
   "road_lava": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -651,26 +651,26 @@
    }
   },
   "road_jungle": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -708,26 +708,26 @@
    }
   },
   "road_worn": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -764,27 +764,84 @@
     ]
    }
   },
-  "road_classic": {
-   "w": 512,
-   "h": 64,
+  "road_urban": {
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
+    ]
+   },
+   "lanes": 3,
+   "palette": {
+    "asphalt": [
+     120,
+     120,
+     128
+    ],
+    "shoulder": [
+     150,
+     150,
+     158
+    ],
+    "curb_a": [
+     120,
+     120,
+     130
+    ],
+    "curb_b": [
+     176,
+     176,
+     186
+    ],
+    "line": [
+     236,
+     236,
+     236
+    ],
+    "lane": [
+     250,
+     220,
+     60
+    ]
+   }
+  },
+  "road_classic": {
+   "w": 1024,
+   "h": 128,
+   "bands": 2,
+   "band_h": 64,
+   "px": {
+    "shoulder": [
+     0,
+     128
+    ],
+    "curb": [
+     128,
+     176
+    ],
+    "edge_line": [
+     176,
+     188
+    ],
+    "road": [
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -822,26 +879,26 @@
    }
   },
   "road_runoff": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -879,26 +936,26 @@
    }
   },
   "road_night_wet": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -936,26 +993,26 @@
    }
   },
   "road_red_asphalt": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -992,309 +1049,27 @@
     ]
    }
   },
-  "road_circuit_narrow": {
-   "w": 512,
-   "h": 64,
+  "road_asphalt_blue": {
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     124
-    ],
-    "curb": [
-     124,
-     144
-    ],
-    "edge_line": [
-     144,
-     150
-    ],
-    "road": [
-     150,
-     362
-    ]
-   },
-   "lanes": 2,
-   "palette": {
-    "asphalt": [
-     104,
-     104,
-     118
-    ],
-    "shoulder": [
-     72,
-     160,
-     72
-    ],
-    "curb_a": [
-     220,
-     44,
-     52
-    ],
-    "curb_b": [
-     240,
-     240,
-     240
-    ],
-    "line": [
-     240,
-     240,
-     240
-    ],
-    "lane": [
-     240,
-     240,
-     240
-    ]
-   }
-  },
-  "road_mountain_narrow": {
-   "w": 512,
-   "h": 64,
-   "bands": 2,
-   "band_h": 32,
-   "px": {
-    "shoulder": [
-     0,
-     130
-    ],
-    "curb": [
-     130,
-     142
-    ],
-    "edge_line": [
-     142,
-     148
-    ],
-    "road": [
-     148,
-     364
-    ]
-   },
-   "lanes": 2,
-   "palette": {
-    "asphalt": [
-     118,
-     114,
-     120
-    ],
-    "shoulder": [
-     90,
-     120,
-     70
-    ],
-    "curb_a": [
-     120,
-     118,
-     124
-    ],
-    "curb_b": [
-     110,
-     108,
-     114
-    ],
-    "line": [
-     200,
-     200,
-     200
-    ],
-    "lane": [
-     200,
-     200,
-     200
-    ]
-   }
-  },
-  "road_night_narrow": {
-   "w": 512,
-   "h": 64,
-   "bands": 2,
-   "band_h": 32,
-   "px": {
-    "shoulder": [
-     0,
-     124
-    ],
-    "curb": [
-     124,
-     144
-    ],
-    "edge_line": [
-     144,
-     150
-    ],
-    "road": [
-     150,
-     362
-    ]
-   },
-   "lanes": 2,
-   "palette": {
-    "asphalt": [
-     54,
-     52,
-     78
-    ],
-    "shoulder": [
-     30,
-     28,
-     52
-    ],
-    "curb_a": [
-     236,
-     40,
-     150
-    ],
-    "curb_b": [
-     40,
-     220,
-     230
-    ],
-    "line": [
-     250,
-     210,
-     60
-    ],
-    "lane": [
-     250,
-     210,
-     60
-    ]
-   }
-  },
-  "overlay_skid_marks": {
-   "w": 512,
-   "h": 64,
-   "overlay": true,
-   "note": "traces de freinage sur deux voies, a repeter avant un virage"
-  },
-  "overlay_arrows": {
-   "w": 512,
-   "h": 64,
-   "overlay": true,
-   "note": "fleches blanches au sol (sens de la course)"
-  },
-  "overlay_chevrons": {
-   "w": 512,
-   "h": 64,
-   "overlay": true,
-   "note": "chevrons jaunes : zone de freinage / fin de ligne droite"
-  },
-  "overlay_crosswalk": {
-   "w": 512,
-   "h": 64,
-   "overlay": true,
-   "note": "passage pieton pour les circuits urbains"
-  },
-  "overlay_finish": {
-   "w": 512,
-   "h": 64,
-   "overlay": true,
-   "note": "ligne d'arrivee avec inscription"
-  },
-  "overlay_pit_entry": {
-   "w": 512,
-   "h": 64,
-   "overlay": true,
-   "note": "ligne d'entree des stands, a poser quelques segments avant la pit lane (miroir si les stands sont a gauche)"
-  },
-  "overlay_logo_asphalt": {
-   "w": 512,
-   "h": 64,
-   "overlay": true,
-   "note": "logo peint au sol, a poser sur la ligne droite des stands"
-  },
-  "overlay_oil": {
-   "w": 512,
-   "h": 64,
-   "overlay": true,
-   "note": "flaques d'huile (perte d'adherence)"
-  },
-  "overlay_runoff_stripes": {
-   "w": 512,
-   "h": 64,
-   "overlay": true,
-   "note": "bandes rouge/blanc sur les degagements, en sortie de virage"
-  },
-  "road_urban": {
-   "w": 512,
-   "h": 64,
-   "bands": 2,
-   "band_h": 32,
-   "px": {
-    "shoulder": [
-     0,
-     64
-    ],
-    "curb": [
-     64,
-     88
-    ],
-    "edge_line": [
-     88,
-     94
-    ],
-    "road": [
-     94,
-     418
-    ]
-   },
-   "lanes": 3,
-   "palette": {
-    "asphalt": [
-     120,
-     120,
      128
     ],
-    "shoulder": [
-     150,
-     150,
-     158
-    ],
-    "curb_a": [
-     120,
-     120,
-     130
-    ],
-    "curb_b": [
-     176,
-     176,
-     186
-    ],
-    "line": [
-     236,
-     236,
-     236
-    ],
-    "lane": [
-     250,
-     220,
-     60
-    ]
-   }
-  },
-  "road_asphalt_blue": {
-   "w": 512,
-   "h": 64,
-   "bands": 2,
-   "band_h": 32,
-   "px": {
-    "shoulder": [
-     0,
-     64
-    ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -1332,26 +1107,26 @@
    }
   },
   "road_asphalt_warm": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -1389,26 +1164,26 @@
    }
   },
   "road_asphalt_green": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -1446,26 +1221,26 @@
    }
   },
   "road_asphalt_purple": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -1503,26 +1278,26 @@
    }
   },
   "road_asphalt_black": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     96
+     176,
+     192
     ],
     "road": [
-     96,
-     416
+     192,
+     832
     ]
    },
    "lanes": 3,
@@ -1560,26 +1335,26 @@
    }
   },
   "road_asphalt_light": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -1617,26 +1392,26 @@
    }
   },
   "road_asphalt_teal": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -1674,26 +1449,26 @@
    }
   },
   "road_asphalt_orange": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -1731,26 +1506,26 @@
    }
   },
   "road_asphalt_pink": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -1788,26 +1563,26 @@
    }
   },
   "road_asphalt_olive": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -1845,26 +1620,26 @@
    }
   },
   "road_double_yellow": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 1,
@@ -1902,26 +1677,26 @@
    }
   },
   "road_no_lines": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 1,
@@ -1959,26 +1734,26 @@
    }
   },
   "road_rumble_edges": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 3,
@@ -2014,6 +1789,232 @@
      240
     ]
    }
+  },
+  "road_circuit_narrow": {
+   "w": 1024,
+   "h": 128,
+   "bands": 2,
+   "band_h": 64,
+   "px": {
+    "shoulder": [
+     0,
+     248
+    ],
+    "curb": [
+     248,
+     288
+    ],
+    "edge_line": [
+     288,
+     300
+    ],
+    "road": [
+     300,
+     724
+    ]
+   },
+   "lanes": 2,
+   "palette": {
+    "asphalt": [
+     104,
+     104,
+     118
+    ],
+    "shoulder": [
+     72,
+     160,
+     72
+    ],
+    "curb_a": [
+     220,
+     44,
+     52
+    ],
+    "curb_b": [
+     240,
+     240,
+     240
+    ],
+    "line": [
+     240,
+     240,
+     240
+    ],
+    "lane": [
+     240,
+     240,
+     240
+    ]
+   }
+  },
+  "road_mountain_narrow": {
+   "w": 1024,
+   "h": 128,
+   "bands": 2,
+   "band_h": 64,
+   "px": {
+    "shoulder": [
+     0,
+     260
+    ],
+    "curb": [
+     260,
+     284
+    ],
+    "edge_line": [
+     284,
+     296
+    ],
+    "road": [
+     296,
+     728
+    ]
+   },
+   "lanes": 2,
+   "palette": {
+    "asphalt": [
+     118,
+     114,
+     120
+    ],
+    "shoulder": [
+     90,
+     120,
+     70
+    ],
+    "curb_a": [
+     120,
+     118,
+     124
+    ],
+    "curb_b": [
+     110,
+     108,
+     114
+    ],
+    "line": [
+     200,
+     200,
+     200
+    ],
+    "lane": [
+     200,
+     200,
+     200
+    ]
+   }
+  },
+  "road_night_narrow": {
+   "w": 1024,
+   "h": 128,
+   "bands": 2,
+   "band_h": 64,
+   "px": {
+    "shoulder": [
+     0,
+     248
+    ],
+    "curb": [
+     248,
+     288
+    ],
+    "edge_line": [
+     288,
+     300
+    ],
+    "road": [
+     300,
+     724
+    ]
+   },
+   "lanes": 2,
+   "palette": {
+    "asphalt": [
+     54,
+     52,
+     78
+    ],
+    "shoulder": [
+     30,
+     28,
+     52
+    ],
+    "curb_a": [
+     236,
+     40,
+     150
+    ],
+    "curb_b": [
+     40,
+     220,
+     230
+    ],
+    "line": [
+     250,
+     210,
+     60
+    ],
+    "lane": [
+     250,
+     210,
+     60
+    ]
+   }
+  },
+  "overlay_skid_marks": {
+   "w": 1024,
+   "h": 128,
+   "overlay": true,
+   "note": "traces de freinage sur deux voies, a repeter avant un virage"
+  },
+  "overlay_arrows": {
+   "w": 1024,
+   "h": 128,
+   "overlay": true,
+   "note": "fleches blanches au sol (sens de la course)"
+  },
+  "overlay_chevrons": {
+   "w": 1024,
+   "h": 128,
+   "overlay": true,
+   "note": "chevrons jaunes : zone de freinage / fin de ligne droite"
+  },
+  "overlay_crosswalk": {
+   "w": 1024,
+   "h": 128,
+   "overlay": true,
+   "note": "passage pieton pour les circuits urbains"
+  },
+  "overlay_finish": {
+   "w": 1024,
+   "h": 128,
+   "overlay": true,
+   "note": "ligne d'arrivee avec inscription"
+  },
+  "overlay_pit_entry": {
+   "w": 1024,
+   "h": 128,
+   "overlay": true,
+   "note": "ligne d'entree des stands, a poser quelques segments avant la pit lane (miroir si les stands sont a gauche)"
+  },
+  "overlay_logo_asphalt": {
+   "w": 1024,
+   "h": 128,
+   "overlay": true,
+   "note": "logo peint au sol, a poser sur la ligne droite des stands"
+  },
+  "overlay_oil": {
+   "w": 1024,
+   "h": 128,
+   "overlay": true,
+   "note": "flaques d'huile (perte d'adherence)"
+  },
+  "overlay_runoff_stripes": {
+   "w": 1024,
+   "h": 128,
+   "overlay": true,
+   "note": "bandes rouge/blanc sur les degagements, en sortie de virage"
   }
- }
+ },
+ "hd": true
 }

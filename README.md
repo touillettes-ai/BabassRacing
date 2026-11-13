@@ -49,9 +49,9 @@ public/assets/        pack d'assets (voir public/assets/README.md pour les forma
 
 ## Principes de rendu
 
-- Résolution interne 480×270 (celle pour laquelle le pack est calibré), upscale CSS `image-rendering: pixelated`.
+- Pack d'assets **HD ×2** : le canvas fait 960×540 (`RENDER.hd = 2`), mais menus, HUD et logique restent en coordonnées 480×270 (le contexte porte un `scale(hd)`). Les sprites HD sont dessinés à taille source / hd ; la route et les sprites du monde (`render/road.ts`) sont rendus directement en pixels du canvas. Upscale CSS `image-rendering: pixelated`.
 - Route : segments de 5 m projetés du plus proche au plus lointain ; virages = accumulation de courbure ;
-  collines = altitude par segment ; chaque ligne écran échantillonne la texture de route (27 px = 1 m).
+  collines = altitude par segment ; chaque ligne écran échantillonne la texture de route (54 px = 1 m en HD).
 - Sprites : échelle = `(focal / profondeur) / pixels_per_meter`, ancre posée au sol, masqués par les crêtes.
 
 ## Circuits inspirés des tracés officiels (F1 / WEC)

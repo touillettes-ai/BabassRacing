@@ -2,6 +2,8 @@ import { RENDER } from '../config/balance';
 import { loadImage } from '../core/assets';
 import { BUST_FILE, type Expr, type Who } from '../story/scenes';
 
+const HD = RENDER.hd;
+/** Taille logique d'un buste (la planche HD fait FRAME × HD). */
 const FRAME_W = 128, FRAME_H = 144;
 /** Ordre des 12 frames des planches de bustes (v2 du pack, `dialogue.json` → `frames`). */
 const EXPR_INDEX: Record<Expr, number> = {
@@ -49,7 +51,7 @@ export function drawText(ctx: CanvasRenderingContext2D, ui: UiAssets, str: strin
   for (let i = 0; i < str.length; i++) {
     const idx = CHARS.indexOf(str[i]);
     if (idx < 0 || idx === 0) continue;
-    ctx.drawImage(ui.font, (idx % 16) * 10, Math.floor(idx / 16) * 16, 10, 16, x + i * 8, y, 10, 16);
+    ctx.drawImage(ui.font, (idx % 16) * 10 * HD, Math.floor(idx / 16) * 16 * HD, 10 * HD, 16 * HD, x + i * 8, y, 10, 16);
   }
 }
 export function drawTextCentered(ctx: CanvasRenderingContext2D, ui: UiAssets, str: string, cx: number, y: number): void {
@@ -78,8 +80,8 @@ export function drawBackdrop(ctx: CanvasRenderingContext2D, ui: UiAssets, scroll
   ctx.fillRect(0, 0, W, H);
   const off = Math.floor(scroll) % 1024;
   for (let x = -off; x < W; x += 1024) {
-    ctx.drawImage(ui.sky, x, 40);
-    ctx.drawImage(ui.horizon, x, 168);
+    ctx.drawImage(ui.sky, x, 40, ui.sky.width / HD, ui.sky.height / HD);
+    ctx.drawImage(ui.horizon, x, 168, ui.horizon.width / HD, ui.horizon.height / HD);
   }
   ctx.fillStyle = '#1b1830';
   ctx.fillRect(0, 296 - 128, W, H);
@@ -93,8 +95,8 @@ export function panel(ctx: CanvasRenderingContext2D, x: number, y: number, w: nu
 }
 
 const dim = document.createElement('canvas');
-dim.width = FRAME_W;
-dim.height = FRAME_H;
+dim.width = FRAME_W * HD;
+dim.height = FRAME_H * HD;
 
 /** Buste de personnage : à gauche = celui qui parle, à droite = interlocuteur (miroir et assombri, RGB × 0,55). */
 export function drawBust(
@@ -102,19 +104,19 @@ export function drawBust(
 ): void {
   const frame = EXPR_INDEX[expr];
   const dc = dim.getContext('2d')!;
-  dc.clearRect(0, 0, FRAME_W, FRAME_H);
+  dc.clearRect(0, 0, FRAME_W * HD, FRAME_H * HD);
   dc.save();
   if (side === 'right') {
-    dc.translate(FRAME_W, 0);
+    dc.translate(FRAME_W * HD, 0);
     dc.scale(-1, 1);
   }
-  dc.drawImage(ui.busts[who], frame * FRAME_W, 0, FRAME_W, FRAME_H, 0, 0, FRAME_W, FRAME_H);
+  dc.drawImage(ui.busts[who], frame * FRAME_W * HD, 0, FRAME_W * HD, FRAME_H * HD, 0, 0, FRAME_W * HD, FRAME_H * HD);
   dc.restore();
   if (dimmed) {
     dc.globalCompositeOperation = 'source-atop';
     dc.fillStyle = 'rgba(0,0,0,0.45)';
-    dc.fillRect(0, 0, FRAME_W, FRAME_H);
+    dc.fillRect(0, 0, FRAME_W * HD, FRAME_H * HD);
     dc.globalCompositeOperation = 'source-over';
   }
-  ctx.drawImage(dim, x, y);
+  ctx.drawImage(dim, x, y, FRAME_W, FRAME_H);
 }

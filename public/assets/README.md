@@ -3,6 +3,37 @@
 Pixel art, PNG transparents, à afficher en **nearest-neighbor** (pas de lissage).
 Toutes les marques des panneaux sont inventées.
 
+## ⚠️ v23 à v25 — Tout le pack en HD ×2 + roues animées (à lire en premier)
+Tous les éléments qui composent un circuit (v23) puis les voitures (v24) sont passés en **résolution ×2** avec des détails retravaillés. Les tailles citées plus bas dans ce README datent d'avant la v23 : **les valeurs des JSON font foi** (`w`, `h`, `anchor`, `pixels_per_meter`, `px`, `band_h`, `lights_slot`, `frame`).
+
+| Famille | Avant | v23 |
+|---|---|---|
+| `roads/*.png`, `pit/road_pitlane.png`, surcouches `overlay_*` | 512×64, 27 px/m, bandes de 32 lignes | **1024×128, 54 px/m, bandes de 64 lignes** (axe de la route à x = 512, surcouches : 128 lignes = 10 m) |
+| `backgrounds/sky_*.png` | 1024×256 | **2048×512** |
+| `backgrounds/horizon_*.png` | 1024×128 | **2048×256** |
+| `backgrounds/clouds_*_far/near.png`, `clouds.png` | 1024×96 / 1024×128 | **2048×192 / 2048×256** (atlas ×2) |
+| `scenery/` : `trees`, `billboards`, `signs`, `buildings`, `overhead` (+ versions `_night`), `grandstand_anim` | ppm 4 à 36 | **ppm doublé** (atlas, ancres et cadres ×2) |
+| `start/` : portiques, `start_lights` | ppm 19 | **ppm 38**, `lights_slot` et cadres ×2 |
+| `pit/pit_buildings` (garages, muret, passerelle, sucette) | ppm 20 à 30 | **ppm doublé** |
+| `cars/*.png` (v24) | cadres 160×96, pentes 160×112, tête-à-queue 240×112 | **320×192, 320×224, 480×224**, ppm et ancres ×2 (`cars.json`) |
+
+**v25 : tout le reste est aussi en ×2** — mécaniciens, accessoires de stand, commissaires, pilotes, photographes, podium, FX, HUD et polices, portraits et boîte de dialogue, logo et écran titre, hub garage (960×540). Ces familles sont agrandies avec lissage des contours (pas re-rendues) ; leurs JSON (`x, y, w, h, dx, dy, anchor, frame, cell, rect, line_h, pixels_per_meter`) sont doublés et portent `"hd": "x2"`. Seules les minimaps de `circuits/` (64 et 128 px) et `logo/babass_racing_logo_x3.png` gardent leur taille.
+
+**v25 : roues qui tournent** — chaque planche de voiture (`sheets`, `brake_sheets`, `sheets_up`, `sheets_down`, `damaged_sheets`, `puncture_sheets`) contient maintenant **3 lignes** : la ligne `r` (à `y = r × hauteur_de_cadre`) est une phase de rotation des roues (sculptures du pneu et bâtons de jante décalés). `cars.json` → `wheel_phases: 3` et `wheel_anim`.
+- Animation : `phase = floor(distance_parcourue_m / 0.25) % 3` (ou une cadence proportionnelle à la vitesse, plafonnée à ~20 images/s) ; à l'arrêt, garder la phase courante ; en marche arrière, parcourir 2,1,0.
+- Cadre à dessiner : `x = index_braquage × frame.w`, `y = phase × frame.h` (pour les pentes : `slope.frame.h`).
+- Safety car : 6 lignes = gyrophare (a, b) × 3 phases, ligne = `flash × 3 + phase` (`rows` dans `cars.json`).
+- Tête-à-queue (`spin`) et stand (`pit`) : une seule ligne, roues fixes.
+
+**Intégration**
+- La formule de projection ne change pas : `échelle = (focale / z) / pixels_per_meter`. Comme le ppm est doublé, un décor HD occupe la même taille à l'écran qu'avant, avec deux fois plus de pixels source.
+- Pour en profiter, rendre le jeu en **960×540** (au lieu de 480×270) : focale ×2, horizon ×2, et tout le pack est désormais à la même densité de pixels : plus aucun facteur ×2 à appliquer.
+- Les valeurs en pixels citées plus bas dans ce README (décalages de l'arrêt au stand, positions du HUD, tailles de cadres) datent d'avant la HD : les doubler, ou lire les JSON.
+- Route : `tx = 512 + x_m * 54`, `ligne = floor(z / 10 * 128) % 128`. Parallaxe des fonds : modulo 2048.
+- Si le jeu reste en 480×270, tout fonctionne aussi (les décors sont simplement réduits de moitié), mais le gain n'est visible que sur les objets proches de la caméra.
+- Routes : grain d'asphalte fin, traces de roulage, joints, vibreurs bombés avec stries et traces de gomme, peinture usée, herbe en brins. Décors 2D redessinés en vectoriel ×2 (textes et courbes nets, liserés d'éclairage). Arbres re-rendus en 3D à 40 px/m avec un feuillage plus découpé. Fonds agrandis avec lissage des contours, dégradés à trame fine, étoiles fines, liseré de lumière sur les crêtes.
+- Aperçus : `previews/preview_hd_scenes.png`, `preview_hd_roads.png`, `preview_hd_backgrounds.png`.
+
 ## Conventions communes
 
 - Chaque sprite a une **ancre** (`anchor.x`, `anchor.y`, en px dans la frame) : c'est le point de contact au sol, à poser sur la position écran de l'objet.
@@ -34,6 +65,12 @@ Animation de braquage : garder une valeur `steer` dans [-1, 1] lissée dans le t
 **Tête-à-queue** `<car>_<couleur>_spin.png` : 16 frames de **240×112** (ancre `spin.anchor`), une tous les 22,5°. Frame 0 = vue de dos, frame 4 = profil (nez à droite), frame 8 = vue de face, frame 12 = profil (nez à gauche). Lire dans l'ordre pour une rotation vers la droite, à l'envers pour la gauche ; 15–20 fps, ralentir sur le dernier tour. La frame 8 sert aussi de vue de face (rétroviseur, écran de sélection).
 
 **Dégâts** `<car>_<couleur>_damaged.png` : planche de braquage (7 frames, même format et même ancre que la normale) avec éraflures, feu arrière gauche cassé et aileron tordu. **Crevaison** `<car>_<couleur>_puncture.png` : idem, pneu arrière gauche à plat et caisse penchée. Remplacer la planche normale tant que l'état dure. La safety car n'en a pas.
+
+## Voitures v22 : vitres transparentes et intérieur visible
+Les voitures ont été refaites : vitres semi-transparentes laissant voir l'habitacle (sièges, appuie-têtes, volant, tableau de bord), reflets en diagonale sur le verre et contours colorés selon la matière voisine.
+- Les PNG de voitures contiennent désormais des pixels **semi-transparents** (alpha 112 pour la vitre seule, 168 pour les reflets). Utiliser l'alpha blending normal (pas de colorkey) et ne pas passer en `nearest` avec seuil alpha.
+- Le sol reste visible à travers les vitres quand l'habitacle est vide, comme sur une vraie voiture.
+- Le F1 n'a pas de vitres, le pick-up et la dépanneuse montrent la cabine à travers la lunette arrière.
 
 ## pit/
 

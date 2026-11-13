@@ -1,28 +1,28 @@
 {
- "pixels_per_meter_x": 27,
+ "pixels_per_meter_x": 54,
  "band_length_m": 5,
  "textures": {
   "road_pitlane": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "bands": 2,
-   "band_h": 32,
+   "band_h": 64,
    "px": {
     "shoulder": [
      0,
-     64
+     128
     ],
     "curb": [
-     64,
-     88
+     128,
+     176
     ],
     "edge_line": [
-     88,
-     94
+     176,
+     188
     ],
     "road": [
-     94,
-     418
+     188,
+     836
     ]
    },
    "lanes": 2,
@@ -60,9 +60,10 @@
    }
   },
   "overlay_pit_box": {
-   "w": 512,
-   "h": 64,
+   "w": 1024,
+   "h": 128,
    "note": "emplacement d'arret (voie de droite) : 64 lignes = 10 m, voiture au centre du cadre"
   }
- }
+ },
+ "hd": true
 }

@@ -7,16 +7,18 @@ import type { PitController } from '../sim/pit';
 import type { Race } from '../sim/race';
 import type { Minimap } from '../track/minimap';
 
-/** Texte bitmap (polices du pack : hud/fonts.json). */
+const HD = RENDER.hd;
+
+/** Texte bitmap (polices du pack : hud/fonts.json). `cell` est en px de la planche (HD) ; on dessine en px logiques. */
 function text(
   ctx: CanvasRenderingContext2D, img: HTMLImageElement, str: string, x: number, y: number,
   cell: { w: number; h: number }, columns: number, indexOf: (ch: string) => number, scale = 1,
 ): void {
-  const adv = (cell.w - 1) * scale;
+  const adv = (cell.w / HD - 1) * scale;
   for (let i = 0; i < str.length; i++) {
     const idx = indexOf(str[i]);
     if (idx < 0) continue;
-    ctx.drawImage(img, (idx % columns) * cell.w, Math.floor(idx / columns) * cell.h, cell.w, cell.h, x + i * adv, y, cell.w * scale, cell.h * scale);
+    ctx.drawImage(img, (idx % columns) * cell.w, Math.floor(idx / columns) * cell.h, cell.w, cell.h, x + i * adv, y, (cell.w / HD) * scale, (cell.h / HD) * scale);
   }
 }
 
@@ -24,29 +26,29 @@ const BIG_CHARS = "0123456789:.'/ ";
 
 export function drawSmall(ctx: CanvasRenderingContext2D, a: Assets, s: string, x: number, y: number): void {
   // police petite : ASCII 32..95, 16 colonnes, majuscules uniquement
-  text(ctx, a.fontSmall, s.toUpperCase(), x, y, { w: 10, h: 14 }, 16, (ch) => {
+  text(ctx, a.fontSmall, s.toUpperCase(), x, y, { w: 10 * HD, h: 14 * HD }, 16, (ch) => {
     const c = ch.charCodeAt(0) - 32;
     return c >= 0 && c < 64 ? c : -1;
   });
 }
 /** Petite police réduite (70 %) : classement, écarts. Avance de 6 px par caractère. */
 export function drawTiny(ctx: CanvasRenderingContext2D, a: Assets, s: string, x: number, y: number): void {
-  text(ctx, a.fontSmall, s.toUpperCase(), x, y, { w: 10, h: 14 }, 16, (ch) => {
+  text(ctx, a.fontSmall, s.toUpperCase(), x, y, { w: 10 * HD, h: 14 * HD }, 16, (ch) => {
     const c = ch.charCodeAt(0) - 32;
     return c >= 0 && c < 64 ? c : -1;
   }, 0.7);
 }
 export function drawBig(ctx: CanvasRenderingContext2D, a: Assets, s: string, x: number, y: number): void {
-  text(ctx, a.fontBig, s, x, y, { w: 20, h: 30 }, 15, (ch) => BIG_CHARS.indexOf(ch));
+  text(ctx, a.fontBig, s, x, y, { w: 20 * HD, h: 30 * HD }, 15, (ch) => BIG_CHARS.indexOf(ch));
 }
 
 function sprite(ctx: CanvasRenderingContext2D, a: Assets, name: string, x: number, y: number): void {
   const d = a.hud.sprites[name];
-  ctx.drawImage(a.hud.img, d.x, d.y, d.w, d.h, x, y, d.w, d.h);
+  ctx.drawImage(a.hud.img, d.x, d.y, d.w, d.h, x, y, d.w / HD, d.h / HD);
 }
 function needle(ctx: CanvasRenderingContext2D, a: Assets, value: number, max: number, x: number, y: number, size = 96): void {
   const f = Math.max(0, Math.min(27, Math.round((value / max) * 27)));
-  ctx.drawImage(a.needle, f * 96, 0, 96, 96, x, y, size, size);
+  ctx.drawImage(a.needle, f * 96 * HD, 0, 96 * HD, 96 * HD, x, y, size, size);
 }
 
 /** HUD : compteurs, tours, chronos, mini-carte. (Carburant, pneus, position : jalons suivants.) */
@@ -113,7 +115,7 @@ export function drawHud(
   const dot = (name: string, z: number) => {
     const pt = map.pointAt(z);
     const d = a.hud.sprites[name];
-    ctx.drawImage(a.hud.img, d.x, d.y, d.w, d.h, mx + pt.x - 4, my + pt.y - 4, d.w, d.h);
+    ctx.drawImage(a.hud.img, d.x, d.y, d.w, d.h, mx + pt.x - 4, my + pt.y - 4, d.w / HD, d.h / HD);
   };
   for (const e of field.entries) {
     if (e.isPlayer) continue;
@@ -182,14 +184,14 @@ function drawFuelAndTyres(ctx: CanvasRenderingContext2D, a: Assets, p: Player, H
   const fy = H - 66;
   sprite(ctx, a, 'icon_fuel', 8, fy - 2);
   const bf = a.hud.sprites.bar_frame;
-  ctx.drawImage(a.hud.img, bf.x, bf.y, bf.w, bf.h, 24, fy, Math.round(bf.w * k), Math.round(bf.h * k));
+  ctx.drawImage(a.hud.img, bf.x, bf.y, bf.w, bf.h, 24, fy, Math.round((bf.w / HD) * k), Math.round((bf.h / HD) * k));
   const frac = p.fuel.fraction;
   const fillName = frac > HUD.gaugeGreen ? 'bar_fill_green' : frac > HUD.gaugeYellow ? 'bar_fill_yellow' : 'bar_fill_red';
   const f = a.hud.sprites[fillName];
   const w = Math.round(f.w * frac);
-  if (w > 0) ctx.drawImage(a.hud.img, f.x, f.y, w, f.h, 24 + Math.round(3 * k), fy + Math.round(3 * k), Math.round(w * k), Math.round(f.h * k));
+  if (w > 0) ctx.drawImage(a.hud.img, f.x, f.y, w, f.h, 24 + Math.round(3 * k), fy + Math.round(3 * k), Math.round((w / HD) * k), Math.round((f.h / HD) * k));
   // tours d'essence restants (au lieu des litres)
-  drawSmall(ctx, a, t('hud.fuelLaps', { n: p.fuelLaps(L).toFixed(1) }), 24 + Math.round(bf.w * k) + 4, fy - 1);
+  drawSmall(ctx, a, t('hud.fuelLaps', { n: p.fuelLaps(L).toFixed(1) }), 24 + Math.round((bf.w / HD) * k) + 4, fy - 1);
 
   const ty = H - 50;
   sprite(ctx, a, 'icon_tyre', 8, ty);
